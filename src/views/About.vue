@@ -14,6 +14,9 @@ export default {
     let _this = this;
     window.onresize = () => {
       return (() => {
+        var h =
+        document.documentElement.clientHeight || document.body.clientHeight;
+        console.log(h)
        _this.test++
       })()
     }
