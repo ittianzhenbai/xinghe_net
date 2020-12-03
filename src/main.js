@@ -7,6 +7,7 @@ import router from './router'
 import store from './store'
 import "./common/css/react.styl";
 import 'bootstrap/dist/css/bootstrap.min.css'
+import 'swiper/dist/css/swiper.css';
 // import 'bootstrap/dist/js/bootstrap.min'
 // css样式还是需要全部引入
 import 'element-ui/lib/theme-chalk/index.css'

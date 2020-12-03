@@ -5,18 +5,23 @@
                 <div class="title">联系我们</div>
                 <ul>
                     <li>
-                        地<span class="kongge"></span>址:浙江省杭州市延安路315号
+                        <img src="../../assets/4@2x.png" alt="">
+                        地<span class="kongge"></span>址:浙江省杭州市延安路312号
                     </li>
                     <li>
+                        <img src="../../assets/6@2x.png" alt="">
                         传<span class="kongge"></span>真:0571-8701 4212
                     </li>
                     <li>
+                        <img src="../../assets/8@2x.png" alt="">
                         技术维护:浙江省兴合集团有限责任公司信息技术部
                     </li>
                     <li>
+                        <img src="../../assets/5@2x.png" alt="">
                         服务热线:0571-8703 2510
                     </li>
                     <li>
+                        <img src="../../assets/7@2x.png" alt="">
                         电子邮箱:xinghegroup@zjcoop.com
                     </li>
                 </ul>
@@ -56,13 +61,15 @@ export default {
         .title
             color #fff
             text-align left
-            margin-top 2rem
+            margin-top 1.7rem
+            font-size 0.9rem
         ul
             list-style none
             padding 0 0
             &>li
                 float left
                 width 33.3%
+                font-size 0.7rem
                 @media screen and (max-width:1919px)
                     width 50%
                 @media screen and (max-width:1270px)
@@ -73,8 +80,12 @@ export default {
                 text-align left
                 color #fff
                 line-height 2rem
+                &>img
+                    width 1.2rem
+                    padding-right 0.5rem
+                    display inline-block
                 .kongge
-                    padding-right 2rem
+                    padding-right 1.4rem
     .top_right
         float right
         color #fff
@@ -83,6 +94,7 @@ export default {
             padding-top 20px
         .demonstration
             display block
+            font-size 0.7rem
     .cutline
         clear both
         padding-top 10px
@@ -90,4 +102,5 @@ export default {
     .bottom
         padding-top 10px
         color #FFF
+        font-size 0.7rem
 </style>

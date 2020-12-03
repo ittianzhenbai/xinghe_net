@@ -63,15 +63,39 @@
                     成员企业新闻
                 </li>
             </ul>
-            <!-- <div class="col-12 col-md-12 row">
-               <router-view></router-view>
-            </div> -->
+            <div class="col-12 col-md-12 col-lg-12 row news_content">
+               <div class="col-12 col-md-6 col-lg-6 news_pics">
+                    <div class="swiper-container">
+                        <div class="swiper-wrapper">
+                            <div class="swiper-slide">
+                                Slide 1
+                                <div class="title1">这是标题1</div>
+                            </div>
+                            <div class="swiper-slide">Slide 2
+                                 <div class="title1">这是标题2</div>
+                            </div>
+                            <div class="swiper-slide">Slide 3
+                                <div class="title1">这是标题3</div>
+                            </div>
+                            <div class="swiper-slide">Slide 4
+                                <div class="title1">这是标题4</div>
+                            </div>
+                        </div>
+                        <!-- Add Pagination -->
+                        <div class="swiper-pagination"></div>
+                    </div>
+               </div>
+               <div class="col-12 col-md-6 col-lg-6 news_list">
+
+               </div>
+            </div>
         </div>
     </div>
 </template>
 <script>
 import '../../common/js/control.js'
-import { mapMutations } from "vuex";
+import { mapMutations } from "vuex"
+import Swiper from "swiper"
 export default {
     data(){
         return{
@@ -79,17 +103,25 @@ export default {
         }
     },
     mounted(){
+        this.init()
     },
     methods:{
         ...mapMutations(["setActiveIndex"]),
+        init(){
+            var swiper = new Swiper('.swiper-container', {
+                pagination: {
+                    el: '.swiper-pagination',
+                },
+            })
+        },
         jump_router(item){
             this.content_show = item
             if(item == "1"){
-                this.$router.push({path:"/news_group"})
+                // this.$router.push({path:"/news_group"})
                 this.setActiveIndex("3-1")
             }
             if(item == "2"){
-                this.$router.push({path:"/news_menber"})
+                // this.$router.push({path:"/news_menber"})
                 this.setActiveIndex("3-2")
             }
         }
@@ -139,12 +171,14 @@ export default {
         .yewu
             margin 0
             .major_businesses
-                width 72rem
+                width 80%
                 margin 0 auto
+                position relative
+                bottom 8rem
                 z-index 9
                 &>li
-                    height 20rem
-                    width 14.35rem
+                    height 16rem
+                    width 20%
                     border 1px solid yellow
                     display inline-block
                     position relative
@@ -228,12 +262,13 @@ export default {
                 width 3rem
         .news_center
             background #F4F4F4
-            margin-top 2rem
-            margin-left 0
-            margin-right 0
+            margin 2rem 0 100px
             .title
-                font-size 3rem
-                font-weight 800
+                font-size 2rem
+                font-weight Bold
+                padding-top 2.6rem
+                font-family SourceHanSansCN-Bold
+                color #333333
                 margin 0 auto
             .options
                 margin-bottom 1rem
@@ -243,13 +278,59 @@ export default {
                 &>li
                     display inline-block
                     cursor pointer
-                    font-size 2rem
+                    font-size 1.05rem
                     @media screen and (max-width:768px)
                         font-size 1.5rem
-                    color #000000
+                    color #666666
+                    font-family MicrosoftYaHei
+                    font-weight Regular
                     text-align center
                     &.active
-                        border-bottom 2px solid #79A2C5
-                        color #79A2C5 
+                        border-bottom 3px solid #1A649F
+                        color #1A649F
+            .news_content
+                padding 0
+                margin 0
+                width 100%
+                background #F4F4F4
+                .news_pics
+                    height 20rem
+                    .swiper-container 
+                        width 80%
+                        height 100%
+                        .swiper-slide 
+                            text-align center
+                            font-size 18px
+                            /* Center slide text vertically */
+                            display -webkit-box
+                            display -ms-flexbox
+                            display -webkit-flex
+                            display flex
+                            -webkit-box-pack center
+                            -ms-flex-pack center
+                            -webkit-justify-content center
+                            justify-content center
+                            -webkit-box-align center
+                            -ms-flex-align center
+                            -webkit-align-items center
+                            align-items center
+                            position relative
+                            .title1
+                                position absolute
+                                bottom 0
+                                height 2rem
+                                line-height 2rem
+                                left 0
+                                background rgba(000,000,000,0.6)
+                                width 100%
+                                text-align left
+                                padding-left 5px
+                                color #FFFFFF
+                    .swiper-pagination
+                        width 20%
+                        left 20rem
+                        bottom 0.2rem
+                .news_list
+                    height 20rem
             
 </style>

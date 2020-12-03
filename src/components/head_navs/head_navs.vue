@@ -56,8 +56,8 @@
             class="col-5 col-sm-6 col-md-12 col-lg-2 nav_right"
         >
             <ul class="list1">
-                <li>OA</li>
-                <li>企业</li>
+                <li><span class="oa"></span></li>
+                <li><span class="search"></span></li>
                 <li @click="use_rightnav">按钮</li>
             </ul>
         </div>
@@ -302,6 +302,8 @@ export default {
                 position absolute
                 right 45px
                 top 50px
+                font-weight 500
+                color #FFFFFF
 /deep/.el-menu--horizontal>.el-submenu.is-active .el-submenu__title
             border-bottom transparent!important
             border-bottom-color transparent!important
@@ -342,6 +344,31 @@ export default {
                 line-height 3rem
                 @media screen and (max-width:768px)
                     border-left 1px solid #FFFFFF
+                .oa
+                    display block
+                    width 3.5rem
+                    height 2rem
+                    margin-top 1.2rem
+                    background url("../../assets/2@2x.png")
+                    background-size 100%
+                    @media screen and (max-width:768px)
+                        margin-top 0.6rem
+                        margin-left 1rem
+                        width 2rem
+                        background-size 200%
+                        background-position -2.3rem
+                    background-repeat no-repeat
+                .search
+                    display block
+                    width 1rem
+                    height 2rem
+                    margin-top 1.2rem
+                    margin-left 1rem
+                    background url("../../assets/3@2x.png")
+                    background-size 100%
+                    // @media screen and (max-width:768px)
+                    //     background-position -2.3rem
+                    background-repeat no-repeat
             li:nth-child(3)
                 @media screen and (min-width:768px)
                     display none
