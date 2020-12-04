@@ -86,7 +86,21 @@
                     </div>
                </div>
                <div class="col-12 col-md-6 col-lg-6 news_list">
-
+                   <div class="news_top col-12 col-md-12 col-lg-12 ">
+                       <p class="news_title">
+                           新闻标题新闻标题新闻标题新闻标题新闻标题新闻标题新闻标题新闻...
+                       </p>
+                       <p class="news_content1">
+                        新闻内容新闻内容新闻内容新闻内容新闻内容新闻内容新闻内容新闻内容新新闻内容新闻内容新闻内容新闻内容
+                        新闻内容新闻内容新闻内容新闻内容新闻内容新闻内容新闻内容新闻内容新新闻内容新闻内容新闻内容新闻内容新闻内容新闻内容新闻内容
+                       </p>
+                   </div>
+                   <ul class="list1 col-12 col-md-12 col-lg-12">
+                       <li v-for="item in 10" :key="item" class="row">
+                           <span class="col-1 col-md-1 col-lg-1">07/10</span>
+                           <p class="col-11 col-md-11 col-lg-11">这就是新闻标题，这就是新闻标题，这就是新闻标题，我就是一个快乐的新闻标题dahaksjhdjkahak</p>
+                       </li>
+                   </ul>
                </div>
             </div>
         </div>
@@ -228,8 +242,11 @@ export default {
                     color #333333
                     font-family SourceHanSansCN-Bold
                     font-weight Bold
-                p
-                    width 35.25rem
+                &>p
+                    width 40%
+                    padding 0
+                    @media screen and (max-width:786px)
+                        width 80% 
                     font-size 0.8rem
                     color #666666
                     font-family Microsoft YaHei
@@ -251,7 +268,7 @@ export default {
                         color #1A649F
                         font-weight regular
                         font-family HYb9gf
-                    p
+                    &>p
                         line-height 1.5rem
                         font-size 0.8rem
             .detail
@@ -262,7 +279,9 @@ export default {
                 width 3rem
         .news_center
             background #F4F4F4
-            margin 2rem 0 100px
+            padding 2rem 0 100px
+            width 100%
+            margin 0
             .title
                 font-size 2rem
                 font-weight Bold
@@ -271,7 +290,7 @@ export default {
                 color #333333
                 margin 0 auto
             .options
-                margin-bottom 1rem
+                // margin-bottom 1rem
                 padding 0 0
                 margin 0 0
                 width 100%
@@ -298,6 +317,7 @@ export default {
                     .swiper-container 
                         width 80%
                         height 100%
+                        margin 0 auto
                         .swiper-slide 
                             text-align center
                             font-size 18px
@@ -324,13 +344,67 @@ export default {
                                 background rgba(000,000,000,0.6)
                                 width 100%
                                 text-align left
-                                padding-left 5px
+                                padding-left 1rem
                                 color #FFFFFF
                     .swiper-pagination
                         width 20%
-                        left 20rem
+                        left 70%
                         bottom 0.2rem
                 .news_list
                     height 20rem
+                    margin 0
+                    padding 0
+                    width 100%
+                    .news_top
+                        width 100%
+                        padding 0 2rem
+                        margin 0
+                        .news_title
+                            font-size 1.1rem
+                            color #1A649F
+                            text-align left
+                            width 80%
+                            margin-bottom 0
+                            // 单行显示省略号
+                            overflow hidden
+                            text-overflow ellipsis
+                            white-space nowrap
+                        .news_content1
+                            text-align left
+                            display -webkit-box
+                            -webkit-box-orient vertical
+                            -webkit-line-clamp 3  //需要显示时文本行数
+                            overflow hidden
+                            color #666666
+                            font-size 0.7rem
+                    .list1
+                        padding 0 1rem
+                        text-align left
+                        width 100%
+                        &>li
+                            font-size 1rem
+                            width 100%
+                            margin 0
+                            span
+                                color #1A649F
+                                font-family SourceHanSansCN-Bold
+                                font-weight Bold
+                                line-height 1.5rem
+                                display inline-block
+                            &>p
+                                color #333333
+                                padding-left 1rem
+                                @media screen and (max-width:786px)
+                                    padding-left 2rem
+                                font-family MicrosoftYaHei
+                                font-weight Regular
+                                overflow hidden
+                                text-overflow ellipsis
+                                white-space nowrap
+                                line-height 1.5rem
+                                margin-bottom 0
+                            
+
+
             
 </style>
