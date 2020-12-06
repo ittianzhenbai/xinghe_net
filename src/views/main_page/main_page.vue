@@ -1,32 +1,50 @@
 <template>
     <div class="container-fluid main">
         <div class="row banner">
-            <el-carousel class="swiper" 
+            <div class="swiper-container">
+                <div class="swiper-wrapper">
+                    <div 
+                        class="swiper-slide" 
+                        v-for="(item,index) in pics" 
+                        :key="index">
+                        <img :src="item.img" alt="">
+                    </div>
+                </div>
+                <!-- 如果需要导航按钮 -->
+                <div class="swiper-button-prev"></div>
+                <div class="swiper-button-next"></div>
+            </div>
+            <!-- <el-carousel 
+                class="swiper" 
                 :interval="3000" 
                 arrow="always"
                 indicator-position="none"
                 loop:true
             >
-                <el-carousel-item class="swiper_item" v-for="item in 3" :key="item">
-                    <img src="../../assets/1.png" alt="">
+                <el-carousel-item class="swiper_item" v-for="(item,index) in pics" :key="index">
+                    <img :src="item.img" alt="">
                 </el-carousel-item>
-            </el-carousel>
+            </el-carousel> -->
+        </div>
+        <div class="row yewu">
+            <ul class="major_businesses">
+                <li v-for="(item,index) in major_business" :key="index">
+                    <img  class="img1" :src="item.img1" alt="">
+                    <span class="text1">{{item.text1}}</span>
+                    <span class="text2">{{item.text2}}</span>
+                    <img  class="img2" :src="item.img2" alt="">
+                    <img  class="img3" :src="item.img3" alt="">
+                    <div class="active">
+                        <span class="text3">{{item.text1}}</span>
+                        <p class="intro">
+                            这是一段文字，这是一段文字，这是一段文字，这是一段文字,第三行会隐藏
+                        </p>
+                        <div>...</div>
+                    </div>
+                </li>
+            </ul>
         </div>
         <div class="container-fluid content">
-            <div class="row yewu">
-                <ul class="major_businesses">
-                    <li v-for="item in 5" :key="item">
-                        <img src="../../assets/1.png" alt="">
-                        <div class="active">
-                            <span>标题</span>
-                            <p class="intro">
-                                这是一段文字，这是一段文字，这是一段文字，这是一段文字
-                            </p>
-                            <div>...</div>
-                        </div>
-                    </li>
-                </ul>
-            </div>
             <div class="row near_xinghe">
                 <div class="company_intro col-12 col-md-12">
                     <span>走进兴合</span>
@@ -40,10 +58,10 @@
                         <p>1992年公司经省政府批准设立，已有28个年头</p>
                     </li>
                 </ul>
-                <div class="col-12 col-md-12">
-                    <span class="detail">详情</span>
-                </div>
             </div>
+        </div>
+        <div class="col-12 col-md-12">
+            <span class="detail">详情</span>
         </div>
         <div class="row news_center">
             <div class="title col-12 col-md-12">新闻中心</div>
@@ -113,11 +131,58 @@ import Swiper from "swiper"
 export default {
     data(){
         return{
-            content_show:"1"
+            content_show:"1",
+            pics:[
+                {img:require("../../assets/banner-1.jpg")},
+                {img:require("../../assets/banner-2.jpg")},
+                {img:require("../../assets/banner-3.jpg")},
+            ],
+            major_business:[
+                {
+                    img1:require("../../assets/16.png"),
+                    img2:require("../../assets/01.png"),
+                    img3:require("../../assets/06.png"),
+                    text1:"内贸",
+                    text2:"Within trade"
+                },
+                {
+                    img1:require("../../assets/23.png"),
+                    img2:require("../../assets/02.png"),
+                    img3:require("../../assets/010.png"),
+                    text1:"外贸",
+                    text2:"Foreigh trade"
+                },
+                {
+                    img1:require("../../assets/15.png"),
+                    img2:require("../../assets/03.png"),
+                    img3:require("../../assets/07.png"),
+                    text1:"房地产",
+                    text2:"Real estate"
+                },
+                {
+                    img1:require("../../assets/14.png"),
+                    img2:require("../../assets/04.png"),
+                    img3:require("../../assets/08.png"),
+                    text1:"金融投资",
+                    text2:"Financial investment"
+                },
+                {
+                    img1:require("../../assets/13.png"),
+                    img2:require("../../assets/05.png"),
+                    img3:require("../../assets/09.png"),
+                    text1:"农业服务",
+                    text2:"Agricultural Services"
+                }
+            ]
+
         }
     },
     mounted(){
         this.init()
+        // this.init1()
+        // this.$nextTick(()=>{
+        //     this.init1()
+        // })
     },
     methods:{
         ...mapMutations(["setActiveIndex"]),
@@ -128,6 +193,17 @@ export default {
                 },
             })
         },
+        // init1(){
+        //     var swiper = new Swiper('.swiper-container1', {
+        //         loop: true, // 循环模式选项
+        //         autoplay:true,
+        //         // 如果需要前进后退按钮
+        //         navigation: {
+        //         nextEl: '.swiper-button-next',
+        //         prevEl: '.swiper-button-prev',
+        //         },
+        //     })
+        // },
         jump_router(item){
             this.content_show = item
             if(item == "1"){
@@ -143,93 +219,118 @@ export default {
 }
 </script>
 <style lang="stylus" scoped>
-@keyframes myfirst
-{
-    0% {
-        background rgba(255,0,0,0)
-        opacity 0
-    }
-    25%{
-        background rgba(41,50,57,.2)
-    }
-    50%{
-        background rgba(41,50,57,.3)
-    }
-    75%{
-        background rgba(41,50,57,.5)
-    }
-    100% {
-        visibility visible
-        background rgba(41,50,57,.6)
-        opacity 1
-    }
-}
 .main
     padding 0
     width 100%
     .banner
-        padding 0
+        padding 0 15px
         width 100%
         margin 0
-        .swiper
+        .swiper-container
             width 100%
-            .swiper_item
-                line-height 3rem
-                &>img
+            .swiper-wrapper
+                width 100%
+                .swiper-slide
                     width 100%
-                    height 300px
-    .content
-        width 100%
+                    &>img
+                        width 100%                
+    .yewu
         margin 0
-        padding 0
-        .yewu
-            margin 0
-            .major_businesses
-                width 80%
-                margin 0 auto
+        .major_businesses
+            width 80%
+            margin 0 auto
+            z-index 9
+            &>li
+                height 16rem
+                width 20%
+                border 1px solid yellow
+                display inline-block
+                vertical-align top
                 position relative
-                bottom 8rem
-                z-index 9
-                &>li
-                    height 16rem
-                    width 20%
-                    border 1px solid yellow
-                    display inline-block
-                    position relative
-                    @media screen and (max-width:768px)
-                        display none
-                    img
-                        width 100%
-                        height 100%
-                    .active
-                        width 100%
-                        height 100%
-                        visibility hidden
-                        position absolute
-                        top 0
-                        padding 1rem 0
-                        span
-                            line-height 1rem
-                        div
-                            border 1px solid #000000
-                            width 30px
-                            height 20px
-                            color #FFFFFF
-                            margin 0 auto
-                            line-height 10px
-                        .intro
-                            font-size 0.2rem
-                            display -webkit-box
-                            -webkit-box-orient vertical
-                            -webkit-line-clamp 3  //需要显示时文本行数
-                            overflow hidden
-                &>li:hover
-                    .active
-                        width 100%
-                        animation-name myfirst
-                        animation-duration 1s
-                        animation-iteration-count 1
-                        animation-fill-mode forwards
+                @media screen and (max-width:768px)
+                    display none
+                .img1
+                    margin-top 37px
+                    width 80px
+                &:nth-child(4n+0)
+                    .img1
+                        width 81px
+                        margin-bottom 3px
+                &:nth-child(4n+0)
+                    .img1
+                        width 73px
+                &:nth-child(5n+0)
+                    .img1
+                        width 73px
+                        margin-top 40px
+                        margin-bottom 25px
+                .img2
+                    width 100%
+                    position absolute
+                    bottom 0px
+                    left 0
+                .img3
+                    display none
+                .text1
+                    display block
+                    color #223D6B
+                    font-size 24px
+                    line-height 45px
+                    font-family MicrosoftYaHei
+                .active
+                    width 100%
+                    height 100%
+                    visibility hidden
+                    position absolute
+                    top 0
+            &>li:hover
+                .img3
+                    display block
+                    position absolute
+                    left 0
+                    width 100%
+                    height 100%
+                    top 0
+                .img1,.img2,.text1,.text2
+                    display none
+                .active
+                    width 100%
+                    height 100%
+                    animation-name myfirst
+                    animation-duration 1s
+                    animation-iteration-count 1
+                    animation-fill-mode forwards
+                    .text3
+                        display block
+                        font-family MicrosoftYaHei
+                        font-weight Regular
+                        color #FFFFFF
+                        font-size 24px
+                        line-height 45px
+                        margin-top 16px
+                    .intro
+                        font-size 0.8rem
+                        text-align left
+                        color #FFFFFF
+                        width 80%
+                        margin 43px auto 37px
+                        display -webkit-box
+                        -webkit-box-orient vertical
+                        -webkit-line-clamp 3  //需要显示时文本行数
+                        overflow hidden
+                    div
+                        border 1px solid #000000
+                        width 30%
+                        height 20px
+                        color #FFFFFF
+                        margin 0 auto
+                        line-height 10px
+    .content
+        width 80%
+        margin 0 auto
+        padding 0
+        background url("../../assets/023@2x.png")
+        background-size 100%
         .near_xinghe
             margin 0
             .company_intro
@@ -271,12 +372,12 @@ export default {
                     &>p
                         line-height 1.5rem
                         font-size 0.8rem
-            .detail
-                margin 0 auto
-                border 1px solid #1A639D
-                border-radius 10%
-                display inline-block
-                width 3rem
+        .detail
+            margin 0 auto
+            border 1px solid #1A639D
+            border-radius 10%
+            display inline-block
+            width 3rem
         .news_center
             background #F4F4F4
             padding 2rem 0 100px
@@ -402,9 +503,5 @@ export default {
                                 text-overflow ellipsis
                                 white-space nowrap
                                 line-height 1.5rem
-                                margin-bottom 0
-                            
-
-
-            
+                                margin-bottom 0       
 </style>

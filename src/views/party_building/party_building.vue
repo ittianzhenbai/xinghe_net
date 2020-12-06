@@ -1,7 +1,7 @@
 <template>
     <div class="near_xinghe">
         <div class="row banner">
-            <img class="img" src="../../assets/1.png" alt="">
+            <img class="img" src="../../assets/banner_dangjian.png" alt="">
         </div>
         <div class="navigation_pc">
             <OptionBox

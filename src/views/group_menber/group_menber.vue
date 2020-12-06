@@ -9,7 +9,7 @@
                     <li
                      v-for="(item,index) in 12" 
                      :key="index"
-                     @mouseover="changepics(index)"
+                     @mouseenter="changepics(index)"
                      >
                         <span v-show ="index<10">0{{index}}</span>
                         <span v-show ="index>=10">{{index}}</span>
@@ -29,16 +29,20 @@
 export default {
     data(){
         return{
-            mousecount:1
+            mousecount:1,
+            test:''
         }
     },
     methods:{
         changepics(index){
-          this.mousecount++
-          if(this.mousecount%10==0){
-              //节流操作
-              console.log("666")
-          }  
+            console.log("666")
+            this.test = index
+        //   this.mousecount++
+        //   if(this.mousecount%10==0){
+        //       //节流操作
+        //       console.log("666")
+              
+        //   }  
         }
     }
 }

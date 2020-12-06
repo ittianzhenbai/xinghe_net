@@ -1,7 +1,7 @@
 <template>
   <div class="container-fluid news_center">
       <div class="row banner">
-        <img src="../../assets/1.png" alt="">
+        <img src="../../assets/banner_news.png" alt="">
       </div>
       <div class="navigation_pc">
             <OptionBox

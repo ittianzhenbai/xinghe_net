@@ -11,6 +11,7 @@ import 'swiper/dist/css/swiper.css';
 // import 'bootstrap/dist/js/bootstrap.min'
 // css样式还是需要全部引入
 import 'element-ui/lib/theme-chalk/index.css'
+import 'wowjs/css/libs/animate.css'//引入wow.js
 import element from './element/element.js'
 import VueAnimateNumber from 'vue-animate-number'
 Vue.use(VueAnimateNumber)
