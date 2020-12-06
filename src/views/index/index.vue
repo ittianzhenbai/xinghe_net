@@ -41,7 +41,7 @@ export default {
   width 100%
   padding 0
   margin 0
-  overflow-x hidden
+  // overflow-x hidden
   .header
     width 100%
     position fixed
@@ -50,15 +50,10 @@ export default {
     right 0
     z-index 99
     margin 0
-  .banner
-    margin-top 3rem
-    .img
-      width 100%
   .content
-    margin-top 3rem
+    // margin-top 3rem
     min-height 750px
     // margin-left 0
     // margin-right 0
     // padding 0
-    border 1px solid red
 </style>

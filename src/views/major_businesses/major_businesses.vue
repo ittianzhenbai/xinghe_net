@@ -1,7 +1,7 @@
 <template>
     <div class="near_xinghe">
         <div class="row banner">
-            <img class="img" src="../../assets/1.png" alt="">
+            <img class="img" src="../../assets/banner_yewu.png" alt="">
         </div>
         <div class="navigation_pc">
             <OptionBox
@@ -70,7 +70,9 @@
             </OptionBoxMobile>
         </div>
         <div class="list_content">
-            <router-view></router-view>
+            <!-- <keep-alive> -->
+                <router-view></router-view>
+            <!-- </keep-alive> -->
         </div>
     </div>
 </template>
@@ -110,10 +112,10 @@ export default {
                     this.$router.push({path:"/business_waimao"})
                     break;
                 case "3":
-                    this.$router.push({path:"/business_finance"})
+                    this.$router.push({path:"/business_building"})
                     break;
                 case "4":
-                    this.$router.push({path:"/business_building"})
+                    this.$router.push({path:"/business_finance"})
                     break;
                 case "5":
                     this.$router.push({path:"/business_agriculture"})

@@ -1,5 +1,5 @@
 <template>
-    <div class="nav container-fluid">
+    <div class="nav row">
         <div 
             class="nav_left col-7 col-sm-6 col-lg-3" 
             >
@@ -11,7 +11,7 @@
                 mode="horizontal"
                 class="el_menu"
                 @select="handleSelect"
-                background-color="#28436E"
+                background-color="transparent"
                 text-color="#fff"
                 active-text-color="#fff">
                 <el-menu-item index="1">首页</el-menu-item>
@@ -314,6 +314,8 @@ export default {
     width 100%
     font-size 1rem
     background #28436E
+    opacity 0.6
+    // background transparent
     line-height 3rem
     padding-right 0
     padding-top 2px

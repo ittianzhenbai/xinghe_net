@@ -1,7 +1,7 @@
 <template>
     <div class="near_xinghe">
         <div class="row banner">
-            <img class="img" src="../../assets/1.png" alt="">
+            <img class="img" src="../../assets/banner_xinghe.png" alt="">
         </div>
         <div class="navigation_pc">
             <OptionBox
@@ -164,5 +164,5 @@ export default {
             .title
                 color #FFFFFF
     .list_content
-        border 1px solid #79A2C5
+        width 100%
 </style>

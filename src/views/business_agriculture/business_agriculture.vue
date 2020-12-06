@@ -1,17 +1,70 @@
 <template>
-    <div>
-        农业服务
+    <div class="container-fluid neimao">
+        <div class="row row1">
+            <div class="col-12 col-sm-6 col-md-6 col-lg-6 left">
+                <img src="../../assets/_017@2x.png" alt="">
+            </div>
+            <div class="col-12 col-sm-6 col-md-6 col-lg-6 right">
+                <div class="title_cn">
+                    农业服务
+                </div>
+                <div class="title_en">
+                    Agricultural Services
+                </div>
+                <div class="line"></div>
+                <p class="neirong">
+                 作为供销社社有企业，集团始终坚持为农服务宗旨，发挥龙头带动作用，积极融入乡村振兴战略和浙江省“三位一体”农合联改革，统筹推进农业社会化服务体系和现代涉农产业体系建设，向现代农业综合服务商全面迈进。目前，农业服务涵盖农资经营、农化服务、农批市场建设、农产品加工配送、涉农金融、种子种苗、城乡环境服务、田园综合体建设等。
+                </p>
+            </div>
+        </div>
+        <div class="row row2">
+           <CompanyBox></CompanyBox>
+        </div>
     </div>
 </template>
 <script>
+import CompanyBox from "../../components/company_box/company_box.vue"
 export default {
     data(){
         return{
             
         }
+    },
+    components:{
+        CompanyBox
     }
 }
 </script>
 <style lang="stylus" scoped>
-
+.neimao
+    padding 0
+    margin 100px 0
+    width 100%
+    .row1
+        margin 0 12.9% 0 12.6%
+        .left
+            img 
+                width 100%
+        .right
+            width 100%
+            font-family MicrosoftYaHei
+            text-align left
+            .title_cn
+                color #333333
+                font-size 2rem
+                text-align left
+            .title_en
+                color #999999
+                font-size 1rem
+            .line
+                width 30px
+                height 3px
+                background #999999
+                margin 22px 0 47px
+            .neirong
+                color #333333
+                font-size 0.9rem
+                font-family MicrosoftYaHei
+    .row2
+        width 100%
 </style>

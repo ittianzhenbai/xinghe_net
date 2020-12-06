@@ -13,6 +13,11 @@ const routes = [
     component: () => import(/* webpackChunkName: "index" */ '../views/index/index.vue'),
     children:[
       {
+        path: '/',
+        name: 'main_page',
+        component: () => import(/* webpackChunkName: "main_page" */ '../views/main_page/main_page.vue')
+      },
+      {
         path: '/main_page',
         name: 'main_page',
         component: () => import(/* webpackChunkName: "main_page" */ '../views/main_page/main_page.vue')
@@ -158,12 +163,7 @@ const routes = [
         component: () => import(/* webpackChunkName: "connect_us" */ '../views/connect_us/connect_us.vue')
       },
     ]
-  },
-  {
-    path: '/about',
-    name: 'about',
-    component: () => import(/* webpackChunkName: "connect_us" */ '../views/About.vue')
-  },
+  }
 ]
 
 const router = new VueRouter({

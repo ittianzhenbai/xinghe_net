@@ -1,7 +1,7 @@
 <template>
     <div class="talent_recruitment">
         <div class="row banner">
-            <img class="img" src="../../assets/1.png" alt="">
+            <img class="img" src="../../assets/banner_zhaopin.png" alt="">
         </div>
         <div class="navigation_pc">
             <OptionBox
