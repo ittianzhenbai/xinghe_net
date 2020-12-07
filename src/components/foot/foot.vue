@@ -35,7 +35,6 @@
                 <span class="demonstration">兴合集团公众号</span>
             </div>
         </div>
-        
         <div class="cutline"></div>
         <div class="bottom">
             <div>浙江省兴合集团有限责任公司 版权所有</div>
@@ -56,51 +55,55 @@ export default {
 .foot
     background-color #223D6B
     padding 0 40px
-    .top_left
-        float left
-        .title
-            color #fff
-            text-align left
-            margin-top 1.7rem
-            font-size 0.9rem
-        ul
-            list-style none
-            padding 0 0
-            &>li
-                float left
-                width 33.3%
-                font-size 0.7rem
-                @media screen and (max-width:1919px)
-                    width 50%
-                @media screen and (max-width:1270px)
-                    width 100%
-                padding-right 30px
-                @media screen and (max-width: 768px)
-                    padding-right 0
-                text-align left
+    .row
+        margin 0
+        .top_left
+            float left
+            .title
                 color #fff
-                line-height 2rem
-                &>img
-                    width 1.2rem
-                    padding-right 0.5rem
-                    display inline-block
-                .kongge
-                    padding-right 1.4rem
-    .top_right
-        float right
-        color #fff
-        padding-top 60px
-        @media screen and (max-width: 768px)
-            padding-top 20px
-        .demonstration
-            display block
-            font-size 0.7rem
+                text-align left
+                margin-top 1.7rem
+                font-size 0.9rem
+            ul
+                list-style none
+                padding 0 0
+                &>li
+                    float left
+                    width 33.3%
+                    font-size 0.7rem
+                    @media screen and (max-width:1919px)
+                        width 50%
+                    @media screen and (max-width:1270px)
+                        width 100%
+                    padding-right 30px
+                    @media screen and (max-width: 768px)
+                        padding-right 0
+                    text-align left
+                    color #fff
+                    line-height 2rem
+                    &>img
+                        width 1.2rem
+                        padding-right 0.5rem
+                        display inline-block
+                    .kongge
+                        padding-right 1.4rem
+        .top_right
+            float right
+            color #fff
+            padding-top 60px
+            @media screen and (max-width: 768px)
+                padding-top 20px
+            .demonstration
+                display block
+                font-size 0.7rem
     .cutline
         clear both
         padding-top 10px
+        margin 0 auto
+        width 98%
         border-bottom 1px dashed #FFF
     .bottom
         padding-top 10px
-        color #FFF
+        color #FFF!important
         font-size 0.7rem
 </style>

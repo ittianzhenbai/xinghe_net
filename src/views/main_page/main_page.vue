@@ -10,21 +10,9 @@
                         <img :src="item.img" alt="">
                     </div>
                 </div>
-                <!-- 如果需要导航按钮 -->
                 <div class="swiper-button-prev"></div>
                 <div class="swiper-button-next"></div>
             </div>
-            <!-- <el-carousel 
-                class="swiper" 
-                :interval="3000" 
-                arrow="always"
-                indicator-position="none"
-                loop:true
-            >
-                <el-carousel-item class="swiper_item" v-for="(item,index) in pics" :key="index">
-                    <img :src="item.img" alt="">
-                </el-carousel-item>
-            </el-carousel> -->
         </div>
         <div class="row yewu">
             <ul class="major_businesses">
@@ -61,7 +49,10 @@
             </div>
         </div>
         <div class="col-12 col-md-12">
-            <span class="detail">详情</span>
+            <span class="detail">
+                详情
+                <i class="el-icon-arrow-right"></i>
+            </span>
         </div>
         <div class="row news_center">
             <div class="title col-12 col-md-12">新闻中心</div>
@@ -223,7 +214,7 @@ export default {
     padding 0
     width 100%
     .banner
-        padding 0 15px
+        padding 0
         width 100%
         margin 0
         .swiper-container
@@ -239,14 +230,15 @@ export default {
         .major_businesses
             width 80%
             margin 0 auto
-            z-index 9
             &>li
                 height 16rem
                 width 20%
-                border 1px solid yellow
                 display inline-block
                 vertical-align top
                 position relative
+                bottom 30%
+                z-index 9
+                background #FFFFFF
                 @media screen and (max-width:768px)
                     display none
                 .img1
@@ -260,6 +252,7 @@ export default {
                     .img1
                         width 73px
                 &:nth-child(5n+0)
+                    border-right-top-radius 10px
                     .img1
                         width 73px
                         margin-top 40px
@@ -319,7 +312,7 @@ export default {
                         -webkit-line-clamp 3  //需要显示时文本行数
                         overflow hidden
                     div
-                        border 1px solid #000000
+                        border 1px solid #FFFFFF
                         width 30%
                         height 20px
                         color #FFFFFF
@@ -331,6 +324,8 @@ export default {
         padding 0
         background url("../../assets/023@2x.png")
         background-size 100%
+        position relative
+        bottom 4.8rem
         .near_xinghe
             margin 0
             .company_intro
@@ -374,10 +369,22 @@ export default {
                         font-size 0.8rem
         .detail
             margin 0 auto
-            border 1px solid #1A639D
             border-radius 10%
-            display inline-block
-            width 3rem
+            width 110px
+            height 40px
+            display inline-block 
+            border 1px solid #CCCCCC
+            color #5C5C5C
+            font-family MicrosoftYaHei
+            font-size 0.8rem
+            line-height 40px
+            position relative
+            bottom 4rem
+            font-weight Regular
+        .detail:hover
+            color #FFFFFF
+            background #1A649F
+            border 1px solid #1A649F
         .news_center
             background #F4F4F4
             padding 2rem 0 100px

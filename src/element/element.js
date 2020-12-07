@@ -8,8 +8,9 @@ import {
   // Dialog,
   // Row, 
   // Col ,
-  Carousel,
-  CarouselItem,
+  Table,
+  TableColumn,
+  Pagination,
   Menu,
   Submenu,
   MenuItem,
@@ -28,8 +29,9 @@ const element = {
     // Vue.use(Dialog)
     // Vue.use(Row)
     // Vue.use(Col)
-    Vue.use(Carousel)
-    Vue.use(CarouselItem)
+    Vue.use(Table)
+    Vue.use(TableColumn)
+    Vue.use(Pagination)
     Vue.use(Menu)
     Vue.use(Submenu)
     Vue.use(MenuItem)

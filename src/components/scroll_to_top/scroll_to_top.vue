@@ -1,6 +1,6 @@
 <template>
     <div class="anniu" @click="totop">
-        <i class="el-icon-arrow-up"></i>
+        <img src="../../assets/17@2x.png" alt="">
     </div>
 </template>
 <script>
@@ -22,7 +22,9 @@ export default {
 .anniu
     position fixed
     bottom 150px
-    right 60px
-    font-size 3rem
     color red
+    right 60px
+    img
+        width 60px
+        height 60px
 </style>

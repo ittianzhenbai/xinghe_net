@@ -1,5 +1,13 @@
 <template>
-  <div class="connect_us">
+  <div class="connect_us container-fluid">
+    <div class="row banner">
+        <img class="img" src="../../assets/banner_connect.png" alt="">
+        <BannerTitle
+          class="banner_title"
+          :title_zn="title_zn"
+          :title_en="title_en"
+        ></BannerTitle>
+    </div>
     <div>
       <OptionBox
         :cur_address = "this.cur_address"
@@ -10,8 +18,8 @@
       </OptionBox>
     </div>
     <div class="content container-fluid">
-      <div class="row">
-        <div class="col-sm-5 col-md-5">
+      <div class="row row1">
+        <div class="col-sm-5 col-md-5 row1_left">
           <ul class="row">
             <li class="col-12 col-sm-12 col-md-12 title">
               浙江兴合集团有限公司
@@ -41,7 +49,7 @@
             </li>
           </ul>
         </div>
-        <div class="col-sm-9 col-md-7">
+        <div class="col-sm-9 col-md-7 row1_right">
           <img class="map" src="../../assets/1.png" alt="">
         </div>
       </div>
@@ -50,14 +58,18 @@
 </template>
 <script>
 import OptionBox from '@/components/option_box/option_box.vue'
+import BannerTitle from '@/components/banner_title/banner_title.vue'
 export default {
   data(){
     return{
-      cur_address:"联系我们"
+      cur_address:"联系我们",
+      title_zn:"联系我们",
+      title_en:"CONTACT US"
     }
   },
   components:{
-    OptionBox
+    OptionBox,
+    BannerTitle
   },
   mounted(){
     // let _this = this;
@@ -81,7 +93,19 @@ export default {
 </script>
 <style lang="stylus" scoped>
 .connect_us
-  width 100%
+  // width 100%
+  padding 0
+  .banner
+    width 100%
+    margin 0
+    position relative
+    img
+      width 100%
+    .banner_title
+      z-index 10
+      position absolute
+      top 44%
+      left 12.6%
   .option1
     color #558AB6
     margin 0 auto
@@ -89,25 +113,33 @@ export default {
     line-height 2rem
     border-bottom 2px solid #558AB6
   .content
-    margin-top 3rem
-    ul
-      list-style none
-      padding 0 0
-      li
-        line-height 2rem
-        text-align left
-        padding-left 10rem
-        @media screen and (max-width:768px)
-          padding-left 6rem  
-        .kongge
-          padding-right 2rem
-        .text1
-          padding-left 1rem
-      .title
-          color #333333
-          font-weight bold
-          font-family MicrosoftYaHei
-    .map
-      width 60%
-      height 300px
+    margin 100px auto
+    padding 0
+    .row1
+      margin 0
+      .row1_left
+        padding 0
+        ul
+          list-style none
+          padding 0 0
+          margin 0
+          li
+            line-height 2rem
+            text-align left
+            padding-left 10rem
+            @media screen and (max-width:768px)
+              padding-left 6rem  
+            .kongge
+              padding-right 2rem
+            .text1
+              padding-left 1rem
+          .title
+              color #333333
+              font-weight bold
+              font-family MicrosoftYaHei
+      .row1_right
+        padding 0
+        .map
+          width 60%
+          height 300px
 </style>
