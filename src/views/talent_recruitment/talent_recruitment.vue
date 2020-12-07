@@ -2,6 +2,11 @@
     <div class="talent_recruitment">
         <div class="row banner">
             <img class="img" src="../../assets/banner_zhaopin.png" alt="">
+            <BannerTitle
+                class="banner_title"
+                :title_zn="title_zn"
+                :title_en="title_en"
+            ></BannerTitle>
         </div>
         <div class="navigation_pc">
             <OptionBox
@@ -53,12 +58,15 @@
 <script>
 import OptionBox from '@/components/option_box/option_box.vue'
 import OptionBoxMobile from '@/components/option_box_mobile/option_box_mobile.vue'
+import BannerTitle from '@/components/banner_title/banner_title.vue'
 import { mapState,mapMutations } from "vuex";
 export default {
     data(){
         return{
             cur_address:"人才招聘",
-            content_show:this.$store.state.childActiveIndex
+            content_show:this.$store.state.childActiveIndex,
+            title_zn:"人才招聘",
+            title_en:"TALENT RECRUITMENT"
         }
     },
     computed:{
@@ -66,7 +74,8 @@ export default {
     },
     components:{
         OptionBox,
-        OptionBoxMobile
+        OptionBoxMobile,
+        BannerTitle
     },
     methods:{
         ...mapMutations(["setchildActiveIndex"]),
@@ -101,8 +110,14 @@ export default {
     .banner
         width 100%
         margin 0
+        position relative
         .img
             width 100%
+        .banner_title
+            z-index 10
+            position absolute
+            top 44%
+            left 12.6%
     .navigation_pc
         @media screen and (max-width:768px)
             display none
@@ -129,5 +144,5 @@ export default {
             .title
                 color #FFFFFF
     .list_content
-        border 1px solid #79A2C5
+        width 100%
 </style>

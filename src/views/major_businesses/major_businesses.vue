@@ -2,6 +2,11 @@
     <div class="near_xinghe">
         <div class="row banner">
             <img class="img" src="../../assets/banner_yewu.png" alt="">
+            <BannerTitle
+                class="banner_title"
+                :title_zn="title_zn"
+                :title_en="title_en"
+            ></BannerTitle>
         </div>
         <div class="navigation_pc">
             <OptionBox
@@ -79,12 +84,15 @@
 <script>
 import OptionBox from '@/components/option_box/option_box.vue'
 import OptionBoxMobile from '@/components/option_box_mobile/option_box_mobile.vue'
+import BannerTitle from '@/components/banner_title/banner_title.vue'
 import { mapState,mapMutations } from "vuex";
 export default {
     data(){
         return{
             cur_address:"主营业务",
-            content_show:this.$store.state.childActiveIndex
+            content_show:this.$store.state.childActiveIndex,
+            title_zn:"联系我们",
+            title_en:"CONTACT US"
         }
     },
     computed:{
@@ -92,7 +100,8 @@ export default {
     },
     components:{
         OptionBox,
-        OptionBoxMobile
+        OptionBoxMobile,
+        BannerTitle
     },
     mounted(){
     },
@@ -138,8 +147,14 @@ export default {
         width 100%
         padding 0
         margin 0
+        position relative
         .img
             width 100%
+        .banner_title
+            z-index 10
+            position absolute
+            top 44%
+            left 12.6%
     .navigation_pc
         @media screen and (max-width:768px)
             display none

@@ -2,6 +2,11 @@
   <div class="container-fluid news_center">
       <div class="row banner">
         <img src="../../assets/banner_news.png" alt="">
+        <BannerTitle
+          class="banner_title"
+          :title_zn="title_zn"
+          :title_en="title_en"
+        ></BannerTitle>
       </div>
       <div class="navigation_pc">
             <OptionBox
@@ -61,16 +66,20 @@
 <script>
 import OptionBox from '@/components/option_box/option_box.vue'
 import OptionBoxMobile from '@/components/option_box_mobile/option_box_mobile.vue'
+import BannerTitle from '@/components/banner_title/banner_title.vue'
 export default {
     data(){
         return{
             cur_address:"新闻中心",
             content_show:1,
+            title_zn:"新闻中心",
+            title_en:"NEWS CEMTER"
         }
     },
     components:{
         OptionBox,
-        OptionBoxMobile
+        OptionBoxMobile,
+        BannerTitle
     },
     methods:{
         handleSelect(key, keyPath) {
@@ -102,8 +111,14 @@ export default {
   .banner
     width 100%//这里写100%是为了继承上一层的宽度
     margin 0
+    position relative
     img
-      width 100%
+        width 100%
+    .banner_title
+        z-index 10
+        position absolute
+        top 44%
+        left 12.6%
   .navigation_pc
       width 100%
       @media screen and (max-width:768px)

@@ -9,12 +9,11 @@ VueRouter.prototype.push = function push(location) {
 const routes = [
   {
     path: '/',
-    name: 'index',
     component: () => import(/* webpackChunkName: "index" */ '../views/index/index.vue'),
     children:[
+      //此处导致ie报错
       {
         path: '/',
-        name: 'main_page',
         component: () => import(/* webpackChunkName: "main_page" */ '../views/main_page/main_page.vue')
       },
       {

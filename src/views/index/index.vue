@@ -1,6 +1,6 @@
 <template>
   <div class="container-fluid main" >
-      <div class="row header">
+      <div class="container-fluid header">
         <HeadNavs />
       </div>
       <div class="row content">
@@ -9,11 +9,11 @@
       <div class="row foot">
         <Foot/>
       </div>
-      <!-- <ScrollTop></ScrollTop> -->
+      <ScrollTop></ScrollTop>
   </div>
 </template>
 <script>
-// import ScrollTop from '@/components/scroll_to_top/scroll_to_top.vue'
+import ScrollTop from '@/components/scroll_to_top/scroll_to_top.vue'
 import HeadNavs from '@/components/head_navs/head_navs.vue'
 import Foot from '@/components/foot/foot.vue'
 import  '../../common/js/control.js'
@@ -25,7 +25,7 @@ export default {
     }
   },
   components: {
-    // ScrollTop,
+    ScrollTop,
     HeadNavs,
     Foot
   },
@@ -44,6 +44,7 @@ export default {
   // overflow-x hidden
   .header
     width 100%
+    padding 0
     position fixed
     top 0
     left 0
@@ -51,9 +52,10 @@ export default {
     z-index 99
     margin 0
   .content
-    // margin-top 3rem
+    margin 0
+    padding 0
     min-height 750px
-    // margin-left 0
-    // margin-right 0
-    // padding 0
+  .foot
+    margin 0
+    padding 0
 </style>

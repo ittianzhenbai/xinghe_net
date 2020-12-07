@@ -1,5 +1,8 @@
 <template>
-    <div class="nav row">
+    <div class="nav row"
+        ref = "nav"
+        @mouseenter="changecolor"
+    >
         <div 
             class="nav_left col-7 col-sm-6 col-lg-3" 
             >
@@ -11,7 +14,7 @@
                 mode="horizontal"
                 class="el_menu"
                 @select="handleSelect"
-                background-color="transparent"
+                :background-color="this.color"
                 text-color="#fff"
                 active-text-color="#fff">
                 <el-menu-item index="1">首页</el-menu-item>
@@ -123,6 +126,7 @@ export default {
         isCollapse: true,
         right_navshow:false,//控制右边导航显示
         click_count:0,//控制点击次数
+        color:"transparent"
       };
     },
     computed:{
@@ -132,6 +136,7 @@ export default {
         this.screenwidth = document.documentElement.clientWidth || document.body.clientWidth
     },
     mounted(){
+        window.addEventListener('scroll', this.scrollToTop)
     },
     methods:{
         ...mapMutations(["setActiveIndex","setchildActiveIndex"]),
@@ -270,6 +275,24 @@ export default {
             if(this.click_count%2 == 0){
                 this.right_navshow = false
             }
+        },
+        changecolor(){
+            this.$refs.nav.style.opacity = "1",
+            this.$nextTick(()=>{
+                this.color = '#28436E'
+            })
+        },
+        scrollToTop() {
+            var scrollTop = window.pageYOffset || document.documentElement.scrollTop || document.body.scrollTop;
+            if(scrollTop%200 == 0 && scrollTop>0){
+                console.log(this.$refs.nav)
+                this.$refs.nav.style.opacity = "0.6",
+                this.$nextTick(()=>{
+                    this.color = "transparent"
+                })
+            }else{
+                return
+            }
         }
     },
     watch:{
@@ -319,12 +342,15 @@ export default {
     line-height 3rem
     padding-right 0
     padding-top 2px
+    margin 0
     @media screen and (max-width:768px)
         border-bottom 1px solid #FFFFFF
     .nav_left 
         color #fff
         line-height 3rem
+        padding 0
     .nav_mid
+        padding 0
         @media screen and (max-width:768px)
             display none
         .el-menu-item

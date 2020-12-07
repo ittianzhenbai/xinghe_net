@@ -62,6 +62,7 @@ export default {
     margin 100px auto
     .linian
         width 100%
+        margin 0
         span
             text-align center
             width 70%
@@ -73,6 +74,7 @@ export default {
     .advantages
         padding 0 14.8%
         margin-top 79px
+        margin 79px 0 auto
         &>li
             .xiyin,.ningju,.peiyang,.kaohe
                 width 13vw

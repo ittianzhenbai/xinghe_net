@@ -139,5 +139,14 @@ export default {
                             -webkit-box-orient vertical
                             -webkit-line-clamp 2
                             overflow hidden
-                            width 90%
-</style>            
+                        //     width 90%
+                        //     height 50px
+                        //     position relative
+                        // .company_intro:after
+                        //     content "..."
+                        //     position absolute
+                        //     bottom 0
+                        //     right 0
+                        //     background #FFF
+                        //     padding-left 10px
+</style>     
