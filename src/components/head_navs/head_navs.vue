@@ -182,12 +182,20 @@ export default {
                 if(key == "3-1"){
                     console.log("集团新闻")
                     this.$router.push({path:"/news_group"})
+                    this.setActiveIndex('3-1')
+                    this.setchildActiveIndex("1")
                 }
                 if(key == "3-2"){
                     console.log("成员企业新闻")
+                    this.$router.push({path:"/news_menber"})
+                    this.setActiveIndex('3-2')
+                    this.setchildActiveIndex("2")
                 }
                 if(key == "3-3"){
                     console.log("通知广告")
+                    this.$router.push({path:"/news_notice"})
+                    this.setActiveIndex('3-3')
+                    this.setchildActiveIndex("3")
                 }
             }
             if(keyPath[0]=="4"){
@@ -285,7 +293,6 @@ export default {
         scrollToTop() {
             var scrollTop = window.pageYOffset || document.documentElement.scrollTop || document.body.scrollTop;
             if(scrollTop%200 == 0 && scrollTop>0){
-                console.log(this.$refs.nav)
                 this.$refs.nav.style.opacity = "0.6",
                 this.$nextTick(()=>{
                     this.color = "transparent"
@@ -298,8 +305,8 @@ export default {
     watch:{
         activeIndex(newName, oldName){ 
             this.activeIndex1 = newName
-            console.log("activeIndex1>>>newval",newName)
-            console.log("activeIndex1>>>oldval",oldName)
+            // console.log("activeIndex1>>>newval",newName)
+            // console.log("activeIndex1>>>oldval",oldName)
         }
     }
 }

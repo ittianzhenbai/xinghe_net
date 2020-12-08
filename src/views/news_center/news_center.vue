@@ -14,25 +14,13 @@
             >
                 <ul class="options">
                     <li 
+                        v-for="(item,index) in this.optionsort"
+                        :key="index"
                         class="item"
-                        @click="jump_router('1')"
-                        :class="{ active: content_show == 1 }"
+                        @click="jump_router(index)"
+                        :class="{ active: content_show == index }"
                     >
-                        集团新闻
-                    </li>
-                     <li 
-                        class="item"
-                        @click="jump_router('2')"
-                        :class="{ active: content_show == 2 }"
-                    >
-                        成员企业新闻
-                    </li>
-                    <li 
-                        class="item"
-                        @click="jump_router('3')"
-                        :class="{ active: content_show == 3 }"
-                    >
-                        通知公告
+                        {{item.title}}
                     </li>
                 </ul>
             </OptionBox>
@@ -50,9 +38,13 @@
                     active-text-color="#333">
                     <el-submenu index="1">
                         <template slot="title" class="title">企业新闻</template>
-                        <el-menu-item index="1">集团新闻</el-menu-item>
-                        <el-menu-item index="2">成员企业新闻</el-menu-item>
-                        <el-menu-item index="">通知公告</el-menu-item>
+                        <el-menu-item 
+                            v-for="(item,index) in this.optionsort"
+                            :key="index"
+                            index='1'
+                        >
+                            {{item.title}}
+                        </el-menu-item>
                     </el-submenu>
                 </el-menu>
             </div>
@@ -73,7 +65,8 @@ export default {
             cur_address:"新闻中心",
             content_show:1,
             title_zn:"新闻中心",
-            title_en:"NEWS CEMTER"
+            title_en:"NEWS CEMTER",
+            optionsort:""
         }
     },
     components:{
@@ -81,22 +74,36 @@ export default {
         OptionBoxMobile,
         BannerTitle
     },
+    mounted(){
+        this.getNewsCategroy()
+    },
     methods:{
+        getNewsCategroy(){
+            this.axios.get(
+                "api/news/categroy"
+            ).then(res=>{
+                if(res.data.code == 1){
+                    // console.log(res)
+                    this.optionsort = res.data.data
+                }
+            })
+        },
         handleSelect(key, keyPath) {
             console.log(key ,keyPath)
             this.jump_router(key)
         },
         jump_router(item){
             this.content_show = item
+            console.log(item)
             switch(item){
-                case "1":
+                case 0:
                     console.log(item)
                     this.$router.push({path:"/news_group"})
                     break;
-                case "2":
+                case 1:
                     this.$router.push({path:"/news_menber"})
                     break;
-                case "3":
+                case 2:
                     this.$router.push({path:"/news_notice"})
                     break;
             }

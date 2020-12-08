@@ -1,6 +1,6 @@
 <template>
     <div class="anniu" @click="totop">
-        <img src="../../assets/17@2x.png" alt="">
+        <img src="../../assets/17.png" alt="">
     </div>
 </template>
 <script>

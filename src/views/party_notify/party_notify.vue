@@ -7,13 +7,15 @@
                 stripe
                 style="width: 100%">
                 <el-table-column
-                prop="date"
-                label="日期"
-                width="100">
+                    prop="date"
+                    label="日期"
+                    width="100"
+                    >
                 </el-table-column>
                 <el-table-column
-                prop="title"
-                label="新闻标题">
+                    prop="title"
+                    label="新闻标题"
+                >
                 </el-table-column>
             </el-table>
         </div>
@@ -60,8 +62,7 @@ export default {
                 date: '2016-05-04',  
                 title: '习近平总书记表达了2020年全面建成小康社会的决心'
                 }
-        ]
-        }
+        ]}
     },
     created(){
     },

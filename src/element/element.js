@@ -17,7 +17,9 @@ import {
   MenuItemGroup,
   Image,
   Tabs,
-  TabPane
+  TabPane,
+  Collapse,
+  CollapseItem
 } from 'element-ui'
 const element = {
   install: function (Vue) {
@@ -39,6 +41,8 @@ const element = {
     Vue.use(Image)
     Vue.use(Tabs)
     Vue.use(TabPane)
+    Vue.use(Collapse)
+    Vue.use(CollapseItem)
   }
 }
 export default element

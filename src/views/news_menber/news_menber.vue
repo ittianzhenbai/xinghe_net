@@ -1,28 +1,62 @@
 <template>
-    <div class="container-fluid menber_group">
+    <div class="container-fluid news_group">
         <ul class="row news_list">
-            <li v-for="item in 8" :key="item" class="col-6 col-md-3">
+            <li v-for="(item,index) in this.newslist" :key="index" class="col-6 col-md-3">
                 <div class="single_news">
-                     <img class="row" src="https://ss1.bdstatic.com/70cFvXSh_Q1YnxGkpoWK1HF6hhy/it/u=2877953759,1594489968&fm=26&gp=0.jpg" alt="">
-                    <span class="date">7/11</span>
-                    <p class="title">新闻标题新闻标题新闻标题标题</p>
-                    <p class="neirong">浙江省兴合集团有限责任公司是中国500强企业，浙江省重点流通企业和供销系统为农服务龙头企业，主要负责运行管理浙江省供销社本级经营性资产。</p>
+                     <img class="row" v-lazy="item.image" alt="">
+                    <span class="date">{{item.create_at}}</span>
+                    <p class="title">{{item.title}}</p>
+                    <p class="neirong">{{item.desc}}</p>
                 </div>
             </li>
         </ul>
+        <div class="row row2">
+            <el-pagination
+                class="pagination"
+                background
+                layout="pager, next"
+                @current-change = "handleCurrentChange"
+                :page-size.sync="pagesize"
+                :current-page.sync="page"
+                :total="this.total">
+            </el-pagination>
+        </div>
     </div>
 </template>
 <script>
 export default {
     data(){
         return{
-
+            newslist:'',//新闻列表
+            page:1,
+            pagesize:8,
+            total:0
+        }
+    },
+    mounted(){
+        this.getNewsList(this.page,this.pagesize,3)
+    },
+    methods:{
+        getNewsList(page,pagesize,sort){
+            this.axios.post(
+                "api/news/news",
+                `page=${page}&pagesize=${pagesize}&catid=${sort}`
+            ).then(res=>{
+                if(res.data.code ==1){
+                    console.log(res)
+                    this.newslist = res.data.data.list
+                    this.total = res.data.data.cur_page.total_count
+                }
+            })
+        },
+        handleCurrentChange(val){
+            this.getNewsList(val,this.pagesize,3)
         }
     }
 }
 </script>
 <style lang="stylus" scoped>
-.menber_group
+.news_group
     width 80%
     @media screen and (max-width:768px)
         width 95%
@@ -35,6 +69,7 @@ export default {
                 padding 9px 9px
                 img
                     width 100%
+                    height 230px
                     margin 0 auto
                 span
                     display block
@@ -55,7 +90,8 @@ export default {
                     line-height 30px
                     white-space nowrap
                     width 90%
-                    margin-bottom 19px                    
+                    margin-bottom 19px
+                    text-align left                
                     text-overflow:ellipsis
                     overflow hidden 
                 .neirong
@@ -70,9 +106,17 @@ export default {
                     font-weight Regular
                     line-height 1.2rem
         li:hover
+            background-color #1A649F
+            padding 0
             .single_news
-                background-color #1A649F
+                width 100%
+                img
+                    height 260px
                 .date,.title,.neirong
                     color #FFFFFF
+    .row2
+        padding 0
+        .pagination
+            margin 0 auto
 
 </style>

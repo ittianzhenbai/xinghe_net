@@ -2,29 +2,29 @@
     <div class="container-fluid group_honner">
         <div class="row row1">
             <div class="item1 col-12 col-md-4">
-                <img class="img1" src="../../assets/017@2x.png" alt="">
+                <img class="img1" src="../../assets/017.png" alt="">
                 <span class="title">2020年中国第500强企业</span>
                 <span class="paihang">第<animate-number from="1" to="179"></animate-number>位</span>
             </div>
             <div class="col-12 col-md-4 row coulum2">
                 <div class="item2 col-12 col-md-12">
-                    <img class="img2" src="../../assets/019@2x.png" alt="">
+                    <img class="img2" src="../../assets/019.png" alt="">
                     <span class="title">2020年中国服务业500强企业</span>
                     <span class="paihang">第<animate-number from="1" to="73"></animate-number>位</span>
                 </div>
                 <div class="item3 col-12 col-md-12">
-                    <img class="img3" src="../../assets/018@2x.png" alt="">
+                    <img class="img3" src="../../assets/018.png" alt="">
                     <span class="title">2019年浙江省服务业百强企业</span>
                     <span class="paihang">第<animate-number from="1" to="6"></animate-number>位</span>
                 </div>
             </div>
             <div class="item4 col-12 col-md-4">
-                <img class="img4" src="../../assets/021@2x.png" alt="">
+                <img class="img4" src="../../assets/021.png" alt="">
                 <span class="title">2019年浙江省综合百强企业</span>
                 <span class="paihang">第<animate-number from="1" to="15"></animate-number>位</span>
             </div>
             <div class="item5 col-12 col-md-12">
-                <img class="img5" src="../../assets/020@2x.png" alt="">
+                <img class="img5" src="../../assets/020.png" alt="">
                 <span class="title1">浙江省重点流通企业</span>
             </div>
         </div>

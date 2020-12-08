@@ -1,14 +1,32 @@
 <template>
     <div class="container-fluid group_framework">
         <div class="row row1">
-           <img src="../../assets/022@2x.png" alt="">
+            <div 
+                class="pic"
+                v-html="this.groupframework"
+            ></div>
         </div>
     </div>
 </template>
 <script>
 export default {
     data(){
-        return{    
+        return{
+            groupframework:""//集团架构 
+        }
+    },
+    mounted(){
+        this.getGroupFramework()
+    },
+    methods:{
+        getGroupFramework(){
+            this.axios.get(
+                "api/singlepage/business"
+            ).then(res=>{
+                if(res.data.code == 1){
+                    this.groupframework = res.data.data
+                }
+            })
         }
     }
 }
@@ -22,7 +40,6 @@ export default {
         padding 0
         margin 100px 0
         width 100%
-        img
-            width 60%
+        .pic
             margin 0 auto
 </style>

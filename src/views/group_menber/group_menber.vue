@@ -2,22 +2,25 @@
     <div class="container-fluid group_menber">
         <div class="row row1">
             <div class="col-12 col-sm-6 col-md-6 col-lg-6 group_pic">
-                <img src="../../assets/1.png" alt="">
+                <img v-lazy="this.cur_image" alt="">
             </div>
             <div class="col-12 col-sm-6 col-md-6 col-lg-6 menber_list">
                 <ul>
                     <li
-                     v-for="(item,index) in 12" 
+                     v-for="(item,index) in this.groupmenber" 
                      :key="index"
-                     @mouseenter="changepics(index)"
+                     @click="gomenber_net(item)"
+                     @mouseenter="changepics(item)"
                      >
                         <span v-show ="index<10">0{{index}}</span>
                         <span v-show ="index>=10">{{index}}</span>
-                        <p class="title">中国茶叶拍卖交易服务有限公司</p>
-                        <div class="left_hover">图标</div>
+                        <p class="title">{{item.title}}</p>
+                        <div class="left_hover">
+                            <img :src="item.logo" alt="">
+                        </div>
                         <div class="right_hover">
-                            <p class="title1">中国茶叶拍卖交易服务有限公司</p>
-                            <p class="company_intro">浙农控股集团有限公司坐落于以“天下第一潮”闻名的钱塘江畔，公司前身是始创于1952年的浙江省农业生产资料公司，公司前身是始创于1952年的浙江省农业生产资料公司公司前身是始创于1952年的浙江省农业生产资料公司1999年整体改制...</p>
+                            <p class="title1">{{item.title}}</p>
+                            <p class="company_intro">{{item.content}}</p>
                         </div>
                     </li>
                 </ul>
@@ -30,19 +33,34 @@ export default {
     data(){
         return{
             mousecount:1,
-            test:''
+            test:'',
+            groupmenber:"",//成员信息,
+            cur_image:""
         }
     },
+    mounted(){
+        this.getGroupMenber()
+    },
     methods:{
-        changepics(index){
-            console.log("666")
-            this.test = index
-        //   this.mousecount++
-        //   if(this.mousecount%10==0){
-        //       //节流操作
-        //       console.log("666")
-              
-        //   }  
+        changepics(item){
+           console.log(item) 
+           this.$nextTick(()=>{
+               this.cur_image = item.image
+           })
+        },
+        gomenber_net(item){
+            window.open(item.url)
+        },
+        getGroupMenber(){
+            this.axios.get(
+                "api/singlepage/cyqy"
+            ).then(res=>{
+                console.log(res)
+                if(res.data.code == 1){
+                    this.groupmenber = res.data.data
+                    this.cur_image = res.data.data[0].image
+                }
+            })
         }
     }
 }
@@ -112,6 +130,9 @@ export default {
                         display block
                         line-height 120px
                         border 1px solid #91CFFF
+                        img
+                            width 80%
+                            margin 0 auto
                     .right_hover
                         display block
                         flex 8

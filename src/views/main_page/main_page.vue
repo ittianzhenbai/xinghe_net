@@ -90,7 +90,7 @@
                                 <div class="title1">这是标题4</div>
                             </div>
                         </div>
-                        <!-- Add Pagination -->
+                        Add Pagination
                         <div class="swiper-pagination"></div>
                     </div>
                </div>
@@ -112,7 +112,7 @@
                    </ul>
                </div>
             </div>
-        </div>
+        </div> 
     </div>
 </template>
 <script>
@@ -199,11 +199,11 @@ export default {
             this.content_show = item
             if(item == "1"){
                 // this.$router.push({path:"/news_group"})
-                this.setActiveIndex("3-1")
+                // this.setActiveIndex("3-1")
             }
             if(item == "2"){
                 // this.$router.push({path:"/news_menber"})
-                this.setActiveIndex("3-2")
+                // this.setActiveIndex("3-2")
             }
         }
     }

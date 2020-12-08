@@ -2,7 +2,7 @@
     <div class="container-fluid neimao">
         <div class="row">
             <div class="col-12 col-sm-6 col-md-6 col-lg-6 left">
-                <img src="../../assets/014@2x.png" alt="">
+                <img src="../../assets/014.png" alt="">
             </div>
             <div class="col-12 col-sm-6 col-md-6 col-lg-6 right">
                 <div class="title_cn">

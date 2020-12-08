@@ -6,28 +6,28 @@
         <ul class="row advantages wow fadeInUp">
             <li class="col-6 col-sm-3 col-md-3 col-lg-3 wow bounce">
                 <div class="xiyin ">
-                    <img src="../../assets/26@2x.png" alt="">
+                    <img src="../../assets/26.png" alt="">
                 </div>
                 <span class="text1">吸引</span>
                 <span class="test2">发展吸引人</span>
             </li>
             <li class="col-6 col-sm-3 col-md-3 col-lg-3 wow bounce">
                 <div class="ningju">
-                    <img src="../../assets/27@2x.png" alt="">
+                    <img src="../../assets/27.png" alt="">
                 </div>
                 <span class="text1">凝聚</span>
                 <span class="test2">事业凝聚人</span>
             </li>
             <li class="col-6 col-sm-3 col-md-3 col-lg-3 wow bounce">
                 <div class="peiyang">
-                    <img src="../../assets/28@2x.png" alt="">
+                    <img src="../../assets/28.png" alt="">
                 </div>
                 <span class="text1">培养</span>
                 <span class="test2">工作培养人</span>
             </li>
             <li class="col-6 col-sm-3 col-md-3 col-lg-3 wow bounce">
                 <div class="kaohe">
-                    <img src="../../assets/29@2x.png" alt="">
+                    <img src="../../assets/29.png" alt="">
                 </div>
                 <span class="text1">考核</span>
                 <span class="test2">业绩考核人</span>
