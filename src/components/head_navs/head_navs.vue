@@ -4,9 +4,18 @@
         @mouseenter="changecolor"
     >
         <div 
-            class="nav_left col-7 col-sm-6 col-lg-3" 
+            class="nav_left col-7 col-sm-6 col-md-6 col-lg-3" 
             >
             这是放logo的位置
+        </div>
+         <div 
+            class="col-5 col-sm-6 col-md-6 col-lg-2 nav_right mid_screen1"
+        >
+            <ul class="list1">
+                <li><span class="oa"></span></li>
+                <li><span class="search"></span></li>
+                <li @click="use_rightnav">按钮</li>
+            </ul>
         </div>
         <div class="col-md-12 col-lg-7 nav_mid" ref="midmenu">
             <el-menu
@@ -56,7 +65,7 @@
             </el-menu>
         </div>
         <div 
-            class="col-5 col-sm-6 col-md-12 col-lg-2 nav_right"
+            class="col-5 col-sm-6 col-md-12 col-lg-2 nav_right mid_screen2"
         >
             <ul class="list1">
                 <li><span class="oa"></span></li>
@@ -332,6 +341,8 @@ export default {
                 position absolute
                 right 45px
                 top 50px
+                @media screen and (min-width:768px) and (max-width:1200px)
+                    top 35px
                 font-weight 500
                 color #FFFFFF
 /deep/.el-menu--horizontal>.el-submenu.is-active .el-submenu__title
@@ -360,13 +371,19 @@ export default {
         padding 0
         @media screen and (max-width:768px)
             display none
+        @media screen and (min-width:768px) and (max-width:850px)
+            padding 0 50px
+        @media screen and (min-width:850px) and (max-width:992px)
+            padding 0 100px
         .el-menu-item
             font-size 1rem
             line-height 3rem
             height 3rem
+            @media screen and (min-width:768px) and (max-width:992px)
+                height 4rem
     .nav_right
         padding 0 0
-        @media screen and (min-width:998px)
+        @media screen and (min-width:992px)
             padding-left 3rem
         ul
             list-style none
@@ -407,6 +424,18 @@ export default {
             li:nth-child(3)
                 @media screen and (min-width:768px)
                     display none
+    .mid_screen1
+            padding-left 200px
+            padding-right 100px
+            @meida screen and (man-width:850px)
+                padding-left 0
+            @media screen and (min-width:992px)
+                display none
+            @media screen and (max-width:768px)
+                display none
+    .mid_screen2
+        @media screen and (min-width:768px) and (max-width:992px)
+            display none
     .left_nav //手机端侧边导航
         padding 0 0 
         .el-menu-collapse-list

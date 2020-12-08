@@ -2,22 +2,22 @@
     <div class="container-fluid group_mission">
         <ul class="row list1">
             <li class="col-12 col-sm-6 col-md-6 col-lg-6">
-                <img class="icon1" src="../../assets/24.png" alt="请稍等，正在加载中">
-                <div class="title">使命</div>
-                <p class="text1">联结内外 沟通城乡 服务“三农”</p>
+                <img class="icon1" v-lazy="this.shiming.logo" alt="请稍等，正在加载中">
+                <div class="title">{{this.shiming.title}}</div>
+                <p class="text1">{{this.shiming.subtitle}}</p>
             </li>
             <li class="col-12 col-sm-6 col-md-6 col-lg-6">
-                <img class="pic1" src="../../assets/015.png" alt="">
+                <img class="pic1" v-lazy="this.shiming.image" alt="">
             </li>
             <li class="col-12 col-sm-6 col-md-6 col-lg-6">
-                <img class="icon1" src="../../assets/25.png" alt="请稍等，正在加载中">
-                <div class="title">愿景</div>
+                <img class="icon1" v-lazy="this.yuanjing.logo" alt="请稍等，正在加载中">
+                <div class="title">{{this.yuanjing.title}}</div>
                 <p class="text1">
-                成为贸、产、融、投结合发展 具有领先优势和强大实力的综合性企业集团
+                {{this.yuanjing.subtitle}}
                 </p>
             </li>
             <li class="col-12 col-sm-6 col-md-6 col-lg-6">
-                <img class="pic1" src="../../assets/016.png" alt="">
+                <img class="pic1" v-lazy="this.yuanjing.image" alt="">
             </li>
         </ul>
     </div>
@@ -26,7 +26,24 @@
 export default {
     data(){
         return{
-            
+            shiming:"",
+            yuanjing:""
+        }
+    },
+    mounted(){
+        this.getGroupMission()
+    },
+    methods:{
+        getGroupMission(){
+            this.axios.get(
+                "api/singlepage/vision"
+            ).then(res=>{
+                console.log(res)
+                if(res.data.code == 1){
+                    this.shiming = res.data.data[0]
+                    this.yuanjing = res.data.data[1]
+                }
+            })
         }
     }
 }
@@ -46,7 +63,7 @@ export default {
                 height 88px
                 margin-top 88px
             .title
-                margin 38px 0
+                margin 23px 0 18px
                 font-size 1.6rem
                 color #666666
                 font-weight Regular
