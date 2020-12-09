@@ -44,6 +44,8 @@ export default {
             transform scale(1.3)
 .swiper-container 
     width 80%
+    @media screen and (max-width:768px)
+        width 100%
     height 20rem
     margin 0 auto
     .swiper-slide 

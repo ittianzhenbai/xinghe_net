@@ -4,22 +4,7 @@
             <SwiperBanner></SwiperBanner>
         </div>
         <div class="row yewu">
-            <ul class="major_businesses">
-                <li v-for="(item,index) in major_business" :key="index">
-                    <img  class="img1" :src="item.img1" alt="">
-                    <span class="text1">{{item.text1}}</span>
-                    <span class="text2">{{item.text2}}</span>
-                    <img  class="img2" :src="item.img2" alt="">
-                    <img  class="img3" :src="item.img3" alt="">
-                    <div class="active">
-                        <span class="text3">{{item.text1}}</span>
-                        <p class="intro">
-                            这是一段文字，这是一段文字，这是一段文字，这是一段文字,第三行会隐藏
-                        </p>
-                        <div>...</div>
-                    </div>
-                </li>
-            </ul>
+            <MajorBusiness></MajorBusiness>
         </div>
         <div class="container-fluid content">
             <div class="row near_xinghe">
@@ -29,8 +14,8 @@
                 </div>
             </div>
             <div class="row rongyu">
-                <ul class="col-md-10">
-                    <li v-for="(item,index) in this.rongyu" :key="index" class="col-12 col-sm-4 col-md-2">
+                <ul class="col-md-12">
+                    <li v-for="(item,index) in this.rongyu" :key="index" class="col-4 col-sm-4 col-md-4 col-lg-2">
                         <animate-number 
                             from="1" 
                             :to="item.value"
@@ -43,7 +28,7 @@
             </div>
         </div>
         <div class="col-12 col-md-12">
-            <span class="detail">
+            <span class="detail" @click="near_xinghe">
                 详情
                 <i class="el-icon-arrow-right"></i>
             </span>
@@ -95,6 +80,7 @@
 import '../../common/js/control.js'
 import SwiperBanner from "@/components/swiper_banner/swiper_banner.vue"
 import SwiperNews from "@/components/swiper_news/swiper_news.vue"
+import MajorBusiness from "@/components/major_business/major_business.vue"
 import { mapMutations } from "vuex"
 export default {
     data(){
@@ -105,43 +91,6 @@ export default {
                 {img:require("../../assets/banner-2.jpg")},
                 {img:require("../../assets/banner-3.jpg")},
             ],
-            major_business:[
-                {
-                    img1:require("../../assets/16.png"),
-                    img2:require("../../assets/01.png"),
-                    img3:require("../../assets/06.png"),
-                    text1:"内贸",
-                    text2:"Within trade"
-                },
-                {
-                    img1:require("../../assets/23.png"),
-                    img2:require("../../assets/02.png"),
-                    img3:require("../../assets/010.png"),
-                    text1:"外贸",
-                    text2:"Foreigh trade"
-                },
-                {
-                    img1:require("../../assets/15.png"),
-                    img2:require("../../assets/03.png"),
-                    img3:require("../../assets/07.png"),
-                    text1:"房地产",
-                    text2:"Real estate"
-                },
-                {
-                    img1:require("../../assets/14.png"),
-                    img2:require("../../assets/04.png"),
-                    img3:require("../../assets/08.png"),
-                    text1:"金融投资",
-                    text2:"Financial investment"
-                },
-                {
-                    img1:require("../../assets/13.png"),
-                    img2:require("../../assets/05.png"),
-                    img3:require("../../assets/09.png"),
-                    text1:"农业服务",
-                    text2:"Agricultural Services"
-                }
-            ],
             rongyu:""
         }
     },
@@ -150,10 +99,11 @@ export default {
     },
     components:{
         SwiperBanner,
-        SwiperNews
+        SwiperNews,
+        MajorBusiness
     },
     methods:{
-        ...mapMutations(["setActiveIndex"]),
+        ...mapMutations(["setActiveIndex","setchildActiveIndex"]),
         jump_router(item){
             this.content_show = item
             this.setActiveIndex(item)
@@ -166,8 +116,14 @@ export default {
                     this.rongyu = res.data.data
                 }
             })
+        },
+        near_xinghe(){
+            this.$router.push({
+                path:"/group_intro"
+            })
+            this.setActiveIndex("2-1")
+            this.setchildActiveIndex("1")
         }
-
     }
 }
 </script>
@@ -189,100 +145,11 @@ export default {
                         width 100%                
     .yewu
         margin 0
-        .major_businesses
-            width 80%
-            margin 0 auto
-            &>li
-                height 16rem
-                width 20%
-                display inline-block
-                vertical-align top
-                position relative
-                bottom 30%
-                z-index 9
-                background #FFFFFF
-                @media screen and (max-width:768px)
-                    display none
-                .img1
-                    margin-top 37px
-                    width 80px
-                &:nth-child(4n+0)
-                    .img1
-                        width 81px
-                        margin-bottom 3px
-                &:nth-child(4n+0)
-                    .img1
-                        width 73px
-                &:nth-child(5n+0)
-                    border-right-top-radius 10px
-                    .img1
-                        width 73px
-                        margin-top 40px
-                        margin-bottom 25px
-                .img2
-                    width 100%
-                    position absolute
-                    bottom 0px
-                    left 0
-                .img3
-                    display none
-                .text1
-                    display block
-                    color #223D6B
-                    font-size 24px
-                    line-height 45px
-                    font-family MicrosoftYaHei
-                .active
-                    width 100%
-                    height 100%
-                    visibility hidden
-                    position absolute
-                    top 0
-            &>li:hover
-                .img3
-                    display block
-                    position absolute
-                    left 0
-                    width 100%
-                    height 100%
-                    top 0
-                .img1,.img2,.text1,.text2
-                    display none
-                .active
-                    width 100%
-                    height 100%
-                    animation-name myfirst
-                    animation-duration 1s
-                    animation-iteration-count 1
-                    animation-fill-mode forwards
-                    .text3
-                        display block
-                        font-family MicrosoftYaHei
-                        font-weight Regular
-                        color #FFFFFF
-                        font-size 24px
-                        line-height 45px
-                        margin-top 16px
-                    .intro
-                        font-size 0.8rem
-                        text-align left
-                        color #FFFFFF
-                        width 80%
-                        margin 43px auto 37px
-                        display -webkit-box
-                        -webkit-box-orient vertical
-                        -webkit-line-clamp 3  //需要显示时文本行数
-                        overflow hidden
-                    div
-                        border 1px solid #FFFFFF
-                        width 30%
-                        height 20px
-                        color #FFFFFF
-                        margin 0 auto
-                        line-height 10px
     .content
         width 80%
         margin 0 auto
+        @media screen and (max-width:768px)
+            width 92%
         padding 0
         background url("../../assets/023.png")
         background-size 100%
@@ -292,7 +159,7 @@ export default {
             margin 0
             .company_intro
                 margin 0 auto
-                padding 75px 0 
+                padding 75px 0
                 width 100%
                 span
                     text-align cneter
@@ -303,8 +170,9 @@ export default {
                 &>p
                     width 40%
                     padding 0
-                    @media screen and (max-width:786px)
-                        width 80% 
+                    @media screen and (max-width:768px)
+                        width 100%
+                        margin-top 18.5pt
                     font-size 0.8rem
                     color #666666
                     font-family Microsoft YaHei
@@ -318,11 +186,18 @@ export default {
             padding 0
             ul
                 margin 0 auto
+                padding 0
                 &>li
                     display inline-block
+                    vertical-align top
+                    padding 0
                     span
                         font-size 3.6rem
                         color #1A649F
+                        @media screen and (max-width:768px)
+                            margin-top 18.5pt
+                            font-size 35pt
+                            text-align left
                         font-weight regular
                         font-family HYb9gf
                     &>p
@@ -388,6 +263,8 @@ export default {
                     margin 0
                     padding 0
                     width 100%
+                    @media screen and (max-width:768px)
+                        margin-top 17pt
                     .news_top
                         width 100%
                         padding 0 2rem
