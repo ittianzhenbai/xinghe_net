@@ -91,8 +91,8 @@ export default {
         return{
             cur_address:"主营业务",
             content_show:this.$store.state.childActiveIndex,
-            title_zn:"联系我们",
-            title_en:"CONTACT US"
+            title_zn:"主营业务",
+            title_en:"MAIN BUSINESS"
         }
     },
     computed:{
@@ -113,6 +113,8 @@ export default {
         },
         jump_router(item){
             this.content_show = item
+            console.log(item)
+            this.setchildActiveIndex(item)
             switch(item){
                 case "1":
                     this.$router.push({path:"/business_neimao"})

@@ -1,7 +1,7 @@
 <template>
     <div class="container-fluid talent_concept">
-        <div class="row linian">
-            <span>集团坚持奋斗者共享的理念，进一步以发展吸引人、以事业凝聚人、以工作培养人、以业绩考核人，构建各类人才进得来、留得下、能发挥的创业热土。</span>      
+        <div class="row linian">       
+            <span v-html="this.linian"></span>  
         </div>
         <ul class="row advantages wow fadeInUp">
             <li class="col-6 col-sm-3 col-md-3 col-lg-3 wow bounce">
@@ -40,18 +40,33 @@ import WOW from 'wowjs'
 export default {
     data(){
         return{
-
+            linian:""//人才理念
         }
     },
     mounted(){
-        let wow = new WOW.WOW({
-            boxClass: 'wow',
-            animateClass: 'animated',
-            offset: 0,
-            mobile: true,
-            live: true
-        });
-        wow.init();
+       this.wowInit()
+       this.getLiNian()
+    },
+    methods:{
+        wowInit(){
+             let wow = new WOW.WOW({
+                boxClass: 'wow',
+                animateClass: 'animated',
+                offset: 0,
+                mobile: true,
+                live: true
+            });
+            wow.init();
+        },
+        getLiNian(){
+            this.axios.get(
+                "api/singlepage/joinus"
+            ).then(res=>{
+                if(res.data.code == 1){
+                    this.linian = res.data.data
+                }
+            })
+        }
     }
 }
 </script>

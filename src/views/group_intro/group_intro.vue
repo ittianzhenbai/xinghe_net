@@ -52,8 +52,6 @@ export default {
                 this.axios.get("api/singlepage/zjxh")
             ]).then(this.axios.spread((res1,res2)=>{
                 if(res1.data.code == 1){
-                    console.log(res1)
-                    // this.groupinfo = res1.data.data.content
                     var re = new RegExp("(<p>|<p\\s.*?>)(\\s|　|&nbsp;|<br\\s*/?>)*</p>","ig");
                     this.groupinfo = res1.data.data.content.replace(/\n/g,"").replace(/<p\/>|<p\s.*?\/>/ig,"").replace(re,"");
                     this.grouppic = res1.data.data.image

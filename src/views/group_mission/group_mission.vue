@@ -38,7 +38,6 @@ export default {
             this.axios.get(
                 "api/singlepage/vision"
             ).then(res=>{
-                console.log(res)
                 if(res.data.code == 1){
                     this.shiming = res.data.data[0]
                     this.yuanjing = res.data.data[1]

@@ -6,15 +6,15 @@
         <div 
             class="nav_left col-7 col-sm-6 col-md-6 col-lg-3" 
             >
-            这是放logo的位置
+            <img class="logo" src="../../assets/32.png" alt="">
+            <img class="logo1" src="../../assets/37.png" alt="">
         </div>
          <div 
             class="col-5 col-sm-6 col-md-6 col-lg-2 nav_right mid_screen1"
         >
             <ul class="list1">
                 <li><span class="oa"></span></li>
-                <li><span class="search"></span></li>
-                <li @click="use_rightnav">按钮</li>
+                <li><span class="search" @click="search"></span></li>
             </ul>
         </div>
         <div class="col-md-12 col-lg-7 nav_mid" ref="midmenu">
@@ -25,7 +25,7 @@
                 @select="handleSelect"
                 :background-color="this.color"
                 text-color="#fff"
-                active-text-color="#fff">
+                active-text-color="#ABABAB">
                 <el-menu-item index="1">首页</el-menu-item>
                 <el-submenu index="2">
                     <template slot="title">走进兴合</template>
@@ -69,8 +69,8 @@
         >
             <ul class="list1">
                 <li><span class="oa"></span></li>
-                <li><span class="search"></span></li>
-                <li @click="use_rightnav">按钮</li>
+                <li><span class="search" @click="search"></span></li>
+                <li @click="use_rightnav"><span class="anniu"></span></li>
             </ul>
         </div>
         <div 
@@ -122,10 +122,14 @@
                 <el-menu-item index="7">联系我们</el-menu-item>
             </el-menu>
         </div>
+        <div class="search_box">
+            <SearchBox ref="search"></SearchBox>
+        </div>
     </div>
 </template>
 <script>
 import '../../common/js/control.js'
+import SearchBox from '../../components/search_box/search_box.vue'
 import { mapState,mapMutations } from "vuex";
 export default {
     data() {
@@ -137,6 +141,9 @@ export default {
         click_count:0,//控制点击次数
         color:"transparent"
       };
+    },
+    components:{
+        SearchBox
     },
     computed:{
         ...mapState(["activeIndex"])
@@ -293,6 +300,9 @@ export default {
                 this.right_navshow = false
             }
         },
+        search(){
+           this.$refs.search.alert_box = true
+        },
         changecolor(){
             this.$refs.nav.style.opacity = "1",
             this.$nextTick(()=>{
@@ -314,8 +324,6 @@ export default {
     watch:{
         activeIndex(newName, oldName){ 
             this.activeIndex1 = newName
-            // console.log("activeIndex1>>>newval",newName)
-            // console.log("activeIndex1>>>oldval",oldName)
         }
     }
 }
@@ -324,6 +332,7 @@ export default {
 .el-menu--collapse.el-menu .el-submenu,.el-menu--popup
     min-width 6rem
     text-align center
+    color #ABABAB
 .el-menu-vertical-demo:not(.el-menu--collapse) 
     width 10rem
 </style>
@@ -367,6 +376,16 @@ export default {
         color #fff
         line-height 3rem
         padding 0
+        .logo
+            width 60%
+            @media screen and (min-width:850px) and (max-width:992px)
+                width 50%
+            @media screen and (max-width:768px)
+                display none
+        .logo1
+            width 60%
+            @media screen and (min-width:768px)
+                display none
     .nav_mid
         padding 0
         @media screen and (max-width:768px)
@@ -421,6 +440,14 @@ export default {
                     // @media screen and (max-width:768px)
                     //     background-position -2.3rem
                     background-repeat no-repeat
+                .anniu
+                    display block
+                    width 20px
+                    height 17px
+                    margin-top 1.2rem
+                    margin-left 1rem
+                    background url("../../assets/40.png")
+                    background-size 100%
             li:nth-child(3)
                 @media screen and (min-width:768px)
                     display none
@@ -444,4 +471,8 @@ export default {
             list-style none
             padding 0 0
             border-right none
+    .search_box
+        position fixed
+        right 4.7%
+        top 3rem
 </style>
