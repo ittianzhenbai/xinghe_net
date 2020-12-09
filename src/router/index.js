@@ -153,12 +153,22 @@ const routes = [
             name: 'talent_recruitment_notice',
             component: () => import(/* webpackChunkName: "talent_recruitment_notice" */ '../views/talent_recruitment_notice/talent_recruitment_notice.vue')
           },
+          {
+            path: '/recruitment_detail',
+            name: 'recruitment_detail',
+            component: () => import(/* webpackChunkName: "recruitment_detail" */ '../views/recruitment_detail/recruitment_detail.vue')
+          }
         ]
       },
       {
         path: '/connect_us',
         name: 'connect_us',
         component: () => import(/* webpackChunkName: "connect_us" */ '../views/connect_us/connect_us.vue')
+      },
+      {
+        path: '/ceshi',
+        name: 'ceshi',
+        component: () => import(/* webpackChunkName: "connect_us" */ '../views/ceshi.vue')
       },
     ]
   }

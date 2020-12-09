@@ -27,8 +27,13 @@ export default {
 .box
     background #F5FBFF
     .cur_address
-        padding-top 1rem
-        padding-left 3rem
+        padding-top 1.2rem
+        padding-left 12.5%
         text-align left
-        font-size 0.5rem
+        font-size 0.7rem
+        color #999999
+        line-height 0.7rem
+        font-family Microsoft YaHei
+        font-weight Regular
+        padding-bottom 2.7rem
 </style>

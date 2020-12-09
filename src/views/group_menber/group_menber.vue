@@ -55,7 +55,6 @@ export default {
             this.axios.get(
                 "api/singlepage/cyqy"
             ).then(res=>{
-                console.log(res)
                 if(res.data.code == 1){
                     this.groupmenber = res.data.data
                     this.cur_image = res.data.data[0].image

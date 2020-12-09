@@ -21,7 +21,7 @@ export default {
 <style lang="stylus" scoped>
 .other_company
     width 100%
-    padding 49px 12.9% 20px 12.6%
+    padding 49px 12.7% 20px 12.5%
     margin 50px 0 0
     min-height 235px
     background #F5F5F5
@@ -46,9 +46,9 @@ export default {
             height 80px
             background #FFFFFF
             border: 1px solid rgba(26, 100, 159, 0.5);
-            margin-right 19px
-            margin-bottom 19px
-            &:nth-child(4n+0)
+            margin-right 16px
+            margin-bottom 15px
+            &:nth-child(5n+0)
                 @media screen and (min-width:1300px)
                     margin-right 0
         li:hover

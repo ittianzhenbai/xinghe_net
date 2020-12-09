@@ -2,14 +2,15 @@
     <div class="container-fluid neimao">
         <div class="row row1">
             <div class="col-12 col-sm-6 col-md-6 col-lg-6 left">
-                <img src="../../assets/011.png" alt="">
+                <!-- <img src="../../assets/011.png" alt=""> -->
+                <img v-lazy="this.info.image" alt="">
             </div>
             <div class="col-12 col-sm-6 col-md-6 col-lg-6 right">
                 <div class="title_cn">
-                    内贸
+                    {{this.info.title}}
                 </div>
                 <div class="title_en">
-                    Within trade
+                    {{this.info.title_en}}
                 </div>
                 <div class="line"></div>
                 <p class="neirong">
@@ -27,11 +28,27 @@ import CompanyBox from "../../components/company_box/company_box.vue"
 export default {
     data(){
         return{
-            
+            info:""//业务信息
         }
     },
     components:{
         CompanyBox
+    },
+    mounted(){
+        this.getBusinessInfo("nm")
+    },
+    methods:{
+        getBusinessInfo(name){
+            this.axios.post(
+                "api/singlepage/main_business",
+                `name=${name}`
+            ).then(res=>{
+                if(res.data.code = 1){
+                    console.log(res)
+                    this.info = res.data.data
+                }
+            })
+        }
     }
 }
 </script>
@@ -41,10 +58,11 @@ export default {
     margin 100px 0
     width 100%
     .row1
-        margin 0 12.9% 0 12.6%
+        margin 0 12.9% 0 12.5%
         .left
             img 
                 width 100%
+                height 100%
         .right
             width 100%
             font-family MicrosoftYaHei
@@ -67,4 +85,5 @@ export default {
                 font-family MicrosoftYaHei
     .row2
         width 100%
+        margin 0
 </style>

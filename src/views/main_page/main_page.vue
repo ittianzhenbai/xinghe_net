@@ -1,18 +1,7 @@
 <template>
     <div class="container-fluid main">
         <div class="row banner">
-            <div class="swiper-container">
-                <div class="swiper-wrapper">
-                    <div 
-                        class="swiper-slide" 
-                        v-for="(item,index) in pics" 
-                        :key="index">
-                        <img :src="item.img" alt="">
-                    </div>
-                </div>
-                <div class="swiper-button-prev"></div>
-                <div class="swiper-button-next"></div>
-            </div>
+            <SwiperBanner></SwiperBanner>
         </div>
         <div class="row yewu">
             <ul class="major_businesses">
@@ -41,9 +30,14 @@
             </div>
             <div class="row rongyu">
                 <ul class="col-md-10">
-                    <li v-for="item in 5" :key="item" class="col-12 col-sm-2 col-md-2">
-                        <animate-number from="1" to="520"></animate-number>
-                        <p>1992年公司经省政府批准设立，已有28个年头</p>
+                    <li v-for="(item,index) in this.rongyu" :key="index" class="col-12 col-sm-4 col-md-2">
+                        <animate-number 
+                            from="1" 
+                            :to="item.value"
+                            mode="auto"
+                            duration="3000"
+                        ></animate-number>
+                        <p>{{item.title}}</p>
                     </li>
                 </ul>
             </div>
@@ -74,25 +68,7 @@
             </ul>
             <div class="col-12 col-md-12 col-lg-12 row news_content">
                <div class="col-12 col-md-6 col-lg-6 news_pics">
-                    <div class="swiper-container">
-                        <div class="swiper-wrapper">
-                            <div class="swiper-slide">
-                                Slide 1
-                                <div class="title1">这是标题1</div>
-                            </div>
-                            <div class="swiper-slide">Slide 2
-                                 <div class="title1">这是标题2</div>
-                            </div>
-                            <div class="swiper-slide">Slide 3
-                                <div class="title1">这是标题3</div>
-                            </div>
-                            <div class="swiper-slide">Slide 4
-                                <div class="title1">这是标题4</div>
-                            </div>
-                        </div>
-                        Add Pagination
-                        <div class="swiper-pagination"></div>
-                    </div>
+                   <SwiperNews></SwiperNews>
                </div>
                <div class="col-12 col-md-6 col-lg-6 news_list">
                    <div class="news_top col-12 col-md-12 col-lg-12 ">
@@ -117,8 +93,9 @@
 </template>
 <script>
 import '../../common/js/control.js'
+import SwiperBanner from "@/components/swiper_banner/swiper_banner.vue"
+import SwiperNews from "@/components/swiper_news/swiper_news.vue"
 import { mapMutations } from "vuex"
-import Swiper from "swiper"
 export default {
     data(){
         return{
@@ -164,48 +141,33 @@ export default {
                     text1:"农业服务",
                     text2:"Agricultural Services"
                 }
-            ]
-
+            ],
+            rongyu:""
         }
     },
     mounted(){
-        this.init()
-        // this.init1()
-        // this.$nextTick(()=>{
-        //     this.init1()
-        // })
+        this.getRongYu()
+    },
+    components:{
+        SwiperBanner,
+        SwiperNews
     },
     methods:{
         ...mapMutations(["setActiveIndex"]),
-        init(){
-            var swiper = new Swiper('.swiper-container', {
-                pagination: {
-                    el: '.swiper-pagination',
-                },
-            })
-        },
-        // init1(){
-        //     var swiper = new Swiper('.swiper-container1', {
-        //         loop: true, // 循环模式选项
-        //         autoplay:true,
-        //         // 如果需要前进后退按钮
-        //         navigation: {
-        //         nextEl: '.swiper-button-next',
-        //         prevEl: '.swiper-button-prev',
-        //         },
-        //     })
-        // },
         jump_router(item){
             this.content_show = item
-            if(item == "1"){
-                // this.$router.push({path:"/news_group"})
-                // this.setActiveIndex("3-1")
-            }
-            if(item == "2"){
-                // this.$router.push({path:"/news_menber"})
-                // this.setActiveIndex("3-2")
-            }
+            this.setActiveIndex(item)
+        },
+        getRongYu(){
+            this.axios.get(
+                "api/singlepage/zjxh"
+            ).then(res=>{
+                if(res.data.code == 1){
+                    this.rongyu = res.data.data
+                }
+            })
         }
+
     }
 }
 </script>
@@ -322,7 +284,7 @@ export default {
         width 80%
         margin 0 auto
         padding 0
-        background url("../../assets/023@2x.png")
+        background url("../../assets/023.png")
         background-size 100%
         position relative
         bottom 4.8rem
@@ -330,7 +292,7 @@ export default {
             margin 0
             .company_intro
                 margin 0 auto
-                padding 0 0 
+                padding 75px 0 
                 width 100%
                 span
                     text-align cneter
@@ -351,7 +313,6 @@ export default {
                     margin 0 auto
         .rongyu
             width 100%
-            margin-top 3rem
             margin-right 0
             margin-left 0
             padding 0
@@ -422,42 +383,6 @@ export default {
                 background #F4F4F4
                 .news_pics
                     height 20rem
-                    .swiper-container 
-                        width 80%
-                        height 100%
-                        margin 0 auto
-                        .swiper-slide 
-                            text-align center
-                            font-size 18px
-                            /* Center slide text vertically */
-                            display -webkit-box
-                            display -ms-flexbox
-                            display -webkit-flex
-                            display flex
-                            -webkit-box-pack center
-                            -ms-flex-pack center
-                            -webkit-justify-content center
-                            justify-content center
-                            -webkit-box-align center
-                            -ms-flex-align center
-                            -webkit-align-items center
-                            align-items center
-                            position relative
-                            .title1
-                                position absolute
-                                bottom 0
-                                height 2rem
-                                line-height 2rem
-                                left 0
-                                background rgba(000,000,000,0.6)
-                                width 100%
-                                text-align left
-                                padding-left 1rem
-                                color #FFFFFF
-                    .swiper-pagination
-                        width 20%
-                        left 70%
-                        bottom 0.2rem
                 .news_list
                     height 20rem
                     margin 0

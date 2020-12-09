@@ -111,6 +111,7 @@ export default {
         },
         jump_router(item){
             this.content_show = item
+            this.setchildActiveIndex(item)
             switch(item){
                 case "1":
                     this.$router.push({path:"/group_intro"})
