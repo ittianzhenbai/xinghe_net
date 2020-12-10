@@ -75,6 +75,8 @@ export default {
     width 100%
     padding 0
     margin 100px auto
+    @media screen and (max-width:768px)
+        margin 2.5rem 0
     .linian
         width 100%
         margin 0
@@ -86,16 +88,29 @@ export default {
             color #333333
             font-family  Microsoft YaHei
             line-height 2rem
+            @media screen and (max-width:768px)
+                width 100%
+                padding 0 6.7% 0 4%
     .advantages
         padding 0 14.8%
         margin-top 79px
         margin 79px 0 auto
+        @media screen and (max-width:768px)
+            padding 0 0
+            margin 3.95rem 0 auto
         &>li
+            padding 0
+            @media screen and (max-width:768px) 
+                margin-bottom 3.9rem
             .xiyin,.ningju,.peiyang,.kaohe
                 width 13vw
                 height 13vw
                 margin 0 auto
                 border-radius 50%
+                padding 0
+                @media screen and (max-width:767px)
+                    width 33vw
+                    height 33vw
                 img
                     width 40%
                     margin-top 32%
@@ -120,9 +135,14 @@ export default {
                 line-height 2rem
                 padding-top 29px
                 padding-bottom 22px
+                @media screen and (max-width:768px)
+                    font-size 2.25rem
+                    padding-top 1.45rem
+                    padding-bottom 0.95rem
             .text2
                 font-size 1.2rem
                 padding 0
                 font-weight Regular
-        
+                @media screen and (max-width:768px)
+                    font-size 1.4rem    
 </style>

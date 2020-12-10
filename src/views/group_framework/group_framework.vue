@@ -32,6 +32,8 @@ export default {
 }
 </script>
 <style lang="stylus" scoped>
+/deep/img
+        width 100%
 .group_framework
     margin 0
     padding 0
@@ -40,6 +42,10 @@ export default {
         padding 0
         margin 100px 0
         width 100%
+        @media screen and (max-width:768px)
+            margin 4rem auto 2.4rem
         .pic
+            width 100%
             margin 0 auto
+                    
 </style>

@@ -57,11 +57,11 @@
                     active-text-color="#333">
                     <el-submenu index="1">
                         <template slot="title" class="title">党建园地</template>
-                        <el-menu-item index="1">内贸</el-menu-item>
-                        <el-menu-item index="2">外贸</el-menu-item>
-                        <el-menu-item index="3">房地产</el-menu-item>
+                        <el-menu-item index="1">党建动态</el-menu-item>
+                        <el-menu-item index="2">党章党规</el-menu-item>
+                        <el-menu-item index="3">学习园地</el-menu-item>
                         <el-menu-item index="4">金融投资</el-menu-item>
-                        <el-menu-item index="5">农业服务</el-menu-item>
+                        <el-menu-item index="5">文件通知</el-menu-item>
                     </el-submenu>
                 </el-menu>
             </div>
@@ -80,10 +80,10 @@ import { mapState,mapMutations } from "vuex";
 export default {
     data(){
         return{
-            cur_address:"主营业务",
+            cur_address:"党建园地",
             content_show:this.$store.state.childActiveIndex,
-            title_zn:"主营业务",
-            title_en:"MAIN BUSINESS"
+            title_zn:"党建园地",
+            title_en:"PARTY  BUILDING  GARDEN"
         }
     },
     computed:{
@@ -136,6 +136,9 @@ export default {
         padding 0
         margin 0
         position relative
+        @media screen and (max-width:768px)
+            margin-top 5rem
+            height 20rem
         .img
             width 100%
         .banner_title
@@ -161,7 +164,7 @@ export default {
                     border-bottom 2px solid #79A2C5
                     color #79A2C5
     .navigation_mobile
-        @media screen and (min-width 768px)
+        @media screen and (min-width 769px)
             display none
         .child_nav
             text-align left

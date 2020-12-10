@@ -54,13 +54,22 @@ export default {
         width 100%
         padding 0 15%
         margin 100px 0 100px
+        @media screen and (max-width:768px)
+            margin 1.95rem 0
+            padding 0 1.5rem
         &>li
             background #F2F2F2
             padding 0
+            @media screen and (max-width:768px)
+                height 21.5rem
             .icon1
                 width 75px
                 height 88px
                 margin-top 88px
+                @media screen and (max-width:768px)
+                    width 4.4rem
+                    height 4.4rem
+                    margin-top 3.8rem
             .title
                 margin 23px 0 18px
                 font-size 1.6rem
@@ -77,9 +86,10 @@ export default {
                 font-family MicrosoftYaHei
             .pic1
                 width 100%
-                min-height 371px
-        li:nth-child(1)
-            margin-bottom 2rem
+                @media screen and (min-width:768px)
+                    min-height 371px
+                @media screen and (max-width:768px)
+                    height 100%
         li:nth-child(2)
             margin-bottom 2rem
             

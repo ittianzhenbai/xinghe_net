@@ -26,6 +26,28 @@
                 </ul>
             </div>
         </div>
+        <ul class="row row_mobile">
+            <li
+                v-for="(item,index) in this.groupmenber" 
+                :key="index"
+                class="col-12 col-sm-12 row"
+                @click="gomenber_net(item)"
+                @mouseenter="changepics(item)"
+                >
+                <div class="col-12 col-sm-12 group_pic">
+                    <img v-lazy="item.image" alt="">
+                </div>
+                <div class="col-12 col-sm-12 row group_intro">
+                    <div class="col-3 col-sm-3 logo">
+                        <img :src="item.logo" alt="">
+                    </div>
+                    <div class="col-9 col-sm-9 intro">
+                        <p class="title1">{{item.title}}</p>
+                        <p class="company_intro">{{item.content}}</p>
+                    </div>
+                </div>
+            </li>
+        </ul>
     </div>
 </template>
 <script>
@@ -73,6 +95,8 @@ export default {
         padding 0
         margin 100px 0
         width 100%
+        @media screen and (max-width:768px)
+            display none
         .group_pic
             width 100%
             height 20rem
@@ -169,4 +193,57 @@ export default {
                         //     right 0
                         //     background #FFF
                         //     padding-left 10px
+    .row_mobile
+        margin 0
+        width 100%
+        @media screen and (min-width:768px)
+            display none
+        &>li
+            margin 0 0 1rem
+            padding 0
+            width 100%
+            .group_pic
+                width 100%
+                padding 0
+                img 
+                    width 91.8%
+                    height 25rem
+            .group_intro
+                margin 0
+                padding 0 1.5rem
+                width 92%
+                .logo
+                    padding 0
+                    img
+                        height 3.4rem
+                        width 3.4rem
+                        margin 2.55rem 1.1rem 2.55rem 1.1rem
+                .intro 
+                    padding 0
+                    font-family Microsoft YaHei
+                    vertical-align top
+                    .title1
+                        color #333333
+                        font-weight bold    
+                        font-size 1.7rem
+                        display block
+                        line-height 4rem
+                        text-align left
+                        //单行显示省略号
+                        overflow hidden
+                        text-overflow ellipsis
+                        white-space nowrap
+                        margin-bottom 0
+                    .company_intro
+                        text-align left
+                        margin-bottom 0
+                        font-size 1.2rem
+                        line-height 2rem
+                        text-align left
+                        display -webkit-box
+                        -webkit-box-orient vertical
+                        -webkit-line-clamp 2
+                        overflow hidden
+                    
+
 </style>     

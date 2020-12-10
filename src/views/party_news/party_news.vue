@@ -3,7 +3,7 @@
         <ul class="row news_list">
             <li v-for="item in 8" :key="item" class="col-6 col-md-3">
                 <div class="single_news">
-                     <img class="row" src="https://ss1.bdstatic.com/70cFvXSh_Q1YnxGkpoWK1HF6hhy/it/u=2877953759,1594489968&fm=26&gp=0.jpg" alt="">
+                    <img class="row" src="https://ss1.bdstatic.com/70cFvXSh_Q1YnxGkpoWK1HF6hhy/it/u=2877953759,1594489968&fm=26&gp=0.jpg" alt="">
                     <span class="date">7/11</span>
                     <p class="title">新闻标题新闻标题新闻标题标题</p>
                     <p class="neirong">浙江省兴合集团有限责任公司是中国500强企业，浙江省重点流通企业和供销系统为农服务龙头企业，主要负责运行管理浙江省供销社本级经营性资产。</p>
@@ -24,38 +24,44 @@ export default {
 <style lang="stylus" scoped>
 .news_group
     width 80%
+    padding 100px 0
     @media screen and (max-width:768px)
         width 95%
-    padding 100px 0
+        padding 2rem 0
     .news_list
         margin 0 
         &>li
             margin-bottom 1rem
+            padding 0
             .single_news
                 padding 9px 9px
                 img
                     width 100%
                     margin 0 auto
-                span
+                .date
                     display block
                     text-align left
                     color #CACACA
                     font-size 1.2rem
+                    font-family SourceHanSansCN
+                    font-weight Bold
+                    @media screen and (max-width:768px)
+                        font-size 1.5rem
+                        margin-top 1.4rem
+                        margin-bottom 1.05rem
                     line-height 1.5rem
-                .data
-                    font-size 1.2rem
-                    font-family Source Han Sans CN
-                    font-weight bold
-                    line-height 30px
-                    padding 19px 0
                 .title
                     font-family Microsoft YaHei
                     font-weight Regular
                     color #333333
-                    line-height 30px
+                    line-height 1.5rem
                     white-space nowrap
                     width 90%
-                    margin-bottom 19px                    
+                    margin-bottom 19px
+                    font-size 1.7rem
+                    @media screen and (max-width:768px)
+                        margin-bottom 0.95rem
+                        line-height 1.7rem           
                     text-overflow:ellipsis
                     overflow hidden 
                 .neirong
@@ -69,6 +75,9 @@ export default {
                     font-family Microsoft YaHei
                     font-weight Regular
                     line-height 1.2rem
+                    @media screen and (max-width:768px)
+                        font-size 1.4rem
+                        line-height 2rem 
         li:hover
             .single_news
                 background-color #1A649F

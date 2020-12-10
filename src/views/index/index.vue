@@ -55,7 +55,10 @@ export default {
     margin 0
     padding 0
     min-height 750px
+    @media screen and (max-width:768px)
+        min-height 590px
   .foot
     margin 0
     padding 0
+    z-index 99
 </style>

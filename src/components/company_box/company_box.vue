@@ -25,6 +25,9 @@ export default {
     margin 50px 0 0
     min-height 235px
     background #F5F5F5
+    @media screen and (max-width:768px)
+        margin 2.95rem 0 0
+        padding 2rem 1.5rem
     .related_enterprises
         font-family MicrosoftYaHei
         text-align left
@@ -32,6 +35,9 @@ export default {
         font-size 1rem
         font-weight Regular
         margin-bottom 20px
+        @media screen and (max-width:768px)
+            font-size 1.5rem
+            line-height 2rem
     .menber_list
         width 100%
         font-family MicrosoftYaHei
@@ -43,11 +49,19 @@ export default {
             float left
             padding 12px 16px
             width 272px
-            height 80px
+            // height 80px
             background #FFFFFF
             border: 1px solid rgba(26, 100, 159, 0.5);
             margin-right 16px
             margin-bottom 15px
+            @media screen and (max-width:768px)
+                margin 0 0 1.5rem 0
+                width 74.6%
+                padding 1.45rem 0
+                line-height 1.7rem
+                background #223D6B
+                color #FFFFFF
+                font-size 1.6rem
             &:nth-child(5n+0)
                 @media screen and (min-width:1300px)
                     margin-right 0

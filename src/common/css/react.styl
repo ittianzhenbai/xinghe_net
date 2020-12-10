@@ -98,14 +98,6 @@ header, footer, nav, section, article
 //   .el-message-box__close,.el-icon-close
 //     color #FFF
 //     display none
-//加载图标
-// .create-isLoading
-//   font-size 30px
-//   .el-loading-spinner
-//       font-size 20px
-//       .el-loading-text
-//           font-size 20px
-//           margin-top 10px
 .col-1,
 .col-sm-1,
 .col-md-1,
@@ -192,7 +184,7 @@ header, footer, nav, section, article
     .el-menu-item //修改子菜单的背景颜色
         // background-color #409EFF !important
         padding-left 20px!important
-        font-size 1rem !important
+        font-size 1.5rem !important
         border-bottom 1px solid #FFFFFF
     .el-aside //修改子菜单的字体颜色
         color #FFFFFF
@@ -210,6 +202,23 @@ header, footer, nav, section, article
    .el-submenu__title //二级菜单标题
         font-size 1rem !important
         border-bottom 1px solid #FFFFFF
-        // color #409EFF !important
-
+        color #FFFFFF !important
+        @media screen and (max-width:768px)
+            font-size 1.5rem !important
+            font-family MicrosoftYaHei !important
+            font-weight Regular !important
+    .el-submenu__icon-arrow,.el-icon-arrow-down//修改二级菜单 下拉按钮颜色
+        color #FFFFFF !important
+        font-weight 1000 !important
+        @media screen and (max-width:768px)
+            font-size 1.8rem !important
+    .child_nav//手机端各级子页面菜单
+        .el-submenu__title
+            color #1A649F !important
+            font-size 1.8rem !important
+            background #F2F2F2 !important
+        .el-submenu__icon-arrow,.el-icon-arrow-down
+            color #223D6B !important
+        .el-menu-item 
+            font-size 1.4rem !important
     

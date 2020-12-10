@@ -50,12 +50,20 @@
                                 <img src="../../assets/7.png" alt="">
                                 电子邮箱:xinghegroup@zjcoop.com
                             </li>
+                            <li>
+                                <span class="demonstration1">兴合集团公众号</span>
+                                <el-image
+                                    class="img1"
+                                    style="width: 60px; height: 60px"
+                                    src="https://fuss10.elemecdn.com/e/5d/4a731a90594a4af544c0c25941171jpeg.jpeg"
+                                    fit="cover">
+                                </el-image>
+                            </li>
                         </ul>
                     </el-collapse-item>
                 </el-collapse>
             </div>
             <div class="top_right col-12 col-md-4">
-                <span class="demonstration1">兴合集团公众号</span>
                 <el-image
                     class="img1"
                     style="width: 60px; height: 60px"
@@ -91,11 +99,16 @@ export default {
         background-color #223D6B
         color #ffff
         padding 0 15px
+        border-bottom none
+/deep/.el-collapse-item__header.is-active 
         border-bottom 1px solid #FFFFFF
 /deep/.el-collapse-item__wrap
         background-color #223D6B
         color #ffff
         padding 0 15px
+        border none
+/deep/.el-collapse
+        border none
 .foot
     background-color #223D6B
     padding 0 40px
@@ -137,7 +150,7 @@ export default {
             width 100%
             padding 0
             background #223D6B
-            @media screen and (min-width:768px)
+            @media screen and (min-width:769px)
                 display none
             ul
                 list-style none
@@ -162,33 +175,33 @@ export default {
                         display inline-block
                     .kongge
                         padding-right 1.4rem
+                    .demonstration1
+                        display inline-block
+                        float left
+                        font-size 0.7rem
+                        line-height 4rem
+                        padding-right 2rem
+                        @media screen and (min-width:769px)
+                            display none
         .top_right
             float right
             color #fff
             padding-top 60px
             @media screen and (max-width: 768px)
                 padding-top 20px
+                display none
             .demonstration
                 display block
                 font-size 0.7rem
                 @media screen and (max-width:768px)
                     display none
-            .demonstration1
-                display inline-block
-                float left
-                font-size 0.7rem
-                line-height 4rem
-                padding-right 2rem
-                @media screen and (min-width:768px)
-                    display none
-            .img1
-                @media screen and (max-width:768px)
-                    float left
     .cutline
         clear both
         padding-top 10px
         margin 0 auto
         width 98%
+        @media screen and (max-width:768px)
+            padding 1px
         border-bottom 1px dashed #FFF
     .bottom
         padding-top 10px
