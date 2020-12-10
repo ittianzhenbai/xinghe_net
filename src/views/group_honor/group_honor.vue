@@ -90,6 +90,10 @@ export default {
         width 80%
         margin 100px auto
         padding 0
+        @media screen and (max-width:768px)
+            width 100%
+            padding 1.25rem 1.5rem
+            margin 0
         .item1
             height 24rem
             padding 0 40px
@@ -97,7 +101,7 @@ export default {
             background #F2F2F2
             @media screen and (max-width:768px)
                 height 18rem
-                margin-bottom 2rem
+                margin-bottom 1.45rem
             .img1
                 width 53%
                 position absolute
@@ -122,7 +126,8 @@ export default {
         .coulum2
             padding 0 40px
             margin 0
-            height 24rem
+            @media screen and (min-width:768px)
+                height 24rem
             @media screen and (max-width:768px)
                 padding 0
             .item2
@@ -131,6 +136,7 @@ export default {
                 background #F2F2F2
                 @media screen and (max-width:768px)
                     height 18rem
+                    margin 0 0 1.45rem
                 .img2
                     width 29.5%
                     position absolute
@@ -157,7 +163,7 @@ export default {
                 background #F2F2F2
                 @media screen and (max-width:768px)
                     height 18rem
-                    margin-bottom 2rem
+                    margin-bottom 1.45rem
                 .img3
                     width 29.5%
                     position absolute
@@ -213,6 +219,8 @@ export default {
             margin-top 45px
             position relative
             background #F2F2F2
+            @media screen and (max-width:768px)
+                margin-top 1.45rem
             .img5
                 width 16%
                 position absolute

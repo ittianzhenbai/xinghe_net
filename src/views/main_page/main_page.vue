@@ -290,7 +290,8 @@ export default {
                     .list1
                         padding 0 1rem
                         text-align left
-                        width 100%
+                        width 89.6%
+                        margin 0 auto
                         &>li
                             font-size 1rem
                             width 100%
@@ -301,8 +302,10 @@ export default {
                                 font-weight Bold
                                 line-height 1.5rem
                                 display inline-block
+                                padding 0
                             &>p
                                 color #333333
+                                padding-right 0
                                 padding-left 1rem
                                 @media screen and (max-width:786px)
                                     padding-left 2rem

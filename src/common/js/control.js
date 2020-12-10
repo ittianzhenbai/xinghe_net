@@ -15,7 +15,7 @@ var fn = function(){
   }
   if(w<768){
       //超小屏幕，手机
-    document.documentElement.style.fontSize = '16px'
+    document.documentElement.style.fontSize = '10pt'
   }
 }
 fn();

@@ -65,11 +65,11 @@
             </el-menu>
         </div>
         <div 
-            class="col-5 col-sm-6 col-md-12 col-lg-2 nav_right mid_screen2"
+            class="col-5 col-sm-6 col-md-6 col-lg-2 nav_right mid_screen2"
         >
             <ul class="list1">
                 <li><span class="oa"></span></li>
-                <li><span class="search" @click="search"></span></li>
+                <li><span class="search" @click="search_mobile"></span></li>
                 <li @click="use_rightnav"><span class="anniu"></span></li>
             </ul>
         </div>
@@ -124,12 +124,14 @@
         </div>
         <div class="search_box">
             <SearchBox ref="search"></SearchBox>
+            <SearchBoxMobile ref="searchMobile"></SearchBoxMobile>
         </div>
     </div>
 </template>
 <script>
 import '../../common/js/control.js'
-import SearchBox from '../../components/search_box/search_box.vue'
+import SearchBox from '@/components/search_box/search_box.vue'
+import SearchBoxMobile from '@/components/search_box_mobile/search_box_mobile.vue'
 import { mapState,mapMutations } from "vuex";
 export default {
     data() {
@@ -143,7 +145,8 @@ export default {
       };
     },
     components:{
-        SearchBox
+        SearchBox,
+        SearchBoxMobile
     },
     computed:{
         ...mapState(["activeIndex"])
@@ -303,6 +306,9 @@ export default {
         search(){
            this.$refs.search.alert_box = true
         },
+        search_mobile(){
+            this.$refs.searchMobile.alert_box = true
+        },
         changecolor(){
             this.$refs.nav.style.opacity = "1",
             this.$nextTick(()=>{
@@ -311,7 +317,8 @@ export default {
         },
         scrollToTop() {
             var scrollTop = window.pageYOffset || document.documentElement.scrollTop || document.body.scrollTop;
-            if(scrollTop%200 == 0 && scrollTop>0){
+            var w = document.documentElement.clientWidth || document.body.clientWidth;
+            if(scrollTop%200 == 0 && scrollTop>0&&w>768){
                 this.$refs.nav.style.opacity = "0.6",
                 this.$nextTick(()=>{
                     this.color = "transparent"
@@ -365,6 +372,8 @@ export default {
     font-size 1rem
     background #28436E
     opacity 0.6
+    @media screen and (max-width:768px)
+        opacity 1
     // background transparent
     line-height 3rem
     padding-right 0
@@ -372,19 +381,25 @@ export default {
     margin 0
     @media screen and (max-width:768px)
         border-bottom 1px solid #FFFFFF
+        height 5rem
     .nav_left 
         color #fff
         line-height 3rem
         padding 0
+        @media screen and (max-width:768px)
+            line-height 5rem
         .logo
             width 60%
             @media screen and (min-width:850px) and (max-width:992px)
                 width 50%
             @media screen and (max-width:768px)
                 display none
+                margin-top 0.75rem
         .logo1
             width 60%
-            @media screen and (min-width:768px)
+            @media screen and (max-width:768px)
+                width 45%
+            @media screen and (min-width:769px)
                 display none
     .nav_mid
         padding 0
@@ -415,41 +430,46 @@ export default {
                 line-height 3rem
                 @media screen and (max-width:768px)
                     border-left 1px solid #FFFFFF
+                    line-height 5rem
+                    height 4.8rem
+                    text-align center
                 .oa
-                    display block
+                    display inline-block
                     width 3.5rem
                     height 2rem
                     margin-top 1.2rem
                     background url("../../assets/2@2x.png")
                     background-size 100%
                     @media screen and (max-width:768px)
-                        margin-top 0.6rem
-                        margin-left 1rem
+                        margin-top 2rem
                         width 2rem
+                        height 1.05rem
                         background-size 200%
                         background-position -2.3rem
                     background-repeat no-repeat
                 .search
-                    display block
+                    display inline-block
                     width 1rem
                     height 2rem
                     margin-top 1.2rem
-                    margin-left 1rem
                     background url("../../assets/3@2x.png")
                     background-size 100%
-                    // @media screen and (max-width:768px)
-                    //     background-position -2.3rem
+                    @media screen and (max-width:768px)
+                       width 2rem
+                       margin-top 1.5rem
                     background-repeat no-repeat
                 .anniu
-                    display block
+                    display inline-block
                     width 20px
                     height 17px
                     margin-top 1.2rem
-                    margin-left 1rem
                     background url("../../assets/40.png")
                     background-size 100%
+                    @media screen and (max-width:768px)
+                        margin-top 1.75rem
+                    line-height 5rem
             li:nth-child(3)
-                @media screen and (min-width:768px)
+                @media screen and (min-width:769px)
                     display none
     .mid_screen1
             padding-left 200px
@@ -461,7 +481,7 @@ export default {
             @media screen and (max-width:768px)
                 display none
     .mid_screen2
-        @media screen and (min-width:768px) and (max-width:992px)
+        @media screen and (min-width:769px) and (max-width:992px)
             display none
     .left_nav //手机端侧边导航
         padding 0 0 

@@ -147,6 +147,9 @@ export default {
         padding 0
         margin 0
         position relative
+        @media screen and (max-width:768px)
+            margin-top 5rem
+            height 20rem
         .img
             width 100%
         .banner_title
@@ -172,7 +175,7 @@ export default {
                     border-bottom 2px solid #79A2C5
                     color #79A2C5
     .navigation_mobile
-        @media screen and (min-width 768px)
+        @media screen and (min-width:769px)
             display none
         .child_nav
             text-align left

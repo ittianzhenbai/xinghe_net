@@ -68,33 +68,42 @@ export default {
 .groupinfo
     margin 100px auto
     width 62%
+    @media screen and (max-width:768px)
+        width 100%
+        margin 4rem auto 2.4rem
     .title
         color #333333
         font-family Microsoft YaHei
         font-weight Bold
         font-size 2rem
-        line-height 1.5rem
+        line-height 2rem
         margin-bottom 12px
     .intro
         color #333333
         font-family MicrosoftYaHei
-        font-weight 1rem
+        font-weight Regular
+        font-size 1rem
         line-height 2rem
-        font-size 0px                  
+        @media screen and (max-width:768px)
+            font-size 14px
+            line-height 2.5rem         
     .rongyu
         width 100%
         padding 0
         .rongyu1
-            display flex
             padding 0 27px
+            @media screen and (max-width:768px)
+                padding 0 1.45rem
             margin 0 auto
             .item1
-                flex 1
+                vertical-align top
+                padding 0
                 span
                     font-size 3.6rem
                     color #1A649F
                     font-weight regular
                     font-family HYb9gf
+                    text-align center
                 &>p
                     line-height 1.5rem
                     font-size 0.8rem
@@ -103,7 +112,7 @@ export default {
                     fong-weight Regular
                     text-align center
     .pic
-        padding 0
+        padding 0 15pt
         width 100%
         margin-top 45px
         .pic1

@@ -49,5 +49,4 @@ export default {
     .nav_list
         clear both
         width 100%
-        margin-bottom 0.2rem
 </style>
