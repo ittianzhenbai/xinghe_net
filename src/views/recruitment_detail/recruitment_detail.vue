@@ -6,7 +6,6 @@
                 {{this.detail.create_at}}
                 <span class="person">{{this.detail.author}}</span>
             </span>
-            
         </div>
         <div 
             class="content"
@@ -27,8 +26,13 @@ export default {
     },
     filters: {
         formatContent(value) {
-            var re = new RegExp("(<p>|<p\\s.*?>)(\\s|　|&nbsp;|<br\\s*/?>)*</p>","ig");
-            return value.replace(/\n/g,"").replace(/<p\/>|<p\s.*?\/>/ig,"").replace(re,"");
+            console.log(value)
+            if(value !==undefined&&value !== null){
+                var re = new RegExp("(<p>|<p\\s.*?>)(\\s|　|&nbsp;|<br\\s*/?>)*</p>","ig");
+                return value.replace(/\n/g,"").replace(/<p\/>|<p\s.*?\/>/ig,"").replace(re,"");
+            }else{
+                return value
+            }
         }
     },
     methods:{

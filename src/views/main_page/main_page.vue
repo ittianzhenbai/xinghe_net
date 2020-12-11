@@ -158,7 +158,7 @@ export default {
         .near_xinghe
             margin 0
             .company_intro
-                margin 0 auto
+                margin 0 auto!important
                 padding 75px 0
                 width 100%
                 span
