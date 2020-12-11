@@ -17,8 +17,8 @@
                         v-for="(item,index) in this.optionsort"
                         :key="index"
                         class="item"
-                        @click="jump_router(index)"
-                        :class="{ active: content_show == index }"
+                        @click="jump_router(String(item.catid-1))"
+                        :class="{ active: content_show == String(item.catid-1) }"
                     >
                         {{item.title}}
                     </li>
@@ -41,7 +41,7 @@
                         <el-menu-item 
                             v-for="(item,index) in this.optionsort"
                             :key="index"
-                            index='1'
+                            :index="String(item.catid-1)"
                         >
                             {{item.title}}
                         </el-menu-item>
@@ -94,16 +94,14 @@ export default {
         },
         jump_router(item){
             this.content_show = item
-            console.log(item)
             switch(item){
-                case 0:
-                    console.log(item)
+                case "1":
                     this.$router.push({path:"/news_group"})
                     break;
-                case 1:
+                case "2":
                     this.$router.push({path:"/news_menber"})
                     break;
-                case 2:
+                case "3":
                     this.$router.push({path:"/news_notice"})
                     break;
             }
@@ -113,8 +111,9 @@ export default {
 </script>
 <style lang="stylus" scoped>
 .news_center
-  border 1px solid red
   padding 0
+  margin-left 0
+  margin-right 0
   .banner
     width 100%//这里写100%是为了继承上一层的宽度
     margin 0
@@ -156,5 +155,5 @@ export default {
           .title
               color #FFFFFF
     .list_content
-        border 1px solid #79A2C5
+        width 100%
 </style>

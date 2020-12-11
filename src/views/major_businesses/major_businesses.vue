@@ -186,5 +186,5 @@ export default {
             .title
                 color #FFFFFF
     .list_content
-        border 1px solid #79A2C5
+        width 100%
 </style>

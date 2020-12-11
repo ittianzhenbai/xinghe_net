@@ -41,7 +41,6 @@ export default {
   width 100%
   padding 0
   margin 0
-  // overflow-x hidden
   .header
     width 100%
     padding 0
@@ -60,5 +59,4 @@ export default {
   .foot
     margin 0
     padding 0
-    z-index 99
 </style>

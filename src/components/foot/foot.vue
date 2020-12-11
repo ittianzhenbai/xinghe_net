@@ -207,4 +207,5 @@ export default {
         padding-top 10px
         color #FFF!important
         font-size 0.7rem
+        padding-bottom 1rem
 </style>

@@ -6,14 +6,14 @@
         <div 
             class="nav_left col-7 col-sm-6 col-md-6 col-lg-3" 
             >
+            <span class="logo_mobile"></span>
             <img class="logo" src="../../assets/32.png" alt="">
-            <img class="logo1" src="../../assets/37.png" alt="">
         </div>
          <div 
             class="col-5 col-sm-6 col-md-6 col-lg-2 nav_right mid_screen1"
         >
             <ul class="list1">
-                <li><span class="oa"></span></li>
+                <li><span class="oa" @click="gooa"></span></li>
                 <li><span class="search" @click="search"></span></li>
             </ul>
         </div>
@@ -68,7 +68,7 @@
             class="col-5 col-sm-6 col-md-6 col-lg-2 nav_right mid_screen2"
         >
             <ul class="list1">
-                <li><span class="oa"></span></li>
+                <li><span class="oa" @click="gooa"></span></li>
                 <li><span class="search" @click="search_mobile"></span></li>
                 <li @click="use_rightnav"><span class="anniu"></span></li>
             </ul>
@@ -303,6 +303,9 @@ export default {
                 this.right_navshow = false
             }
         },
+        gooa(){
+            window.open("https://oa.zjxinghe.com/")
+        },
         search(){
            this.$refs.search.alert_box = true
         },
@@ -351,14 +354,22 @@ export default {
                 font-size 1rem
                 .el-submenu__title
                     font-size 1rem
-                    height 3rem
-                    line-height 3rem
+                    height 4rem
+                    line-height 4rem
+                    @media screen and (min-width:768px) and (max-width:850px)
+                        padding 0 15px
+                    @media screen and (min-width:851px) and (max-width:992px)
+                        padding 0 18px
+                    @media screen and (min-width:993px) and (max-width:1380px)
+                        padding 0 8px
             .el-submenu__icon-arrow,.el-icon-arrow-down
                 position absolute
                 right 45px
-                top 50px
-                @media screen and (min-width:768px) and (max-width:1200px)
-                    top 35px
+                top 58px
+                @media screen and (min-width:768px) and (max-width:992px)
+                    top 46px
+                @media screen and (min-width:993px) and (max-width:1200px)
+                    top 50px
                 font-weight 500
                 color #FFFFFF
 /deep/.el-menu--horizontal>.el-submenu.is-active .el-submenu__title
@@ -374,8 +385,7 @@ export default {
     opacity 0.6
     @media screen and (max-width:768px)
         opacity 1
-    // background transparent
-    line-height 3rem
+    line-height 4rem
     padding-right 0
     padding-top 2px
     margin 0
@@ -387,7 +397,7 @@ export default {
         line-height 3rem
         padding 0
         @media screen and (max-width:768px)
-            line-height 5rem
+            line-height 2rem
         .logo
             width 60%
             @media screen and (min-width:850px) and (max-width:992px)
@@ -395,10 +405,17 @@ export default {
             @media screen and (max-width:768px)
                 display none
                 margin-top 0.75rem
-        .logo1
-            width 60%
-            @media screen and (max-width:768px)
-                width 45%
+        .logo_mobile
+            display inline-block
+            height 3.5rem
+            width 10rem
+            line-height 5rem
+            margin-top 0.5rem
+            float left
+            margin-left 2rem
+            background url("../../assets/37.png")
+            background-size 10rem 3.5rem
+            text-align left
             @media screen and (min-width:769px)
                 display none
     .nav_mid
@@ -406,15 +423,21 @@ export default {
         @media screen and (max-width:768px)
             display none
         @media screen and (min-width:768px) and (max-width:850px)
-            padding 0 50px
+            padding 0 70px
         @media screen and (min-width:850px) and (max-width:992px)
             padding 0 100px
         .el-menu-item
             font-size 1rem
-            line-height 3rem
-            height 3rem
-            @media screen and (min-width:768px) and (max-width:992px)
+            line-height 4rem
+            height 4rem
+            @media screen and (min-width:768px) and (max-width:850px)
+                padding 0 15px
+            @media screen and (min-width:850px) and (max-width:992px)
                 height 4rem
+                padding 0 18px
+            @media screen and (min-width:993px) and (max-width:1380px)
+                height 4rem
+                padding 0 8px
     .nav_right
         padding 0 0
         @media screen and (min-width:992px)
@@ -427,7 +450,7 @@ export default {
             &>li
                 flex 1
                 color #fff
-                line-height 3rem
+                line-height 2rem
                 @media screen and (max-width:768px)
                     border-left 1px solid #FFFFFF
                     line-height 5rem
@@ -437,7 +460,7 @@ export default {
                     display inline-block
                     width 3.5rem
                     height 2rem
-                    margin-top 1.2rem
+                    margin-top 1.5rem
                     background url("../../assets/2@2x.png")
                     background-size 100%
                     @media screen and (max-width:768px)
@@ -451,7 +474,7 @@ export default {
                     display inline-block
                     width 1rem
                     height 2rem
-                    margin-top 1.2rem
+                    margin-top 1.5rem
                     background url("../../assets/3@2x.png")
                     background-size 100%
                     @media screen and (max-width:768px)
@@ -476,7 +499,7 @@ export default {
             padding-right 100px
             @meida screen and (man-width:850px)
                 padding-left 0
-            @media screen and (min-width:992px)
+            @media screen and (min-width:993px)
                 display none
             @media screen and (max-width:768px)
                 display none

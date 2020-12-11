@@ -78,10 +78,20 @@ export default {
                     @media screen and (max-width:768px)
                         font-size 1.4rem
                         line-height 2rem 
+    @media screen and (min-width:769px)
         li:hover
+            background-color #1A649F
+            padding 0
             .single_news
-                background-color #1A649F
+                width 100%
+                img
+                    height 260px
                 .date,.title,.neirong
                     color #FFFFFF
+    .row2
+        width 100%
+        padding 0
+        .pagination
+            margin 0 auto
 
 </style>

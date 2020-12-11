@@ -1,7 +1,12 @@
 <template>
     <div class="container-fluid news_group">
         <ul class="row news_list">
-            <li v-for="(item,index) in this.newslist" :key="index" class="col-6 col-md-3">
+            <li 
+                v-for="(item,index) in this.newslist" 
+                :key="index" 
+                class="col-6 col-md-3"
+                @click="godetail(item)"
+                >
                 <div class="single_news">
                      <img class="row" v-lazy="item.image" alt="">
                     <span class="date">{{item.create_at}}</span>
@@ -14,7 +19,7 @@
             <el-pagination
                 class="pagination"
                 background
-                layout="pager, next"
+                :layout="this.layout"
                 @current-change = "handleCurrentChange"
                 :page-size.sync="pagesize"
                 :current-page.sync="page"
@@ -30,7 +35,8 @@ export default {
             newslist:'',//新闻列表
             page:1,
             pagesize:8,
-            total:0
+            total:0,
+            layout:"pager, next"//控制分页组件布局
         }
     },
     mounted(){
@@ -46,6 +52,18 @@ export default {
                     console.log(res)
                     this.newslist = res.data.data.list
                     this.total = res.data.data.cur_page.total_count
+                    if(this.total<=8){
+                        this.layout = "pager"
+                    }
+                }
+            })
+        },
+        godetail(item){
+            console.log(item)
+            this.$router.push({
+                path:"/news_detail",
+                query:{
+                    newsid:item.newsid
                 }
             })
         },
@@ -58,42 +76,53 @@ export default {
 <style lang="stylus" scoped>
 .news_group
     width 80%
+    padding 100px 0
+    margin 0 auto
     @media screen and (max-width:768px)
         width 95%
-    padding 100px 0
+        padding 15pt 0
     .news_list
         margin 0 
         &>li
             margin-bottom 1rem
+            @media screen and (max-width:768px)    
+                padding 0
+                margin-bottom 2.45rem
             .single_news
                 padding 9px 9px
                 img
                     width 100%
                     height 230px
+                    @media screen and (max-width:768px)
+                        height 11.5rem
                     margin 0 auto
-                span
+                .date
                     display block
                     text-align left
                     color #CACACA
                     font-size 1.2rem
+                    font-family SourceHanSansCN
+                    font-weight Bold
+                    @media screen and (max-width:768px)
+                        font-size 1.5rem
+                        margin-top 1.4rem
+                        margin-bottom 1.05rem
                     line-height 1.5rem
-                .data
-                    font-size 1.2rem
-                    font-family Source Han Sans CN
-                    font-weight bold
-                    line-height 30px
-                    padding 19px 0
                 .title
                     font-family Microsoft YaHei
                     font-weight Regular
                     color #333333
-                    line-height 30px
+                    line-height 1.5rem
                     white-space nowrap
                     width 90%
                     margin-bottom 19px
-                    text-align left                
+                    font-size 1.1rem
+                    text-align left          
                     text-overflow:ellipsis
                     overflow hidden 
+                    @media screen and (max-width:768px)
+                        margin-bottom 0.95rem
+                        line-height 1.7rem 
                 .neirong
                     text-align left
                     display -webkit-box
@@ -105,6 +134,10 @@ export default {
                     font-family Microsoft YaHei
                     font-weight Regular
                     line-height 1.2rem
+                    @media screen and (max-width:768px)
+                        font-size 1.4rem
+                        line-height 2rem 
+    @media screen and (min-width:769px)
         li:hover
             background-color #1A649F
             padding 0
@@ -115,6 +148,7 @@ export default {
                 .date,.title,.neirong
                     color #FFFFFF
     .row2
+        width 100%
         padding 0
         .pagination
             margin 0 auto
