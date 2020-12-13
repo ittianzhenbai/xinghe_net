@@ -5,7 +5,7 @@
                 class="swiper-slide" 
                 v-for="(item,index) in pics" 
                 :key="index">
-                <img :src="item.img" alt="">
+                <img :src="item.image" alt="">
             </div>
         </div>
         <div class="swiper-button-prev"></div>
@@ -18,14 +18,16 @@ export default {
     data(){
         return{
             pics:[
-                {img:require("../../assets/banner-1.jpg")},
-                {img:require("../../assets/banner-2.jpg")},
-                {img:require("../../assets/banner-3.jpg")},
+                {image:require("../../assets/banner-1.jpg")},
+                {image:require("../../assets/banner-2.jpg")},
+                {image:require("../../assets/banner-3.jpg")},
             ],
+            banner:[]
         }
     },
     mounted(){
-        this.init()
+        // this.init()
+        this.getBanner()
     },
     methods:{
         init(){
@@ -37,6 +39,19 @@ export default {
                 nextButton:'.swiper-button-next',
             })
         },
+        getBanner(){
+            this.axios.get(
+                "api/banner/banners"
+            ).then(res=>{
+                if(res.data.code == 1){
+                    console.log(res)
+                    this.banner = res.data.data
+                    this.$nextTick(()=>{
+                        this.init()
+                    })
+                }
+            })
+        }
     }
 }
 </script>

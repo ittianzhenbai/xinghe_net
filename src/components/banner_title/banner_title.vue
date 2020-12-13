@@ -1,14 +1,15 @@
 <template>
     <div class="banner_title">
-        <span class="title_zn">
+        <span class="title_zn wow fadeInUp">
             {{this.title_zn}}
         </span>
-        <span class="title_en">
+        <span class="title_en wow fadeInUp">
             {{this.title_en}}
         </span>
     </div>
 </template>
 <script>
+import WOW from 'wowjs' 
 export default {
     props:{
         title_zn:{
@@ -25,6 +26,21 @@ export default {
 
         }
     },
+    mounted(){
+        this.wowInit()
+    },
+    methods:{
+        wowInit(){
+             let wow = new WOW.WOW({
+                boxClass: 'wow',
+                animateClass: 'animated',
+                offset: 0,
+                mobile: true,
+                live: true
+            });
+            wow.init();
+        },
+    }
 }
 </script>
 <style lang="stylus" scoped>

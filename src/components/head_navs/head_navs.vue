@@ -157,6 +157,9 @@ export default {
     mounted(){
         window.addEventListener('scroll', this.scrollToTop)
     },
+    destroyed(){
+        window.removeEventListener('scroll', this.scrollToTop);
+    },
     methods:{
         ...mapMutations(["setActiveIndex","setchildActiveIndex"]),
         handleSelect(key, keyPath) {
@@ -400,6 +403,7 @@ export default {
             line-height 2rem
         .logo
             width 60%
+            margin-top 0.75rem
             @media screen and (min-width:850px) and (max-width:992px)
                 width 50%
             @media screen and (max-width:768px)
