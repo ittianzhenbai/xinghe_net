@@ -1,11 +1,11 @@
 <template>
     <div class="container-fluid neimao">
         <div class="row row1">
-            <div class="col-12 col-sm-6 col-md-6 col-lg-6 left">
+            <div class="col-12 col-sm-12 col-md-12 col-lg-6 left">
                 <!-- <img src="../../assets/011.png" alt=""> -->
                 <img v-lazy="this.info.image" alt="">
             </div>
-            <div class="col-12 col-sm-6 col-md-6 col-lg-6 right">
+            <div class="col-12 col-sm-12 col-md-12 col-lg-6 right">
                 <div class="title_cn">
                     {{this.info.title}}
                 </div>
@@ -64,7 +64,8 @@ export default {
         @media screen and (max-width:768px)
             margin 0 1.5rem
         .left
-            padding 0
+            @media screen and (max-width:768px)
+                padding 0
             img 
                 width 100%
                 height 100%
@@ -72,7 +73,8 @@ export default {
                     height 24.6rem
         .right
             width 100%
-            padding 0
+            @media screen and (max-width:768px)
+                padding 0
             font-family MicrosoftYaHei
             text-align left
             .title_cn

@@ -1,6 +1,5 @@
 var fn = function(){
   var w = document.documentElement.clientWidth || document.body.clientWidth;
-  console.log(w)
   if(w>1200){
       //超大屏幕
      document.documentElement.style.fontSize = '20px'

@@ -22,7 +22,7 @@
     </div>
     <div class="content container-fluid">
       <div class="row row1">
-        <div class="col-sm-5 col-md-5 col-lg-4 row1_left">
+        <div class="col-sm-5 col-md-5 col-lg-5 row1_left">
           <ul class="row">
             <li class="col-12 col-sm-12 col-md-12 title">
               浙江兴合集团有限公司
@@ -49,7 +49,7 @@
             </li>
           </ul>
         </div>
-        <div class="col-sm-9 col-md-7 col-lg-8 row1_right">
+        <div class="col-sm-9 col-md-7 col-lg-7 row1_right">
           <img class="map" src="../../assets/1.png" alt="">
         </div>
       </div>

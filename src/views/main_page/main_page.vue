@@ -14,13 +14,16 @@
                 </div>
             </div>
             <div class="row rongyu">
-                <ul class="col-md-12">
+                <ul class="col-md-12"
+                    v-waypoint="{ active: true, callback: onWaypoint, options: intersectionOptions }"
+                >
                     <li v-for="(item,index) in this.rongyu" :key="index" class="col-4 col-sm-4 col-md-4 col-lg-2">
                         <animate-number 
+                            ref="NumAnimate"
                             from="1" 
                             :to="item.value"
-                            mode="auto"
-                            duration="3000"
+                            duration="1500"
+                            mode="manual"
                         ></animate-number>
                         <p>{{item.title}}</p>
                     </li>
@@ -91,7 +94,12 @@ export default {
                 {img:require("../../assets/banner-2.jpg")},
                 {img:require("../../assets/banner-3.jpg")},
             ],
-            rongyu:""
+            rongyu:"",
+            intersectionOptions: {
+                root: document.querySelector(".main"), //用作视口的元素，用于检查目标的可见性。必须是目标的祖先。如果未指定，则默认为浏览器视口null
+                rootMargin: "0px",
+                threshold: 0.33 //范围为 0-1: 阈值为1.0意味着当100％的目标在root选项指定的元素中可见时，将调用回调
+            }
         }
     },
     mounted(){
@@ -123,6 +131,14 @@ export default {
             })
             this.setActiveIndex("2-1")
             this.setchildActiveIndex("1")
+        },
+        onWaypoint({ el, going, direction, _entry }) {
+            console.log("触发了",this.$refs.NumAnimate.length)
+            if(going == "in"){
+                for(let i = 0;i<this.$refs.NumAnimate.length;i++){
+                    this.$refs.NumAnimate[i].start() 
+                }     
+            }
         }
     }
 }

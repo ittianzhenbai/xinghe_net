@@ -16,12 +16,14 @@ import 'wowjs/css/libs/animate.css'//引入wow.js
 import element from './element/element.js'
 import VueAnimateNumber from 'vue-animate-number'//数字加载动效
 import VueLazyload from 'vue-lazyload'//引入懒加载组件
+import VueWaypoint from 'vue-waypoint' //滚动检测组件
 Vue.use(VueLazyload, {
   loading: require('../src/assets/1.png'),//加载中图片，一定要有，不然会一直重复加载占位图
   error: require('../src/assets/1.png')  //加载失败图片
 });
-Vue.use(VueAnimateNumber)
+Vue.use(VueAnimateNumber)//引用数字动态变化 组件 
 Vue.use(VueAxios,axios);
+Vue.use(VueWaypoint)//调用滚动检测组件
 axios.defaults.baseURL = process.env.VUE_APP_API;
 Vue.prototype.$axios = axios;
 Vue.use(element)

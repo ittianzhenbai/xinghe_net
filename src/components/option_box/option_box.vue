@@ -1,6 +1,8 @@
 <template>
     <div class="box">
-        <div class="cur_address">
+        <div 
+            class="cur_address wow fadeInLeft"
+        >
             首页&gt;{{this.cur_address}}
         </div>
         <div class="options">
@@ -9,6 +11,7 @@
     </div>
 </template>
 <script>
+import WOW from 'wowjs' 
 export default {
     props:{
         cur_address:{
@@ -20,6 +23,21 @@ export default {
         return{
 
         }
+    },
+    mounted(){
+        this.wowInit
+    },
+    methods:{
+         wowInit(){
+             let wow = new WOW.WOW({
+                boxClass: 'wow',
+                animateClass: 'animated',
+                offset: 0,
+                mobile: true,
+                live: true
+            });
+            wow.init();
+        },
     }
 }
 </script>
