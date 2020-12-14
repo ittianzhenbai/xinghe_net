@@ -339,6 +339,7 @@ export default {
     },
     watch:{
         activeIndex(newName, oldName){ 
+            console.log(newName)
             this.activeIndex1 = newName
         }
     }

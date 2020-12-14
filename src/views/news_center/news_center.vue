@@ -76,7 +76,7 @@ export default {
     },
     mounted(){
         this.getNewsCategroy()
-        console.log(this.$route.query.fromsearch)
+        this.getBanner("lxwm")
     },
     methods:{
         getNewsCategroy(){
@@ -106,6 +106,16 @@ export default {
                     this.$router.push({path:"/news_notice"})
                     break;
             }
+        },
+        getBanner(name){
+            this.axios.post(
+                "api/banner/zlmbanner",
+                `name=${name}`
+            ).then(res=>{
+                if(res.data.code == 1){
+                    console.log(res)
+                }
+            })
         }
     }
 }

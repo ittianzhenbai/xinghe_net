@@ -52,6 +52,8 @@ export default {
 <style lang="stylus" scoped>
 .detail
     margin 100px auto
+    @media screen and (max-width:768px)
+        margin 2.6rem auto
     .news_title
         line-height 1.5rem
         .title
@@ -60,6 +62,7 @@ export default {
             font-weight Regular
             color #333333
             font-size 2rem
+            line-height 3rem
         .fabu_person
             font-family Source Han Sans CN
             font-weight Normal
@@ -67,6 +70,9 @@ export default {
             font-size 0.9rem
             display block
             margin-top 26px
+            @media screen and (max-width:768px)
+                font-size 1.4rem
+                margin-top 1.35rem
             .person
                 padding-left 1rem
     .content
@@ -75,5 +81,8 @@ export default {
         font-size 0.9rem
         color #333333
         font-family  Microsoft YaHei
-        margin-top 49px              
+        margin-top 49px
+        @media screen and (max-width:768px)
+            padding 0 1.3rem
+            margin-top 2.4rem       
 </style>
