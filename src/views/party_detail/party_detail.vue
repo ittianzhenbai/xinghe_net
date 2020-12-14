@@ -49,6 +49,8 @@ export default {
     padding 0
     width 100%
     margin 81px 0 100px
+    @media screen and (max-width:768px)
+        margin 2.6rem auto
     .row
         margin 0
         width 100%
@@ -62,6 +64,9 @@ export default {
         color #333333
         line-height 3rem
         text-align center
+        @media screen and (max-width:768px)
+            width 100%
+            padding 0 1.5rem
     .fabu
         margin-top 1.35rem
         font-size 0.9rem
@@ -70,10 +75,13 @@ export default {
         color #999999
         line-height 2rem
         text-align center
+        @media screen and (max-width:768px)
+            font-size 1.4rem
         .time
             padding-right 0.5rem
     .content
         width 49.8%
+        padding 0 25%
         font-size 0.9rem
         font-family Microsoft YaHei
         font-weight 400
@@ -81,10 +89,17 @@ export default {
         line-height 2rem
         margin 0 auto
         margin-top 2.4rem
+        @media screen and (max-width:768px)
+            width 100%
+            padding 0 1.3rem
+            font-size 1.7rem
     .content>>>p
         margin-bottom 0
         text-align left
+        line-height 1.5rem !important
+        text-indent -2rem !important
     .content>>>img
         width 85% !important
+        margin 0 auto !important
 
 </style>

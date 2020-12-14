@@ -3,14 +3,16 @@
         <div class="left_table col-12 col-md-6 col-lg-6">
             <el-table 
             class="expert_list"
-            :data="left_data" 
-            stripe
+            :data="news_list1" 
+            :row-style="rowStyle"
+            @row-click = "goNoticeDetail"
+            :cell-style ="cellStyle"
             :show-header="false"
              >
              <el-table-column
                 prop="create_at"
                 label="日期"
-                width="100"
+                width="150"
             >
             </el-table-column>
             <el-table-column
@@ -23,14 +25,16 @@
          <div class="right_table col-12 col-md-6 col-lg-6">
             <el-table 
             class="expert_list"
-            :data="right_data" 
-            stripe
+            :data="news_list2" 
+            :row-style="rowStyle"
+            @row-click = "goNoticeDetail"
+            :cell-style ="cellStyle"
             :show-header="false"
              >
              <el-table-column
-                prop="date"
+                prop="create_at"
                 label="日期"
-                width="100"
+                width="150"
             >
             </el-table-column>
             <el-table-column
@@ -58,12 +62,12 @@ export default {
     data(){
         return{
             news_list: [],
-            left_data:[],
-            right_data:[],
             page:1,
             total:0,
             pagesize:20,
-            layout:"pager"
+            layout:"pager",
+            news_list1: [],//左边数据列表
+            news_list2: []//右边数据列表
         }
     },
     created(){
@@ -80,38 +84,59 @@ export default {
                 if(res.data.code ==1){
                     console.log(res)
                     this.total = res.data.data.cur_page.total_count
-                    this.left_data = res.data.data.list
-                    if(this.total>20){
-                        this.layout = "pager, next"
+                    this.news_list = res.data.data.list
+                    if(res.data.data.list.length%2 == 1){
+                       this.news_list.push({create_at:"",title:""})
                     }
-                    // if(this.total<21){
-                    //     if(this.total<11){
-                    //         this.left_data = res.data.data.list
-                    //         if(this.left_data.length<10){
-                    //             this.left_data.push("")
-                    //         }
-                    //     }
-                    // }
+                    var arr_length = res.data.data.list.length/2
+                    this.news_list1 = this.news_list.slice(0,arr_length)
+                    this.news_list2 = this.news_list.slice(arr_length)
                 }
             })
         },
-        // rowStyle({row}){
-        //     if(row){
-        //         return{
-        //             with:"100%",
-        //             fontSize:'14px',
-        //             fontFamily: 'Microsoft YaHei',
-        //             fontWeight: '400',
-        //             lineHeight: '60px',
-        //             height:'60px',
-        //         }
-        //     }
-        // },
-        // handleSizeChange(val) {
-        //     console.log(`每页 ${val} 条`);
-        // },
+        cellStyle({row,column,columnIndex}){
+            if(columnIndex === 0){
+                return{
+                    color:'#999999',
+                    fontSize: '20px',
+                    fontFamily: 'Source Han Sans CN',
+                    fontWeight:'Regular'
+                }
+            }
+            if(columnIndex === 1){
+                return{
+                    fontSize: '20px',
+                    fontFamily: 'MicrosoftYaHei',
+                    color:'#333333',
+                    fontWeight:'Regular'
+                }
+            }
+        },
+        rowStyle({ row, rowIndex}) {
+            if (rowIndex %2 == 0) {
+                return {
+                    background:'#F8F8F8',
+                    lineHeight:'60px',
+                    height:'60px'
+                }
+            } else {
+                return {
+                    background:'#FFFFFF',
+                    lineHeight:'60px',
+                    height:'60px'
+                }
+            }
+        },
         handleCurrentChange(val) {
             console.log(`当前页: ${val}`);
+        },
+        goNoticeDetail(row){
+            this.$router.push({
+                path:"/news_detail",
+                query:{
+                    newsid:row.newsid
+                }
+            })
         },
         prevbtn(){
             console.log("666")
@@ -120,6 +145,9 @@ export default {
 }
 </script>
 <style lang="stylus" scoped>
+/deep/.el-table--enable-row-hover .el-table__body tr:hover>td
+    color #1A649F !important
+    background-color transparent
 .contain
     margin 100px auto
     width 80%

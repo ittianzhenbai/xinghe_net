@@ -72,6 +72,19 @@ export default {
     BannerTitle
   },
   mounted(){
+    this.getBanner("lxwm")
+  },
+  methods:{
+    getBanner(name){
+        this.axios.post(
+            "api/banner/zlmbanner",
+            `name=${name}`
+        ).then(res=>{
+            if(res.data.code == 1){
+                console.log(res)
+            }
+        })
+    }
   }
 }
 </script>

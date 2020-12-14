@@ -67,12 +67,12 @@ export default {
             })
         },
         goNoticeDetail(row){
-            if(this.readhistory == []||this.readhistory.length == 0){
-                //如果浏览记录为空或者 数组长度为0，则直接向数组中加入数据
-                this.readhistory.push(row)
-                this.settalentNotices(this.readhistory)
-            }else{
-            }
+            // if(this.readhistory == []||this.readhistory.length == 0){
+            //     //如果浏览记录为空或者 数组长度为0，则直接向数组中加入数据
+            //     this.readhistory.push(row)
+            //     this.settalentNotices(this.readhistory)
+            // }else{
+            // }
             this.$router.push({
                 path:"/recruitment_detail",
                 query:{jobid:row.jobid}

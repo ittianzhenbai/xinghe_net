@@ -104,7 +104,7 @@ export default {
     mounted(){
     },
     methods:{
-        ...mapMutations(["setchildActiveIndex"]),
+        ...mapMutations(["setActiveIndex","setchildActiveIndex"]),
         handleSelect(key, keyPath) {
             console.log(key ,keyPath)
             this.jump_router(key)
@@ -115,18 +115,23 @@ export default {
             switch(item){
                 case "1":
                     this.$router.push({path:"/group_intro"})
+                    this.setActiveIndex("2-1")                    
                     break;
                 case "2":
                     this.$router.push({path:"/group_framework"})
+                    this.setActiveIndex("2-2")
                     break;
                 case "3":
                     this.$router.push({path:"/group_mission"})
+                    this.setActiveIndex("2-3")
                     break;
                 case "4":
                     this.$router.push({path:"/group_menber"})
+                    this.setActiveIndex("2-4")
                     break;
                 case "5":
                     this.$router.push({path:"/group_honor"})
+                    this.setActiveIndex("2-5")
                     break;
             }
         }
