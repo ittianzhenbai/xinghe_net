@@ -69,7 +69,7 @@
         >
             <ul class="list1">
                 <li><span class="oa" @click="gooa"></span></li>
-                <li><span class="search" @click="search_mobile"></span></li>
+                <li><span class="search" @click="search"></span></li>
                 <li @click="use_rightnav"><span class="anniu"></span></li>
             </ul>
         </div>
@@ -310,10 +310,13 @@ export default {
             window.open("https://oa.zjxinghe.com/")
         },
         search(){
-           this.$refs.search.alert_box = true
-        },
-        search_mobile(){
-            this.$refs.searchMobile.alert_box = true
+           if(document.documentElement.style.fontSize == '10pt'){
+               //移动端显示
+               this.$refs.searchMobile.alert_box = true
+           }else{
+               //pc端显示
+               this.$refs.search.alert_box = true
+           }
         },
         changecolor(){
             this.$refs.nav.style.opacity = "1",
@@ -520,6 +523,6 @@ export default {
             border-right none
     .search_box
         position fixed
-        right 4.7%
-        top 3rem
+        right 2.7%
+        top 4rem
 </style>

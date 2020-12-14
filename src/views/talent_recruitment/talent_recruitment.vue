@@ -87,7 +87,7 @@ export default {
             this.content_show = item
             switch(item){
                 case "1":
-                    console.log(item)
+                    // console.log(item)
                     this.$router.push({path:"/talent_concept"})
                     break;
                 case "2":

@@ -1,7 +1,7 @@
 <template>
     <div class="container-fluid news_group">
         <ul 
-            class="row news_list"
+            class="row news_list mobile"
             v-infinite-scroll="load"
             :infinite-scroll-disabled="isloading"
             infinite-scroll-distance="50"
@@ -28,13 +28,13 @@
                 @current-change = "handleCurrentChange"
                 :page-size.sync="pagesize"
                 :current-page.sync="page"
-                :pager-count ='this.pagecount'
                 :total="this.total">
             </el-pagination>
         </div>
     </div>
 </template>
 <script>
+import {mapState} from "vuex"
 export default {
     data(){
         return{
@@ -43,24 +43,21 @@ export default {
             pagesize:8,
             total:0,
             layout:"pager, next",//控制分页是否显示next箭头
-            isloading:true,
-            pagecount:6//分页组件控制多少页后才会显示省略号
+            isloading:true
         }
     },
+    computed:{
+        ...mapState(["searchKeywords"])
+    },
     mounted(){
-        this.getNewsList(this.page,this.pagesize,91)
+        this.getNewsList(this.searchKeywords,this.page,this.pagesize)
         this.controloading()
-    //     let _this = this;//赋值vue的this
-    //     window.onresize = ()=>{
-    // 　　　　//调用methods中的事件
-    //         _this.controloading();
-    //     }
     },
     methods:{
-        getNewsList(page,pagesize,sort){
+        getNewsList(keywords,page,pagesize){
             this.axios.post(
-                "api/news/news",
-                `page=${page}&pagesize=${pagesize}&catid=${sort}`
+                "api/news/search",
+                `keywords=${keywords}&page=${page}&pagesize=${pagesize}`
             ).then(res=>{
                 if(res.data.code ==1){
                     console.log(res)
@@ -72,10 +69,10 @@ export default {
                 }
             })
         },
-        getNewsList_mobile(page,pagesize,sort){
+        getNewsList_mobile(keywords,page,pagesize){
             this.axios.post(
-                "api/news/news",
-                `page=${page}&pagesize=${pagesize}&catid=${sort}`
+                "api/news/search",
+                `keywords=${keywords}&page=${page}&pagesize=${pagesize}`
             ).then(res=>{
                 if(res.data.code ==1){
                     console.log(res)
@@ -85,6 +82,8 @@ export default {
                     }else{
                         this.newslist.push(...res.data.data.list)
                     }
+                }else if(res.code == 210){
+                    console.log("暂无数据")
                 }
             })
         },
@@ -107,9 +106,10 @@ export default {
         godetail(item){
             console.log(item)
             this.$router.push({
-                path:"/party_detail",
+                path:"/news_detail",
                 query:{
-                    newsid:item.newsid
+                    newsid:item.newsid,
+                    fromsearch:"1"
                 }
             })
         },

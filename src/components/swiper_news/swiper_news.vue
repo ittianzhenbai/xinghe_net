@@ -3,11 +3,11 @@
         <div class="swiper-wrapper">
             <div 
                 class="swiper-slide" 
-                v-for="item in 5" 
-                :key="item"
+                v-for="(item,index) in newspics" 
+                :key="index"
             >
-                Slide {{item}}
-                <div class="title1">这是标题{{item}}</div>
+                <img class="pic" v-lazy="item.image" alt="">
+                <div class="title1">{{item.title}}</div>
             </div>
         </div>
         <div class="swiper-pagination"></div>
@@ -16,6 +16,14 @@
 <script>
 import Swiper from "swiper"
 export default {
+    props:{
+        newspics:{
+            type:Array,
+            default:function(){
+                return []
+            }
+        }
+    },
     data(){
         return{
         }
@@ -46,7 +54,7 @@ export default {
     width 80%
     @media screen and (max-width:768px)
         width 100%
-    height 20rem
+    height 24rem
     margin 0 auto
     .swiper-slide 
         text-align center
@@ -65,6 +73,9 @@ export default {
         -webkit-align-items center
         align-items center
         position relative
+        .pic
+            width 100%
+            height 100%
         .title1
             position absolute
             bottom 0
