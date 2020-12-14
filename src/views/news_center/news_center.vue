@@ -8,7 +8,7 @@
           :title_en="title_en"
         ></BannerTitle>
       </div>
-      <div class="navigation_pc">
+      <div class="navigation_pc" v-show="this.$route.query.fromsearch !=='1'">
             <OptionBox
                 :cur_address = "this.cur_address"
             >
@@ -25,7 +25,7 @@
                 </ul>
             </OptionBox>
         </div>
-        <div class="navigation_mobile">
+        <div class="navigation_mobile"  v-show="this.$route.query.fromsearch !=='1'">
             <OptionBoxMobile
                 :cur_address = "this.cur_address"
             >
@@ -76,6 +76,7 @@ export default {
     },
     mounted(){
         this.getNewsCategroy()
+        console.log(this.$route.query.fromsearch)
     },
     methods:{
         getNewsCategroy(){

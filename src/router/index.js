@@ -77,6 +77,11 @@ const routes = [
             name: 'news_detail',
             component: () => import(/* webpackChunkName: "news_detail" */ '../views/news_detail/news_detail.vue')
           },
+          {
+            path: '/search_news_list',
+            name: 'search_news_list',
+            component: () => import(/* webpackChunkName: "search_news_list" */ '../views/search_news_list/search_news_list.vue')
+          },
         ]
       },
       {
@@ -137,6 +142,11 @@ const routes = [
             name: 'party_notify',
             component: () => import(/* webpackChunkName: "party_notify" */ '../views/party_notify/party_notify.vue')
           },
+          {
+            path:'/party_detail',
+            name:'party_detail',
+            component:() => import(/* webpackChunkName: "party_detail" */ '../views/party_detail/party_detail.vue')
+          }
         ]
       },
       {

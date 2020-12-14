@@ -56,22 +56,29 @@
             </ul>
             <div class="col-12 col-md-12 col-lg-12 row news_content">
                <div class="col-12 col-md-6 col-lg-6 news_pics">
-                   <SwiperNews></SwiperNews>
+                   <SwiperNews
+                    :newspics="this.pics"
+                   ></SwiperNews>
                </div>
                <div class="col-12 col-md-6 col-lg-6 news_list">
-                   <div class="news_top col-12 col-md-12 col-lg-12 ">
+                   <div class="news_top col-12 col-md-12 col-lg-12" @click="godetail(this.newslist[0])">
                        <p class="news_title">
-                           新闻标题新闻标题新闻标题新闻标题新闻标题新闻标题新闻标题新闻...
+                           {{this.newslist[0].title}}
                        </p>
                        <p class="news_content1">
-                        新闻内容新闻内容新闻内容新闻内容新闻内容新闻内容新闻内容新闻内容新新闻内容新闻内容新闻内容新闻内容
-                        新闻内容新闻内容新闻内容新闻内容新闻内容新闻内容新闻内容新闻内容新新闻内容新闻内容新闻内容新闻内容新闻内容新闻内容新闻内容
+                          {{this.newslist[0].desc}}
                        </p>
                    </div>
                    <ul class="list1 col-12 col-md-12 col-lg-12">
-                       <li v-for="item in 10" :key="item" class="row">
-                           <span class="col-1 col-md-1 col-lg-1">07/10</span>
-                           <p class="col-11 col-md-11 col-lg-11">这就是新闻标题，这就是新闻标题，这就是新闻标题，我就是一个快乐的新闻标题dahaksjhdjkahak</p>
+                       <li 
+                            v-for="(item,index) in this.newslist" 
+                            :key="index" 
+                            v-show="index>0" 
+                            class="row"
+                            @click="godetail(item)"
+                        >
+                           <span>{{item.create_at}}</span>
+                           <p>{{item.desc}}</p>
                        </li>
                    </ul>
                </div>
@@ -84,11 +91,11 @@ import '../../common/js/control.js'
 import SwiperBanner from "@/components/swiper_banner/swiper_banner.vue"
 import SwiperNews from "@/components/swiper_news/swiper_news.vue"
 import MajorBusiness from "@/components/major_business/major_business.vue"
-import { mapMutations } from "vuex"
+import { mapState,mapMutations } from "vuex"
 export default {
     data(){
         return{
-            content_show:"1",
+            content_show:this.$store.state.childActiveIndex,
             pics:[
                 {img:require("../../assets/banner-1.jpg")},
                 {img:require("../../assets/banner-2.jpg")},
@@ -99,11 +106,17 @@ export default {
                 root: document.querySelector(".main"), //用作视口的元素，用于检查目标的可见性。必须是目标的祖先。如果未指定，则默认为浏览器视口null
                 rootMargin: "0px",
                 threshold: 0.33 //范围为 0-1: 阈值为1.0意味着当100％的目标在root选项指定的元素中可见时，将调用回调
-            }
+            },
+            newslist:[],//新闻列表,
+            pics:[]
         }
+    },
+    computed:{
+         ...mapState(["childActiveIndex"])
     },
     mounted(){
         this.getRongYu()
+        this.getNewsList(1,10,2)
     },
     components:{
         SwiperBanner,
@@ -114,7 +127,7 @@ export default {
         ...mapMutations(["setActiveIndex","setchildActiveIndex"]),
         jump_router(item){
             this.content_show = item
-            this.setActiveIndex(item)
+            this.setchildActiveIndex(item)
         },
         getRongYu(){
             this.axios.get(
@@ -133,11 +146,53 @@ export default {
             this.setchildActiveIndex("1")
         },
         onWaypoint({ el, going, direction, _entry }) {
-            console.log("触发了",this.$refs.NumAnimate.length)
+            // console.log("触发了",this.$refs.NumAnimate.length)
             if(going == "in"){
                 for(let i = 0;i<this.$refs.NumAnimate.length;i++){
                     this.$refs.NumAnimate[i].start() 
                 }     
+            }
+        },
+        getNewsList(page,pagesize,sort){
+            this.axios.post(
+                "api/news/news",
+                `page=${page}&pagesize=${pagesize}&catid=${sort}`
+            ).then(res=>{
+                if(res.data.code ==1){
+                    this.newslist = res.data.data.list
+                    if(res.data.data.list.length>4){
+                        this.pics = res.data.data.list.slice(0,5)
+                    }else{
+                        this.pics = res.data.data.list
+                    }
+                }
+            })
+        },
+        godetail(item){
+            console.log(item)
+            if(this.content_show == "1"){
+                this.setActiveIndex("3-1")
+                this.setchildActiveIndex("1")
+            }
+            if(this.content_show == "2"){
+                this.setActiveIndex("3-2")
+                this.setchildActiveIndex("2")
+            }
+            this.$router.push({
+                path:"/news_detail",
+                query:{
+                    newsid:item.newsid
+                }
+            })
+        }
+    },
+    watch:{
+        content_show(newVal){
+            if(newVal == "1"){
+                this.getNewsList(1,10,2)
+            }
+            if(newVal == "2"){
+                this.getNewsList(1,10,3)
             }
         }
     }
@@ -264,7 +319,10 @@ export default {
                     font-family MicrosoftYaHei
                     font-weight Regular
                     text-align center
+                    padding-bottom 2px
+                    border-bottom 1px solid #999999
                     &.active
+                        padding-bottom 0px
                         border-bottom 3px solid #1A649F
                         color #1A649F
             .news_content
@@ -273,9 +331,10 @@ export default {
                 width 100%
                 background #F4F4F4
                 .news_pics
-                    height 20rem
+                    height 24rem
+                    margin-top 1.5rem
                 .news_list
-                    height 20rem
+                    height 24rem
                     margin 0
                     padding 0
                     width 100%
@@ -283,8 +342,8 @@ export default {
                         margin-top 17pt
                     .news_top
                         width 100%
-                        padding 0 2rem
-                        margin 0
+                        // padding 0 2rem
+                        margin 1.5rem 0 1.9rem
                         .news_title
                             font-size 1.1rem
                             color #1A649F
@@ -306,23 +365,25 @@ export default {
                     .list1
                         padding 0 1rem
                         text-align left
-                        width 89.6%
+                        // width 89.6%
                         margin 0 auto
                         &>li
                             font-size 1rem
                             width 100%
                             margin 0
+                            padding 0
                             span
                                 color #1A649F
                                 font-family SourceHanSansCN-Bold
                                 font-weight Bold
-                                line-height 1.5rem
+                                line-height 2rem
                                 display inline-block
                                 padding 0
                             &>p
                                 color #333333
                                 padding-right 0
                                 padding-left 1rem
+                                width 70%
                                 @media screen and (max-width:786px)
                                     padding-left 2rem
                                 font-family MicrosoftYaHei
@@ -330,6 +391,6 @@ export default {
                                 overflow hidden
                                 text-overflow ellipsis
                                 white-space nowrap
-                                line-height 1.5rem
+                                line-height 2rem
                                 margin-bottom 0       
 </style>

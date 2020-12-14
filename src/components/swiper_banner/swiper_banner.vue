@@ -44,7 +44,6 @@ export default {
                 "api/banner/banners"
             ).then(res=>{
                 if(res.data.code == 1){
-                    console.log(res)
                     this.banner = res.data.data
                     this.$nextTick(()=>{
                         this.init()

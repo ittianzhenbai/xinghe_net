@@ -48,11 +48,6 @@ export default {
     mounted(){
         this.getNewsList(this.page,this.pagesize,2)
         this.controloading()
-    //     let _this = this;//赋值vue的this
-    //     window.onresize = ()=>{
-    // 　　　　//调用methods中的事件
-    //         _this.controloading();
-    //     }
     },
     methods:{
         getNewsList(page,pagesize,sort){
@@ -83,6 +78,8 @@ export default {
                     }else{
                         this.newslist.push(...res.data.data.list)
                     }
+                }else if(res.code == 210){
+                    console.log("暂无数据")
                 }
             })
         },

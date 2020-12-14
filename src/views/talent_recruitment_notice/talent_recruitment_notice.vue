@@ -5,7 +5,8 @@
                 :data="joblist"
                 :show-header="status"
                 @row-click = "goNoticeDetail"
-                stripe
+                :row-style="rowStyle"
+                :cell-style ="cellStyle"
                 style="width: 100%">
                 <el-table-column
                     prop="create_at"
@@ -29,57 +30,34 @@
     </div>
 </template>
 <script>
+import { mapState,mapMutations } from "vuex";
 export default {
     data(){
          return{
             status:false,//控制是否显示表头
-            tableData: [{
-                date: '2016-05-02',               
-                title: '这就是要整的新闻'
-                }, {
-                date: '2016-05-04',  
-                title: '习近平总书记表达了2020年全面建成小康社会的决心'
-                }, {
-                date: '2016-05-01',
-                title: '上海市普陀区金沙江路 1519 弄'
-                }, {
-                date: '2016-05-03',
-                title: '上海市普陀区金沙江路 1516 弄',
-                },{
-                date: '2016-05-04',  
-                title: '习近平总书记表达了2020年全面建成小康社会的决心'
-                },{
-                date: '2016-05-04',  
-                title: '习近平总书记表达了2020年全面建成小康社会的决心'
-                },{
-                date: '2016-05-04',  
-                title: '习近平总书记表达了2020年全面建成小康社会的决心'
-                },{
-                date: '2016-05-04',  
-                title: '习近平总书记表达了2020年全面建成小康社会的决心'
-                },{
-                date: '2016-05-04',  
-                title: '习近平总书记表达了2020年全面建成小康社会的决心'
-                }
-            ],
-            joblist:"",//招聘信息列表
+            joblist:[],//招聘信息列表
             total:0,//总计招聘信息数量
-            divide_layout:"pager, next"
+            divide_layout:"pager, next",
+            readhistory:this.$store.state.talentNotices
         }   
     },
+    computed:{
+        ...mapState(["talentNotices"])
+    },
     created(){
+        // console.log(this.readhistory)
     },
     mounted(){
         this.getRecruList(1,10)
     },
     methods:{
+        ...mapMutations(["settalentNotices"]),
         getRecruList(page,pagesize){
             this.axios.post(
                 "api/job/jobs",
                 `page=${page}&pagesize=${pagesize}`
             ).then(res=>{
                 if(res.data.code == 1){
-                    console.log(res)
                     this.joblist = res.data.data.list
                     this.total = res.data.data.cur_page.total_count
                     if(this.total<10){
@@ -89,16 +67,57 @@ export default {
             })
         },
         goNoticeDetail(row){
-            console.log(row)
+            if(this.readhistory == []||this.readhistory.length == 0){
+                //如果浏览记录为空或者 数组长度为0，则直接向数组中加入数据
+                this.readhistory.push(row)
+                this.settalentNotices(this.readhistory)
+            }else{
+            }
             this.$router.push({
                 path:"/recruitment_detail",
                 query:{jobid:row.jobid}
             })
-        }
+        },
+        cellStyle({row,column,columnIndex}){
+            if(columnIndex === 0){
+                return{
+                    color:'#999999',
+                    fontSize: '20px',
+                    fontFamily: 'Source Han Sans CN',
+                    fontWeight:'Regular'
+                }
+            }
+            if(columnIndex === 1){
+                return{
+                    fontSize: '20px',
+                    fontFamily: 'MicrosoftYaHei',
+                    color:'#333333',
+                    fontWeight:'Regular'
+                }
+            }
+        },
+        rowStyle({ row, rowIndex}) {
+            if (rowIndex %2 == 0) {
+                return {
+                    background:'#F8F8F8',
+                    lineHeight:'60px',
+                    height:'60px'
+                }
+            } else {
+                return {
+                    background:'#FFFFFF',
+                    lineHeight:'60px',
+                    height:'60px'
+                }
+            }
+        },
     }
 }
 </script>
 <style lang="stylus" scoped>
+/deep/.el-table--enable-row-hover .el-table__body tr:hover>td
+    color #1A649F !important
+    background-color transparent
 .danggui
     width 100%
     padding 0

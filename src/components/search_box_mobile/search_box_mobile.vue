@@ -8,6 +8,7 @@
     </div>
 </template>
 <script>
+import {mapMutations } from "vuex"
 export default {
     data(){
         return{
@@ -16,9 +17,18 @@ export default {
         }
     },
     methods:{
+        ...mapMutations(["setActiveIndex","setsearchKeywords"]),
        gonews(){
            console.log(this.message)
            this.alert_box = false
+           this.$router.push({
+               path:"/search_news_list",
+               query:{
+                   fromsearch:"1"
+               }
+           })
+           this.setActiveIndex("3-1")
+           this.setsearchKeywords(this.message)
        }
     }
 }

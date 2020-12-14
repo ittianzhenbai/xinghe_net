@@ -26,7 +26,6 @@ export default {
     },
     filters: {
         formatContent(value) {
-            console.log(value)
             if(value !==undefined&&value !== null){
                 var re = new RegExp("(<p>|<p\\s.*?>)(\\s|　|&nbsp;|<br\\s*/?>)*</p>","ig");
                 return value.replace(/\n/g,"").replace(/<p\/>|<p\s.*?\/>/ig,"").replace(re,"");
@@ -42,7 +41,7 @@ export default {
                 `jobid=${jobid}`
             ).then(res=>{
                 if(res.data.code == 1){
-                    console.log(res)
+                    // console.log(res)
                     this.detail = res.data.data
                 }
             })

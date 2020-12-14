@@ -60,8 +60,7 @@
                         <el-menu-item index="1">党建动态</el-menu-item>
                         <el-menu-item index="2">党章党规</el-menu-item>
                         <el-menu-item index="3">学习园地</el-menu-item>
-                        <el-menu-item index="4">金融投资</el-menu-item>
-                        <el-menu-item index="5">文件通知</el-menu-item>
+                        <el-menu-item index="4">文件通知</el-menu-item>
                     </el-submenu>
                 </el-menu>
             </div>
@@ -104,6 +103,7 @@ export default {
         },
         jump_router(item){
             this.content_show = item
+            this.setchildActiveIndex(item)
             switch(item){
                 case "1":
                     this.$router.push({path:"/party_news"})
