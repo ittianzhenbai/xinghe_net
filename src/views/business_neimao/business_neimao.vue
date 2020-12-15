@@ -47,7 +47,6 @@ export default {
                 `name=${name}`
             ).then(res=>{
                 if(res.data.code = 1){
-                    console.log(res)
                     this.info = res.data.data
                 }
             })

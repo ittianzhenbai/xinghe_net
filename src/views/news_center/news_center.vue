@@ -14,13 +14,25 @@
             >
                 <ul class="options">
                     <li 
-                        v-for="(item,index) in this.optionsort"
-                        :key="index"
                         class="item"
-                        @click="jump_router(String(item.catid-1))"
-                        :class="{ active: content_show == String(item.catid-1) }"
+                        @click="jump_router('1')"
+                        :class="{ active: content_show == 1 }"
                     >
-                        {{item.title}}
+                        集团新闻
+                    </li>
+                     <li 
+                        class="item"
+                        @click="jump_router('2')"
+                        :class="{ active: content_show == 2 }"
+                    >
+                        成员企业新闻
+                    </li>
+                     <li 
+                        class="item"
+                        @click="jump_router('3')"
+                        :class="{ active: content_show == 3 }"
+                    >
+                        通知公告
                     </li>
                 </ul>
             </OptionBox>
@@ -38,13 +50,9 @@
                     active-text-color="#333">
                     <el-submenu index="1">
                         <template slot="title" class="title">企业新闻</template>
-                        <el-menu-item 
-                            v-for="(item,index) in this.optionsort"
-                            :key="index"
-                            :index="String(item.catid-1)"
-                        >
-                            {{item.title}}
-                        </el-menu-item>
+                        <el-menu-item index="1">企业新闻</el-menu-item>
+                        <el-menu-item index="2">成员企业新闻</el-menu-item>
+                        <el-menu-item index="3">通知公告</el-menu-item>
                     </el-submenu>
                 </el-menu>
             </div>
@@ -59,14 +67,16 @@
 import OptionBox from '@/components/option_box/option_box.vue'
 import OptionBoxMobile from '@/components/option_box_mobile/option_box_mobile.vue'
 import BannerTitle from '@/components/banner_title/banner_title.vue'
+import { mapState,mapMutations } from "vuex";
 export default {
     data(){
         return{
             cur_address:"新闻中心",
-            content_show:1,
+            content_show:this.$store.state.childActiveIndex,
             title_zn:"新闻中心",
             title_en:"NEWS CEMTER",
-            optionsort:""
+            optionsort:"",
+            banner:""
         }
     },
     components:{
@@ -74,36 +84,43 @@ export default {
         OptionBoxMobile,
         BannerTitle
     },
+    computed:{
+        ...mapState(["childActiveIndex"])
+    },
     mounted(){
         this.getNewsCategroy()
-        this.getBanner("lxwm")
+        this.getBanner("xwzx")
     },
     methods:{
+        ...mapMutations(["setActiveIndex","setchildActiveIndex"]),
         getNewsCategroy(){
             this.axios.get(
                 "api/news/categroy"
             ).then(res=>{
                 if(res.data.code == 1){
-                    // console.log(res)
                     this.optionsort = res.data.data
                 }
             })
         },
         handleSelect(key, keyPath) {
             console.log(key ,keyPath)
-            this.jump_router(key)
+            // this.jump_router(key)
         },
         jump_router(item){
             this.content_show = item
+            this.setchildActiveIndex(item)
             switch(item){
                 case "1":
                     this.$router.push({path:"/news_group"})
+                    this.setActiveIndex("3-1")
                     break;
                 case "2":
                     this.$router.push({path:"/news_menber"})
+                    this.setActiveIndex("3-2")
                     break;
                 case "3":
                     this.$router.push({path:"/news_notice"})
+                    this.setActiveIndex("3-3")
                     break;
             }
         },
@@ -114,6 +131,7 @@ export default {
             ).then(res=>{
                 if(res.data.code == 1){
                     console.log(res)
+                    this.banner = res.data.data
                 }
             })
         }

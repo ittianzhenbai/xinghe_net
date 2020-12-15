@@ -82,7 +82,8 @@ export default {
             cur_address:"党建园地",
             content_show:this.$store.state.childActiveIndex,
             title_zn:"党建园地",
-            title_en:"PARTY  BUILDING  GARDEN"
+            title_en:"PARTY  BUILDING  GARDEN",
+            banner:""
         }
     },
     computed:{
@@ -94,9 +95,10 @@ export default {
         BannerTitle
     },
     mounted(){
+        this.getBanner("djyd")
     },
     methods:{
-        ...mapMutations(["setchildActiveIndex"]),
+        ...mapMutations(["setActiveIndex","setchildActiveIndex"]),
         handleSelect(key, keyPath) {
             console.log(key ,keyPath)
             this.jump_router(key)
@@ -107,17 +109,32 @@ export default {
             switch(item){
                 case "1":
                     this.$router.push({path:"/party_news"})
+                    this.setActiveIndex("5-1")
                     break;
                 case "2":
                     this.$router.push({path:"/party_danggui"})
+                    this.setActiveIndex("5-2")
                     break;
                 case "3":
                     this.$router.push({path:"/party_yuandi"})
+                    this.setActiveIndex("5-3")
                     break;
                 case "4":
                     this.$router.push({path:"/party_notify"})
+                    this.setActiveIndex("5-4")
                     break;
             }
+        },
+        getBanner(name){
+            this.axios.post(
+                "api/banner/zlmbanner",
+                `name=${name}`
+            ).then(res=>{
+                if(res.data.code == 1){
+                    console.log(res)
+                    this.banner = res.data.data
+                }
+            })
         }
     },
     watch:{

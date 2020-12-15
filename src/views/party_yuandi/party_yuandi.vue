@@ -70,7 +70,7 @@ export default {
         }   
     },
     computed:{
-        ...mapState(["talentNotices"])
+        ...mapState(["readHistory3"])
     },
     created(){
     },
@@ -78,7 +78,7 @@ export default {
         this.getNewsList(this.page,this.pagesize,96)
     },
     methods:{
-        ...mapMutations(["settalentNotices"]),
+        ...mapMutations(["setreadHistory3"]),
         getNewsList(page,pagesize,sort){
             this.axios.post(
                 "api/news/news",
@@ -114,6 +114,7 @@ export default {
             })
         },
         goNoticeDetail(row){
+            this.setreadHistory3(row)
             this.$router.push({
                 path:"/party_detail",
                 query:{
@@ -131,11 +132,20 @@ export default {
                 }
             }
             if(columnIndex === 1){
-                return{
-                    fontSize: '20px',
-                    fontFamily: 'MicrosoftYaHei',
-                    color:'#333333',
-                    fontWeight:'Regular'
+                 if(this.readHistory3.some(({newsid})=>newsid==row.newsid)){
+                    return{
+                        color:'#999999',
+                        fontSize: '20px',
+                        fontFamily: 'Source Han Sans CN',
+                        fontWeight:'Regular'
+                    }
+                }else{
+                     return{
+                        fontSize: '20px',
+                        fontFamily: 'MicrosoftYaHei',
+                        color:'#333333',
+                        fontWeight:'Regular'
+                    }
                 }
             }
         },

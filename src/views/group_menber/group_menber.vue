@@ -65,7 +65,6 @@ export default {
     },
     methods:{
         changepics(item){
-           console.log(item) 
            this.$nextTick(()=>{
                this.cur_image = item.image
            })

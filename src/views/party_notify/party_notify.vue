@@ -70,15 +70,15 @@ export default {
         }   
     },
     computed:{
-        ...mapState(["talentNotices"])
+        ...mapState(["readHistory4"])
     },
     created(){
     },
     mounted(){
-        this.getNewsList(this.page,this.pagesize,96)
+        this.getNewsList(this.page,this.pagesize,97)
     },
     methods:{
-        ...mapMutations(["settalentNotices"]),
+        ...mapMutations(["setreadHistory4"]),
         getNewsList(page,pagesize,sort){
             this.axios.post(
                 "api/news/news",
@@ -114,6 +114,7 @@ export default {
             })
         },
         goNoticeDetail(row){
+            this.setreadHistory4(row)
             this.$router.push({
                 path:"/party_detail",
                 query:{
@@ -131,11 +132,20 @@ export default {
                 }
             }
             if(columnIndex === 1){
-                return{
-                    fontSize: '20px',
-                    fontFamily: 'MicrosoftYaHei',
-                    color:'#333333',
-                    fontWeight:'Regular'
+                 if(this.readHistory4.some(({newsid})=>newsid==row.newsid)){
+                    return{
+                        color:'#999999',
+                        fontSize: '20px',
+                        fontFamily: 'Source Han Sans CN',
+                        fontWeight:'Regular'
+                    }
+                }else{
+                     return{
+                        fontSize: '20px',
+                        fontFamily: 'MicrosoftYaHei',
+                        color:'#333333',
+                        fontWeight:'Regular'
+                    }
                 }
             }
         },
@@ -155,13 +165,13 @@ export default {
             }
         },
         handleCurrentChange(val){
-            this.getNewsList(val,this.pagesize,96)
+            this.getNewsList(val,this.pagesize,97)
         },
         //移动端无限加载
         load() {
             console.log("触发无限加载")
             this.page ++ 
-            this.getNewsList_mobile(this.page,this.pagesize,96)
+            this.getNewsList_mobile(this.page,this.pagesize,97)
         },
     }
 }

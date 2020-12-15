@@ -9,7 +9,7 @@
         </div>
         <div 
             class="content"
-            v-html="$options.filters.formatContent(this.detail.content)"
+            v-html="this.news_content.content"
         ></div>
     </div>
 </template>
@@ -20,7 +20,7 @@ export default {
             news_content:""//新闻内容
         }
     },
-    mounted(){
+    mounted(){  
         this.getNewsDetail(this.$route.query.newsid)
     },
     filters: {

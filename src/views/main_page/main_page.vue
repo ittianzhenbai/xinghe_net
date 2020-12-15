@@ -164,7 +164,6 @@ export default {
             })
         },
         godetail(item){
-            console.log(item)
             if(this.content_show == "1"){
                 this.setActiveIndex("3-1")
                 this.setchildActiveIndex("1")
