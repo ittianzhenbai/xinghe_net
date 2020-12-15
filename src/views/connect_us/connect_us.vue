@@ -64,7 +64,8 @@ export default {
     return{
       cur_address:"联系我们",
       title_zn:"联系我们",
-      title_en:"CONTACT US"
+      title_en:"CONTACT US",
+      banner:""//背景图
     }
   },
   components:{
@@ -81,7 +82,9 @@ export default {
             `name=${name}`
         ).then(res=>{
             if(res.data.code == 1){
-                console.log(res)
+              this.banner = res.data.data
+            }else if(res.data.code == 210){
+              console.log("暂无数据")
             }
         })
     }

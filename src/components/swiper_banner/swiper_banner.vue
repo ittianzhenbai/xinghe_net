@@ -5,7 +5,8 @@
                 class="swiper-slide" 
                 v-for="(item,index) in pics" 
                 :key="index">
-                <img :src="item.image" alt="">
+                <img class="pc" :src="item.image" alt="">
+                <img class="mobile" :src="item.image" alt="">
             </div>
         </div>
         <div class="swiper-button-prev"></div>
@@ -44,7 +45,8 @@ export default {
                 "api/banner/banners"
             ).then(res=>{
                 if(res.data.code == 1){
-                    this.banner = res.data.data
+                    console.log(res)
+                    this.pics = res.data.data
                     this.$nextTick(()=>{
                         this.init()
                     })
@@ -67,4 +69,11 @@ export default {
             width 100%
             img
                 width 100%
+            .pc
+                @media screen and (max-width:768px)
+                    display none 
+            .mobile
+                height 27.5rem
+                @media screen and (min-width:769px)
+                    display  none
 </style>

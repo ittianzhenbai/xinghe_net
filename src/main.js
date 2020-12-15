@@ -17,6 +17,9 @@ import element from './element/element.js'
 import VueAnimateNumber from 'vue-animate-number'//数字加载动效
 import VueLazyload from 'vue-lazyload'//引入懒加载组件
 import VueWaypoint from 'vue-waypoint' //滚动检测组件
+import elTableInfiniteScroll from 'el-table-infinite-scroll';//el-table无限滚动加载
+
+Vue.use(elTableInfiniteScroll);
 Vue.use(VueLazyload, {
   loading: require('../src/assets/1.png'),//加载中图片，一定要有，不然会一直重复加载占位图
   error: require('../src/assets/1.png')  //加载失败图片
@@ -24,10 +27,9 @@ Vue.use(VueLazyload, {
 Vue.use(VueAnimateNumber)//引用数字动态变化 组件 
 Vue.use(VueAxios,axios);
 Vue.use(VueWaypoint)//调用滚动检测组件
+Vue.use(element)
 axios.defaults.baseURL = process.env.VUE_APP_API;
 Vue.prototype.$axios = axios;
-Vue.use(element)
-
 Vue.config.productionTip = false
 
 new Vue({

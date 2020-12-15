@@ -1,9 +1,10 @@
 <template>
     <div class="container-fluid danggui">
         <div class="row row1">
-            <el-table
-                :data="joblist"
+             <el-table
+                :data="newslist"
                 :show-header="status"
+                class="table_pc"
                 @row-click = "goNoticeDetail"
                 :row-style="rowStyle"
                 :cell-style ="cellStyle"
@@ -11,7 +12,27 @@
                 <el-table-column
                     prop="create_at"
                     label="日期"
-                    width="80">
+                    width="150">
+                </el-table-column>
+                <el-table-column
+                    prop="title"
+                    label="新闻标题">
+                </el-table-column>
+            </el-table>
+            <el-table
+                :data="newslist"
+                :show-header="status"
+                class="table_mobile"
+                height="500px"
+                @row-click = "goNoticeDetail"
+                v-el-table-infinite-scroll="load"
+                :row-style="rowStyle"
+                :cell-style ="cellStyle"
+                style="width: 100%">
+                <el-table-column
+                    prop="create_at"
+                    label="日期"
+                    width="150">
                 </el-table-column>
                 <el-table-column
                     prop="title"
@@ -23,7 +44,10 @@
             <el-pagination
                 class="pagination"
                 background
-                :layout= this.divide_layout
+                :layout = this.divide_layout
+                :pager-count ='this.pagecount'
+                :hide-on-single-page = true
+                @current-change = "handleCurrentChange"
                 :total="this.total">
             </el-pagination>
         </div>
@@ -31,51 +55,65 @@
 </template>
 <script>
 import { mapState,mapMutations } from "vuex";
+import elTableInfiniteScroll from 'el-table-infinite-scroll';
 export default {
     data(){
          return{
             status:false,//控制是否显示表头
-            joblist:[],//招聘信息列表
+            newslist:[],//招聘信息列表
             total:0,//总计招聘信息数量
+            pagesize:10,
+            page:1,
             divide_layout:"pager, next",
-            readhistory:this.$store.state.talentNotices
+            readhistory:this.$store.state.talentNotices,
+            pagecount:5//分页组件控制多少页后才会显示省略号
         }   
     },
     computed:{
         ...mapState(["talentNotices"])
     },
     created(){
-        // console.log(this.readhistory)
     },
     mounted(){
-        this.getRecruList(1,10,97)
+        this.getNewsList(this.page,this.pagesize,96)
     },
     methods:{
         ...mapMutations(["settalentNotices"]),
-        getRecruList(page,pagesize,sort){
+        getNewsList(page,pagesize,sort){
             this.axios.post(
-                 "api/news/news",
+                "api/news/news",
                 `page=${page}&pagesize=${pagesize}&catid=${sort}`
             ).then(res=>{
                 if(res.data.code == 1){
-                    this.joblist = res.data.data.list
+                    console.log(res)
+                    this.newslist = res.data.data.list
                     this.total = res.data.data.cur_page.total_count
                     if(this.total<10){
                         this.divide_layout = "pager"
                     }
-                }else if(res.data.code == 210&&res.data.msg == "数据为空") {
+                }
+            })
+        },
+         getNewsList_mobile(page,pagesize,sort){
+            this.axios.post(
+                "api/news/news",
+                `page=${page}&pagesize=${pagesize}&catid=${sort}`
+            ).then(res=>{
+                if(res.data.code ==1){
                     console.log(res)
-                    this.divide_layout = ""
+                    // this.newslist = res.data.data.list
+                    if(this.page == 1){
+                        this.newslist = res.data.data.list
+                    }else{
+                        this.newslist.push(...res.data.data.list)
+                    }
+                    this.count = this.newslist.length
+                }else if(res.code == 210){
+                    console.log("暂无数据")
                 }
             })
         },
         goNoticeDetail(row){
-            if(this.readhistory == []||this.readhistory.length == 0){
-                //如果浏览记录为空或者 数组长度为0，则直接向数组中加入数据
-                this.readhistory.push(row)
-                this.settalentNotices(this.readhistory)
-            }else{
-            }
             this.$router.push({
                 path:"/party_detail",
                 query:{
@@ -116,6 +154,15 @@ export default {
                 }
             }
         },
+        handleCurrentChange(val){
+            this.getNewsList(val,this.pagesize,96)
+        },
+        //移动端无限加载
+        load() {
+            console.log("触发无限加载")
+            this.page ++ 
+            this.getNewsList_mobile(this.page,this.pagesize,96)
+        },
     }
 }
 </script>
@@ -127,11 +174,24 @@ export default {
     width 100%
     padding 0
     margin 100px 0
+    @media screen and (max-width:768px)
+        margin 2rem 0
     .row1
         margin 0 auto
         width 80%
+        @media screen and (max-width:768px)
+            width 100%
+        .table_pc
+            @media screen and (max-width:768px)
+                display none
+        .table_mobile
+            @media screen and (min-width:769px)
+                display none
+                height 500px  
     .row2
         margin 79px 0 0 0
+        @media screen and (max-width:768px)
+            display none
         .pagination
             margin 0 auto
 </style>

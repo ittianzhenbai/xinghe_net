@@ -7,7 +7,9 @@
                 :key="index"
             >
                 <img class="pic" v-lazy="item.image" alt="">
-                <div class="title1">{{item.title}}</div>
+                <div class="title1">
+                    <span>{{item.title}}</span>
+                </div>
             </div>
         </div>
         <div class="swiper-pagination"></div>
@@ -87,6 +89,15 @@ export default {
             text-align left
             padding-left 1rem
             color #FFFFFF
+            @media screen and (max-width:768px)
+                font-size 1.2rem
+                line-height 2rem
+            span 
+                display inline-block
+                width 60%
+                overflow hidden
+                text-overflow ellipsis
+                white-space nowrap
 .swiper-pagination
     left 30%
     bottom 0.2rem

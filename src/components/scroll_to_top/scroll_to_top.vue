@@ -27,4 +27,7 @@ export default {
     img
         width 60px
         height 60px
+        @media screen and (max-width:768px)
+            height 45px
+            width 45px
 </style>

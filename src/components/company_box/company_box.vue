@@ -2,8 +2,12 @@
     <div class="other_company">
         <div class="related_enterprises">相关企业成员</div>
         <ul class="menber_list">
-            <li class="single_conpany" v-for="item in 10" :key="item">
-                浙江华都控股集团股份有限公司
+            <li class="single_conpany" 
+                v-for="(item,index) in companys" 
+                :key="index"
+                @click="go_other_companys(item)"
+            >
+                {{item.title}}
                 <i class="el-icon-arrow-right"></i>        
             </li>
         </ul>
@@ -11,9 +15,22 @@
 </template>
 <script>
 export default {
+    props:{
+        companys:{
+            type:Array,
+            default:function(){
+                return []
+            }
+        }
+    },
     data(){
         return{
             
+        }
+    },
+    methods:{
+        go_other_companys(item){
+            window.open(item.url)
         }
     }
 }
@@ -62,9 +79,9 @@ export default {
                 background #223D6B
                 color #FFFFFF
                 font-size 1.6rem
-            &:nth-child(5n+0)
-                @media screen and (min-width:1300px)
-                    margin-right 0
+            // &:nth-child(5n+0)
+            //     @media screen and (min-width:1300px)
+            //         margin-right 0
         li:hover
             background #1A649F
             color #FFFFFF
