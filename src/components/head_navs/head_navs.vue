@@ -164,38 +164,38 @@ export default {
         ...mapMutations(["setActiveIndex","setchildActiveIndex"]),
         handleSelect(key, keyPath) {
             if(keyPath[0]=="1"){
-                console.log("我是首页")
+                // console.log("我是首页")
                 this.$router.push({path:"/main_page"})
                 this.setActiveIndex("1")
                 this.setchildActiveIndex("1")
             }
             if(keyPath[0]=="2"){
                 if(key == "2-1"){
-                    console.log("集团概况")
+                    // console.log("集团概况")
                     this.$router.push({path:"/group_intro"})
                     this.setActiveIndex('2-1')
                     this.setchildActiveIndex("1")
                 }
                 if(key == "2-2"){
-                    console.log("组织架构")
+                    // console.log("组织架构")
                     this.$router.push({path:"/group_framework"})
                     this.setActiveIndex('2-2')
                     this.setchildActiveIndex("2")
                 }
                 if(key == "2-3"){
-                    console.log("使命愿景")
+                    // console.log("使命愿景")
                     this.$router.push({path:"/group_mission"})
                     this.setActiveIndex('2-3')
                     this.setchildActiveIndex("3")
                 }
                 if(key == "2-4"){
-                    console.log("成员企业")
+                    // console.log("成员企业")
                     this.$router.push({path:"/group_menber"})
                     this.setActiveIndex('2-4')
                     this.setchildActiveIndex("4")
                 }
                 if(key == "2-5"){
-                    console.log("集团荣誉")
+                    // console.log("集团荣誉")
                     this.$router.push({path:"/group_honor"})
                     this.setActiveIndex('2-5')
                     this.setchildActiveIndex("5")
@@ -203,19 +203,19 @@ export default {
             }
             if(keyPath[0]=="3"){
                 if(key == "3-1"){
-                    console.log("集团新闻")
+                    // console.log("集团新闻")
                     this.$router.push({path:"/news_group"})
                     this.setActiveIndex('3-1')
                     this.setchildActiveIndex("1")
                 }
                 if(key == "3-2"){
-                    console.log("成员企业新闻")
+                    // console.log("成员企业新闻")
                     this.$router.push({path:"/news_menber"})
                     this.setActiveIndex('3-2')
                     this.setchildActiveIndex("2")
                 }
                 if(key == "3-3"){
-                    console.log("通知广告")
+                    // console.log("通知广告")
                     this.$router.push({path:"/news_notice"})
                     this.setActiveIndex('3-3')
                     this.setchildActiveIndex("3")
@@ -223,19 +223,19 @@ export default {
             }
             if(keyPath[0]=="4"){
                 if(key == "4-1"){
-                    console.log("内贸")
+                    // console.log("内贸")
                     this.$router.push({path:"/business_neimao"})
                     this.setActiveIndex('4-1')
                     this.setchildActiveIndex("1")
                 }
                 if(key == "4-2"){
-                    console.log("外贸")
+                    // console.log("外贸")
                     this.$router.push({path:"/business_waimao"})
                     this.setActiveIndex('4-1')
                     this.setchildActiveIndex("2")
                 }
                 if(key == "4-3"){
-                    console.log("房地产")
+                    // console.log("房地产")
                     this.$router.push({path:"/business_building"})
                     this.setActiveIndex('4-3')
                     this.setchildActiveIndex("3")
@@ -246,7 +246,7 @@ export default {
                     this.setchildActiveIndex("4")
                 }
                 if(key == "4-5"){
-                    console.log("农业服务")
+                    // console.log("农业服务")
                     this.$router.push({path:"/business_agriculture"})
                     this.setActiveIndex('4-5')
                     this.setchildActiveIndex("5")
@@ -254,25 +254,25 @@ export default {
             }
             if(keyPath[0]=="5"){
                 if(key == "5-1"){
-                    console.log("党建动态")
+                    // console.log("党建动态")
                     this.$router.push({path:"/party_news"})
                     this.setActiveIndex('5-1')
                     this.setchildActiveIndex("1")
                 }
                 if(key == "5-2"){
-                    console.log("党章党规")
+                    // console.log("党章党规")
                     this.$router.push({path:"/party_danggui"})
                     this.setActiveIndex('5-2')
                     this.setchildActiveIndex("2")
                 }
                 if(key == "5-3"){
-                    console.log("学习园地")
+                    // console.log("学习园地")
                     this.$router.push({path:"/party_yuandi"})
                     this.setActiveIndex('5-3')
                     this.setchildActiveIndex("3")
                 }
                 if(key == "5-4"){
-                    console.log("文件通知")
+                    // console.log("文件通知")
                     this.$router.push({path:"/party_notify"})
                     this.setActiveIndex('5-4')
                     this.setchildActiveIndex("4")
@@ -280,13 +280,13 @@ export default {
             }
             if(keyPath[0]=="6"){
                 if(key == "6-1"){
-                    console.log("人才理念")
+                    // console.log("人才理念")
                     this.$router.push({path:"/talent_concept"})
                     this.setActiveIndex('6-1')
                     this.setchildActiveIndex("1")
                 }
                 if(key == "6-2"){
-                    console.log("人才招聘")
+                    // console.log("人才招聘")
                     this.$router.push({path:"/talent_recruitment_notice"})
                     this.setActiveIndex('6-2')
                     this.setchildActiveIndex("2")
@@ -294,7 +294,7 @@ export default {
             }
              if(keyPath[0]=="7"){
                this.$router.push({path:"/connect_us"})
-               console.log("联系我们")
+            //    console.log("联系我们")
                this.setActiveIndex('7')
             }
         },
@@ -340,7 +340,7 @@ export default {
     },
     watch:{
         activeIndex(newName, oldName){ 
-            console.log(newName)
+            // console.log(newName)
             this.activeIndex1 = newName
         }
     }
@@ -377,7 +377,8 @@ export default {
                 @media screen and (min-width:768px) and (max-width:992px)
                     top 46px
                 @media screen and (min-width:993px) and (max-width:1200px)
-                    top 50px
+                    top 52px
+                    right 40px
                 font-weight 500
                 color #FFFFFF
 /deep/.el-menu--horizontal>.el-submenu.is-active .el-submenu__title

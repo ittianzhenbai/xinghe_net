@@ -90,7 +90,8 @@ export default {
             cur_address:"走进兴合",
             content_show:this.$store.state.childActiveIndex,
             title_zn:"走进兴合",
-            title_en:"ENTERING XINHE"
+            title_en:"ENTERING XINHE",
+            banner:""
         }
     },
     computed:{
@@ -102,6 +103,7 @@ export default {
         BannerTitle
     },
     mounted(){
+        this.getBanner("zjxh")
     },
     methods:{
         ...mapMutations(["setActiveIndex","setchildActiveIndex"]),
@@ -134,6 +136,17 @@ export default {
                     this.setActiveIndex("2-5")
                     break;
             }
+        },
+        getBanner(name){
+            this.axios.post(
+                "api/banner/zlmbanner",
+                `name=${name}`
+            ).then(res=>{
+                if(res.data.code == 1){
+                    console.log(res)
+                    this.banner = res.data.data
+                }
+            })
         }
     },
     watch:{

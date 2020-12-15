@@ -92,7 +92,8 @@ export default {
             cur_address:"主营业务",
             content_show:this.$store.state.childActiveIndex,
             title_zn:"主营业务",
-            title_en:"MAIN BUSINESS"
+            title_en:"MAIN BUSINESS",
+            banner:""
         }
     },
     computed:{
@@ -106,7 +107,7 @@ export default {
     mounted(){
     },
     methods:{
-        ...mapMutations(["setchildActiveIndex"]),
+        ...mapMutations(["setActiveIndex","setchildActiveIndex"]),
         handleSelect(key, keyPath) {
             console.log(key ,keyPath)
             this.jump_router(key)
@@ -118,25 +119,40 @@ export default {
             switch(item){
                 case "1":
                     this.$router.push({path:"/business_neimao"})
+                    this.setActiveIndex("4-1")
                     break;
                 case "2":
                     this.$router.push({path:"/business_waimao"})
+                    this.setActiveIndex("4-2")
                     break;
                 case "3":
                     this.$router.push({path:"/business_building"})
+                     this.setActiveIndex("4-3")
                     break;
                 case "4":
                     this.$router.push({path:"/business_finance"})
+                     this.setActiveIndex("4-4")
                     break;
                 case "5":
                     this.$router.push({path:"/business_agriculture"})
+                     this.setActiveIndex("4-5")
                     break;
             }
+        },
+        getBanner(name){
+            this.axios.post(
+                "api/banner/zlmbanner",
+                `name=${name}`
+            ).then(res=>{
+                if(res.data.code == 1){
+                    this.banner = res.data.data
+                }
+            })
         }
     },
     watch:{
         childActiveIndex(newval){
-            console.log("childActiveIndex",newval)
+            // console.log("childActiveIndex",newval)
             this.content_show = newval
         }
     }

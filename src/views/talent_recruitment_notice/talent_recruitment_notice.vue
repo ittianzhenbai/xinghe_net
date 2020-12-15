@@ -112,7 +112,7 @@ export default {
                 }
             })
         },
-        goNoticeDetail(row,column,event){
+        goNoticeDetail(row){
             this.setreadHistory1(row)
             this.$router.push({
                 path:"/recruitment_detail",
@@ -144,8 +144,7 @@ export default {
                         fontWeight:'Regular'
                     }
                 }
-            }
-               
+            }    
         },
         rowStyle({ row, rowIndex}) {
             if (rowIndex %2 == 0) {

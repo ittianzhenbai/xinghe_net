@@ -70,7 +70,7 @@ export default {
         }   
     },
     computed:{
-        ...mapState(["talentNotices"])
+        ...mapState(["readHistory2"])
     },
     created(){
     },
@@ -78,14 +78,13 @@ export default {
         this.getNewsList(this.page,this.pagesize,95)
     },
     methods:{
-        ...mapMutations(["settalentNotices"]),
+        ...mapMutations(["setreadHistory2"]),
         getNewsList(page,pagesize,sort){
             this.axios.post(
                 "api/news/news",
                 `page=${page}&pagesize=${pagesize}&catid=${sort}`
             ).then(res=>{
                 if(res.data.code == 1){
-                    console.log(res)
                     this.newslist = res.data.data.list
                     this.total = res.data.data.cur_page.total_count
                     if(this.total<10){
@@ -100,7 +99,6 @@ export default {
                 `page=${page}&pagesize=${pagesize}&catid=${sort}`
             ).then(res=>{
                 if(res.data.code ==1){
-                    console.log(res)
                     // this.newslist = res.data.data.list
                     if(this.page == 1){
                         this.newslist = res.data.data.list
@@ -114,6 +112,7 @@ export default {
             })
         },
         goNoticeDetail(row){
+            this.setreadHistory2(row)
             this.$router.push({
                 path:"/party_detail",
                 query:{
@@ -131,11 +130,20 @@ export default {
                 }
             }
             if(columnIndex === 1){
-                return{
-                    fontSize: '20px',
-                    fontFamily: 'MicrosoftYaHei',
-                    color:'#333333',
-                    fontWeight:'Regular'
+                if(this.readHistory2.some(({newsid})=>newsid==row.newsid)){
+                    return{
+                        color:'#999999',
+                        fontSize: '20px',
+                        fontFamily: 'Source Han Sans CN',
+                        fontWeight:'Regular'
+                    }
+                }else{
+                     return{
+                        fontSize: '20px',
+                        fontFamily: 'MicrosoftYaHei',
+                        color:'#333333',
+                        fontWeight:'Regular'
+                    }
                 }
             }
         },

@@ -66,7 +66,8 @@ export default {
             cur_address:"人才招聘",
             content_show:this.$store.state.childActiveIndex,
             title_zn:"人才招聘",
-            title_en:"TALENT RECRUITMENT"
+            title_en:"TALENT RECRUITMENT",
+            banner:""
         }
     },
     computed:{
@@ -76,6 +77,9 @@ export default {
         OptionBox,
         OptionBoxMobile,
         BannerTitle
+    },
+    mounted(){
+        this.getBanner("rczp")
     },
     methods:{
         ...mapMutations(["setchildActiveIndex"]),
@@ -94,6 +98,17 @@ export default {
                     this.$router.push({path:"/talent_recruitment_notice"})
                     break;
             }
+        },
+        getBanner(name){
+            this.axios.post(
+                "api/banner/zlmbanner",
+                `name=${name}`
+            ).then(res=>{
+                if(res.data.code == 1){
+                    console.log(res)
+                    this.banner = res.data.data
+                }
+            })
         }
     },
     watch:{

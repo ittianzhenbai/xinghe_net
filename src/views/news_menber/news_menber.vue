@@ -87,7 +87,6 @@ export default {
                 `page=${page}&pagesize=${pagesize}&catid=${sort}`
             ).then(res=>{
                 if(res.data.code ==1){
-                    console.log(res)
                     this.newslist = res.data.data.list
                     this.total = res.data.data.cur_page.total_count
                     if(this.total<=8){
@@ -102,7 +101,6 @@ export default {
                 `page=${page}&pagesize=${pagesize}&catid=${sort}`
             ).then(res=>{
                 if(res.data.code ==1){
-                    console.log(res)
                     // this.newslist = res.data.data.list
                     if(this.page == 1){
                         this.newslist = res.data.data.list
