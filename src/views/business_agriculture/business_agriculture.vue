@@ -2,23 +2,27 @@
     <div class="container-fluid neimao">
         <div class="row row1">
             <div class="col-12 col-sm-12 col-md-12 col-lg-6 left">
-                <img src="../../assets/_017.png" alt="">
+                <!-- <img src="../../assets/_017.png" alt=""> -->
+             <img v-lazy="this.info.image" alt="">
             </div>
             <div class="col-12 col-sm-12 col-md-12 col-lg-6 right">
                 <div class="title_cn">
-                    农业服务
+                    {{this.info.title}}
                 </div>
                 <div class="title_en">
-                    Agricultural Services
+                    {{this.info.title_en}}
                 </div>
                 <div class="line"></div>
                 <p class="neirong">
-                 作为供销社社有企业，集团始终坚持为农服务宗旨，发挥龙头带动作用，积极融入乡村振兴战略和浙江省“三位一体”农合联改革，统筹推进农业社会化服务体系和现代涉农产业体系建设，向现代农业综合服务商全面迈进。目前，农业服务涵盖农资经营、农化服务、农批市场建设、农产品加工配送、涉农金融、种子种苗、城乡环境服务、田园综合体建设等。
+                    {{this.info.content}}
+                 <!-- 作为供销社社有企业，集团始终坚持为农服务宗旨，发挥龙头带动作用，积极融入乡村振兴战略和浙江省“三位一体”农合联改革，统筹推进农业社会化服务体系和现代涉农产业体系建设，向现代农业综合服务商全面迈进。目前，农业服务涵盖农资经营、农化服务、农批市场建设、农产品加工配送、涉农金融、种子种苗、城乡环境服务、田园综合体建设等。 -->
                 </p>
             </div>
         </div>
         <div class="row row2">
-           <CompanyBox></CompanyBox>
+           <CompanyBox
+            :companys="this.info.link_company"
+           ></CompanyBox>
         </div>
     </div>
 </template>
@@ -27,11 +31,27 @@ import CompanyBox from "../../components/company_box/company_box.vue"
 export default {
     data(){
         return{
-            
+            info:""//业务信息
         }
     },
     components:{
         CompanyBox
+    },
+    mounted(){
+        this.getBusinessInfo("nyfu")
+    },
+    methods:{
+        getBusinessInfo(name){
+            this.axios.post(
+                "api/singlepage/main_business",
+                `name=${name}`
+            ).then(res=>{
+                if(res.data.code = 1){
+                    console.log(res)
+                    this.info = res.data.data
+                }
+            })
+        }
     }
 }
 </script>

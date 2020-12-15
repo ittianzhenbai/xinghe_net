@@ -96,11 +96,6 @@ export default {
     data(){
         return{
             content_show:this.$store.state.childActiveIndex,
-            pics:[
-                {img:require("../../assets/banner-1.jpg")},
-                {img:require("../../assets/banner-2.jpg")},
-                {img:require("../../assets/banner-3.jpg")},
-            ],
             rongyu:"",
             intersectionOptions: {
                 root: document.querySelector(".main"), //用作视口的元素，用于检查目标的可见性。必须是目标的祖先。如果未指定，则默认为浏览器视口null
@@ -206,6 +201,8 @@ export default {
         padding 0
         width 100%
         margin 0
+        @media screen and (max-width:768px)
+            margin-top 4rem
         .swiper-container
             width 100%
             .swiper-wrapper
@@ -258,6 +255,8 @@ export default {
             ul
                 margin 0 auto
                 padding 0
+                @media screen and (max-width:768px)
+                    margin 0
                 &>li
                     display inline-block
                     vertical-align top
@@ -344,6 +343,10 @@ export default {
                         width 100%
                         // padding 0 2rem
                         margin 1.5rem 0 1.9rem
+                        font-family MicrosoftYaHei
+                        font-weight Regular
+                        @media screen and (max-width:768px)
+                            margin 0
                         .news_title
                             font-size 1.1rem
                             color #1A649F
@@ -354,6 +357,9 @@ export default {
                             overflow hidden
                             text-overflow ellipsis
                             white-space nowrap
+                            @media screen and (max-width:768px)
+                                font-size 1.5rem
+                                line-height 1.5rem
                         .news_content1
                             text-align left
                             display -webkit-box
@@ -362,11 +368,13 @@ export default {
                             overflow hidden
                             color #666666
                             font-size 0.7rem
+                            @media screen and (max-width:768px)
+                                font-size 1.2rem
+                                line-height 2rem
                     .list1
                         padding 0 1rem
                         text-align left
                         // width 89.6%
-                        margin 0 auto
                         &>li
                             font-size 1rem
                             width 100%
@@ -379,18 +387,23 @@ export default {
                                 line-height 2rem
                                 display inline-block
                                 padding 0
+                                @media screen and (max-width:768px)
+                                    font-size 1.2rem
+                                    line-height 3.5rem
                             &>p
                                 color #333333
                                 padding-right 0
                                 padding-left 1rem
-                                width 70%
-                                @media screen and (max-width:786px)
-                                    padding-left 2rem
+                                width 70% 
                                 font-family MicrosoftYaHei
                                 font-weight Regular
                                 overflow hidden
                                 text-overflow ellipsis
                                 white-space nowrap
                                 line-height 2rem
-                                margin-bottom 0       
+                                margin-bottom 0
+                                @media screen and (max-width:768px)
+                                    font-size 1.5rem
+                                    line-height 3.5rem
+                                    padding-left 2rem
 </style>

@@ -1,7 +1,24 @@
 <template>
     <div class="container-fluid news_group">
+         <ul 
+            class="row news_list pc"
+        >
+            <li 
+                v-for="(item,index) in this.newslist" 
+                :key="index" 
+                class="col-6 col-md-3"
+                @click="godetail(item)"
+            >
+                <div class="single_news">
+                    <img class="row" v-lazy="item.image" alt="">
+                    <span class="date">{{item.create_at}}</span>
+                    <p class="title">{{item.title}}</p>
+                    <p class="neirong">{{item.desc}}</p>
+                </div>
+            </li>
+        </ul>
         <ul 
-            class="row news_list"
+            class="row news_list mobile"
             v-infinite-scroll="load"
             :infinite-scroll-disabled="isloading"
             infinite-scroll-distance="50"
@@ -19,6 +36,10 @@
                     <p class="neirong">{{item.desc}}</p>
                 </div>
             </li>
+            <li>
+                <span class="text1" v-if="loading" @click="reload">继续查看...</span>
+                <span class="text1" v-if="noMore">没有更多了</span>
+            </li>
         </ul>
         <div class="row row2">
             <el-pagination
@@ -29,6 +50,7 @@
                 :page-size.sync="pagesize"
                 :current-page.sync="page"
                 :pager-count ='this.pagecount'
+                :hide-on-single-page = true
                 :total="this.total">
             </el-pagination>
         </div>
@@ -43,18 +65,21 @@ export default {
             pagesize:8,
             total:0,
             layout:"pager, next",//控制分页是否显示next箭头
-            isloading:true,
-            pagecount:6//分页组件控制多少页后才会显示省略号
+            pagecount:5,//分页组件控制多少页后才会显示省略号
+            loading: false,
+            count:""//记录加载的新闻长度
         }
     },
     mounted(){
         this.getNewsList(this.page,this.pagesize,91)
-        this.controloading()
-    //     let _this = this;//赋值vue的this
-    //     window.onresize = ()=>{
-    // 　　　　//调用methods中的事件
-    //         _this.controloading();
-    //     }
+    },
+    computed:{
+        noMore () {
+            return this.count >= this.total
+        },
+        isloading(){
+            return this.loading || this.noMore
+        }
     },
     methods:{
         getNewsList(page,pagesize,sort){
@@ -85,23 +110,26 @@ export default {
                     }else{
                         this.newslist.push(...res.data.data.list)
                     }
+                    this.count = this.newslist.length
+                    if(this.count>=this.total){
+                        this.loading = false
+                    }
+                }else if(res.code == 210){
+                    console.log("暂无数据")
                 }
             })
         },
-        controloading(){
-            var w = document.documentElement.clientWidth || document.body.clientWidth;
-            console.log(w)
-            if(w<768||w==768){
-                this.isloading = false
-            }else{
-                this.isloading = true
-            }
-        },
         //无限加载效果实现
         load () {
-            this.controloading()
-            console.log("触发滚动")
-            this.page+=1
+            this.loading = true
+            this.page ++
+            this.getNewsList_mobile(this.page,this.pagesize,2)
+        },
+        reload(){
+            //点击继续查看 可以查看下一页数据
+            this.page ++
+            console.log(this.page,this.count)
+            
             this.getNewsList_mobile(this.page,this.pagesize,2)
         },
         godetail(item){
@@ -128,11 +156,14 @@ export default {
         width 95%
         padding 15pt 0
     .news_list
-        margin 0 
+        margin 0
+        overflow auto
         @media screen and (max-width:768px)
             height 500px
             overflow scroll
+            overflow-x hidden
         &>li
+            width 100%
             margin-bottom 1rem
             @media screen and (max-width:768px)    
                 padding 0
@@ -186,6 +217,10 @@ export default {
                     @media screen and (max-width:768px)
                         font-size 1.4rem
                         line-height 2rem 
+            .text1
+                width 100%
+                font-size 1.5rem
+                text-align center
     @media screen and (min-width:769px)
         li:hover
             background-color #1A649F
@@ -196,6 +231,12 @@ export default {
                     height 260px
                 .date,.title,.neirong
                     color #FFFFFF
+    .pc
+        @media screen and (max-width:768px)
+            display none
+    .mobile
+        @media screen and (min-width:769px)
+            display none
     .row2
         width 100%
         padding 0

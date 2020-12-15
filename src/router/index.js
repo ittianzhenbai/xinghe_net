@@ -180,11 +180,6 @@ const routes = [
         name: 'connect_us',
         component: () => import(/* webpackChunkName: "connect_us" */ '../views/connect_us/connect_us.vue')
       },
-      {
-        path: '/ceshi',
-        name: 'ceshi',
-        component: () => import(/* webpackChunkName: "connect_us" */ '../views/ceshi.vue')
-      },
     ]
   }
 ]

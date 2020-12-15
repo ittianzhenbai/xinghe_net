@@ -9,7 +9,7 @@
         </div>
         <div 
             class="content"
-            v-html="this.news_content.content"
+            v-html="$options.filters.formatContent(this.detail.content)"
         ></div>
     </div>
 </template>
@@ -25,8 +25,12 @@ export default {
     },
     filters: {
         formatContent(value) {
-            var re = new RegExp("(<p>|<p\\s.*?>)(\\s||&nbsp;|<br\\s*/?>)*</p>","ig");
-            return value.replace(/\n/g,"").replace(/<p\/>|<p\s.*?\/>/ig,"").replace(re,"");
+            if(value !==undefined&&value !== null){
+                var re = new RegExp("(<p>|<p\\s.*?>)(\\s|　|&nbsp;|<br\\s*/?>)*</p>","ig");
+                return value.replace(/\n/g,"").replace(/<p\/>|<p\s.*?\/>/ig,"").replace(re,"");
+            }else{
+                return value
+            }
         }
     },
     methods:{

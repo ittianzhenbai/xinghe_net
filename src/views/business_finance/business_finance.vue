@@ -2,23 +2,27 @@
     <div class="container-fluid neimao">
         <div class="row row1">
             <div class="col-12 col-sm-12 col-md-12 col-lg-6 left">
-                <img src="../../assets/014.png" alt="">
+                <!-- <img src="../../assets/014.png" alt=""> -->
+              <img v-lazy="this.info.image" alt="">
             </div>
             <div class="col-12 col-sm-12 col-md-12 col-lg-6 right">
                 <div class="title_cn">
-                    金融投资
+                    {{this.info.title}}
                 </div>
                 <div class="title_en">
-                    Financial investment
+                    {{this.info.title_en}}
                 </div>
                 <div class="line"></div>
                 <p class="neirong">
-                    集团金融投资业务以产融结合服务实体发展，下属多家专业金融投资服务公司，涉及供应链金融、互联网金融、期货套保、小额贷款、租赁、担保、PE投资、证券投资、资产管理等业务形态，初步形成了全链条、综合化的业务格局。我们一直秉持和遵循规范管理、稳健投资的理念，以专业能力发现投资价值并进一步为客户创造财富。
+                    {{this.info.content}}
+                    <!-- 集团金融投资业务以产融结合服务实体发展，下属多家专业金融投资服务公司，涉及供应链金融、互联网金融、期货套保、小额贷款、租赁、担保、PE投资、证券投资、资产管理等业务形态，初步形成了全链条、综合化的业务格局。我们一直秉持和遵循规范管理、稳健投资的理念，以专业能力发现投资价值并进一步为客户创造财富。 -->
                 </p>
             </div>
         </div>
         <div class="row row2">
-           <CompanyBox></CompanyBox>
+           <CompanyBox
+            :companys="this.info.link_company"
+           ></CompanyBox>
         </div>
     </div>
 </template>
@@ -27,11 +31,27 @@ import CompanyBox from "../../components/company_box/company_box.vue"
 export default {
     data(){
         return{
-            
+            info:""//业务信息
         }
     },
     components:{
         CompanyBox
+    },
+    mounted(){
+        this.getBusinessInfo("jrtz")
+    },
+    methods:{
+        getBusinessInfo(name){
+            this.axios.post(
+                "api/singlepage/main_business",
+                `name=${name}`
+            ).then(res=>{
+                if(res.data.code = 1){
+                    console.log(res)
+                    this.info = res.data.data
+                }
+            })
+        }
     }
 }
 </script>

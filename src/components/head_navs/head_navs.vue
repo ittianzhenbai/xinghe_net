@@ -167,6 +167,7 @@ export default {
                 console.log("我是首页")
                 this.$router.push({path:"/main_page"})
                 this.setActiveIndex("1")
+                this.setchildActiveIndex("1")
             }
             if(keyPath[0]=="2"){
                 if(key == "2-1"){

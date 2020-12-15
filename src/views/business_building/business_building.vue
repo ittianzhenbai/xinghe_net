@@ -2,36 +2,56 @@
     <div class="container-fluid neimao">
         <div class="row row1">
             <div class="col-12 col-sm-12 col-md-12 col-lg-6 left">
-                <img src="../../assets/013.png" alt="">
+                <!-- <img src="../../assets/013.png" alt=""> -->
+              <img v-lazy="this.info.image" alt="">
             </div>
             <div class="col-12 col-sm-12 col-md-12 col-lg-6 right">
                 <div class="title_cn">
-                    房地产
+                    {{this.info.title}}
                 </div>
                 <div class="title_en">
-                    Real estate
+                    {{this.info.title_en}}
                 </div>
                 <div class="line"></div>
                 <p class="neirong">
-                    集团房地产业务以开发商业住宅及社区商业为主，涵盖城市综合体、专业市场、写字楼、产业地产等多种物业形态，项目遍及浙江、山东、四川、安徽、湖北、湖南等地，累计开发面积1500多万平方米,在实践中形成了快周转、标准化、高品质的经营特点和“开发+运营”的发展路子，并在“房地产+”的探索中进一步创造美好人居生活。      
+                    {{this.info.content}}
+                    <!-- 集团房地产业务以开发商业住宅及社区商业为主，涵盖城市综合体、专业市场、写字楼、产业地产等多种物业形态，项目遍及浙江、山东、四川、安徽、湖北、湖南等地，累计开发面积1500多万平方米,在实践中形成了快周转、标准化、高品质的经营特点和“开发+运营”的发展路子，并在“房地产+”的探索中进一步创造美好人居生活。       -->
                 </p>
             </div>
         </div>
         <div class="row row2">
-           <CompanyBox></CompanyBox>
+            <CompanyBox
+            :companys="this.info.link_company"
+           ></CompanyBox>
         </div>
     </div>
 </template>
 <script>
 import CompanyBox from "../../components/company_box/company_box.vue"
 export default {
-    data(){
+   data(){
         return{
-            
+            info:""//业务信息
         }
     },
     components:{
         CompanyBox
+    },
+    mounted(){
+        this.getBusinessInfo("fdc")
+    },
+    methods:{
+        getBusinessInfo(name){
+            this.axios.post(
+                "api/singlepage/main_business",
+                `name=${name}`
+            ).then(res=>{
+                if(res.data.code = 1){
+                    console.log(res)
+                    this.info = res.data.data
+                }
+            })
+        }
     }
 }
 </script>
