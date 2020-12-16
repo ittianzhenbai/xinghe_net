@@ -13,9 +13,9 @@
                     {{this.info.title_en}}
                 </div>
                 <div class="line"></div>
-                <p class="neirong">
-                    {{this.info.content}}
-                 <!-- 作为供销社社有企业，集团始终坚持为农服务宗旨，发挥龙头带动作用，积极融入乡村振兴战略和浙江省“三位一体”农合联改革，统筹推进农业社会化服务体系和现代涉农产业体系建设，向现代农业综合服务商全面迈进。目前，农业服务涵盖农资经营、农化服务、农批市场建设、农产品加工配送、涉农金融、种子种苗、城乡环境服务、田园综合体建设等。 -->
+                <p class="neirong"
+                    v-html="this.info.content"
+                >
                 </p>
             </div>
         </div>

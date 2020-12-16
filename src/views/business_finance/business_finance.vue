@@ -13,9 +13,9 @@
                     {{this.info.title_en}}
                 </div>
                 <div class="line"></div>
-                <p class="neirong">
-                    {{this.info.content}}
-                    <!-- 集团金融投资业务以产融结合服务实体发展，下属多家专业金融投资服务公司，涉及供应链金融、互联网金融、期货套保、小额贷款、租赁、担保、PE投资、证券投资、资产管理等业务形态，初步形成了全链条、综合化的业务格局。我们一直秉持和遵循规范管理、稳健投资的理念，以专业能力发现投资价值并进一步为客户创造财富。 -->
+                <p class="neirong"
+                    v-html="this.info.content"
+                >
                 </p>
             </div>
         </div>

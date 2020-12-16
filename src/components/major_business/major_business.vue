@@ -1,27 +1,112 @@
 <template>
     <div class="row">
          <ul class="major_businesses_pc">
-            <li v-for="(item,index) in major_business" @click="godetail(item)" :key="index">
-                <img  class="img1" :src="item.img1" alt="">
-                <span class="text1">{{item.text1}}</span>
-                <span class="text2">{{item.text2}}</span>
-                <img  class="img2" :src="item.img2" alt="">
-                <img  class="img3" :src="item.img3" alt="">
+            <li @click="godetail('nm')">
+                <img  class="img1" src="../../assets/16.png" alt="">
+                <span class="text1">{{this.major_business[1].title}}</span>
+                <span class="text2">{{this.major_business[1].title_en}}</span>
+                <img  class="img2" src="../../assets/01.png" alt="">
+                <img  class="img3" src="../../assets/06.png" alt="">
                 <div class="active">
-                    <span class="text3">{{item.text1}}</span>
-                    <p class="intro">
-                        这是一段文字，这是一段文字，这是一段文字，这是一段文字,第三行会隐藏
+                    <span class="text3">{{this.major_business[1].title}}</span>
+                    <p class="intro"
+                        v-html="this.major_business[1].content"
+                    >
+                    </p>
+                    <div>...</div>
+                </div>
+            </li>
+            <li @click="godetail('wm')">
+                <img  class="img1" src="../../assets/23.png" alt="">
+                <span class="text1">{{this.major_business[2].title}}</span>
+                <span class="text2">{{this.major_business[2].title_en}}</span>
+                <img  class="img2" src="../../assets/02.png" alt="">
+                <img  class="img3" src="../../assets/010.png" alt="">
+                <div class="active">
+                    <span class="text3">{{this.major_business[2].title}}</span>
+                    <p class="intro"
+                        v-html="this.major_business[2].content"
+                    >
+                    </p>
+                    <div>...</div>
+                </div>
+            </li>
+            <li @click="godetail('fdc')">
+                <img  class="img1" src="../../assets/15.png" alt="">
+                <span class="text1">{{this.major_business[0].title}}</span>
+                <span class="text2">{{this.major_business[0].title_en}}</span>
+                <img  class="img2" src="../../assets/03.png" alt="">
+                <img  class="img3" src="../../assets/07.png" alt="">
+                <div class="active">
+                    <span class="text3">{{this.major_business[0].title}}</span>
+                    <p class="intro"
+                        v-html="this.major_business[0].content"
+                    >
+                    </p>
+                    <div>...</div>
+                </div>
+            </li>
+            <li @click="godetail('jrtz')">
+                <img  class="img1" src="../../assets/14.png" alt="">
+                <span class="text1">{{this.major_business[3].title}}</span>
+                <span class="text2">{{this.major_business[3].title_en}}</span>
+                <img  class="img2" src="../../assets/04.png" alt="">
+                <img  class="img3" src="../../assets/08.png" alt="">
+                <div class="active">
+                    <span class="text3">{{this.major_business[3].title}}</span>
+                    <p class="intro"
+                        v-html="this.major_business[3].content"
+                    >
+                    </p>
+                    <div>...</div>
+                </div>
+            </li>
+            <li @click="godetail('nyfw')">
+                <img  class="img1" src="../../assets/13.png" alt="">
+                <span class="text1">{{this.major_business[4].title}}</span>
+                <span class="text2">{{this.major_business[4].title_en}}</span>
+                <img  class="img2" src="../../assets/05.png" alt="">
+                <img  class="img3" src="../../assets/09.png" alt="">
+                <div class="active">
+                    <span class="text3">{{this.major_business[4].title}}</span>
+                    <p class="intro"
+                        v-html="this.major_business[4].content"
+                    >
                     </p>
                     <div>...</div>
                 </div>
             </li>
         </ul>
         <ul class="major_businesses_mobile">
-            <li v-for="(item,index) in major_business" @click="godetail(item)" :key="index">
-                <img  class="img1" :src="item.img1" alt="">
-                <span class="text1">{{item.text1}}</span>
-                <span class="text2">{{item.text2}}</span>
-                <img  class="img4" :src="item.img4" alt="">
+             <li @click="godetail('nm')">
+                <img  class="img1" src="../../assets/16.png" alt="">
+                <span class="text1">{{this.major_business[1].title}}</span>
+                <span class="text2">{{this.major_business[1].title_en}}</span>
+                <img  class="img4" src="../../assets/41.png" alt="">
+            </li>
+            <li @click="godetail('wm')">
+                <img  class="img1" src="../../assets/23.png" alt="">
+                <span class="text1">{{this.major_business[2].title}}</span>
+                <span class="text2">{{this.major_business[2].title_en}}</span>
+                <img  class="img4" src="../../assets/42.png" alt="">
+            </li>
+            <li @click="godetail('fdc')">
+                <img  class="img1" src="../../assets/15.png" alt="">
+                <span class="text1">{{this.major_business[0].title}}</span>
+                <span class="text2">{{this.major_business[0].title_en}}</span>
+                <img  class="img4" src="../../assets/43.png" alt="">
+            </li>
+             <li @click="godetail('jrtz')">
+                <img  class="img1" src="../../assets/14.png" alt="">
+                <span class="text1">{{this.major_business[3].title}}</span>
+                <span class="text2">{{this.major_business[3].title_en}}</span>
+                <img  class="img4" src="../../assets/44.png" alt="">
+            </li>
+            <li @click="godetail('nyfw')">
+                <img  class="img1" src="../../assets/13.png" alt="">
+                <span class="text1">{{this.major_business[4].title}}</span>
+                <span class="text2">{{this.major_business[4].title_en}}</span>
+                <img  class="img4" src="../../assets/45.png" alt="">
             </li>
         </ul>
     </div>
@@ -31,83 +116,45 @@ import { mapMutations } from "vuex"
 export default {
     data(){
         return{
-            major_business:[
-                {
-                    img1:require("../../assets/16.png"),
-                    img2:require("../../assets/01.png"),
-                    img3:require("../../assets/06.png"),
-                    img4:require("../../assets/41.png"),
-                    text1:"内贸",
-                    text2:"Within trade"
-                },
-                {
-                    img1:require("../../assets/23.png"),
-                    img2:require("../../assets/02.png"),
-                    img3:require("../../assets/010.png"),
-                    img4:require("../../assets/42.png"),
-                    text1:"外贸",
-                    text2:"Foreigh trade"
-                },
-                {
-                    img1:require("../../assets/15.png"),
-                    img2:require("../../assets/03.png"),
-                    img3:require("../../assets/07.png"),
-                    img4:require("../../assets/43.png"),
-                    text1:"房地产",
-                    text2:"Real estate"
-                },
-                {
-                    img1:require("../../assets/14.png"),
-                    img2:require("../../assets/04.png"),
-                    img3:require("../../assets/08.png"),
-                    img4:require("../../assets/44.png"),
-                    text1:"金融投资",
-                    text2:"Financial investment"
-                },
-                {
-                    img1:require("../../assets/13.png"),
-                    img2:require("../../assets/05.png"),
-                    img3:require("../../assets/09.png"),
-                    img4:require("../../assets/45.png"),
-                    text1:"农业服务",
-                    text2:"Agricultural Services"
-                }
-            ],
+            major_business:[],
         }
+    },
+    mounted(){
+        this.getYeWu()
     },
     methods:{
         ...mapMutations(["setActiveIndex","setchildActiveIndex"]),
         godetail(item){
             console.log(item)
-            if(item.text1 == "内贸"){
+            if(item == "nm"){
                 this.$router.push({
                     path:"/business_neimao"
                 })
                 this.setActiveIndex("4-1")
                 this.setchildActiveIndex("1")
             }
-            if(item.text1 == "外贸"){
+            if(item == "wm"){
                 this.$router.push({
                     path:"/business_waimao"
                 })
                 this.setActiveIndex("4-2")
                 this.setchildActiveIndex("2")
             }
-            if(item.text1 == "房地产"){
+            if(item == "fdc"){
                 this.$router.push({
                     path:"/business_building"
                 })
                 this.setActiveIndex("4-3")
                 this.setchildActiveIndex("3")
             }
-            if(item.text1 == "金融投资"){
+            if(item == "jrtz"){
                 this.$router.push({
                     path:"/business_finance"
                 })
                 this.setActiveIndex("4-4")
                 this.setchildActiveIndex("4")
             }
-            if(item.text1 == "农业服务"){
+            if(item == "nyfw"){
                 this.$router.push({
                     path:"/business_agriculture"
                 })
@@ -115,6 +162,15 @@ export default {
                 this.setchildActiveIndex("5")
             }
         },
+        getYeWu(){
+            this.axios.get(
+                "api/singlepage/main_business_list"
+            ).then(res=>{
+                if(res.data.code == 1){
+                    this.major_business = res.data.data
+                }
+            })
+        }
     }
 }
 </script>
@@ -128,7 +184,7 @@ export default {
         @media screen and (max-width:768px)
             display none
         &>li
-            height 16rem
+            height 20rem
             width 20%
             display inline-block
             vertical-align top
@@ -138,6 +194,9 @@ export default {
             background #FFFFFF
             @media screen and (max-width:768px)
                 display none
+            &:nth-child(1)
+                border-top-left-radius 10px
+                border-bottom-left-radius 10px
             .img1
                 margin-top 37px
                 width 80px
@@ -149,7 +208,8 @@ export default {
                 .img1
                     width 73px
             &:nth-child(5n+0)
-                border-right-top-radius 10px
+                border-top-right-radius 10px
+                border-bottom-right-radius 10px
                 .img1
                     width 73px
                     margin-top 40px
@@ -174,6 +234,14 @@ export default {
                 position absolute
                 top 0
         &>li:hover
+            &:nth-child(5n+0)
+                .active,.img3
+                    border-top-right-radius 10px
+                    border-bottom-right-radius 10px
+            &:nth-child(1)
+                .active,.img3
+                    border-top-left-radius 10px
+                    border-bottom-left-radius 10px
             .img3
                 display block
                 position absolute
@@ -197,7 +265,7 @@ export default {
                     color #FFFFFF
                     font-size 24px
                     line-height 45px
-                    margin-top 16px
+                    margin-top 76px
                 .intro
                     font-size 0.8rem
                     text-align left
@@ -206,15 +274,17 @@ export default {
                     margin 43px auto 37px
                     display -webkit-box
                     -webkit-box-orient vertical
-                    -webkit-line-clamp 3  //需要显示时文本行数
+                    -webkit-line-clamp 4  //需要显示时文本行数
                     overflow hidden
                 div
-                    border 1px solid #FFFFFF
-                    width 30%
-                    height 20px
+                    border 1px solid rgba(250,250,250,0.8)
+                    border-radius 5px
+                    width 110px
+                    height 40px
                     color #FFFFFF
+                    font-weight 600
                     margin 0 auto
-                    line-height 10px
+                    line-height 25px
     .major_businesses_mobile
         position relative
         width 92%
