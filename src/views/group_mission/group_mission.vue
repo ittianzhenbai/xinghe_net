@@ -91,10 +91,10 @@ export default {
                 @media screen and (max-width:768px)
                     height 100%
         li:nth-child(1)
-            margin-bottom 2rem
+            margin-bottom 1rem
             @media screen and (max-width:768px)
                 margin-bottom 0
         li:nth-child(2)
-            margin-bottom 2rem
+            margin-bottom 1rem
             
 </style>

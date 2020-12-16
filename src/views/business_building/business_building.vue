@@ -13,9 +13,9 @@
                     {{this.info.title_en}}
                 </div>
                 <div class="line"></div>
-                <p class="neirong">
-                    {{this.info.content}}
-                    <!-- 集团房地产业务以开发商业住宅及社区商业为主，涵盖城市综合体、专业市场、写字楼、产业地产等多种物业形态，项目遍及浙江、山东、四川、安徽、湖北、湖南等地，累计开发面积1500多万平方米,在实践中形成了快周转、标准化、高品质的经营特点和“开发+运营”的发展路子，并在“房地产+”的探索中进一步创造美好人居生活。       -->
+                <p class="neirong"
+                    v-html="this.info.content"
+                >
                 </p>
             </div>
         </div>

@@ -42,6 +42,8 @@
                 <li 
                     class="item col-6 col-md-6"
                     @click="jump_router('1')"
+                    @mouseenter="changecolor1('1')"
+                    @mouseleave="changecolor2"
                     :class="{ active: content_show == 1 }"
                 >
                     集团新闻
@@ -49,6 +51,8 @@
                 <li 
                     class="item col-6 col-md-6"
                     @click="jump_router('2')"
+                    @mouseenter="changecolor1('2')"
+                    @mouseleave="changecolor2"
                     :class="{ active: content_show == 2 }"
                 >
                     成员企业新闻
@@ -178,10 +182,16 @@ export default {
                     newsid:item.newsid
                 }
             })
+        },
+        changecolor1(item){
+            this.content_show = item
+        },
+        changecolor2(){
+            this.content_show = this.childActiveIndex
         }
     },
     watch:{
-        content_show(newVal){
+        childActiveIndex(newVal){
             if(newVal == "1"){
                 this.getNewsList(1,10,2)
             }
@@ -221,12 +231,12 @@ export default {
         background url("../../assets/023.png")
         background-size 100%
         position relative
-        bottom 4.8rem
+        bottom 6rem
         .near_xinghe
             margin 0
             .company_intro
                 margin 0 auto!important
-                padding 75px 0
+                padding 40px 0
                 width 100%
                 span
                     text-align cneter
@@ -237,15 +247,16 @@ export default {
                 &>p
                     width 40%
                     padding 0
-                    @media screen and (max-width:768px)
-                        width 100%
-                        margin-top 18.5pt
                     font-size 0.8rem
                     color #666666
                     font-family Microsoft YaHei
                     line-height 1.5rem
                     font-weight Regular
                     margin 0 auto
+                    margin-top 9px
+                    @media screen and (max-width:768px)
+                        width 100%
+                        margin-top 18.5pt
         .rongyu
             width 100%
             margin-right 0
@@ -263,18 +274,20 @@ export default {
                     span
                         font-size 3.6rem
                         color #1A649F
+                        font-weight 550
+                        font-family HYb9gf
                         @media screen and (max-width:768px)
                             margin-top 18.5pt
                             font-size 35pt
                             text-align left
-                        font-weight regular
-                        font-family HYb9gf
                     &>p
                         line-height 1.5rem
                         font-size 0.8rem
+                        width 10rem
+                        margin 0 auto
         .detail
             margin 0 auto
-            border-radius 10%
+            border-radius 5px
             width 110px
             height 40px
             display inline-block 
@@ -289,16 +302,16 @@ export default {
         .detail:hover
             color #FFFFFF
             background #1A649F
+            border-radius 5px
             border 1px solid #1A649F
         .news_center
             background #F4F4F4
-            padding 2rem 0 100px
+            padding 4rem 0 100px
             width 100%
             margin 0
             .title
                 font-size 2rem
                 font-weight Bold
-                padding-top 2.6rem
                 font-family SourceHanSansCN-Bold
                 color #333333
                 margin 0 auto
@@ -323,6 +336,7 @@ export default {
                         padding-bottom 0px
                         border-bottom 3px solid #1A649F
                         color #1A649F
+                        font-weight bold
             .news_content
                 padding 0
                 margin 0
@@ -331,6 +345,7 @@ export default {
                 .news_pics
                     height 24rem
                     margin-top 1.5rem
+                    padding 0
                 .news_list
                     height 24rem
                     margin 0
@@ -340,7 +355,7 @@ export default {
                         margin-top 17pt
                     .news_top
                         width 100%
-                        // padding 0 2rem
+                        padding 0 0 0 1.3rem
                         margin 1.5rem 0 1.9rem
                         font-family MicrosoftYaHei
                         font-weight Regular
@@ -371,7 +386,7 @@ export default {
                                 font-size 1.2rem
                                 line-height 2rem
                     .list1
-                        padding 0 1rem
+                        padding 0 0 0 1.3rem
                         text-align left
                         // width 89.6%
                         &>li
@@ -382,7 +397,7 @@ export default {
                             span
                                 color #1A649F
                                 font-family SourceHanSansCN-Bold
-                                font-weight Bold
+                                font-weight Regular
                                 line-height 2rem
                                 display inline-block
                                 padding 0

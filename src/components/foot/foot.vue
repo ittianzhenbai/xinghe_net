@@ -1,6 +1,6 @@
 <template>
     <div class="foot container-fluid">
-        <div class="row">
+        <div class="row foot_content">
             <div class="top_left col-12 col-md-8">
                 <div class="title">联系我们</div>
                 <ul>
@@ -55,7 +55,7 @@
                                 <el-image
                                     class="img1"
                                     style="width: 60px; height: 60px"
-                                    src="https://fuss10.elemecdn.com/e/5d/4a731a90594a4af544c0c25941171jpeg.jpeg"
+                                    src="../../assets/group_erweima.jpg"
                                     fit="cover">
                                 </el-image>
                             </li>
@@ -64,12 +64,7 @@
                 </el-collapse>
             </div>
             <div class="top_right col-12 col-md-4">
-                <el-image
-                    class="img1"
-                    style="width: 60px; height: 60px"
-                    src="https://fuss10.elemecdn.com/e/5d/4a731a90594a4af544c0c25941171jpeg.jpeg"
-                    fit="cover">
-                </el-image>
+                <img class="img1" src="../../assets/group_erweima.jpg" alt="">
                 <span class="demonstration">兴合集团公众号</span>
             </div>
         </div>
@@ -111,10 +106,12 @@ export default {
         border none
 .foot
     background-color #223D6B
-    padding 0 40px
-    .row
+    padding 0
+    .foot_content
         margin 0
+        padding 0 7% 0
         .top_left
+            padding 0
             float left
             @media screen and (max-width:768px)
                 display none
@@ -130,16 +127,16 @@ export default {
                     float left
                     width 33.3%
                     font-size 0.7rem
-                    @media screen and (max-width:1919px)
+                    @media screen and (max-width:1700px)
                         width 50%
                     @media screen and (max-width:1270px)
                         width 100%
-                    padding-right 30px
+                    // padding-right 30px
                     @media screen and (max-width: 768px)
                         padding-right 0
                     text-align left
                     color #fff
-                    line-height 2rem
+                    line-height 1.5rem
                     &>img
                         width 1.2rem
                         padding-right 0.5rem
@@ -195,17 +192,22 @@ export default {
                 font-size 0.7rem
                 @media screen and (max-width:768px)
                     display none
+            .img1
+                width 60px
+                height 60px
+                margin-bottom 15px
     .cutline
         clear both
         padding-top 10px
         margin 0 auto
-        width 98%
+        width 85%
         @media screen and (max-width:768px)
             padding 1px
-        border-bottom 1px dashed #FFF
+        border-bottom 1px dashed rgba(250,250,250,0.3)
     .bottom
-        padding-top 10px
+        padding-top 18px
         color #FFF!important
         font-size 0.7rem
-        padding-bottom 1rem
+        line-height 1.2rem
+        padding-bottom 23px
 </style>
