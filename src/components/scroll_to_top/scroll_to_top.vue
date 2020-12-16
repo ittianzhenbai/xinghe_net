@@ -24,6 +24,8 @@ export default {
     bottom 150px
     color red
     right 60px
+    @media screen and (max-width:768px)
+        display none
     img
         width 60px
         height 60px

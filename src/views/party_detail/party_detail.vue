@@ -80,7 +80,7 @@ export default {
         .time
             padding-right 0.5rem
     .content
-        width 49.8%
+        // width 49.8%
         padding 0 25%
         font-size 0.9rem
         font-family Microsoft YaHei

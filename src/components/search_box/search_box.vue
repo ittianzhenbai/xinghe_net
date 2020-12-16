@@ -60,7 +60,7 @@ export default {
         height 50px
         .input
             border-radius 25px
-            width 90%
+            width 85%
             color #666666
             padding 11px 0 11px 5px
         .search_btn

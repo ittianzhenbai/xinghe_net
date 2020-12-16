@@ -3,7 +3,7 @@
         <div 
             class="col-12 col-md-12 col-lg-12 title"
         >
-        浙江省兴合集团有限责任公司
+            浙江省兴合集团有限责任公司
         </div>
         <div class="col-12 col-md-12 col-lg-12 intro"
             v-html="this.groupinfo"
@@ -101,7 +101,7 @@ export default {
                 span
                     font-size 3.6rem
                     color #1A649F
-                    font-weight regular
+                    font-weight 580
                     font-family HYb9gf
                     text-align center
                 &>p
@@ -111,6 +111,7 @@ export default {
                     font-family Microsoft YaHei
                     fong-weight Regular
                     text-align center
+                    margin-bottom 0
     .pic
         padding 0 15pt
         width 100%

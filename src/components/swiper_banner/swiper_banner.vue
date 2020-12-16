@@ -19,9 +19,9 @@ export default {
     data(){
         return{
             pics:[
-                {image:require("../../assets/banner-1.jpg")},
-                {image:require("../../assets/banner-2.jpg")},
-                {image:require("../../assets/banner-3.jpg")},
+                // {image:require("../../assets/banner-1.jpg")},
+                // {image:require("../../assets/banner-2.jpg")},
+                // {image:require("../../assets/banner-3.jpg")},
             ],
             banner:[]
         }
@@ -45,7 +45,6 @@ export default {
                 "api/banner/banners"
             ).then(res=>{
                 if(res.data.code == 1){
-                    console.log(res)
                     this.pics = res.data.data
                     this.$nextTick(()=>{
                         this.init()

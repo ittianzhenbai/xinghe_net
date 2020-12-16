@@ -1,11 +1,11 @@
 <template>
     <div class="near_xinghe">
         <div class="row banner">
-            <img class="img" src="../../assets/banner_yewu.png" alt="">
+            <img class="img" v-lazy="this.banner.image" alt="">
             <BannerTitle
                 class="banner_title"
-                :title_zn="title_zn"
-                :title_en="title_en"
+                :title_zn="this.banner.title"
+                :title_en="this.banner.title_en"
             ></BannerTitle>
         </div>
         <div class="navigation_pc">
@@ -14,39 +14,15 @@
             >
                 <ul class="options">
                     <li 
+                        v-for="(item,index) in options"
+                        :key="index"
                         class="item"
-                        @click="jump_router('1')"
-                        :class="{ active: content_show == 1 }"
+                        @click="jump_router(item.cur_index)"
+                        @mouseover="changecolor1(item.cur_index)"
+                        @mouseleave="changecolor2"
+                        :class="{ active: content_show == item.cur_index }"
                     >
-                        内贸
-                    </li>
-                     <li 
-                        class="item"
-                        @click="jump_router('2')"
-                        :class="{ active: content_show == 2 }"
-                    >
-                        外贸
-                    </li>
-                     <li 
-                        class="item"
-                        @click="jump_router('3')"
-                        :class="{ active: content_show == 3 }"
-                    >
-                        房地产
-                    </li>
-                     <li 
-                        class="item"
-                        @click="jump_router('4')"
-                        :class="{ active: content_show == 4 }"
-                    >
-                        金融投资
-                    </li>
-                     <li 
-                        class="item"
-                        @click="jump_router('5')"
-                        :class="{ active: content_show == 5 }"
-                    >
-                        农业服务
+                        {{item.cur_name}}
                     </li>
                 </ul>
             </OptionBox>
@@ -64,11 +40,13 @@
                     active-text-color="#333">
                     <el-submenu index="1">
                         <template slot="title" class="title">主营业务</template>
-                        <el-menu-item index="1">内贸</el-menu-item>
-                        <el-menu-item index="2">外贸</el-menu-item>
-                        <el-menu-item index="3">房地产</el-menu-item>
-                        <el-menu-item index="4">金融投资</el-menu-item>
-                        <el-menu-item index="5">农业服务</el-menu-item>
+                        <el-menu-item
+                             v-for="(item,index) in options"
+                            :key="index"
+                            :index="item.cur_index"
+                        >
+                            {{item.cur_name}}
+                        </el-menu-item>
                     </el-submenu>
                 </el-menu>
             </div>
@@ -91,9 +69,14 @@ export default {
         return{
             cur_address:"主营业务",
             content_show:this.$store.state.childActiveIndex,
-            title_zn:"主营业务",
-            title_en:"MAIN BUSINESS",
-            banner:""
+            banner:"",
+            options:[
+                {cur_index:"1",cur_name:"内贸"},
+                {cur_index:"2",cur_name:"外贸"},
+                {cur_index:"3",cur_name:"房地产"},
+                {cur_index:"4",cur_name:"金融投资"},
+                {cur_index:"5",cur_name:"农业服务"}
+            ]
         }
     },
     computed:{
@@ -105,6 +88,7 @@ export default {
         BannerTitle
     },
     mounted(){
+        this.getBanner("zyyw")
     },
     methods:{
         ...mapMutations(["setActiveIndex","setchildActiveIndex"]),
@@ -114,7 +98,6 @@ export default {
         },
         jump_router(item){
             this.content_show = item
-            console.log(item)
             this.setchildActiveIndex(item)
             switch(item){
                 case "1":
@@ -148,6 +131,12 @@ export default {
                     this.banner = res.data.data
                 }
             })
+        },
+        changecolor1(item){
+            this.content_show = item
+        },
+        changecolor2(){
+            this.content_show = this.childActiveIndex
         }
     },
     watch:{
@@ -184,15 +173,20 @@ export default {
             padding 0 0
             margin-bottom 0
             &>li
+                margin 0 auto
+                width 12.5rem
+                font-family MicrosoftYaHei
+                font-weight Regular
+                line-height 1.5rem
+                padding-bottom 14px
                 display inline-block
-                margin-right 3rem
-                width 7rem
                 cursor pointer
                 color #000000
                 text-align center
                 &.active
-                    border-bottom 2px solid #79A2C5
-                    color #79A2C5
+                    border-bottom 3px solid #1A649F
+                    font-weight bold
+                    color #1A649F
     .navigation_mobile
         @media screen and (min-width 769px)
             display none

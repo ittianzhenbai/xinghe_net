@@ -149,7 +149,7 @@ export default {
 </script>
 <style lang="stylus" scoped>
 .news_group
-    width 80%
+    width 78%
     padding 100px 0
     margin 0 auto
     @media screen and (max-width:768px)
@@ -181,13 +181,15 @@ export default {
                     text-align left
                     color #CACACA
                     font-size 1.2rem
+                    margin-top 18px
+                    margin-bottom 3px
                     font-family SourceHanSansCN
-                    font-weight Bold
+                    font-weight Regular
+                    line-height 1.5rem
                     @media screen and (max-width:768px)
                         font-size 1.5rem
                         margin-top 1.4rem
                         margin-bottom 1.05rem
-                    line-height 1.5rem
                 .title
                     font-family Microsoft YaHei
                     font-weight Regular
@@ -195,7 +197,7 @@ export default {
                     line-height 1.5rem
                     white-space nowrap
                     width 90%
-                    margin-bottom 19px
+                    margin-bottom 5px
                     font-size 1.1rem
                     text-align left          
                     text-overflow:ellipsis
@@ -214,6 +216,7 @@ export default {
                     font-family Microsoft YaHei
                     font-weight Regular
                     line-height 1.2rem
+                    margin-bottom 5px
                     @media screen and (max-width:768px)
                         font-size 1.4rem
                         line-height 2rem 

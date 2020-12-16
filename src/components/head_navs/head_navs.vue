@@ -6,8 +6,8 @@
         <div 
             class="nav_left col-7 col-sm-6 col-md-6 col-lg-3" 
             >
-            <span class="logo_mobile"></span>
-            <img class="logo" src="../../assets/32.png" alt="">
+            <span @click="goindex" class="logo_mobile"></span>
+            <img class="logo" @click="goindex" src="../../assets/32.png" alt="">
         </div>
          <div 
             class="col-5 col-sm-6 col-md-6 col-lg-2 nav_right mid_screen1"
@@ -25,7 +25,7 @@
                 @select="handleSelect"
                 :background-color="this.color"
                 text-color="#fff"
-                active-text-color="#ABABAB">
+                active-text-color="#FFFFFF">
                 <el-menu-item index="1">首页</el-menu-item>
                 <el-submenu index="2">
                     <template slot="title">走进兴合</template>
@@ -83,6 +83,7 @@
             @select="handleSelect"
             background-color="#223D6B"
             text-color="#fff"
+            :unique-opened = true
             active-text-color="#FFFFFF">
             <el-menu-item index="1">首页</el-menu-item>
                 <el-submenu index="2">
@@ -155,10 +156,10 @@ export default {
         this.screenwidth = document.documentElement.clientWidth || document.body.clientWidth
     },
     mounted(){
-        window.addEventListener('scroll', this.scrollToTop)
+        // window.addEventListener('scroll', this.scrollToTop)
     },
     destroyed(){
-        window.removeEventListener('scroll', this.scrollToTop);
+        // window.removeEventListener('scroll', this.scrollToTop);
     },
     methods:{
         ...mapMutations(["setActiveIndex","setchildActiveIndex"]),
@@ -325,18 +326,23 @@ export default {
                 this.color = '#28436E'
             })
         },
-        scrollToTop() {
-            var scrollTop = window.pageYOffset || document.documentElement.scrollTop || document.body.scrollTop;
-            var w = document.documentElement.clientWidth || document.body.clientWidth;
-            if(scrollTop%200 == 0 && scrollTop>0&&w>768){
-                this.$refs.nav.style.opacity = "0.6",
-                this.$nextTick(()=>{
-                    this.color = "transparent"
-                })
-            }else{
-                return
-            }
-        }
+        goindex(){
+            this.$router.push({
+                path:"/main_page"
+            })
+        },
+        // scrollToTop() {
+        //     var scrollTop = window.pageYOffset || document.documentElement.scrollTop || document.body.scrollTop;
+        //     var w = document.documentElement.clientWidth || document.body.clientWidth;
+        //     if(scrollTop%200 == 0 && scrollTop>0&&w>768){
+        //         this.$refs.nav.style.opacity = "0.6",
+        //         this.$nextTick(()=>{
+        //             this.color = "transparent"
+        //         })
+        //     }else{
+        //         return
+        //     }
+        // }
     },
     watch:{
         activeIndex(newName, oldName){ 
@@ -354,39 +360,59 @@ export default {
 .el-menu-vertical-demo:not(.el-menu--collapse) 
     width 10rem
 </style>
-<style lang="stylus" scoped>
-//修改顶部导航样式
+<style lang="stylus" scoped>//修改顶部导航样式
+.el-menu-item:hover
+    outline 0 !important 
+    color #FFFFFF !important
+    background transpent !important
+.el-menu-item.is-active 
+    color #FFFFFF !important
+.el-menu-item  
+  color #ABABAB !important
+  font-size 0.8rem !important
 /deep/.el-menu--horizontal
             border-bottom none
+            margin-top 1rem
+            .el-menu-item:hover
+                outline 0 !important
+                background-color transparent !important
+                font-weight 550 !important
+                color #FFFFFF !important
+                border-top 2px solid #FFFFFF
             .el-submenu
                 font-size 1rem
                 .el-submenu__title
                     font-size 1rem
-                    height 4rem
-                    line-height 4rem
+                    height 2.92rem
+                    line-height 2.2rem
                     @media screen and (min-width:768px) and (max-width:850px)
                         padding 0 15px
                     @media screen and (min-width:851px) and (max-width:992px)
                         padding 0 18px
                     @media screen and (min-width:993px) and (max-width:1380px)
                         padding 0 8px
+                .el-submenu__title:hover
+                    outline 0 !important
+                    background-color transparent !important
+                    font-weight 550 !important
+                    border-top 2px solid #FFFFFF
             .el-submenu__icon-arrow,.el-icon-arrow-down
                 position absolute
-                right 45px
-                top 58px
+                right 50px
+                top 38px
                 @media screen and (min-width:768px) and (max-width:992px)
                     top 46px
                 @media screen and (min-width:993px) and (max-width:1200px)
-                    top 52px
-                    right 40px
+                    top 45px
+                    right 38px
                 font-weight 500
                 color #FFFFFF
 /deep/.el-menu--horizontal>.el-submenu.is-active .el-submenu__title
-            border-bottom transparent!important
-            border-bottom-color transparent!important
+            border-bottom transparent !important
+            border-bottom-color transparent !important
 /deep/.el-menu--horizontal>.is-active
-            border-bottom transparent!important
-            border-top 2px solid #FFFFFF
+            border-bottom transparent!important  
+
 .nav
     width 100%
     font-size 1rem
@@ -409,6 +435,7 @@ export default {
             line-height 2rem
         .logo
             width 60%
+            cursor pointer
             margin-top 0.75rem
             @media screen and (min-width:850px) and (max-width:992px)
                 width 50%
@@ -438,15 +465,17 @@ export default {
             padding 0 100px
         .el-menu-item
             font-size 1rem
-            line-height 4rem
-            height 4rem
+            line-height 2rem
+            height 2rem
+            color #FFFFFF !important
+            font-size 1rem !important
             @media screen and (min-width:768px) and (max-width:850px)
                 padding 0 15px
             @media screen and (min-width:850px) and (max-width:992px)
                 height 4rem
                 padding 0 18px
             @media screen and (min-width:993px) and (max-width:1380px)
-                height 4rem
+                // height 4rem
                 padding 0 8px
     .nav_right
         padding 0 0
@@ -468,6 +497,7 @@ export default {
                     text-align center
                 .oa
                     display inline-block
+                    cursor pointer
                     width 3.5rem
                     height 2rem
                     margin-top 1.5rem
@@ -482,6 +512,7 @@ export default {
                     background-repeat no-repeat
                 .search
                     display inline-block
+                    cursor pointer
                     width 1rem
                     height 2rem
                     margin-top 1.5rem
@@ -527,5 +558,5 @@ export default {
     .search_box
         position fixed
         right 2.7%
-        top 4rem
+        top 4.2rem
 </style>

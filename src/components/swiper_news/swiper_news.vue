@@ -53,6 +53,7 @@ export default {
 /deep/ .swiper-pagination-bullet-active
             transform scale(1.3)
 .swiper-container 
+    float right
     width 80%
     @media screen and (max-width:768px)
         width 100%
@@ -99,6 +100,7 @@ export default {
                 text-overflow ellipsis
                 white-space nowrap
 .swiper-pagination
-    left 30%
-    bottom 0.2rem
+    left 90%
+    width 66px
+    bottom 0.35rem
 </style>
