@@ -10,7 +10,7 @@
                 @click="godetail(item)"
             >
                 <div class="single_news">
-                    <img class="row" v-lazy="item.image" alt="">
+                    <span class="row img" v-lazy:background-image="item.image"></span>
                     <span class="date">{{item.create_at}}</span>
                     <p class="title">{{item.title}}</p>
                     <p class="neirong">{{item.desc}}</p>
@@ -30,7 +30,7 @@
                 @click="godetail(item)"
             >
                 <div class="single_news">
-                    <img class="row" v-lazy="item.image" alt="">
+                    <span class="row img" v-lazy:background-image="item.image"></span>
                     <span class="date">{{item.create_at}}</span>
                     <p class="title">{{item.title}}</p>
                     <p class="neirong">{{item.desc}}</p>
@@ -167,9 +167,11 @@ export default {
                 margin-bottom 2.45rem
             .single_news
                 padding 9px 9px
-                img
+                .img
                     width 100%
                     height 230px
+                    background center center
+                    background-size 100% 100%
                     @media screen and (max-width:768px)
                         height 11.5rem
                     margin 0 auto
@@ -227,8 +229,13 @@ export default {
             padding 0
             .single_news
                 width 100%
-                img
-                    height 260px
+                .img
+                    background center center
+                    background-size 120% 120%
+                    -webkit-transition all 1s
+                    -moz-transition all 1s
+                    -o-transition all 1s
+                    transition all 1s
                 .date,.title,.neirong
                     color #FFFFFF
     .pc

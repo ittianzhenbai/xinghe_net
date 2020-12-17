@@ -21,8 +21,8 @@ import elTableInfiniteScroll from 'el-table-infinite-scroll';//el-table无限滚
 
 Vue.use(elTableInfiniteScroll);
 Vue.use(VueLazyload, {
-  loading: require('../src/assets/1.png'),//加载中图片，一定要有，不然会一直重复加载占位图
-  error: require('../src/assets/1.png')  //加载失败图片
+  loading: require('../src/assets/频道页banner-1920-480-联系.png'),//加载中图片，一定要有，不然会一直重复加载占位图
+  error: require('../src/assets/频道页banner-1920-480-联系.png')  //加载失败图片
 });
 Vue.use(VueAnimateNumber)//引用数字动态变化 组件 
 Vue.use(VueAxios,axios);

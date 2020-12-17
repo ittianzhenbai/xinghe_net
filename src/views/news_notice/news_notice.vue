@@ -18,6 +18,7 @@
             <el-table-column
                 prop="title"
                 label="新闻标题"
+                show-overflow-tooltip
             >
             </el-table-column>
             </el-table>
@@ -40,8 +41,30 @@
             <el-table-column
                 prop="title"
                 label="新闻标题"
+                show-overflow-tooltip
             >
             </el-table-column>
+            </el-table>
+        </div>
+        <div class="row table_mobile col-12">
+            <el-table
+                :data="newslist"
+                :show-header="status"
+                height="500px"
+                @row-click = "goNoticeDetail"
+                v-el-table-infinite-scroll="load"
+                :row-style="rowStyle"
+                :cell-style ="cellStyle"
+                style="width: 100%">
+                <el-table-column
+                    prop="create_at"
+                    label="日期"
+                    width="150">
+                </el-table-column>
+                <el-table-column
+                    prop="title"
+                    label="新闻标题">
+                </el-table-column>
             </el-table>
         </div>
         <div class="row row2">
@@ -58,24 +81,31 @@
     </div>
 </template>
 <script>
+import { mapState,mapMutations } from "vuex";
 export default {
     data(){
         return{
-            news_list: [],
+            newslist: [],
             page:1,
             total:0,
             pagesize:20,
+            status:false,//关闭头部
             layout:"pager",
             news_list1: [],//左边数据列表
             news_list2: []//右边数据列表
         }
     },
+    computed:{
+        ...mapState(["readHistory5"])
+    },
     created(){
     },
     mounted(){
-        this.getNewsList(this.page,this.pagesize,4)
+        this.getNewsList(this.page,this.pagesize,2)
+        this.getNewsList_mobile(this.page,this.pagesize,2)
     },
     methods:{
+        ...mapMutations(["setreadHistory5"]),
         getNewsList(page,pagesize,sort){
             this.axios.post(
                 "api/news/news",
@@ -94,6 +124,25 @@ export default {
                 }
             })
         },
+        getNewsList_mobile(page,pagesize,sort){
+            this.axios.post(
+                "api/news/news",
+                `page=${page}&pagesize=${pagesize}&catid=${sort}`
+            ).then(res=>{
+                if(res.data.code ==1){
+                    console.log(res)
+                    // this.newslist = res.data.data.list
+                    if(this.page == 1){
+                        this.newslist = res.data.data.list
+                    }else{
+                        this.newslist.push(...res.data.data.list)
+                    }
+                    this.total = this.newslist.length
+                }else if(res.code == 210){
+                    console.log("暂无数据")
+                }
+            })
+        },
         cellStyle({row,column,columnIndex}){
             if(columnIndex === 0){
                 return{
@@ -104,11 +153,20 @@ export default {
                 }
             }
             if(columnIndex === 1){
-                return{
-                    fontSize: '20px',
-                    fontFamily: 'MicrosoftYaHei',
-                    color:'#333333',
-                    fontWeight:'Regular'
+                 if(this.readHistory5.some(({newsid})=>newsid==row.newsid)){
+                    return{
+                        color:'#999999',
+                        fontSize: '20px',
+                        fontFamily: 'Source Han Sans CN',
+                        fontWeight:'Regular'
+                    }
+                }else{
+                     return{
+                        fontSize: '20px',
+                        fontFamily: 'MicrosoftYaHei',
+                        color:'#333333',
+                        fontWeight:'Regular'
+                    }
                 }
             }
         },
@@ -128,9 +186,10 @@ export default {
             }
         },
         handleCurrentChange(val) {
-            console.log(`当前页: ${val}`);
+            this.getNewsList(val,this.pagesize,2)
         },
         goNoticeDetail(row){
+            this.setreadHistory5(row)
             this.$router.push({
                 path:"/news_detail",
                 query:{
@@ -138,9 +197,11 @@ export default {
                 }
             })
         },
-        prevbtn(){
-            console.log("666")
-        }
+        load() {
+            console.log("触发无限加载")
+            this.page ++ 
+            this.getNewsList_mobile(this.page,this.pagesize,2)
+        },
     }
 }
 </script>
@@ -151,14 +212,27 @@ export default {
 .contain
     margin 100px auto
     width 80%
+    @media screen and (max-width:768px)
+        width 100%
+        margin 2rem auto
     .left_table,.right_table
         padding 0
+        @media screen and (max-width:768px)
+            display none
     .left_table
         border-right 1px solid #DDDDDD
+    .table_mobile
+        width 100%
+        margin 0
+        padding 0
+        @media screen and (min-width:769px)
+            display none
     .row2
         padding 0
         width 100%
         margin-top 79px
         .pagination
             margin 0 auto
+            @media screen and (max-width:768px)
+                display none
 </style>

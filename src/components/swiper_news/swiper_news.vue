@@ -99,8 +99,9 @@ export default {
                 overflow hidden
                 text-overflow ellipsis
                 white-space nowrap
-.swiper-pagination
-    left 90%
-    width 66px
-    bottom 0.35rem
+    .swiper-pagination
+        width 100%
+        text-align right
+        padding-right 15px
+        bottom 0.35rem
 </style>
