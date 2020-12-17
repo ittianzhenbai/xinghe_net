@@ -177,7 +177,7 @@ export default {
         })
     },
     destroyed(){
-        window.removeEventListener('scroll', this.scrollToTop);
+        // window.removeEventListener('scroll', this.scrollToTop);
     },
     methods:{
         ...mapMutations(["setActiveIndex","setchildActiveIndex"]),
@@ -472,6 +472,8 @@ export default {
     @media screen and (max-width:768px)
         border-bottom 1px solid rgba(250,250,250,0.5)
         height 5rem
+        background #223D6B
+        opacity 1
     .nav_left 
         color #fff
         line-height 3rem
