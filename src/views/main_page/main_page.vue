@@ -113,9 +113,18 @@ export default {
     computed:{
          ...mapState(["childActiveIndex"])
     },
+    beforeRouteEnter(to, from, next) {
+        next(vm => {
+            vm.setchildActiveIndex('1')
+            vm.setcurPage("index")
+        });
+    },
     mounted(){
         this.getRongYu()
         this.getNewsList(1,10,2)
+    },
+    destroyed(){
+        this.setcurPage("other")
     },
     components:{
         SwiperBanner,
@@ -123,7 +132,7 @@ export default {
         MajorBusiness
     },
     methods:{
-        ...mapMutations(["setActiveIndex","setchildActiveIndex"]),
+        ...mapMutations(["setActiveIndex","setchildActiveIndex","setcurPage"]),
         jump_router(item){
             this.content_show = item
             this.setchildActiveIndex(item)

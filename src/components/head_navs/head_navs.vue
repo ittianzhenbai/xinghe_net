@@ -23,6 +23,7 @@
                 mode="horizontal"
                 class="el_menu"
                 @select="handleSelect"
+                :open ="handleOpen"
                 :background-color="this.color"
                 text-color="#fff"
                 active-text-color="#FFFFFF">
@@ -152,7 +153,7 @@ export default {
         isCollapse: true,
         right_navshow:false,//控制右边导航显示
         click_count:0,//控制点击次数
-        color:"transparent"
+        color:"#28436E"
       };
     },
     components:{
@@ -160,13 +161,20 @@ export default {
         SearchBoxMobile
     },
     computed:{
-        ...mapState(["activeIndex"])
+        ...mapState(["activeIndex","deviceFlag","curPage"])
     },
     created(){
-        this.screenwidth = document.documentElement.clientWidth || document.body.clientWidth
     },
     mounted(){
-        // window.addEventListener('scroll', this.scrollToTop)
+        window.addEventListener('scroll', this.scrollToTop)
+        this.$nextTick(()=>{
+            if(this.curPage == "index"&&this.deviceFlag == "pc"){
+                this.$refs.nav.style.opacity = "0.6",
+                this.$nextTick(()=>{
+                    this.color = "transparent"
+                })
+            }
+        })
     },
     destroyed(){
         // window.removeEventListener('scroll', this.scrollToTop);
@@ -331,7 +339,7 @@ export default {
             window.open("https://oa.zjxinghe.com/")
         },
         search(){
-           if(document.documentElement.style.fontSize == '10pt'){
+           if(this.deviceFlag == "mobile"){
                //移动端显示
                this.$refs.searchMobile.alert_box = true
            }else{
@@ -340,42 +348,52 @@ export default {
            }
         },
         changecolor(){
-            this.$refs.nav.style.opacity = "1",
-            this.$nextTick(()=>{
-                this.color = '#28436E'
-            })
+            if(this.deviceFlag == "pc"&&this.curPage == "index"){
+                this.$refs.nav.style.opacity = "1",
+                this.$nextTick(()=>{
+                    this.color = '#28436E'
+                })
+            }  
+        },
+        handleOpen(key, keyPath){
+            console.log(key)
+        },
+        opensubmenu(index,indexPath){
+            console.log(index,indexPath)
         },
         goindex(){
             this.$router.push({
                 path:"/main_page"
             })
         },
-        // scrollToTop() {
-        //     var scrollTop = window.pageYOffset || document.documentElement.scrollTop || document.body.scrollTop;
-        //     var w = document.documentElement.clientWidth || document.body.clientWidth;
-        //     if(scrollTop%200 == 0 && scrollTop>0&&w>768){
-        //         this.$refs.nav.style.opacity = "0.6",
-        //         this.$nextTick(()=>{
-        //             this.color = "transparent"
-        //         })
-        //     }else{
-        //         return
-        //     }
-        // }
+        scrollToTop() {
+            var scrollTop = window.pageYOffset || document.documentElement.scrollTop || document.body.scrollTop;
+            if(scrollTop>0 &&this.deviceFlag=="pc" &&this.curPage == "index"){
+                this.$refs.search.alert_box = false
+                this.$refs.nav.style.opacity = "0.6",
+                this.$nextTick(()=>{
+                    this.color = "transparent"
+                })
+            }else{
+                this.$refs.search.alert_box = false
+            }
+        }
     },
     watch:{
         activeIndex(newName, oldName){ 
             // console.log(newName)
             this.activeIndex1 = newName
-        }
+        },
     }
 }
 </script>
 <style lang="stylus">
 .el-menu--collapse.el-menu .el-submenu,.el-menu--popup
-    min-width 6rem
+    min-width 4rem
     text-align center
     color #ABABAB
+    @media screen and (min-width:996px)
+        min-width 6rem
 .el-menu-vertical-demo:not(.el-menu--collapse) 
     width 10rem
 </style>
@@ -442,18 +460,17 @@ export default {
             border-bottom-color transparent !important
 /deep/.el-menu--horizontal>.is-active
             border-bottom transparent!important  
-
 .nav
     width 100%
     font-size 1rem
     background #28436E
-    opacity 0.6
+    opacity 1
     line-height 4rem
     padding-right 0
     padding-top 2px
     margin 0
     @media screen and (max-width:768px)
-        border-bottom 1px solid #FFFFFF
+        border-bottom 1px solid rgba(250,250,250,0.5)
         height 5rem
         background #223D6B
         opacity 1

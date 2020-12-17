@@ -12,7 +12,9 @@ export default new Vuex.Store({
     readHistory2:window.sessionStorage.getItem("readHistory2") ==undefined||null?[]:JSON.parse(window.sessionStorage.getItem("readHistory2")),//记录党章党规阅读记录
     readHistory3:window.sessionStorage.getItem("readHistory3") ==undefined||null?[]:JSON.parse(window.sessionStorage.getItem("readHistory3")),//记录学习园地阅读记录
     readHistory4:window.sessionStorage.getItem("readHistory4") ==undefined||null?[]:JSON.parse(window.sessionStorage.getItem("readHistory4")),//记录文件通知阅读记录
-    readHistory5:window.sessionStorage.getItem("readHistory5") ==undefined||null?[]:JSON.parse(window.sessionStorage.getItem("readHistory5"))//记录文件通知阅读记录
+    readHistory5:window.sessionStorage.getItem("readHistory5") ==undefined||null?[]:JSON.parse(window.sessionStorage.getItem("readHistory5")),//记录文件通知阅读记录
+    deviceFlag:window.sessionStorage.getItem("deviceFlag"),
+    curPage:window.sessionStorage.getItem("curPage")
   },
   mutations: {
     setActiveIndex(state,data){
@@ -76,6 +78,14 @@ export default new Vuex.Store({
       state.readHistory5 = state.readHistory5.concat(data)
       state.readHistory5 = unique(state.readHistory5)
       window.sessionStorage.setItem("readHistory5",JSON.stringify(state.readHistory5))
+    },
+    setdeviceFlag(state,data){
+      state.deviceFlag = data
+      window.sessionStorage.setItem("deviceFlag",data)
+    },
+    setcurPage(state,data){
+      state.curPage = data
+      window.sessionStorage.setItem("curPage",data)
     }
   },
   actions: {
