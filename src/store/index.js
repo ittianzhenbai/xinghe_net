@@ -11,7 +11,10 @@ export default new Vuex.Store({
     readHistory1:window.sessionStorage.getItem("readHistory1") ==undefined||null?[]:JSON.parse(window.sessionStorage.getItem("readHistory1")),//记录人才招聘公告阅读记录
     readHistory2:window.sessionStorage.getItem("readHistory2") ==undefined||null?[]:JSON.parse(window.sessionStorage.getItem("readHistory2")),//记录党章党规阅读记录
     readHistory3:window.sessionStorage.getItem("readHistory3") ==undefined||null?[]:JSON.parse(window.sessionStorage.getItem("readHistory3")),//记录学习园地阅读记录
-    readHistory4:window.sessionStorage.getItem("readHistory4") ==undefined||null?[]:JSON.parse(window.sessionStorage.getItem("readHistory4"))//记录通知公告阅读记录
+    readHistory4:window.sessionStorage.getItem("readHistory4") ==undefined||null?[]:JSON.parse(window.sessionStorage.getItem("readHistory4")),//记录文件通知阅读记录
+    readHistory5:window.sessionStorage.getItem("readHistory5") ==undefined||null?[]:JSON.parse(window.sessionStorage.getItem("readHistory5")),//记录文件通知阅读记录
+    deviceFlag:window.sessionStorage.getItem("deviceFlag"),
+    curPage:window.sessionStorage.getItem("curPage")
   },
   mutations: {
     setActiveIndex(state,data){
@@ -65,6 +68,24 @@ export default new Vuex.Store({
       state.readHistory4 = state.readHistory4.concat(data)
       state.readHistory4 = unique(state.readHistory4)
       window.sessionStorage.setItem("readHistory4",JSON.stringify(state.readHistory4))
+    },
+    setreadHistory5(state,data){
+      function unique(arr) {
+        //去重函数
+        const res = new Map();
+        return arr.filter((arr) => !res.has(arr.newsid) && res.set(arr.newsid, data.newsid));
+      }
+      state.readHistory5 = state.readHistory5.concat(data)
+      state.readHistory5 = unique(state.readHistory5)
+      window.sessionStorage.setItem("readHistory5",JSON.stringify(state.readHistory5))
+    },
+    setdeviceFlag(state,data){
+      state.deviceFlag = data
+      window.sessionStorage.setItem("deviceFlag",data)
+    },
+    setcurPage(state,data){
+      state.curPage = data
+      window.sessionStorage.setItem("curPage",data)
     }
   },
   actions: {

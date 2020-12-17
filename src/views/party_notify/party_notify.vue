@@ -1,6 +1,6 @@
 <template>
     <div class="container-fluid danggui">
-        <div class="row row1">
+        <div class="row row1 pc">
              <el-table
                 :data="newslist"
                 :show-header="status"

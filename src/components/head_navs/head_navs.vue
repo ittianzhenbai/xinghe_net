@@ -23,12 +23,15 @@
                 mode="horizontal"
                 class="el_menu"
                 @select="handleSelect"
+                :open ="handleOpen"
                 :background-color="this.color"
                 text-color="#fff"
                 active-text-color="#FFFFFF">
                 <el-menu-item index="1">首页</el-menu-item>
                 <el-submenu index="2">
-                    <template slot="title">走进兴合</template>
+                    <template slot="title">
+                        <router-link to="/group_intro?from=title"> 走进兴合</router-link>
+                    </template>
                     <el-menu-item index="2-1">集团概况</el-menu-item>
                     <el-menu-item index="2-2">组织架构</el-menu-item>
                     <el-menu-item index="2-3">使命愿景</el-menu-item>
@@ -36,13 +39,17 @@
                     <el-menu-item index="2-5">集团荣誉</el-menu-item>
                 </el-submenu>
                 <el-submenu index="3">
-                    <template slot="title">新闻中心</template>
+                    <template slot="title">
+                        <router-link to="/news_group?from=title">新闻中心</router-link>
+                    </template>
                     <el-menu-item index="3-1">集团新闻</el-menu-item>
                     <el-menu-item index="3-2">成员企业新闻</el-menu-item>
                     <el-menu-item index="3-3">通知公告</el-menu-item>
                 </el-submenu>
                 <el-submenu index="4">
-                    <template slot="title">主营业务</template>
+                    <template slot="title">
+                        <router-link to="/business_neimao?from=title">主营业务</router-link>
+                    </template>
                     <el-menu-item index="4-1">内贸</el-menu-item>
                     <el-menu-item index="4-2">外贸</el-menu-item>
                     <el-menu-item index="4-3">房地产</el-menu-item>
@@ -50,14 +57,18 @@
                     <el-menu-item index="4-5">农业服务</el-menu-item>
                 </el-submenu>
                 <el-submenu index="5">
-                    <template slot="title">党建园地</template>
+                    <template slot="title">
+                        <router-link to="/party_news?from=title">党建园地</router-link>
+                    </template>
                     <el-menu-item index="5-1">党建动态</el-menu-item>
                     <el-menu-item index="5-2">党章党规</el-menu-item>
                     <el-menu-item index="5-3">学习园地</el-menu-item>
                     <el-menu-item index="5-4">文件通知</el-menu-item>
                 </el-submenu>
                 <el-submenu index="6">
-                    <template slot="title">人才招聘</template>
+                    <template slot="title">
+                        <router-link to="/talent_concept?from=title">人才招聘</router-link>
+                    </template>
                     <el-menu-item index="6-1">人才理念</el-menu-item>
                     <el-menu-item index="6-2">人才招聘</el-menu-item>
                 </el-submenu>
@@ -74,7 +85,7 @@
             </ul>
         </div>
         <div 
-            class="left_nav col-12" 
+            class="mobile_nav col-12" 
             v-if="this.right_navshow == true"
         >
             <el-menu
@@ -142,7 +153,7 @@ export default {
         isCollapse: true,
         right_navshow:false,//控制右边导航显示
         click_count:0,//控制点击次数
-        color:"transparent"
+        color:"#28436E"
       };
     },
     components:{
@@ -150,16 +161,23 @@ export default {
         SearchBoxMobile
     },
     computed:{
-        ...mapState(["activeIndex"])
+        ...mapState(["activeIndex","deviceFlag","curPage"])
     },
     created(){
-        this.screenwidth = document.documentElement.clientWidth || document.body.clientWidth
     },
     mounted(){
-        // window.addEventListener('scroll', this.scrollToTop)
+        window.addEventListener('scroll', this.scrollToTop)
+        this.$nextTick(()=>{
+            if(this.curPage == "index"&&this.deviceFlag == "pc"){
+                this.$refs.nav.style.opacity = "0.6",
+                this.$nextTick(()=>{
+                    this.color = "transparent"
+                })
+            }
+        })
     },
     destroyed(){
-        // window.removeEventListener('scroll', this.scrollToTop);
+        window.removeEventListener('scroll', this.scrollToTop);
     },
     methods:{
         ...mapMutations(["setActiveIndex","setchildActiveIndex"]),
@@ -299,6 +317,15 @@ export default {
                this.setActiveIndex('7')
             }
         },
+        gonextfirst(item){
+            console.log("跳到下级")
+            if(item == "2-1"){
+                // console.log("集团概况")
+                this.$router.push({path:"/group_intro"})
+                this.setActiveIndex('2-1')
+                this.setchildActiveIndex("1")
+            }
+        },
         use_rightnav(){
             this.click_count++
             if(this.click_count%2 == 1){
@@ -312,7 +339,7 @@ export default {
             window.open("https://oa.zjxinghe.com/")
         },
         search(){
-           if(document.documentElement.style.fontSize == '10pt'){
+           if(this.deviceFlag == "mobile"){
                //移动端显示
                this.$refs.searchMobile.alert_box = true
            }else{
@@ -321,55 +348,66 @@ export default {
            }
         },
         changecolor(){
-            this.$refs.nav.style.opacity = "1",
-            this.$nextTick(()=>{
-                this.color = '#28436E'
-            })
+            if(this.deviceFlag == "pc"&&this.curPage == "index"){
+                this.$refs.nav.style.opacity = "1",
+                this.$nextTick(()=>{
+                    this.color = '#28436E'
+                })
+            }  
+        },
+        handleOpen(key, keyPath){
+            console.log(key)
+        },
+        opensubmenu(index,indexPath){
+            console.log(index,indexPath)
         },
         goindex(){
             this.$router.push({
                 path:"/main_page"
             })
         },
-        // scrollToTop() {
-        //     var scrollTop = window.pageYOffset || document.documentElement.scrollTop || document.body.scrollTop;
-        //     var w = document.documentElement.clientWidth || document.body.clientWidth;
-        //     if(scrollTop%200 == 0 && scrollTop>0&&w>768){
-        //         this.$refs.nav.style.opacity = "0.6",
-        //         this.$nextTick(()=>{
-        //             this.color = "transparent"
-        //         })
-        //     }else{
-        //         return
-        //     }
-        // }
+        scrollToTop() {
+            var scrollTop = window.pageYOffset || document.documentElement.scrollTop || document.body.scrollTop;
+            if(scrollTop>0 &&this.deviceFlag=="pc" &&this.curPage == "index"){
+                this.$refs.search.alert_box = false
+                this.$refs.nav.style.opacity = "0.6",
+                this.$nextTick(()=>{
+                    this.color = "transparent"
+                })
+            }else{
+                this.$refs.search.alert_box = false
+            }
+        }
     },
     watch:{
         activeIndex(newName, oldName){ 
             // console.log(newName)
             this.activeIndex1 = newName
-        }
+        },
     }
 }
 </script>
 <style lang="stylus">
 .el-menu--collapse.el-menu .el-submenu,.el-menu--popup
-    min-width 6rem
+    min-width 4rem
     text-align center
     color #ABABAB
+    @media screen and (min-width:996px)
+        min-width 6rem
 .el-menu-vertical-demo:not(.el-menu--collapse) 
     width 10rem
 </style>
 <style lang="stylus" scoped>//修改顶部导航样式
-.el-menu-item:hover
+.el-menu-item:hover //修改所有的导航子菜单的样式包括sub_menu的，下面单独覆盖sub_menu样式
     outline 0 !important 
     color #FFFFFF !important
     background transpent !important
 .el-menu-item.is-active 
     color #FFFFFF !important
-.el-menu-item  
-  color #ABABAB !important
-  font-size 0.8rem !important
+.el-menu-item 
+    @media screen and (min-width:769px)
+        color #ABABAB !important
+        font-size 0.8rem !important
 /deep/.el-menu--horizontal
             border-bottom none
             margin-top 1rem
@@ -384,13 +422,18 @@ export default {
                 .el-submenu__title
                     font-size 1rem
                     height 2.92rem
-                    line-height 2.2rem
+                    line-height 1.8rem
                     @media screen and (min-width:768px) and (max-width:850px)
                         padding 0 15px
                     @media screen and (min-width:851px) and (max-width:992px)
                         padding 0 18px
                     @media screen and (min-width:993px) and (max-width:1380px)
                         padding 0 8px
+                    a 
+                        text-decoration none
+                        color #FFFFFF
+                    .router-link-active 
+                        text-decoration none
                 .el-submenu__title:hover
                     outline 0 !important
                     background-color transparent !important
@@ -400,11 +443,16 @@ export default {
                 position absolute
                 right 50px
                 top 38px
-                @media screen and (min-width:768px) and (max-width:992px)
-                    top 46px
-                @media screen and (min-width:993px) and (max-width:1200px)
-                    top 45px
+                @media screen and (max-width:1380px)
                     right 38px
+                @media screen and (min-width:768px) and (max-width:850px)
+                    top 35px
+                @media screen and (min-width:993px) and (max-width:1200px)
+                    top 35px
+                    right 38px
+                 @media screen and (min-width:874px) and (max-width:986px)
+                    top 32px
+                    right 40px
                 font-weight 500
                 color #FFFFFF
 /deep/.el-menu--horizontal>.el-submenu.is-active .el-submenu__title
@@ -412,20 +460,17 @@ export default {
             border-bottom-color transparent !important
 /deep/.el-menu--horizontal>.is-active
             border-bottom transparent!important  
-
 .nav
     width 100%
     font-size 1rem
     background #28436E
-    opacity 0.6
-    @media screen and (max-width:768px)
-        opacity 1
+    opacity 1
     line-height 4rem
     padding-right 0
     padding-top 2px
     margin 0
     @media screen and (max-width:768px)
-        border-bottom 1px solid #FFFFFF
+        border-bottom 1px solid rgba(250,250,250,0.5)
         height 5rem
     .nav_left 
         color #fff
@@ -472,7 +517,7 @@ export default {
             @media screen and (min-width:768px) and (max-width:850px)
                 padding 0 15px
             @media screen and (min-width:850px) and (max-width:992px)
-                height 4rem
+                height 3.2rem
                 padding 0 18px
             @media screen and (min-width:993px) and (max-width:1380px)
                 // height 4rem
@@ -547,7 +592,7 @@ export default {
     .mid_screen2
         @media screen and (min-width:769px) and (max-width:992px)
             display none
-    .left_nav //手机端侧边导航
+    .mobile_nav //手机端侧边导航
         padding 0 0 
         .el-menu-collapse-list
             width 100%
@@ -555,6 +600,7 @@ export default {
             list-style none
             padding 0 0
             border-right none
+            border-top 1px solid rgba(250,250,250,0.5)
     .search_box
         position fixed
         right 2.7%

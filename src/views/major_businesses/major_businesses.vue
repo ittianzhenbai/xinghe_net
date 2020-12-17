@@ -87,6 +87,14 @@ export default {
         OptionBoxMobile,
         BannerTitle
     },
+    beforeRouteEnter(to, from, next) {
+        next(vm => {
+            if(vm.$route.query.from == "title"){
+                vm.setchildActiveIndex('1')
+                vm.setActiveIndex('4-1')
+            }
+        });
+    },
     mounted(){
         this.getBanner("zyyw")
     },
@@ -143,6 +151,16 @@ export default {
         childActiveIndex(newval){
             // console.log("childActiveIndex",newval)
             this.content_show = newval
+        },
+        $route:{
+            handler:function(newval, oldVal){
+                if(newval.query.from == "title"){
+                    this.setActiveIndex('4-1')
+                    this.setchildActiveIndex('1')
+                }
+            },
+            // 深度观察监听
+            deep:  true
         }
     }
 }

@@ -32,32 +32,32 @@
                         <ul>
                             <li>
                                 <img src="../../assets/4.png" alt="">
-                                地<span class="kongge"></span>址:浙江省杭州市延安路312号
+                                地<span class="kongge"></span>址:
+                                <span class="text1">浙江省杭州市延安路312号</span>
                             </li>
                             <li>
                                 <img src="../../assets/6.png" alt="">
-                                传<span class="kongge"></span>真:0571-8701 4212
+                                传<span class="kongge"></span>真:
+                                <span class="text1">0571-8701 4212</span>
                             </li>
                             <li>
                                 <img src="../../assets/8.png" alt="">
-                                技术维护:浙江省兴合集团有限责任公司信息技术部
+                                技术维护:
+                                <span class="text1">浙江省兴合集团有限责任公司信息技术部</span>
                             </li>
                             <li>
                                 <img src="../../assets/5.png" alt="">
-                                服务热线:0571-8703 2510
+                                服务热线:
+                                <span class="text1">0571-8703 2510</span>
                             </li>
                             <li>
                                 <img src="../../assets/7.png" alt="">
-                                电子邮箱:xinghegroup@zjcoop.com
+                                电子邮箱:
+                                <span class="text1">xinghegroup@zjcoop.com</span>
                             </li>
                             <li>
                                 <span class="demonstration1">兴合集团公众号</span>
-                                <el-image
-                                    class="img1"
-                                    style="width: 60px; height: 60px"
-                                    src="../../assets/group_erweima.jpg"
-                                    fit="cover">
-                                </el-image>
+                                <img class="img1" src="../../assets/group_erweima.jpg" alt="">
                             </li>
                         </ul>
                     </el-collapse-item>
@@ -95,15 +95,26 @@ export default {
         color #ffff
         padding 0 15px
         border-bottom none
+        font-size 1.5rem
+        margin-top 1.4rem
+        margin-bottom 1.2rem
 /deep/.el-collapse-item__header.is-active 
-        border-bottom 1px solid #FFFFFF
+        border-bottom 1px solid rgba(250,250,250,0.6)
 /deep/.el-collapse-item__wrap
         background-color #223D6B
         color #ffff
         padding 0 15px
         border none
+        font-size 1.2rem
+        line-height 1.6rem
 /deep/.el-collapse
         border none
+/deep/.el-collapse-item__arrow.is-active
+        //点击后的方向
+        transform rotate(-90deg)
+/deep/.el-collapse-item__arrow, .el-tabs__nav
+        //默认方向
+        transform rotate(90deg)
 .foot
     background-color #223D6B
     padding 0
@@ -120,6 +131,8 @@ export default {
                 text-align left
                 margin-top 1.7rem
                 font-size 0.9rem
+                font-family MicrosoftYaHei
+                font-weight Regular
             ul
                 list-style none
                 padding 0 0
@@ -155,7 +168,8 @@ export default {
                 &>li
                     float left
                     width 33.3%
-                    font-size 0.7rem
+                    font-size 1.2rem
+                    line-height 1.6rem
                     @media screen and (max-width:1919px)
                         width 50%
                     @media screen and (max-width:1270px)
@@ -167,19 +181,38 @@ export default {
                     color #fff
                     line-height 2rem
                     &>img
-                        width 1.2rem
+                        width 1.5rem
                         padding-right 0.5rem
                         display inline-block
+                    .img1
+                        width 120px
+                        height 120px
+                        margin-bottom 15px
+                        margin-top 1rem
+                        @media screen and (max-width:280px)
+                            width 80px
+                            height 80px
+                    .text1
+                        display inline-block
+                        width 60%
+                        vertical-align top
+                        @media screen and (max-width:280px)
+                            width 53%
+                        @media screen and (min-width:540px) and (max-width:768px)
+                            width 70%
                     .kongge
-                        padding-right 1.4rem
+                        padding-right 2.4rem
                     .demonstration1
                         display inline-block
                         float left
-                        font-size 0.7rem
-                        line-height 4rem
+                        font-size 1.2rem
+                        line-height 120px
                         padding-right 2rem
+                        margin-top 1rem
                         @media screen and (min-width:769px)
                             display none
+                        @media screen and (max-width:280px)
+                           line-height 1.2rem
         .top_right
             float right
             color #fff
@@ -210,4 +243,9 @@ export default {
         font-size 0.7rem
         line-height 1.2rem
         padding-bottom 23px
+        @media screen and (max-width:768px)
+            font-size 1.2rem
+            padding-top 2.5rem
+            line-height 1.6rem
+            padding-bottom 2.35rem
 </style>

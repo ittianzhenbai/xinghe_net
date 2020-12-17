@@ -84,6 +84,14 @@ export default {
     computed:{
         ...mapState(["childActiveIndex"])
     },
+    beforeRouteEnter(to, from, next) {
+        next(vm => {
+            if(vm.$route.query.from == "title"){
+                vm.setchildActiveIndex('1')
+                vm.setActiveIndex('3-1')
+            }
+        });
+    },
     mounted(){
         this.getNewsCategroy()
         this.getBanner("xwzx")
@@ -101,7 +109,7 @@ export default {
         },
         handleSelect(key, keyPath) {
             console.log(key ,keyPath)
-            // this.jump_router(key)
+            this.jump_router(key)
         },
         jump_router(item){
             this.content_show = item
@@ -137,6 +145,22 @@ export default {
         },
         changecolor2(){
             this.content_show = this.childActiveIndex
+        }
+    },
+    watch:{
+        childActiveIndex(newval){
+            // console.log("childActiveIndex",newval)
+            this.content_show = newval
+        },
+        $route:{
+            handler:function(newval, oldVal){
+                if(newval.query.from == "title"){
+                    this.setActiveIndex('3-1')
+                    this.setchildActiveIndex('1')
+                }
+            },
+            // 深度观察监听
+            deep:  true
         }
     }
 }
