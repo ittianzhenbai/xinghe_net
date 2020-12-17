@@ -84,6 +84,14 @@ export default {
         OptionBoxMobile,
         BannerTitle
     },
+    beforeRouteEnter(to, from, next) {
+        next(vm => {
+            if(vm.$route.query.from == "title"){
+                vm.setchildActiveIndex('1')
+                vm.setActiveIndex('5-1')
+            }
+        });
+    },
     mounted(){
         this.getBanner("djyd")
     },
@@ -134,8 +142,18 @@ export default {
     },
     watch:{
         childActiveIndex(newval){
-            console.log("childActiveIndex",newval)
+            // console.log("childActiveIndex",newval)
             this.content_show = newval
+        },
+        $route:{
+            handler:function(newval, oldVal){
+                if(newval.query.from == "title"){
+                    this.setActiveIndex('5-1')
+                    this.setchildActiveIndex('1')
+                }
+            },
+            // 深度观察监听
+            deep:  true
         }
     }
 }

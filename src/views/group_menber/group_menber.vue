@@ -5,18 +5,19 @@
                 <img v-lazy="this.cur_image" alt="">
             </div>
             <div class="col-12 col-sm-6 col-md-6 col-lg-6 menber_list">
-                <ul>
+                <ul @mouseleave="godefault">
                     <li
                      v-for="(item,index) in this.groupmenber" 
                      :key="index"
                      @click="gomenber_net(item)"
                      @mouseenter="changepics(item)"
+                     ref="menbergroup"
                      >
-                        <span v-show ="index<10">0{{index}}</span>
-                        <span v-show ="index>=10">{{index}}</span>
+                        <span v-show ="index<9">0{{index+1}}</span>
+                        <span v-show ="index>=9">{{index+1}}</span>
                         <p class="title">{{item.title}}</p>
                         <div class="left_hover">
-                            <img :src="item.logo" alt="">
+                            <i class="el-icon-s-promotion"/>
                         </div>
                         <div class="right_hover">
                             <p class="title1">{{item.title}}</p>
@@ -60,14 +61,29 @@ export default {
             cur_image:""
         }
     },
+    created(){
+        this.getGroupMenber() 
+    },
     mounted(){
-        this.getGroupMenber()
+        this.godefault()
     },
     methods:{
         changepics(item){
            this.$nextTick(()=>{
                this.cur_image = item.image
+                var self = this
+                setTimeout(()=>{
+                   self.$refs.menbergroup[0].removeAttribute("class", "default")
+                },300)
            })
+        },
+        godefault(){
+            this.$nextTick(()=>{
+                var self = this
+                setTimeout(()=>{
+                    self.$refs.menbergroup[0].setAttribute("class", "default")
+                },500)
+            })
         },
         gomenber_net(item){
             window.open(item.url)
@@ -104,6 +120,7 @@ export default {
                 width 60%
                 height 100%
                 margin-left 40%
+                border 3px solid #333333
         .menber_list
             height 20rem
             padding 0 0
@@ -114,6 +131,7 @@ export default {
                 padding 0 0
                 margin 0
                 width 80%
+                border 1px solid #333333
                 background-image linear-gradient(to bottom, #2C9AF1 2%,#2583CF 10%,#2077BD 18%,#1C6CAC 28%,#19619A 38%,#165587 48%,#124771 58%,#104066 68%, #0F3A5C 78%, #0D314E 88%,#0A2942 100%)
                 &>li
                     height 2rem
@@ -125,7 +143,7 @@ export default {
                     span
                         flex 1
                         display inline-block
-                        border-right 1px solid #FFFFFF
+                        border-right 1px solid #91CFFF
                         color #FFFFFF
                     .right_hover,.left_hover
                         display none
@@ -140,7 +158,7 @@ export default {
                         overflow hidden
                         text-overflow ellipsis
                         white-space nowrap
-                li:hover
+                li:hover,.default
                     height 120px
                     background #FFFFFF
                     span
@@ -151,7 +169,11 @@ export default {
                         flex 1
                         display block
                         line-height 120px
-                        border 1px solid #91CFFF
+                        border-right 1px solid #91CFFF
+                        .el-icon-s-promotion
+                            color #28436E
+                            font-size 3rem
+                            line-height 120px
                         img
                             width 80%
                             margin 0 auto

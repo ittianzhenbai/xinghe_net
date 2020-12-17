@@ -82,17 +82,26 @@ export default {
         OptionBoxMobile,
         BannerTitle
     },
+    beforeRouteEnter(to, from, next) {
+        next(vm => {
+            if(vm.$route.query.from == "title"){
+                vm.setchildActiveIndex('1')
+                vm.setActiveIndex('6-1')
+            }
+        });
+    },
     mounted(){
         this.getBanner("rczp")
     },
     methods:{
-        ...mapMutations(["setchildActiveIndex"]),
+        ...mapMutations(["setActiveIndex","setchildActiveIndex"]),
         handleSelect(key, keyPath) {
             console.log(key ,keyPath)
             this.jump_router(key)
         },
         jump_router(item){
             this.content_show = item
+            this.setchildActiveIndex(item)
             switch(item){
                 case "1":
                     // console.log(item)
@@ -121,11 +130,21 @@ export default {
             this.content_show = this.childActiveIndex
         }
     },
-    watch:{
-        // childActiveIndex(newval){
-        //     console.log("childActiveIndex",newval)
-        //     this.content_show = newval
-        // }
+     watch:{
+        childActiveIndex(newval){
+            // console.log("childActiveIndex",newval)
+            this.content_show = newval
+        },
+        $route:{
+            handler:function(newval, oldVal){
+                if(newval.query.from == "title"){
+                    this.setActiveIndex('6-1')
+                    this.setchildActiveIndex('1')
+                }
+            },
+            // 深度观察监听
+            deep:  true
+        }
     }
 }
 </script>

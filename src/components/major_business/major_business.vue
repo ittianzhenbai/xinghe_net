@@ -185,6 +185,12 @@ export default {
             display none
         &>li
             height 20rem
+            @media screen and (max-width:1600px)
+                height 18rem
+            @media screen and (max-width:1460px)
+                height 16rem
+            @media screen and (max-width:1200px)
+                height 15rem
             width 20%
             display inline-block
             vertical-align top
@@ -266,16 +272,23 @@ export default {
                     font-size 24px
                     line-height 45px
                     margin-top 76px
+                    @media screen and (max-width:1460px)
+                        margin-top 46px
                 .intro
                     font-size 0.8rem
                     text-align left
                     color #FFFFFF
                     width 80%
                     margin 43px auto 37px
+                    @media screen and (max-width:1460px)
+                        margin 30px auto 17px
                     display -webkit-box
                     -webkit-box-orient vertical
                     -webkit-line-clamp 4  //需要显示时文本行数
                     overflow hidden
+                    @media screen and (max-width:1460px)
+                        margin 30px auto 37px
+                        -webkit-line-clamp 3  //需要显示时文本行数
                 div
                     border 1px solid rgba(250,250,250,0.8)
                     border-radius 5px
@@ -292,7 +305,7 @@ export default {
         bottom 75pt
         z-index 9
         background #FFFFFF
-        @media screen and (min-width:768px)
+        @media screen and (min-width:769px)
             display none
         &>li
             height 90pt
