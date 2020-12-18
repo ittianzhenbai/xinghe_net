@@ -86,7 +86,7 @@ export default {
                 font-family MicrosoftYaHei
             .pic1
                 width 100%
-                @media screen and (min-width:768px)
+                @media screen and (min-width:769px)
                     min-height 371px
                 @media screen and (max-width:768px)
                     height 100%

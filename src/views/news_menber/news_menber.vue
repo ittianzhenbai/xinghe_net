@@ -49,6 +49,7 @@
                 @current-change = "handleCurrentChange"
                 :page-size.sync="pagesize"
                 :current-page.sync="page"
+                :hide-on-single-page = true
                 :pager-count ='this.pagecount'
                 :total="this.total">
             </el-pagination>
@@ -56,6 +57,7 @@
     </div>
 </template>
 <script>
+import { mapState} from "vuex"
 export default {
     data(){
         return{
@@ -70,9 +72,14 @@ export default {
         }
     },
     mounted(){
-        this.getNewsList(this.page,this.pagesize,3)
+        if(this.deviceFlag == "mobile"){
+            this.getNewsList_mobile(this.page,this.pagesize,3)
+        }else{
+            this.getNewsList(this.page,this.pagesize,3)
+        }
     },
     computed:{
+        ...mapState(["deviceFlag"]),
         noMore () {
             return this.count >= this.total
         },
@@ -117,7 +124,7 @@ export default {
         load () {
             this.loading = true
             this.page+=1
-            this.getNewsList_mobile(this.page,this.pagesize,2)
+            this.getNewsList_mobile(this.page,this.pagesize,3)
         },
         reload(){
             //点击继续查看 可以查看下一页数据
@@ -126,7 +133,7 @@ export default {
             if(this.count>=this.total){
                 this.loading = false
             }
-            this.getNewsList_mobile(this.page,this.pagesize,2)
+            this.getNewsList_mobile(this.page,this.pagesize,3)
         },
         godetail(item){
             console.log(item)
@@ -202,7 +209,8 @@ export default {
                     overflow hidden 
                     @media screen and (max-width:768px)
                         margin-bottom 0.95rem
-                        line-height 1.7rem 
+                        font-size 1.7rem
+                        line-height 1.7rem
                 .neirong
                     text-align left
                     display -webkit-box
@@ -218,6 +226,8 @@ export default {
                     @media screen and (max-width:768px)
                         font-size 1.4rem
                         line-height 2rem 
+                    @media all and (-ms-high-contrast: none), (-ms-high-contrast: active) 
+                        max-height 50px
             .text1
                 width 100%
                 font-size 1.5rem

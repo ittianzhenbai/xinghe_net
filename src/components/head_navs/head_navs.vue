@@ -4,20 +4,20 @@
         @mouseenter="changecolor"
     >
         <div 
-            class="nav_left col-7 col-sm-6 col-md-6 col-lg-3" 
+            :class="this.class1"
             >
             <span @click="goindex" class="logo_mobile"></span>
             <img class="logo" @click="goindex" src="../../assets/32.png" alt="">
         </div>
          <div 
-            class="col-5 col-sm-6 col-md-6 col-lg-2 nav_right mid_screen1"
+            :class="this.class2"
         >
             <ul class="list1">
                 <li><span class="oa" @click="gooa"></span></li>
                 <li><span class="search" @click="search"></span></li>
             </ul>
         </div>
-        <div class="col-md-12 col-lg-7 nav_mid" ref="midmenu">
+        <div :class="this.class3" ref="midmenu">
             <el-menu
                 :default-active="activeIndex1"
                 mode="horizontal"
@@ -153,7 +153,10 @@ export default {
         isCollapse: true,
         right_navshow:false,//控制右边导航显示
         click_count:0,//控制点击次数
-        color:"#28436E"
+        color:"#28436E",
+        class1:"nav_left col-7 col-sm-6 col-md-6 col-lg-3",//控制nav_left的样式
+        class2:"col-5 col-sm-6 col-md-6 col-lg-2 nav_right mid_screen1",//控制中等屏幕下的右边导航按钮
+        class3:"col-md-12 col-lg-7 nav_mid",//控制中部导航样式
       };
     },
     components:{
@@ -168,13 +171,21 @@ export default {
     mounted(){
         window.addEventListener('scroll', this.scrollToTop)
         this.$nextTick(()=>{
-            if(this.curPage == "index"&&this.deviceFlag == "pc"){
+            if(this.curPage == "index"&&(this.deviceFlag == "pc"||this.deviceFlag=='mid_pc')){
                 this.$refs.nav.style.opacity = "0.6",
                 this.$nextTick(()=>{
                     this.color = "transparent"
                 })
             }
         })
+        console.log(this.deviceFlag)
+        if(this.deviceFlag == "mid_pc"){
+            this.$nextTick(()=>{
+                this.class1 = "nav_left col-7 col-sm-6 col-md-6"
+                this.class2 = "col-5 col-sm-6 col-md-6 nav_right mid_screen1"
+                this.class3 = "col-md-12 nav_mid"
+            })
+        }
     },
     destroyed(){
         // window.removeEventListener('scroll', this.scrollToTop);
@@ -348,7 +359,7 @@ export default {
            }
         },
         changecolor(){
-            if(this.deviceFlag == "pc"&&this.curPage == "index"){
+            if((this.deviceFlag == "pc"||this.deviceFlag=='mid_pc')&&this.curPage == "index"){
                 this.$refs.nav.style.opacity = "1",
                 this.$nextTick(()=>{
                     this.color = '#28436E'
@@ -368,13 +379,14 @@ export default {
         },
         scrollToTop() {
             var scrollTop = window.pageYOffset || document.documentElement.scrollTop || document.body.scrollTop;
-            if(scrollTop>0 &&this.deviceFlag=="pc" &&this.curPage == "index"){
-                this.$refs.search.alert_box = false
+            if(scrollTop>0 &&(this.deviceFlag == "pc"||this.deviceFlag=='mid_pc') &&this.curPage == "index"){
                 this.$refs.nav.style.opacity = "0.6",
                 this.$nextTick(()=>{
                     this.color = "transparent"
                 })
+                this.$refs.search.alert_box = false
             }else{
+                //其他页面也要处理
                 this.$refs.search.alert_box = false
             }
         }
@@ -384,6 +396,18 @@ export default {
             // console.log(newName)
             this.activeIndex1 = newName
         },
+        deviceFlag(newVal){
+            console.log(newVal)
+            if(newVal == "mid_pc"){
+                this.class1 = "nav_left col-7 col-sm-6 col-md-6"
+                this.class2 = "col-5 col-sm-6 col-md-6 nav_right mid_screen1"
+                this.class3 = "col-md-12 nav_mid"
+            }else{
+                this.class1 = "nav_left col-7 col-sm-6 col-md-6 col-lg-3",//控制nav_left的样式
+                this.class2 = "col-5 col-sm-6 col-md-6 col-lg-2 nav_right mid_screen1",//控制中等屏幕下的右边导航按钮
+                this.class3 = "col-md-12 col-lg-7 nav_mid"//控制中部导航样式
+            }
+        }
     }
 }
 </script>
@@ -394,6 +418,8 @@ export default {
     color #ABABAB
     @media screen and (min-width:996px)
         min-width 6rem
+    @media screen and (min-width:768px) and (max-width:992px)
+        min-width 7rem
 .el-menu-vertical-demo:not(.el-menu--collapse) 
     width 10rem
 </style>
@@ -423,12 +449,26 @@ export default {
                     font-size 1rem
                     height 2.92rem
                     line-height 1.8rem
-                    @media screen and (min-width:768px) and (max-width:850px)
+                    @media screen and (min-width:769px) and (max-width:819px)
                         padding 0 15px
-                    @media screen and (min-width:851px) and (max-width:992px)
+                    @media screen and (min-width:820px) and (max-width:849px)
+                        padding 0 17px
+                    @media screen and (min-width:850px) and (max-width:868px)
+                        padding 0 16px
+                    @media screen and (min-width:869px) and (max-width:889px)
                         padding 0 18px
-                    @media screen and (min-width:993px) and (max-width:1380px)
-                        padding 0 8px
+                    @media screen and (min-width:890px) and (max-width:908px)
+                        padding 0 20px
+                    @media screen and (min-width:909px) and (max-width:937px)
+                        padding 0 22px
+                    @media screen and (min-width:938px) and (max-width:968px)
+                        padding 0 25px
+                    @media screen and (min-width:969px) and (max-width:999px)
+                        padding 0 28px
+                    @media screen and (min-width:1000px) and (max-width:1119px)
+                        padding 0 6px
+                    @media screen and (min-width:1120px) and (max-width:1380px)
+                        padding 0 15px
                     a 
                         text-decoration none
                         color #FFFFFF
@@ -445,14 +485,18 @@ export default {
                 top 38px
                 @media screen and (max-width:1380px)
                     right 38px
-                @media screen and (min-width:768px) and (max-width:850px)
-                    top 35px
+                @media screen and (min-width:768px) and (max-width:935px)
+                    top 30px
+                    right 45px
+                @media screen and (min-width:936px) and (max-width:992px)
+                    top 30px
+                    right 50px
                 @media screen and (min-width:993px) and (max-width:1200px)
                     top 35px
                     right 38px
-                 @media screen and (min-width:874px) and (max-width:986px)
-                    top 32px
-                    right 40px
+                //  @media screen and (min-width:874px) and (max-width:986px)
+                //     top 32px
+                //     right 40px
                 font-weight 500
                 color #FFFFFF
 /deep/.el-menu--horizontal>.el-submenu.is-active .el-submenu__title
@@ -508,7 +552,7 @@ export default {
             display none
         @media screen and (min-width:768px) and (max-width:850px)
             padding 0 70px
-        @media screen and (min-width:850px) and (max-width:992px)
+        @media screen and (min-width:850px) and (max-width:999px)
             padding 0 100px
         .el-menu-item
             font-size 1rem
@@ -587,12 +631,12 @@ export default {
             padding-right 100px
             @meida screen and (man-width:850px)
                 padding-left 0
-            @media screen and (min-width:993px)
+            @media screen and (min-width:1000px)
                 display none
             @media screen and (max-width:768px)
                 display none
     .mid_screen2
-        @media screen and (min-width:769px) and (max-width:992px)
+        @media screen and (min-width:769px) and (max-width:999px)
             display none
     .mobile_nav //手机端侧边导航
         padding 0 0 

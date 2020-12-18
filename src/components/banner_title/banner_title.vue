@@ -47,7 +47,7 @@ export default {
 .banner
     width 185px
     height 22px
-    font-size: 28px
+    font-size 28px
     font-family Source Han Sans CN
     line-height 45px
     .title_zn

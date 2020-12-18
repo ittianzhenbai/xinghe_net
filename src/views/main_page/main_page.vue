@@ -14,10 +14,41 @@
                 </div>
             </div>
             <div class="row rongyu">
-                <ul class="col-md-12"
+                <ul class="rongyu1 col-2 col-sm-2 col-md-2 col-lg-2"
+                    v-show="this.deviceFlag !=='mobile'"
                     v-waypoint="{ active: true, callback: onWaypoint, options: intersectionOptions }"
-                >
-                    <li v-for="(item,index) in this.rongyu" :key="index" class="col-4 col-sm-4 col-md-4 col-lg-2">
+                >   
+                    <li v-for="(item,index) in this.rongyu" :key="index" class="item"  v-show = "index == 0">
+                        <animate-number 
+                            ref="NumAnimate"
+                            from="1"
+                            :to="item.value"
+                            duration="1500"
+                            mode="manual"
+                        ></animate-number>
+                        <p>{{item.title}}</p>
+                    </li>
+                </ul>
+                <ul class="rongyu1 col-10 col-sm-10 col-md-10 col-lg-10 row"
+                    v-show="this.deviceFlag !=='mobile'"
+                    v-waypoint="{ active: true, callback: onWaypoint, options: intersectionOptions }"
+                >   
+                    <li v-for="(item,index) in this.rongyu" :key="index" class="col-3 col-sm-3 col-md-3 col-lg-3 item"  v-show = "index > 0">
+                        <animate-number 
+                            ref="NumAnimate"
+                            from="1" 
+                            :to="item.value"
+                            duration="1500"
+                            mode="manual"
+                        ></animate-number>
+                        <p>{{item.title}}</p>
+                    </li>
+                </ul>
+                 <ul class="rongyu1 row"
+                    v-show="this.deviceFlag =='mobile'"
+                    v-waypoint="{ active: true, callback: onWaypoint, options: intersectionOptions }"
+                >   
+                    <li v-for="(item,index) in this.rongyu" :key="index" class="col-4 col-sm-4 item">
                         <animate-number 
                             ref="NumAnimate"
                             from="1" 
@@ -111,7 +142,7 @@ export default {
         }
     },
     computed:{
-         ...mapState(["childActiveIndex"])
+         ...mapState(["childActiveIndex","deviceFlag"])
     },
     beforeRouteEnter(to, from, next) {
         next(vm => {
@@ -234,19 +265,23 @@ export default {
     .content
         width 80%
         margin 0 auto
-        @media screen and (max-width:768px)
-            width 92%
         padding 0
         background url("../../assets/023.png")
-        background-size 100%
+        background-size contain
+        background-repeat no-repeat
         position relative
         bottom 6rem
+        @media screen and (max-width:768px)
+            width 92%
+            bottom 7.5rem
         .near_xinghe
             margin 0
             .company_intro
                 margin 0 auto!important
                 padding 40px 0
                 width 100%
+                @media screen and (max-width:768px)
+                    padding 3.85rem 0 2.45rem
                 span
                     text-align cneter
                     font-size 2rem
@@ -271,15 +306,16 @@ export default {
             margin-right 0
             margin-left 0
             padding 0
-            ul
+            .rongyu1
                 margin 0 auto
-                padding 0
+                padding 0 auto
                 @media screen and (max-width:768px)
                     margin 0
-                &>li
-                    display inline-block
+                .item
                     vertical-align top
-                    padding 0
+                    padding 0 auto
+                    @media screen and (max-width:768px)
+                        padding 0
                     span
                         font-size 3.6rem
                         color #1A649F
@@ -294,6 +330,8 @@ export default {
                         font-size 0.8rem
                         width 10rem
                         margin 0 auto
+                        @media screen and (max-width:1520px)
+                            width 95%
         .detail
             margin 0 auto
             border-radius 5px
@@ -318,6 +356,9 @@ export default {
             padding 4rem 0 100px
             width 100%
             margin 0
+            @media screen and (max-width:768px)
+                margin-bottom 5rem
+                padding 2.85rem 0
             .title
                 font-size 2rem
                 font-weight Bold
@@ -351,6 +392,7 @@ export default {
                 margin 0
                 width 100%
                 background #F4F4F4
+                margin-bottom 5rem
                 .news_pics
                     height 24rem
                     margin-top 1.5rem
@@ -362,6 +404,7 @@ export default {
                     width 100%
                     @media screen and (max-width:768px)
                         margin-top 17pt
+                        height 30rem
                     .news_top
                         width 100%
                         padding 0 0 0 1.3rem

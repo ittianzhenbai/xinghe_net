@@ -206,7 +206,8 @@ export default {
                     overflow hidden 
                     @media screen and (max-width:768px)
                         margin-bottom 0.95rem
-                        line-height 1.7rem 
+                        font-size 1.7rem
+                        line-height 1.7rem
                 .neirong
                     text-align left
                     display -webkit-box
@@ -221,7 +222,9 @@ export default {
                     margin-bottom 5px
                     @media screen and (max-width:768px)
                         font-size 1.4rem
-                        line-height 2rem 
+                        line-height 2rem
+                    @media all and (-ms-high-contrast: none), (-ms-high-contrast: active) 
+                        max-height 50px
             .text1
                 width 100%
                 font-size 1.5rem

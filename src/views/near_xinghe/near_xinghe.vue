@@ -176,13 +176,21 @@ export default {
         @media screen and (max-width:768px)
             margin-top 5rem
             height 20rem
+        @media screen and (min-width:769px) and (max-width:992px)
+            margin-top 6.5rem
+            height 20rem
         .img
             width 100%
+            @media screen and (max-width:768px)
+                height 20rem
         .banner_title
             z-index 10
             position absolute
             top 44%
             left 12.6%
+            @media screen and (max-width:768px)
+                left 10.6%
+                top 31%
     .navigation_pc
         @media screen and (max-width:768px)
             display none
@@ -201,6 +209,10 @@ export default {
                 cursor pointer
                 color #000000
                 text-align center
+                @media screen and (min-width:993px) and (max-width:1680px)
+                    width 10rem
+                @media screen and (min-width:769px) and (max-width:992px)
+                    width 8rem
                 &.active
                     border-bottom 3px solid #1A649F
                     font-weight bold

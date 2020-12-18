@@ -185,17 +185,21 @@ export default {
             display none
         &>li
             height 20rem
-            @media screen and (max-width:1600px)
-                height 18rem
-            @media screen and (max-width:1460px)
-                height 16rem
-            @media screen and (max-width:1200px)
-                height 15rem
             width 20%
             display inline-block
             vertical-align top
             position relative
-            bottom 30%
+            bottom 6rem
+            @media screen and (max-width:1600px)
+                height 18rem
+                bottom 5.4rem
+            @media screen and (max-width:1460px)
+                height 16rem
+                bottom 4.8rem
+            @media screen and (max-width:1200px)
+                height 15rem
+                bottom 4.5rem
+            background-color:purple\0; /* IE8, IE9, IE10 */
             z-index 9
             background #FFFFFF
             @media screen and (max-width:768px)
@@ -289,6 +293,9 @@ export default {
                     @media screen and (max-width:1460px)
                         margin 30px auto 37px
                         -webkit-line-clamp 3  //需要显示时文本行数
+                    @media all and (-ms-high-contrast: none), (-ms-high-contrast: active) 
+                        width 90%
+                        height 120px
                 div
                     border 1px solid rgba(250,250,250,0.8)
                     border-radius 5px
@@ -305,6 +312,8 @@ export default {
         bottom 75pt
         z-index 9
         background #FFFFFF
+        border-radius 8px
+        box-shadow 0px 5px 9px 1px rgba(164, 164, 164, 0.51)
         @media screen and (min-width:769px)
             display none
         &>li
@@ -320,6 +329,12 @@ export default {
                 right 0
                 top 0
                 height 100%
+            &:nth-child(1)
+                .img4
+                    border-top-right-radius 8px
+            &:nth-child(5)
+                .img4
+                    border-bottom-right-radius 8px
             .text1
                 color #223D6B
                 font-family MicrosoftYaHei

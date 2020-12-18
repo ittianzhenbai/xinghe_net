@@ -38,9 +38,10 @@
                 <div class="col-12 col-sm-12 group_pic">
                     <img v-lazy="item.image" alt="">
                 </div>
-                <div class="col-12 col-sm-12 row group_intro">
+                <div class="row group_intro">
                     <div class="col-3 col-sm-3 logo">
-                        <img :src="item.logo" alt="">
+                        <!-- <img :src="item.logo" alt=""> -->
+                        <i class="el-icon-s-promotion"/>
                     </div>
                     <div class="col-9 col-sm-9 intro">
                         <p class="title1">{{item.title}}</p>
@@ -120,7 +121,7 @@ export default {
                 width 60%
                 height 100%
                 margin-left 40%
-                border 3px solid #333333
+                box-shadow 0px 5px 9px 1px rgba(164, 164, 164, 0.51)
         .menber_list
             height 20rem
             padding 0 0
@@ -135,7 +136,7 @@ export default {
                 background-image linear-gradient(to bottom, #2C9AF1 2%,#2583CF 10%,#2077BD 18%,#1C6CAC 28%,#19619A 38%,#165587 48%,#124771 58%,#104066 68%, #0F3A5C 78%, #0D314E 88%,#0A2942 100%)
                 &>li
                     height 2rem
-                    border-bottom 1px solid rgba(250,250,250,0.8)
+                    border-bottom 1px solid #91CFFF
                     display flex
                     height 80px
                     fong-size 1.2rem
@@ -143,6 +144,7 @@ export default {
                     span
                         flex 1
                         display inline-block
+                        min-width 3.4rem
                         border-right 1px solid #91CFFF
                         color #FFFFFF
                     .right_hover,.left_hover
@@ -170,6 +172,7 @@ export default {
                         display block
                         line-height 120px
                         border-right 1px solid #91CFFF
+                        min-width 3.4rem
                         .el-icon-s-promotion
                             color #28436E
                             font-size 3rem
@@ -204,20 +207,10 @@ export default {
                             -webkit-box-orient vertical
                             -webkit-line-clamp 2
                             overflow hidden
-                        //     width 90%
-                        //     height 50px
-                        //     position relative
-                        // .company_intro:after
-                        //     content "..."
-                        //     position absolute
-                        //     bottom 0
-                        //     right 0
-                        //     background #FFF
-                        //     padding-left 10px
     .row_mobile
         margin 0
         width 100%
-        @media screen and (min-width:768px)
+        @media screen and (min-width:769px)
             display none
         &>li
             margin 0 0 1rem
@@ -230,25 +223,29 @@ export default {
                     width 91.8%
                     height 25rem
             .group_intro
-                margin 0
-                padding 0 1.5rem
+                margin 0 auto
+                border 1px solid rgba(229, 229, 229, 0.8)
+                padding 0
                 width 92%
                 .logo
                     padding 0
-                    img
-                        height 3.4rem
-                        width 3.4rem
+                    margin 0
+                    .el-icon-s-promotion
+                        font-size 3.4rem
                         margin 2.55rem 1.1rem 2.55rem 1.1rem
                 .intro 
                     padding 0
                     font-family Microsoft YaHei
                     vertical-align top
+                    border-left 1px solid rgba(229, 229, 229, 0.8)
+                    margin 1.3rem 0
+                    padding-left 0.95rem
                     .title1
                         color #333333
                         font-weight bold    
                         font-size 1.7rem
                         display block
-                        line-height 4rem
+                        line-height 1.7rem
                         text-align left
                         //单行显示省略号
                         overflow hidden
@@ -259,7 +256,8 @@ export default {
                         text-align left
                         margin-bottom 0
                         font-size 1.2rem
-                        line-height 2rem
+                        line-height 1.5rem
+                        padding-top 0.95rem
                         text-align left
                         display -webkit-box
                         -webkit-box-orient vertical
