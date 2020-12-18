@@ -1,7 +1,7 @@
 <template>
     <div class="container-fluid group_honner">
         <div class="row row1">
-            <div class="item1 col-12 col-md-4">
+            <div class="item1 col-12 col-sm-12 col-md-4">
                 <img class="img1" src="../../assets/017.png" alt="">
                 <span class="title">{{this.honor[0].title}}</span>
                 <span class="paihang">
@@ -13,8 +13,8 @@
                     ></animate-number>位
                 </span>
             </div>
-            <div class="col-12 col-md-4 row coulum2">
-                <div class="item2 col-12 col-md-12">
+            <div class="col-12 col-sm-12 col-md-4 row coulum2">
+                <div class="item2 col-12 col-sm-12 col-md-12">
                     <img class="img2" src="../../assets/019.png" alt="">
                     <span class="title">{{this.honor[1].title}}</span>
                     <span class="paihang">
@@ -26,7 +26,7 @@
                         ></animate-number>位
                     </span>
                 </div>
-                <div class="item3 col-12 col-md-12">
+                <div class="item3 col-12 col-sm-12 col-md-12">
                     <img class="img3" src="../../assets/018.png" alt="">
                     <span class="title">{{this.honor[2].title}}</span>
                     <span class="paihang">
@@ -39,7 +39,7 @@
                     </span>
                 </div>
             </div>
-            <div class="item4 col-12 col-md-4">
+            <div class="item4 col-12 col-sm-12 col-md-4">
                 <img class="img4" src="../../assets/021.png" alt="">
                 <span class="title">{{this.honor[3].title}}</span>
                 <span class="paihang">
@@ -51,7 +51,7 @@
                     ></animate-number>位
                 </span>
             </div>
-            <div class="item5 col-12 col-md-12">
+            <div class="item5 col-12 col-sm-12 col-md-12">
                 <img class="img5" src="../../assets/020.png" alt="">
                 <span class="title1">{{this.honor[4].title}}</span>
             </div>
@@ -90,7 +90,7 @@ export default {
         width 80%
         margin 100px auto
         padding 0
-        @media screen and (max-width:768px)
+        @media screen and (max-width:769px)
             width 100%
             padding 1.25rem 1.5rem
             margin 0
@@ -126,7 +126,7 @@ export default {
         .coulum2
             padding 0 40px
             margin 0
-            @media screen and (min-width:768px)
+            @media screen and (min-width:769px)
                 height 24rem
             @media screen and (max-width:768px)
                 padding 0

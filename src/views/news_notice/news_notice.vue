@@ -74,6 +74,7 @@
                 :layout="this.layout"
                 @current-change = "handleCurrentChange"
                 :page-size.sync="pagesize"
+                :hide-on-single-page = true
                 :current-page.sync="page"
                 :total="this.total">
             </el-pagination>
@@ -96,13 +97,16 @@ export default {
         }
     },
     computed:{
-        ...mapState(["readHistory5"])
+        ...mapState(["readHistory5","deviceFlag"])
     },
     created(){
     },
     mounted(){
-        this.getNewsList(this.page,this.pagesize,2)
-        this.getNewsList_mobile(this.page,this.pagesize,2)
+        if(this.deviceFlag == "mobile"){
+            this.getNewsList_mobile(this.page,this.pagesize,2)
+        }else{
+             this.getNewsList(this.page,this.pagesize,2)
+        }
     },
     methods:{
         ...mapMutations(["setreadHistory5"]),
@@ -114,13 +118,13 @@ export default {
                 if(res.data.code ==1){
                     console.log(res)
                     this.total = res.data.data.cur_page.total_count
-                    this.news_list = res.data.data.list
+                    this.newslist = res.data.data.list
                     if(res.data.data.list.length%2 == 1){
                        this.news_list.push({create_at:"",title:""})
                     }
                     var arr_length = res.data.data.list.length/2
-                    this.news_list1 = this.news_list.slice(0,arr_length)
-                    this.news_list2 = this.news_list.slice(arr_length)
+                    this.news_list1 = this.newslist.slice(0,arr_length)
+                    this.news_list2 = this.newslist.slice(arr_length)
                 }
             })
         },

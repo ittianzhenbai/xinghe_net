@@ -22,38 +22,38 @@
     </div>
     <div class="content container-fluid">
       <div class="row row1">
-        <div class="col-sm-5 col-md-5 col-lg-5 row1_left">
-          <ul class="row">
-            <li class="col-12 col-sm-12 col-md-12 title">
+        <div class="row1_left">
+          <ul>
+            <li class="title">
               <div class="single_row">
                 浙江兴合集团有限公司
               </div>
             </li>
-            <li class="col-12 col-sm-12 col-md-12">
+            <li >
               <div class="single_row">
                 <img class="icon1" src="../../assets/33.png" alt="">
                 <span class="text1">电<span class="kongge"></span>话：0571-8703 2510</span>
               </div>
             </li>
-            <li class="col-12 col-sm-12 col-md-12">
+            <li >
               <div class="single_row">
-                <img class="icon2" src="../../assets/36.png" alt="">
+                <img class="icon1" src="../../assets/36.png" alt="">
                 <span class="text1">传<span class="kongge"></span>真：0571-8701 4212</span>
               </div>
             </li>
-            <li class="col-12 col-sm-12 col-md-12">
+            <li >
               <div class="single_row">
-                <img class="icon3" src="../../assets/34.png" alt="">
+                <img class="icon1" src="../../assets/34.png" alt="">
                 <span class="text1">电子邮箱：0571-8703 2510</span>
               </div>
             </li>
-            <li class="col-12 col-sm-12 col-md-12">
+            <li >
               <div class="single_row">
-                <img class="icon4" src="../../assets/35.png" alt="">
+                <img class="icon1" src="../../assets/35.png" alt="">
                 <span class="text1">地<span class="kongge"></span>址：浙江省杭州市延安路315号</span>
               </div>
             </li>
-            <li class="col-12 col-sm-12 col-md-12">
+            <li >
               <div class="single_row">
                 <span class="text1">扫一扫，关注我们</span>
                 <img class="erweima" src="../../assets/group_erweima.jpg" alt="">
@@ -61,7 +61,7 @@
             </li>
           </ul>
         </div>
-        <div class="col-sm-9 col-md-7 col-lg-7 row1_right">
+        <div class="row1_right">
           <img class="map" src="../../assets/group_map.png" alt="">
         </div>
       </div>
@@ -75,7 +75,7 @@ export default {
   data(){
     return{
       cur_address:"联系我们",
-      banner:""//背景图
+      banner:"",//背景图
     }
   },
   components:{
@@ -112,13 +112,21 @@ export default {
     @media screen and (max-width:768px)
         margin-top 5rem
         height 20rem
+    @media screen and (min-width:769px) and (max-width:992px)
+        margin-top 6.5rem
+        height 20rem
     img
       width 100%
+      @media screen and (max-width:768px)
+        height 20rem
     .banner_title
       z-index 10
       position absolute
       top 44%
       left 12.6%
+      @media screen and (max-width:768px)
+        left 10.6%
+        top 31%
   .option_pc
     @media screen and (max-width:768px)
       display none
@@ -132,8 +140,12 @@ export default {
       line-height 1.5rem
       border-bottom 3px solid #1A649F
       padding-bottom 14px
+      @media screen and (min-width:993px) and (max-width:1680px)
+          width 10rem
+      @media screen and (min-width:769px) and (max-width:992px)
+          width 8rem
   .option_mobile
-    @media screen and (min-width:768px)
+    @media screen and (min-width:769px)
       display none
     width 100%
     height 4.5rem
@@ -155,6 +167,10 @@ export default {
       margin 0
       .row1_left
         padding 0
+        margin-left 10.7%
+        margin-right 2%
+        @media screen and (max-width:768px)
+          margin-left 1.45rem
         ul
           list-style none
           padding 0 0
@@ -162,13 +178,11 @@ export default {
           li
             line-height 2rem
             text-align left
-            @media screen and (max-width:768px)
-              padding-left 4%
             .single_row
-              width 398px
-              float right
-              padding-left 15px
-            .kongge
+              @media screen and (max-width:768px)
+                font-size 1.9rem
+                line-height 3rem
+              .kongge
                 padding-right 2rem
                 @media screen and (max-width:768px)
                   padding-right 3.5rem
@@ -176,47 +190,21 @@ export default {
                 font-weight Regular
                 font-family MicrosoftYaHei
                 line-height 2.5rem
-                width 60%
                 vertical-align middle
                 @media screen and (max-width:768px)
                   font-size 1.7rem
-                  vertical-align middle
-                  line-height 2.2rem
+                  vertical-align top
+                  line-height 3.5rem
               .icon1
                 width 25px
-                height 25px
-                margin-right 20px
+                margin-right 10px
+              .erweima
+                height 120px
+                width 120px
+                margin-left 22px
                 @media screen and (max-width:768px)
-                  width 1.25rem
-                  height 1.25rem
-              .icon2
-                width 28px
-                height 23px
-                margin-right 17px
-                @media screen and (max-width:768px)
-                  width 1.4rem
-                  height 1.15rem
-              .icon3
-                width 28px 
-                height 20px
-                margin-right 17px
-                @media screen and (max-width:768px)
-                  width 1.4rem
-                  height 1rem
-              .icon4
-                width 22px
-                height 29px
-                margin-right 23px
-                @media screen and (max-width:768px)
-                  width 1.1rem
-                  height 1.45rem
-            .erweima
-              height 120px
-              width 120px
-              margin-left 22px
-              @media screen and (max-width:768px)
-                width 24vw
-                height 24vw
+                  width 24vw
+                  height 24vw
             &:nth-child(6n+0)
               margin-top 54px
           .title
@@ -228,13 +216,16 @@ export default {
                 line-height 3.5rem
       .row1_right
         padding 0
+        width 50%
+        max-width 960px
+        @media screen and (max-width:1000px)
+          width 40%
+        @media screen and (max-width:768px)
+          width 92.5%
+          margin-left 4%
+          margin-top 3.45rem
         .map
-          width 60%
-          height 100%
-          float left
-          @media screen and (max-width:768px)
-            width 92.5%
-            height 24rem
-            margin-left 4%
-            margin-top 3.45rem
+          width 100%
+          @media screen and (min-width:768px)
+            height 100%
 </style>

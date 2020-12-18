@@ -65,7 +65,7 @@ export default {
             display inline-block
             float left
             padding 12px 16px
-            width 272px
+            min-width 272px
             // height 80px
             background #FFFFFF
             border: 1px solid rgba(26, 100, 159, 0.5);

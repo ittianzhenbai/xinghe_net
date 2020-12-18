@@ -6,7 +6,7 @@
                 v-for="(item,index) in pics" 
                 :key="index">
                 <img class="pc" :src="item.image" alt="">
-                <img class="mobile" :src="item.image" alt="">
+                <img class="mobile" :src="item.h5_image" alt="">
             </div>
         </div>
         <div class="swiper-button-prev"></div>
@@ -45,6 +45,7 @@ export default {
                 "api/banner/banners"
             ).then(res=>{
                 if(res.data.code == 1){
+                    console.log(res)
                     this.pics = res.data.data
                     this.$nextTick(()=>{
                         this.init()
@@ -57,7 +58,7 @@ export default {
 </script>
 <style lang="stylus" scoped>
 .swiper-button-next,.swiper-button-prev
-    background-image url("data:image/svg+xml;charset=utf-8,%3Csvg%20xmlns%3D'http%3A%2F%2Fwww.w3.org%2F2000%2Fsvg'%20viewBox%3D'0%200%2027%2044'%3E%3Cpath%20d%3D'M27%2C22L5%2C44l-4.2-4.2L18.6%2C22L0.8%2C4.2L5%2C0z'%20fill%3D'%23888888'%2F%3E%3C%2Fsvg%3E")
+    background-image url("data:image/svg+xml;charset=utf-8,%3Csvg%20xmlns%3D'http%3A%2F%2Fwww.w3.org%2F2000%2Fsvg'%20viewBox%3D'0%200%2027%2044'%3E%3Cpath%20d%3D'M27%2C22L5%2C44l-4.2-4.2L18.6%2C22L0.8%2C4.2L5%2C0z'%20fill%3D'%2328436E'%2F%3E%3C%2Fsvg%3E")
 .swiper-button-prev
     transform rotate(-180deg)
 .swiper-container

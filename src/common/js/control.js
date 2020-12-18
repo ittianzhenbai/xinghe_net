@@ -13,7 +13,7 @@ var fn = function(){
     document.documentElement.style.fontSize = '18px'
   }
   if(w<=992&&w>768){
-    store.commit("setdeviceFlag","pc")
+    store.commit("setdeviceFlag","mid_pc")
      //小屏幕 平板
     document.documentElement.style.fontSize = '16px'
   }

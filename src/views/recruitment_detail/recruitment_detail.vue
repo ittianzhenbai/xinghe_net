@@ -83,6 +83,6 @@ export default {
         font-family  Microsoft YaHei
         margin-top 49px
         @media screen and (max-width:768px)
-            padding 0 1.3rem
+            padding 0 1.7rem
             margin-top 2.4rem       
 </style>
