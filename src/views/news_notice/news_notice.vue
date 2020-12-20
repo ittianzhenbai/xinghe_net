@@ -103,9 +103,9 @@ export default {
     },
     mounted(){
         if(this.deviceFlag == "mobile"){
-            this.getNewsList_mobile(this.page,this.pagesize,2)
+            this.getNewsList_mobile(this.page,this.pagesize,4)
         }else{
-             this.getNewsList(this.page,this.pagesize,2)
+             this.getNewsList(this.page,this.pagesize,4)
         }
     },
     methods:{
@@ -190,7 +190,7 @@ export default {
             }
         },
         handleCurrentChange(val) {
-            this.getNewsList(val,this.pagesize,2)
+            this.getNewsList(val,this.pagesize,4)
         },
         goNoticeDetail(row){
             this.setreadHistory5(row)
@@ -204,8 +204,17 @@ export default {
         load() {
             console.log("触发无限加载")
             this.page ++ 
-            this.getNewsList_mobile(this.page,this.pagesize,2)
+            this.getNewsList_mobile(this.page,this.pagesize,4)
         },
+    },
+    watch:{
+        deviceFlag(newval){
+            if(newval == "mobile"){
+                this.getNewsList_mobile(1,this.pagesize,4)
+            }else{
+                this.getNewsList(1,this.pagesize,4)
+            }
+        }
     }
 }
 </script>

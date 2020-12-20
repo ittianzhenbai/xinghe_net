@@ -10,7 +10,7 @@
                 <div class="active">
                     <span class="text3">{{this.major_business[1].title}}</span>
                     <p class="intro"
-                        v-html="this.major_business[1].content"
+                        v-html="this.LimitNumber(this.major_business[1].content,40)"
                     >
                     </p>
                     <div>...</div>
@@ -25,7 +25,7 @@
                 <div class="active">
                     <span class="text3">{{this.major_business[2].title}}</span>
                     <p class="intro"
-                        v-html="this.major_business[2].content"
+                        v-html="this.LimitNumber(this.major_business[2].content,40)"
                     >
                     </p>
                     <div>...</div>
@@ -40,7 +40,7 @@
                 <div class="active">
                     <span class="text3">{{this.major_business[0].title}}</span>
                     <p class="intro"
-                        v-html="this.major_business[0].content"
+                        v-html="this.LimitNumber(this.major_business[0].content,40)"
                     >
                     </p>
                     <div>...</div>
@@ -55,7 +55,7 @@
                 <div class="active">
                     <span class="text3">{{this.major_business[3].title}}</span>
                     <p class="intro"
-                        v-html="this.major_business[3].content"
+                        v-html="this.LimitNumber(this.major_business[3].content,40)"
                     >
                     </p>
                     <div>...</div>
@@ -70,7 +70,7 @@
                 <div class="active">
                     <span class="text3">{{this.major_business[4].title}}</span>
                     <p class="intro"
-                        v-html="this.major_business[4].content"
+                        v-html="this.LimitNumber(this.major_business[4].content,40)"
                     >
                     </p>
                     <div>...</div>
@@ -122,8 +122,15 @@ export default {
     mounted(){
         this.getYeWu()
     },
+    filters:{
+
+    },
     methods:{
         ...mapMutations(["setActiveIndex","setchildActiveIndex"]),
+        LimitNumber(txt,num) {
+            var str = txt;
+            return str.substr(0,num) + '...' ;
+        },
         godetail(item){
             console.log(item)
             if(item == "nm"){
@@ -290,12 +297,12 @@ export default {
                     -webkit-box-orient vertical
                     -webkit-line-clamp 4  //需要显示时文本行数
                     overflow hidden
-                    @media screen and (max-width:1460px)
-                        margin 30px auto 37px
+                    @media screen and (max-width:1190px)
                         -webkit-line-clamp 3  //需要显示时文本行数
-                    @media all and (-ms-high-contrast: none), (-ms-high-contrast: active) 
-                        width 90%
-                        height 120px
+                        margin 22px auto 17px
+                    @media screen and (max-width:1160px)
+                        -webkit-line-clamp 4  //需要显示时文本行数
+                        margin 22px auto 17px
                 div
                     border 1px solid rgba(250,250,250,0.8)
                     border-radius 5px

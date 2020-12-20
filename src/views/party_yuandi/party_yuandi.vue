@@ -70,12 +70,16 @@ export default {
         }   
     },
     computed:{
-        ...mapState(["readHistory3"])
+        ...mapState(["readHistory3","deviceFlag"])
     },
     created(){
     },
     mounted(){
-        this.getNewsList(this.page,this.pagesize,96)
+        if(this.deviceFlag == "mobile"){
+            this.getNewsList_mobile(this.page,this.pagesize,96)
+        }else{
+             this.getNewsList(this.page,this.pagesize,96)
+        }
     },
     methods:{
         ...mapMutations(["setreadHistory3"]),
@@ -173,6 +177,15 @@ export default {
             this.page ++ 
             this.getNewsList_mobile(this.page,this.pagesize,96)
         },
+    },
+    watch:{
+        deviceFlag(newval){
+            if(newval == "mobile"){
+                this.getNewsList_mobile(1,this.pagesize,96)
+            }else{
+                this.getNewsList(1,this.pagesize,96)
+            }
+        }
     }
 }
 </script>

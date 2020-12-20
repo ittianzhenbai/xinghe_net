@@ -109,13 +109,13 @@ export default {
             ).then(res=>{
                 if(res.data.code ==1){
                     console.log(res)
-                    // this.newslist = res.data.data.list
                     if(this.page == 1){
                         this.newslist = res.data.data.list
                     }else{
                         this.newslist.push(...res.data.data.list)
                     }
                     this.count = this.newslist.length
+                    this.total = res.data.data.cur_page.total_count
                 }else if(res.code == 210){
                     console.log("暂无数据")
                 }
@@ -148,6 +148,15 @@ export default {
         handleCurrentChange(val){
             this.getNewsList(val,this.pagesize,2)
         }
+    },
+    watch:{
+        deviceFlag(newval){
+            if(newval == "mobile"){
+                this.getNewsList_mobile(1,this.pagesize,2)
+            }else {
+                this.getNewsList(1,this.pagesize,2)
+            }
+        }
     }
 }
 </script>
@@ -179,7 +188,7 @@ export default {
                     height 230px
                     background center center
                     background-size 100% 100%
-                    @media screen and (max-width:768px)
+                    @media screen and (max-width:1024px)
                         height 11.5rem
                     margin 0 auto
                .date

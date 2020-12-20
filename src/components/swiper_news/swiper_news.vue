@@ -6,7 +6,7 @@
                 v-for="(item,index) in newspics" 
                 :key="index"
             >
-                <img class="pic" v-lazy="item.image" alt="">
+                <span class="pic" v-lazy:background-image="item.image"></span>
                 <div class="title1">
                     <span>{{item.title}}</span>
                 </div>
@@ -52,13 +52,12 @@ export default {
             transform scale(0.8)
 /deep/ .swiper-pagination-bullet-active
             transform scale(1.3)
-.swiper-container 
-    float right
-    width 80%
-    @media screen and (max-width:768px)
-        width 100%
+.swiper-container
+    width 92%
     height 24rem
     margin 0 auto
+    @media screen and (min-width:992px)
+        float right
     .swiper-slide 
         text-align center
         font-size 18px
@@ -79,6 +78,11 @@ export default {
         .pic
             width 100%
             height 100%
+            display block
+            background-repeat no-repeat
+            background-size contain
+            background-position center center
+            background-color #333333
         .title1
             position absolute
             bottom 0

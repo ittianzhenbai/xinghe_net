@@ -16,45 +16,42 @@
             <div class="row rongyu">
                 <ul class="rongyu1 col-2 col-sm-2 col-md-2 col-lg-2"
                     v-show="this.deviceFlag !=='mobile'"
-                    v-waypoint="{ active: true, callback: onWaypoint, options: intersectionOptions }"
                 >   
                     <li v-for="(item,index) in this.rongyu" :key="index" class="item"  v-show = "index == 0">
                         <animate-number 
                             ref="NumAnimate"
                             from="1"
+                            mode="auto"
                             :to="item.value"
-                            duration="1500"
-                            mode="manual"
+                            duration="5000"
                         ></animate-number>
                         <p>{{item.title}}</p>
                     </li>
                 </ul>
                 <ul class="rongyu1 col-10 col-sm-10 col-md-10 col-lg-10 row"
                     v-show="this.deviceFlag !=='mobile'"
-                    v-waypoint="{ active: true, callback: onWaypoint, options: intersectionOptions }"
                 >   
                     <li v-for="(item,index) in this.rongyu" :key="index" class="col-3 col-sm-3 col-md-3 col-lg-3 item"  v-show = "index > 0">
                         <animate-number 
                             ref="NumAnimate"
                             from="1" 
+                            mode="auto"
                             :to="item.value"
-                            duration="1500"
-                            mode="manual"
+                            duration="5000"
                         ></animate-number>
                         <p>{{item.title}}</p>
                     </li>
                 </ul>
                  <ul class="rongyu1 row"
                     v-show="this.deviceFlag =='mobile'"
-                    v-waypoint="{ active: true, callback: onWaypoint, options: intersectionOptions }"
                 >   
                     <li v-for="(item,index) in this.rongyu" :key="index" class="col-4 col-sm-4 item">
                         <animate-number 
                             ref="NumAnimate"
-                            from="1" 
+                            from="1"
+                            mode="auto"
                             :to="item.value"
-                            duration="1500"
-                            mode="manual"
+                            duration="5000"
                         ></animate-number>
                         <p>{{item.title}}</p>
                     </li>
@@ -89,13 +86,13 @@
                     成员企业新闻
                 </li>
             </ul>
-            <div class="col-12 col-md-12 col-lg-12 row news_content">
-               <div class="col-12 col-md-6 col-lg-6 news_pics">
+            <div class="col-12 col-sm-12 col-md-12 col-lg-12 row news_content">
+               <div class="col-12 col-md-12 col-lg-6 news_pics">
                    <SwiperNews
                     :newspics="this.pics"
                    ></SwiperNews>
                </div>
-               <div class="col-12 col-md-6 col-lg-6 news_list">
+               <div class="col-12 col-md-12 col-lg-6 news_list">
                    <div class="news_top col-12 col-md-12 col-lg-12" @click="godetail(this.newslist[0])">
                        <p class="news_title">
                            {{this.newslist[0].title}}
@@ -132,11 +129,6 @@ export default {
         return{
             content_show:this.$store.state.childActiveIndex,
             rongyu:"",
-            intersectionOptions: {
-                root: document.querySelector(".main"), //用作视口的元素，用于检查目标的可见性。必须是目标的祖先。如果未指定，则默认为浏览器视口null
-                rootMargin: "0px",
-                threshold: 0.33 //范围为 0-1: 阈值为1.0意味着当100％的目标在root选项指定的元素中可见时，将调用回调
-            },
             newslist:[],//新闻列表,
             pics:[]
         }
@@ -184,14 +176,14 @@ export default {
             this.setActiveIndex("2-1")
             this.setchildActiveIndex("1")
         },
-        onWaypoint({ el, going, direction, _entry }) {
-            // console.log("触发了",this.$refs.NumAnimate.length)
-            if(going == "in"){
-                for(let i = 0;i<this.$refs.NumAnimate.length;i++){
-                    this.$refs.NumAnimate[i].start() 
-                }     
-            }
-        },
+        // onWaypoint({ el, going, direction, _entry }) {
+        //     // console.log("触发了",this.$refs.NumAnimate.length)
+        //     if(going == "in"){
+        //         for(let i = 0;i<this.$refs.NumAnimate.length;i++){
+        //             this.$refs.NumAnimate[i].start() 
+        //         }     
+        //     }
+        // },
         getNewsList(page,pagesize,sort){
             this.axios.post(
                 "api/news/news",
@@ -353,7 +345,7 @@ export default {
             border 1px solid #1A649F
         .news_center
             background #F4F4F4
-            padding 4rem 0 100px
+            padding 4rem 0 0
             width 100%
             margin 0
             @media screen and (max-width:768px)
@@ -407,7 +399,7 @@ export default {
                         height 30rem
                     .news_top
                         width 100%
-                        padding 0 0 0 1.3rem
+                        padding 0 0 0 4%
                         margin 1.5rem 0 1.9rem
                         font-family MicrosoftYaHei
                         font-weight Regular
@@ -438,7 +430,7 @@ export default {
                                 font-size 1.2rem
                                 line-height 2rem
                     .list1
-                        padding 0 0 0 1.3rem
+                        padding 0 0 0 4%
                         text-align left
                         // width 89.6%
                         &>li
