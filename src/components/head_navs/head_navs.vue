@@ -153,7 +153,7 @@ export default {
         isCollapse: true,
         right_navshow:false,//控制右边导航显示
         click_count:0,//控制点击次数
-        color:"#28436E",
+        color:"#223D6B",
         class1:"nav_left col-7 col-sm-6 col-md-6 col-lg-3",//控制nav_left的样式
         class2:"col-5 col-sm-6 col-md-6 col-lg-2 nav_right mid_screen1",//控制中等屏幕下的右边导航按钮
         class3:"col-md-12 col-lg-7 nav_mid",//控制中部导航样式
@@ -362,7 +362,7 @@ export default {
             if((this.deviceFlag == "pc"||this.deviceFlag=='mid_pc')&&this.curPage == "index"){
                 this.$refs.nav.style.opacity = "1",
                 this.$nextTick(()=>{
-                    this.color = '#28436E'
+                    this.color = '#223D6B'
                 })
             }  
         },
@@ -494,9 +494,9 @@ export default {
                 @media screen and (min-width:993px) and (max-width:1200px)
                     top 35px
                     right 38px
-                //  @media screen and (min-width:874px) and (max-width:986px)
-                //     top 32px
-                //     right 40px
+                @media screen and (min-width:1200px) and (max-width:1600px)
+                    top 35px
+                    right 46px
                 font-weight 500
                 color #FFFFFF
 /deep/.el-menu--horizontal>.el-submenu.is-active .el-submenu__title
@@ -507,7 +507,7 @@ export default {
 .nav
     width 100%
     font-size 1rem
-    background #28436E
+    background #223D6B
     opacity 1
     line-height 4rem
     padding-right 0
@@ -651,4 +651,7 @@ export default {
         position fixed
         right 2.7%
         top 4.2rem
+        @media screen and (max-width:1024px)
+            top 8.3rem
+            right 7rem
 </style>

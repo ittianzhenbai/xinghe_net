@@ -71,7 +71,11 @@ export default {
         }
     },
     mounted(){
-        this.getNewsList(this.page,this.pagesize,91)
+        if(this.deviceFlag == "mobile"){
+            this.getNewsList_mobile(this.page,this.pagesize,91)
+        }else{
+             this.getNewsList(this.page,this.pagesize,91)
+        }
     },
     computed:{
         noMore () {
@@ -111,6 +115,7 @@ export default {
                         this.newslist.push(...res.data.data.list)
                     }
                     this.count = this.newslist.length
+                    this.total = res.data.data.cur_page.total_count
                     if(this.count>=this.total){
                         this.loading = false
                     }
@@ -123,14 +128,14 @@ export default {
         load () {
             this.loading = true
             this.page ++
-            this.getNewsList_mobile(this.page,this.pagesize,2)
+            this.getNewsList_mobile(this.page,this.pagesize,91)
         },
         reload(){
             //点击继续查看 可以查看下一页数据
             this.page ++
             console.log(this.page,this.count)
             
-            this.getNewsList_mobile(this.page,this.pagesize,2)
+            this.getNewsList_mobile(this.page,this.pagesize,91)
         },
         godetail(item){
             console.log(item)
@@ -142,7 +147,16 @@ export default {
             })
         },
         handleCurrentChange(val){
-            this.getNewsList(val,this.pagesize,2)
+            this.getNewsList(val,this.pagesize,91)
+        }
+    },
+    watch:{
+        deviceFlag(newval){
+            if(newval == "mobile"){
+                this.getNewsList_mobile(1,this.pagesize,2)
+            }else{
+                this.getNewsList(1,this.pagesize,2)
+            }
         }
     }
 }
@@ -172,11 +186,14 @@ export default {
                 padding 9px 9px
                 .img
                     width 100%
+                    display block
                     height 230px
                     background center center
                     background-size 100% 100%
                     @media screen and (max-width:768px)
                         height 11.5rem
+                    @media screen and (min-width:769px) and (max-width:1200px)
+                        height 8rem
                     margin 0 auto
                 .date
                     display block

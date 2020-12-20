@@ -7920,7 +7920,7 @@ svgo@^1.0.0:
 
 swiper@3.4.2:
   version "3.4.2"
-  resolved "https://registry.npm.taobao.org/swiper/download/swiper-3.4.2.tgz#39d6b410b1a39833e1f72d3b72999df5f5e38392"
+  resolved "https://registry.yarnpkg.com/swiper/-/swiper-3.4.2.tgz#39d6b410b1a39833e1f72d3b72999df5f5e38392"
   integrity sha1-Oda0ELGjmDPh9y07cpmd9fXjg5I=
 
 table@^5.2.3:
@@ -8483,14 +8483,7 @@ vue-template-es2015-compiler@^1.9.0:
   resolved "https://registry.npm.taobao.org/vue-template-es2015-compiler/download/vue-template-es2015-compiler-1.9.1.tgz#1ee3bc9a16ecbf5118be334bb15f9c46f82f5825"
   integrity sha1-HuO8mhbsv1EYvjNLsV+cRvgvWCU=
 
-vue-waypoint@^3.5.2:
-  version "3.5.2"
-  resolved "https://registry.yarnpkg.com/vue-waypoint/-/vue-waypoint-3.5.2.tgz#410aaa607f4fe7938652a50b2bf7303216fab298"
-  integrity sha512-NvZI0B39afbik88UNUX7Ot2xVZwuubkeoz2QIcauTj5Eq7qOHhx50Vxg4U++sYfiBYhNiYxfWd0m1OZljaLNOg==
-  dependencies:
-    vue "^2.5.2"
-
-vue@^2.5.2, vue@^2.6.10, vue@^2.6.11:
+vue@^2.6.10, vue@^2.6.11:
   version "2.6.12"
   resolved "https://registry.npm.taobao.org/vue/download/vue-2.6.12.tgz?cache=0&sync_timestamp=1603223848670&other_urls=https%3A%2F%2Fregistry.npm.taobao.org%2Fvue%2Fdownload%2Fvue-2.6.12.tgz#f5ebd4fa6bd2869403e29a896aed4904456c9123"
   integrity sha1-9evU+mvShpQD4pqJau1JBEVskSM=

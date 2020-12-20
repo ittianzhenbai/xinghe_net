@@ -16,7 +16,6 @@ import 'wowjs/css/libs/animate.css'//引入wow.js
 import element from './element/element.js'
 import VueAnimateNumber from 'vue-animate-number'//数字加载动效
 import VueLazyload from 'vue-lazyload'//引入懒加载组件
-import VueWaypoint from 'vue-waypoint' //滚动检测组件
 import elTableInfiniteScroll from 'el-table-infinite-scroll';//el-table无限滚动加载
 
 Vue.use(elTableInfiniteScroll);
@@ -26,7 +25,6 @@ Vue.use(VueLazyload, {
 });
 Vue.use(VueAnimateNumber)//引用数字动态变化 组件 
 Vue.use(VueAxios,axios);
-Vue.use(VueWaypoint)//调用滚动检测组件
 Vue.use(element)
 axios.defaults.baseURL = process.env.VUE_APP_API;
 Vue.prototype.$axios = axios;

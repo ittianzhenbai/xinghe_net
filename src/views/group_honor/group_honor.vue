@@ -1,7 +1,7 @@
 <template>
     <div class="container-fluid group_honner">
         <div class="row row1">
-            <div class="item1 col-12 col-sm-12 col-md-4">
+            <div :class="this.class1">
                 <img class="img1" src="../../assets/017.png" alt="">
                 <span class="title">{{this.honor[0].title}}</span>
                 <span class="paihang">
@@ -13,7 +13,7 @@
                     ></animate-number>位
                 </span>
             </div>
-            <div class="col-12 col-sm-12 col-md-4 row coulum2">
+            <div :class="this.class2">
                 <div class="item2 col-12 col-sm-12 col-md-12">
                     <img class="img2" src="../../assets/019.png" alt="">
                     <span class="title">{{this.honor[1].title}}</span>
@@ -39,7 +39,7 @@
                     </span>
                 </div>
             </div>
-            <div class="item4 col-12 col-sm-12 col-md-4">
+            <div :class="this.class3">
                 <img class="img4" src="../../assets/021.png" alt="">
                 <span class="title">{{this.honor[3].title}}</span>
                 <span class="paihang">
@@ -59,14 +59,27 @@
     </div>
 </template>
 <script>
+import { mapState } from "vuex"
 export default {
     data(){
         return{
             honor:"",
+            class1:"item1 col-12 col-sm-12 col-md-4",//第一行第一列的类名
+            class2:"col-12 col-sm-12 col-md-4 row coulum2",//第一行第二列的类名
+            class3:"item4 col-12 col-sm-12 col-md-4"
         }
+    },
+    computed:{
+        ...mapState(["deviceFlag"])
     },
     mounted(){
         this.getGroupHonor()
+        console.log(this.deviceFlag)
+        if(this.deviceFlag == "mobile"){
+            this.class1 = "item1 col-12 col-sm-12"
+            this.class2 = "col-12 col-sm-12 row coulum2"
+            this.class3 = "item4 col-12 col-sm-12"
+        }
     },
     methods:{
         getGroupHonor(){
@@ -77,6 +90,17 @@ export default {
                     this.honor = res.data.data
                 }
             })
+        }
+    },
+    watch:{
+        deviceFlag(newVal){
+            if(newVal == "mobile"){
+                this.$nextTick(()=>{
+                    this.class1 = "item1 col-12 col-sm-12"
+                    this.class2 = "col-12 col-sm-12 row coulum2"
+                    this.class3 = "item4 col-12 col-sm-12"
+                })
+            }
         }
     }
 }
@@ -107,6 +131,8 @@ export default {
                 position absolute
                 right 0
                 bottom 0
+                @media screen and (max-width:768px)
+                    width 32%
             .title
                 position absolute
                 top 50px
@@ -142,6 +168,8 @@ export default {
                     position absolute
                     right 3.8%
                     bottom 0
+                    @media screen and (max-width:768px)
+                        width 19.3%
                 .title
                     position absolute
                     top 50px
@@ -150,6 +178,12 @@ export default {
                     color #666666
                     font-family MicrosoftYaHei
                     font-weight Regular
+                    display inline-block
+                    text-align left
+                    @media screen and (min-width:993px)
+                        top 20px
+                    @media screen and (min-width:1024px)
+                        top 50px
                 .paihang
                     position absolute
                     top 89px
@@ -169,6 +203,8 @@ export default {
                     position absolute
                     right 3.8%
                     bottom 0
+                    @media screen and (max-width:768px)
+                        width 19.3%
                 .title
                     position absolute
                     top 50px
@@ -177,6 +213,12 @@ export default {
                     color #666666
                     font-family MicrosoftYaHei
                     font-weight Regular
+                    display inline-block
+                    text-align left
+                     @media screen and (min-width:993px)
+                        top 20px
+                    @media screen and (min-width:1024px)
+                        top 50px
                 .paihang
                     position absolute
                     top 89px
@@ -197,6 +239,8 @@ export default {
                 position absolute
                 bottom 0
                 right 0
+                @media screen and (max-width:768px)
+                    width 27.2%
             .title
                 position absolute
                 top 50px
@@ -226,6 +270,8 @@ export default {
                 position absolute
                 bottom 0
                 right 0
+                @media screen and (max-width:768px)
+                    width 24%
             .title1
                 position absolute
                 top 50px
