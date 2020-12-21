@@ -45,7 +45,6 @@ export default {
                 "api/banner/banners"
             ).then(res=>{
                 if(res.data.code == 1){
-                    console.log(res)
                     this.pics = res.data.data
                     this.$nextTick(()=>{
                         this.init()
@@ -72,6 +71,8 @@ export default {
             .pc
                 @media screen and (max-width:768px)
                     display none 
+                @media screen and (min-width:769px) and (max-width:992px)
+                    height 27.5rem
             .mobile
                 height 27.5rem
                 @media screen and (min-width:769px)

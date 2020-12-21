@@ -141,6 +141,8 @@ export default {
                 color #666666
                 font-family MicrosoftYaHei
                 font-weight Regular
+                @media screen and (max-width:768px)
+                    font-size 1.2rem
             .paihang
                 position absolute
                 top 89px
@@ -180,10 +182,17 @@ export default {
                     font-weight Regular
                     display inline-block
                     text-align left
+<<<<<<< Updated upstream
                     @media screen and (min-width:993px)
                         top 20px
                     @media screen and (min-width:1024px)
                         top 50px
+=======
+                    @media screen and (min-width:1024px) and (max-width:1025px)
+                        top 30px//平板尺寸下
+                    @media screen and (max-width:768px)
+                        font-size 1.2rem
+>>>>>>> Stashed changes
                 .paihang
                     position absolute
                     top 89px
@@ -215,10 +224,17 @@ export default {
                     font-weight Regular
                     display inline-block
                     text-align left
+<<<<<<< Updated upstream
                      @media screen and (min-width:993px)
                         top 20px
                     @media screen and (min-width:1024px)
                         top 50px
+=======
+                    @media screen and (min-width:1024px) and (max-width:1025px)
+                        top 30px//平板尺寸下
+                    @media screen and (max-width:768px)
+                        font-size 1.2rem
+>>>>>>> Stashed changes
                 .paihang
                     position absolute
                     top 89px
@@ -249,6 +265,8 @@ export default {
                 color #666666
                 font-family MicrosoftYaHei
                 font-weight Regular
+                @media screen and (max-width:768px)
+                    font-size 1.2rem
             .paihang
                 position absolute
                 top 89px

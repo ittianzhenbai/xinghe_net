@@ -102,6 +102,7 @@ export default {
         line-height 1.5rem !important
     .content>>>img
         width 85% !important
+        margin 1rem 0
         @media screen and (max-width:768px)
             width 95% !important
             padding 0 1.3rem

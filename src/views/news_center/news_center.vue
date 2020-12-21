@@ -108,7 +108,6 @@ export default {
             })
         },
         handleSelect(key, keyPath) {
-            console.log(key ,keyPath)
             this.jump_router(key)
         },
         jump_router(item){
@@ -135,7 +134,6 @@ export default {
                 `name=${name}`
             ).then(res=>{
                 if(res.data.code == 1){
-                    console.log(res)
                     this.banner = res.data.data
                 }
             })

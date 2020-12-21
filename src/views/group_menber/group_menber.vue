@@ -10,14 +10,15 @@
                      v-for="(item,index) in this.groupmenber" 
                      :key="index"
                      @click="gomenber_net(item)"
-                     @mouseenter="changepics(item)"
+                     @mouseenter="changepics(item,index)"
                      ref="menbergroup"
                      >
                         <span v-show ="index<9">0{{index+1}}</span>
                         <span v-show ="index>=9">{{index+1}}</span>
                         <p class="title">{{item.title}}</p>
                         <div class="left_hover">
-                            <i class="el-icon-s-promotion"/>
+                            <img :src="item.logo" alt="">
+                            <!-- <i class="el-icon-s-promotion"/> -->
                         </div>
                         <div class="right_hover">
                             <p class="title1">{{item.title}}</p>
@@ -33,15 +34,14 @@
                 :key="index"
                 class="col-12 col-sm-12 row"
                 @click="gomenber_net(item)"
-                @mouseenter="changepics(item)"
                 >
                 <div class="col-12 col-sm-12 group_pic">
                     <img v-lazy="item.image" alt="">
                 </div>
                 <div class="row group_intro">
                     <div class="col-3 col-sm-3 logo">
-                        <!-- <img :src="item.logo" alt=""> -->
-                        <i class="el-icon-s-promotion"/>
+                        <img :src="item.logo" alt="">
+                        <!-- <i class="el-icon-s-promotion"/> -->
                     </div>
                     <div class="col-9 col-sm-9 intro">
                         <p class="title1">{{item.title}}</p>
@@ -69,7 +69,7 @@ export default {
         this.godefault()
     },
     methods:{
-        changepics(item){
+        changepics(item,index){
            this.$nextTick(()=>{
                this.cur_image = item.image
                 var self = this
@@ -77,6 +77,19 @@ export default {
                    self.$refs.menbergroup[0].removeAttribute("class", "default")
                 },300)
            })
+           if(index !== 0&&index !== this.groupmenber.length-1){
+                this.$nextTick(()=>{
+                    this.cur_image = item.image
+                        var self = this
+                        self.$refs.menbergroup[index].style.transformOrigin="50% 50%"
+                })
+           }else if(index == this.groupmenber.length-1){
+                this.$nextTick(()=>{
+                    this.cur_image = item.image
+                        var self = this
+                        self.$refs.menbergroup[index].style.transformOrigin="100% 100%"
+                })
+           }
         },
         godefault(){
             this.$nextTick(()=>{
@@ -118,10 +131,9 @@ export default {
             height 20rem
             padding 0
             img
-                width 60%
+                width 75%
                 height 100%
-                margin-left 40%
-                box-shadow 0px 5px 9px 1px rgba(164, 164, 164, 0.51)
+                margin-left 25%
         .menber_list
             height 20rem
             padding 0 0
@@ -131,18 +143,22 @@ export default {
             ul
                 padding 0 0
                 margin 0
-                width 80%
-                border 1px solid #333333
+                width 75%
+                position relative
+                border 1px solid #e5e5e5
                 background-image linear-gradient(to bottom, #2C9AF1 2%,#2583CF 10%,#2077BD 18%,#1C6CAC 28%,#19619A 38%,#165587 48%,#124771 58%,#104066 68%, #0F3A5C 78%, #0D314E 88%,#0A2942 100%)
                 &>li
                     height 2rem
                     border-bottom 1px solid #91CFFF
                     display flex
                     height 80px
-                    fong-size 1.2rem
+                    font-size 1.2rem
                     line-height 80px
+                    cursor pointer
+                    &:last-child
+                        border-bottom none
                     span
-                        flex 1
+                        flex 1.5
                         display inline-block
                         min-width 3.4rem
                         border-right 1px solid #91CFFF
@@ -161,22 +177,20 @@ export default {
                         text-overflow ellipsis
                         white-space nowrap
                 li:hover,.default
-                    height 120px
+                    // height 120px
+                    transform scaleY(1.5)
                     background #FFFFFF
+                    transform-origin 0 0
+                    transition-duration 300
                     span
                         display none
                     .title
                         display none
                     .left_hover
-                        flex 1
+                        flex 1.5
                         display block
-                        line-height 120px
                         border-right 1px solid #91CFFF
                         min-width 3.4rem
-                        .el-icon-s-promotion
-                            color #28436E
-                            font-size 3rem
-                            line-height 120px
                         img
                             width 80%
                             margin 0 auto
@@ -188,10 +202,10 @@ export default {
                         .title1
                             color #333333
                             font-weight bold    
-                            // flex 1
                             display block
                             line-height 1rem
-                            padding-top 1rem
+                            font-size 1rem
+                            padding-top 0.5rem
                             text-align left
                             //单行显示省略号
                             overflow hidden
@@ -199,14 +213,19 @@ export default {
                             white-space nowrap
                             width 90%
                         .company_intro
-                            font-size 0.8rem
-                            line-height 1.25rem
+                            font-size 0.6rem
+                            line-height 0.75rem
                             text-align left
                             padding-bottom -15px
                             display -webkit-box
                             -webkit-box-orient vertical
                             -webkit-line-clamp 2
                             overflow hidden
+                            @media all and (-ms-high-contrast: none), (-ms-high-contrast: active) 
+                                overflow hidden
+                                text-overflow ellipsis
+                                white-space nowrap
+                                width 90%
     .row_mobile
         margin 0
         width 100%
@@ -228,11 +247,10 @@ export default {
                 padding 0
                 width 92%
                 .logo
-                    padding 0
-                    margin 0
-                    .el-icon-s-promotion
-                        font-size 3.4rem
-                        margin 2.55rem 1.1rem 2.55rem 1.1rem
+                    img 
+                        width 80%
+                        margin 2.5rem 0.6rem
+                        vertical-align middle
                 .intro 
                     padding 0
                     font-family Microsoft YaHei
@@ -263,6 +281,9 @@ export default {
                         -webkit-box-orient vertical
                         -webkit-line-clamp 2
                         overflow hidden
-                    
-
+                        @media all and (-ms-high-contrast: none), (-ms-high-contrast: active) 
+                            overflow hidden
+                            text-overflow ellipsis
+                            white-space nowrap
+                            width 90%
 </style>     

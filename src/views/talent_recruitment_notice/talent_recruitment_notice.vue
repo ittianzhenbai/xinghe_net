@@ -165,9 +165,7 @@ export default {
             this.getNewsList(val,this.pagesize)
         },
         load() {
-            console.log("触发无限加载")
             this.page ++ 
-            console.log(this.page)
             this.getRecruList_mobile(this.page,this.pagesize)
         },
     }

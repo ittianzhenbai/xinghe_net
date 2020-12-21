@@ -178,7 +178,6 @@ export default {
                 })
             }
         })
-        console.log(this.deviceFlag)
         if(this.deviceFlag == "mid_pc"){
             this.$nextTick(()=>{
                 this.class1 = "nav_left col-7 col-sm-6 col-md-6"
@@ -396,8 +395,17 @@ export default {
             // console.log(newName)
             this.activeIndex1 = newName
         },
+        curPage(newVal){
+            this.$nextTick(()=>{
+                if(this.curPage == "other"&&(this.deviceFlag == "pc"||this.deviceFlag=='mid_pc')){
+                    this.$refs.nav.style.opacity = "1",
+                    this.$nextTick(()=>{
+                        this.color = "#223D6B"
+                    })
+                }
+            })
+        },
         deviceFlag(newVal){
-            console.log(newVal)
             if(newVal == "mid_pc"){
                 this.class1 = "nav_left col-7 col-sm-6 col-md-6"
                 this.class2 = "col-5 col-sm-6 col-md-6 nav_right mid_screen1"
@@ -466,12 +474,13 @@ export default {
                     @media screen and (min-width:969px) and (max-width:999px)
                         padding 0 28px
                     @media screen and (min-width:1000px) and (max-width:1119px)
-                        padding 0 6px
+                        padding 0 7px
                     @media screen and (min-width:1120px) and (max-width:1380px)
                         padding 0 15px
                     a 
                         text-decoration none
                         color #FFFFFF
+                        background-color transparent
                     .router-link-active 
                         text-decoration none
                 .el-submenu__title:hover
@@ -488,20 +497,27 @@ export default {
                 @media screen and (min-width:768px) and (max-width:935px)
                     top 30px
                     right 45px
-                @media screen and (min-width:936px) and (max-width:992px)
+                @media screen and (min-width:936px) and (max-width:1000px)
                     top 30px
                     right 50px
-                @media screen and (min-width:993px) and (max-width:1200px)
+                @media screen and (min-width:1000px) and (max-width:1200px)
+                    top 33px
+                    right 36px
+                @media screen and (min-width:1200px) and (max-width:1600px)
                     top 35px
+<<<<<<< Updated upstream
                     right 38px
                 @media screen and (min-width:1200px) and (max-width:1600px)
                     top 35px
+=======
+>>>>>>> Stashed changes
                     right 46px
                 font-weight 500
                 color #FFFFFF
 /deep/.el-menu--horizontal>.el-submenu.is-active .el-submenu__title
             border-bottom transparent !important
             border-bottom-color transparent !important
+            background-color transparent !important
 /deep/.el-menu--horizontal>.is-active
             border-bottom transparent!important  
 .nav
@@ -582,7 +598,7 @@ export default {
                 color #fff
                 line-height 2rem
                 @media screen and (max-width:768px)
-                    border-left 1px solid #FFFFFF
+                    border-left 1px solid rgba(250,250,250,0.6)
                     line-height 5rem
                     height 4.8rem
                     text-align center
@@ -651,7 +667,16 @@ export default {
         position fixed
         right 2.7%
         top 4.2rem
+<<<<<<< Updated upstream
         @media screen and (max-width:1024px)
             top 8.3rem
             right 7rem
+=======
+        @media screen and (max-width:997px)
+            top 8.28rem
+            right 7rem
+        @media screen and (min-width:998px) and (max-width:1200px)
+            top 4.3rem
+            right 2.7%
+>>>>>>> Stashed changes
 </style>

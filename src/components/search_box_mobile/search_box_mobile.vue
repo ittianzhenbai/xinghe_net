@@ -2,7 +2,7 @@
     <div class="search_box1" v-show="alert_box == true">
         <img class="close_btn" @click="alert_box = false" src="../../assets/31.png" alt="">
         <div class="input_wrap">
-            <input class="input" v-model="message" type="text" placeholder="请输入汉字" >
+            <input id="myText" class="input1" v-model="message" type="text" placeholder="请输入汉字" >
             <img class="search_btn" src="../../assets/3.png" @click="gonews" alt="">
         </div>
     </div>
@@ -19,7 +19,6 @@ export default {
     methods:{
         ...mapMutations(["setActiveIndex","setsearchKeywords"]),
        gonews(){
-           console.log(this.message)
            this.alert_box = false
            this.$router.push({
                path:"/search_news_list",
@@ -30,6 +29,16 @@ export default {
            this.setActiveIndex("3-1")
            this.setsearchKeywords(this.message)
        }
+    },
+    watch:{
+        alert_box(newVal){
+            if(newVal == true){
+                //打开弹窗后让输入框 自动聚焦
+                setTimeout(()=>{
+                    document.getElementById("myText").focus()
+                },500)
+            }
+        }
     }
 }
 </script>
@@ -64,7 +73,7 @@ export default {
         top 75pt
         left 15pt
         height 50pt
-        .input
+        .input1
             border-radius 25px
             width 75%
             color #FFFFFF

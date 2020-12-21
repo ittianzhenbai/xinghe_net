@@ -176,6 +176,7 @@ export default {
             this.setActiveIndex("2-1")
             this.setchildActiveIndex("1")
         },
+<<<<<<< Updated upstream
         // onWaypoint({ el, going, direction, _entry }) {
         //     // console.log("触发了",this.$refs.NumAnimate.length)
         //     if(going == "in"){
@@ -184,6 +185,8 @@ export default {
         //         }     
         //     }
         // },
+=======
+>>>>>>> Stashed changes
         getNewsList(page,pagesize,sort){
             this.axios.post(
                 "api/news/news",
@@ -290,7 +293,7 @@ export default {
                     font-weight Regular
                     margin 0 auto
                     margin-top 9px
-                    @media screen and (max-width:768px)
+                    @media screen and (max-width:1024px)
                         width 100%
                         margin-top 18.5pt
         .rongyu

@@ -58,6 +58,10 @@ export default {
     margin 0 auto
     @media screen and (min-width:992px)
         float right
+<<<<<<< Updated upstream
+=======
+        width 85%
+>>>>>>> Stashed changes
     .swiper-slide 
         text-align center
         font-size 18px

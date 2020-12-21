@@ -108,7 +108,10 @@ export default {
                 `page=${page}&pagesize=${pagesize}&catid=${sort}`
             ).then(res=>{
                 if(res.data.code ==1){
+<<<<<<< Updated upstream
                     console.log(res)
+=======
+>>>>>>> Stashed changes
                     if(this.page == 1){
                         this.newslist = res.data.data.list
                     }else{
@@ -190,6 +193,8 @@ export default {
                     background-size 100% 100%
                     @media screen and (max-width:1024px)
                         height 11.5rem
+                    @media screen and (min-width:769px) and (max-width:1200px)
+                        height 9rem
                     margin 0 auto
                .date
                     display block
