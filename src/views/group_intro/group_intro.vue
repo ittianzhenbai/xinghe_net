@@ -9,20 +9,46 @@
             v-html="this.groupinfo"
         >
         </div>
-        <div class="col-12 col-md-12 col-lg-12 rongyu">
-            <ul class="row rongyu1">
-                <li 
-                    v-for="(item,index) in this.honor" 
-                    :key="index" 
-                    class="col-4 item1"
-                >
+        <div class="col-12 col-md-12 col-lg-12 row rongyu">
+            <ul class="rongyu1 col-2 col-sm-2 col-md-2 col-lg-2"
+                v-show="this.deviceFlag !=='mobile'"
+            >   
+                <li v-for="(item,index) in this.rongyu" :key="index" class="item"  v-show = "index == 0">
                     <animate-number 
-                        from="1" 
-                        :to="item.value" 
+                        ref="NumAnimate"
+                        from="1"
                         mode="auto"
-                        duration="3000"
-                    >
-                    </animate-number>
+                        :to="item.value"
+                        duration="5000"
+                    ></animate-number>
+                    <p>{{item.title}}</p>
+                </li>
+            </ul>
+            <ul class="rongyu1 col-10 col-sm-10 col-md-10 col-lg-10 row"
+                v-show="this.deviceFlag !=='mobile'"
+            >   
+                <li v-for="(item,index) in this.rongyu" :key="index" class="col-3 col-sm-3 col-md-3 col-lg-3 item"  v-show = "index > 0">
+                    <animate-number 
+                        ref="NumAnimate"
+                        from="1" 
+                        mode="auto"
+                        :to="item.value"
+                        duration="5000"
+                    ></animate-number>
+                    <p>{{item.title}}</p>
+                </li>
+            </ul>
+                <ul class="rongyu1 row"
+                v-show="this.deviceFlag =='mobile'"
+            >   
+                <li v-for="(item,index) in this.rongyu" :key="index" class="col-4 col-sm-4 item">
+                    <animate-number 
+                        ref="NumAnimate"
+                        from="1"
+                        mode="auto"
+                        :to="item.value"
+                        duration="5000"
+                    ></animate-number>
                     <p>{{item.title}}</p>
                 </li>
             </ul>
@@ -34,16 +60,20 @@
     </div>
 </template>
 <script>
+import { mapState } from "vuex"
 export default {
     data(){
         return{
             groupinfo:"",//集团简介
-            honor:"",//集团荣誉,
+            rongyu:"",//集团荣誉,
             grouppic:""
         }
     },
     mounted(){
         this.getGroupInfo()
+    },
+    computed:{
+         ...mapState(["deviceFlag"])
     },
     methods:{
         getGroupInfo(){
@@ -57,7 +87,7 @@ export default {
                     this.grouppic = res1.data.data.image
                 }
                 if(res2.data.code == 1){
-                    this.honor = res2.data.data
+                    this.rongyu = res2.data.data
                 }
             }))
         }
@@ -70,6 +100,9 @@ export default {
     width 62%
     @media screen and (max-width:768px)
         width 100%
+        margin 4rem auto 2.4rem
+    @media screen and (min-width:769px) and (max-width:1000px)
+        width 90%
         margin 4rem auto 2.4rem
     .title
         color #333333
@@ -90,28 +123,33 @@ export default {
     .rongyu
         width 100%
         padding 0
+        margin 0
         .rongyu1
-            padding 0 27px
-            @media screen and (max-width:768px)
-                padding 0 1.45rem
             margin 0 auto
-            .item1
+            padding 0 
+            @media screen and (max-width:768px)
+                margin 0
+            .item
                 vertical-align top
-                padding 0
+                padding 0 auto
+                @media screen and (max-width:768px)
+                    padding 0
                 span
                     font-size 3.6rem
                     color #1A649F
-                    font-weight 580
+                    font-weight 550
                     font-family HYb9gf
-                    text-align center
+                    @media screen and (max-width:768px)
+                        margin-top 18.5pt
+                        font-size 35pt
+                        text-align left
                 &>p
                     line-height 1.5rem
                     font-size 0.8rem
-                    color #666666
-                    font-family Microsoft YaHei
-                    fong-weight Regular
-                    text-align center
-                    margin-bottom 0
+                    width 8rem
+                    margin 0 auto
+                    @media screen and (max-width:1520px)
+                        width 95%
     .pic
         padding 0 15pt
         width 100%

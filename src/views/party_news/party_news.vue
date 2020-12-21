@@ -92,7 +92,6 @@ export default {
                 `page=${page}&pagesize=${pagesize}&catid=${sort}`
             ).then(res=>{
                 if(res.data.code ==1){
-                    console.log(res)
                     this.newslist = res.data.data.list
                     this.total = res.data.data.cur_page.total_count
                     if(this.total<=8){
@@ -107,7 +106,6 @@ export default {
                 `page=${page}&pagesize=${pagesize}&catid=${sort}`
             ).then(res=>{
                 if(res.data.code ==1){
-                    console.log(res)
                     // this.newslist = res.data.data.list
                     if(this.page == 1){
                         this.newslist = res.data.data.list
@@ -138,7 +136,6 @@ export default {
             this.getNewsList_mobile(this.page,this.pagesize,91)
         },
         godetail(item){
-            console.log(item)
             this.$router.push({
                 path:"/party_detail",
                 query:{
@@ -193,7 +190,11 @@ export default {
                     @media screen and (max-width:768px)
                         height 11.5rem
                     @media screen and (min-width:769px) and (max-width:1200px)
+<<<<<<< Updated upstream
                         height 8rem
+=======
+                        height 9rem
+>>>>>>> Stashed changes
                     margin 0 auto
                 .date
                     display block

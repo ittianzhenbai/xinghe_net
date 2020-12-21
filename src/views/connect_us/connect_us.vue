@@ -44,7 +44,7 @@
             <li >
               <div class="single_row">
                 <img class="icon1" src="../../assets/34.png" alt="">
-                <span class="text1">电子邮箱：0571-8703 2510</span>
+                <span class="text1">电子邮箱：xinghegroup@zjcoop.com</span>
               </div>
             </li>
             <li >

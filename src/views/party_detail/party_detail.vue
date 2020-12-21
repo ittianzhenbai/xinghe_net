@@ -35,7 +35,6 @@ export default {
                 "api/news/detail",
                 `newsid=${newsid}`
             ).then(res=>{
-                console.log(res)
                 if(res.data.code == 1){
                     this.news_content = res.data.data
                 }
@@ -97,7 +96,6 @@ export default {
         margin-bottom 0
         text-align left
         line-height 1.5rem !important
-        text-indent -2rem !important
     .content>>>img
         width 85% !important
         margin 0 auto !important
