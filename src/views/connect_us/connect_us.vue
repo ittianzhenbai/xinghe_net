@@ -193,7 +193,7 @@ export default {
                 vertical-align middle
                 @media screen and (max-width:768px)
                   font-size 1.7rem
-                  vertical-align top
+                  vertical-align middle
                   line-height 3.5rem
               .icon1
                 width 25px

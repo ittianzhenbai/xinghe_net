@@ -156,13 +156,15 @@ export default {
                 return {
                     background:'#F8F8F8',
                     lineHeight:'60px',
-                    height:'60px'
+                    height:'60px',
+                    cursor:'pointer'
                 }
             } else {
                 return {
                     background:'#FFFFFF',
                     lineHeight:'60px',
-                    height:'60px'
+                    height:'60px',
+                    cursor:'pointer'
                 }
             }
         },

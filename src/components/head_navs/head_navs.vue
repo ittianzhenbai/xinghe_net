@@ -394,6 +394,9 @@ export default {
         activeIndex(newName, oldName){ 
             // console.log(newName)
             this.activeIndex1 = newName
+            if(this.deviceFlag == "mobile"&& this.right_navshow == true){
+                this.right_navshow = false          
+            }
         },
         curPage(newVal){
             this.$nextTick(()=>{
@@ -424,10 +427,12 @@ export default {
     min-width 4rem
     text-align center
     color #ABABAB
-    @media screen and (min-width:996px)
-        min-width 6rem
     @media screen and (min-width:768px) and (max-width:992px)
         min-width 7rem
+    @media screen and (min-width:996px) and (max-width:1024px)
+        min-width 5rem
+    @media screen and (min-width:1025px)
+        min-width 6rem
 .el-menu-vertical-demo:not(.el-menu--collapse) 
     width 10rem
 </style>
@@ -505,12 +510,6 @@ export default {
                     right 36px
                 @media screen and (min-width:1200px) and (max-width:1600px)
                     top 35px
-<<<<<<< Updated upstream
-                    right 38px
-                @media screen and (min-width:1200px) and (max-width:1600px)
-                    top 35px
-=======
->>>>>>> Stashed changes
                     right 46px
                 font-weight 500
                 color #FFFFFF
@@ -667,16 +666,10 @@ export default {
         position fixed
         right 2.7%
         top 4.2rem
-<<<<<<< Updated upstream
-        @media screen and (max-width:1024px)
-            top 8.3rem
-            right 7rem
-=======
         @media screen and (max-width:997px)
             top 8.28rem
             right 7rem
         @media screen and (min-width:998px) and (max-width:1200px)
             top 4.3rem
             right 2.7%
->>>>>>> Stashed changes
 </style>

@@ -98,7 +98,6 @@ export default {
     methods:{
         ...mapMutations(["setActiveIndex","setchildActiveIndex"]),
         handleSelect(key, keyPath) {
-            console.log(key ,keyPath)
             this.jump_router(key)
         },
         jump_router(item){

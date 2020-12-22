@@ -2,7 +2,9 @@
     <div class="container-fluid group_menber">
         <div class="row row1">
             <div class="col-12 col-sm-6 col-md-6 col-lg-6 group_pic">
-                <img v-lazy="this.cur_image" alt="">
+                <transition name="slide-fade">
+                    <img v-lazy="this.cur_image" alt="">
+                </transition>
             </div>
             <div class="col-12 col-sm-6 col-md-6 col-lg-6 menber_list">
                 <ul @mouseleave="godefault">
@@ -111,6 +113,10 @@ export default {
                     this.cur_image = res.data.data[0].image
                 }
             })
+        }
+    },
+    watch:{
+        cur_image(){
         }
     }
 }

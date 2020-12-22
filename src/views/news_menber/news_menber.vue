@@ -177,6 +177,7 @@ export default {
         &>li
             width 100%
             margin-bottom 1rem
+            cursor pointer
             @media screen and (max-width:768px)    
                 padding 0
                 margin-bottom 2.45rem

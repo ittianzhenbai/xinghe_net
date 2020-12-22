@@ -1,10 +1,11 @@
 <template>
-     <div class="swiper-container">
+     <div class="swiper-container" id="swiper-container">
         <div class="swiper-wrapper">
             <div 
                 class="swiper-slide" 
                 v-for="(item,index) in newspics" 
                 :key="index"
+                @click="godetail(item)"
             >
                 <span class="pic" v-lazy:background-image="item.image"></span>
                 <div class="title1">
@@ -35,12 +36,28 @@ export default {
     },
     methods:{
         init(){
-            var swiper = new Swiper('.swiper-container', {
+            var swiper = new Swiper('#swiper-container', {
                 loop:true,
                 autoplay:3000,
                 speed:300,
                 pagination : '.swiper-pagination',
             })
+        },
+        godetail(item){
+           this.$emit("pics_godetail",item)
+        }
+    },
+    watch:{
+        newspics:{
+            handler(newval,oldVal){
+               this.$nextTick(()=>{
+                   let self = this
+                   setTimeout(()=>{
+                       self.init()
+                   },500)
+               })
+            },
+            deep:true
         }
     }
 }
@@ -58,10 +75,7 @@ export default {
     margin 0 auto
     @media screen and (min-width:992px)
         float right
-<<<<<<< Updated upstream
-=======
         width 85%
->>>>>>> Stashed changes
     .swiper-slide 
         text-align center
         font-size 18px
