@@ -7,14 +7,15 @@ export default new Vuex.Store({
   state: {
     activeIndex:sessionStorage.getItem("activeIndex")==undefined||null?"1":sessionStorage.getItem("activeIndex"),//记录当前指向的导航index
     childActiveIndex:sessionStorage.getItem("childActiveIndex")==undefined||null?"1":sessionStorage.getItem("childActiveIndex"),//记录子页面选项卡的指向
-    searchKeywords:sessionStorage.getItem("searchKeywords")==undefined||null?"1":sessionStorage.getItem("searchKeywords"),//搜索关键词
+    searchKeywords:"",//搜索新闻关键词
     readHistory1:window.sessionStorage.getItem("readHistory1") ==undefined||null?[]:JSON.parse(window.sessionStorage.getItem("readHistory1")),//记录人才招聘公告阅读记录
     readHistory2:window.sessionStorage.getItem("readHistory2") ==undefined||null?[]:JSON.parse(window.sessionStorage.getItem("readHistory2")),//记录党章党规阅读记录
     readHistory3:window.sessionStorage.getItem("readHistory3") ==undefined||null?[]:JSON.parse(window.sessionStorage.getItem("readHistory3")),//记录学习园地阅读记录
     readHistory4:window.sessionStorage.getItem("readHistory4") ==undefined||null?[]:JSON.parse(window.sessionStorage.getItem("readHistory4")),//记录文件通知阅读记录
     readHistory5:window.sessionStorage.getItem("readHistory5") ==undefined||null?[]:JSON.parse(window.sessionStorage.getItem("readHistory5")),//记录文件通知阅读记录
     deviceFlag:window.sessionStorage.getItem("deviceFlag"),
-    curPage:window.sessionStorage.getItem("curPage")
+    curPage:window.sessionStorage.getItem("curPage"),
+    browserType:window.sessionStorage.getItem("browserType") == undefined||null?"":window.sessionStorage.getItem("browserType")//浏览器类型判断，为了让ios输入框聚焦
   },
   mutations: {
     setActiveIndex(state,data){
@@ -26,7 +27,7 @@ export default new Vuex.Store({
       sessionStorage.setItem("childActiveIndex",data)
     },
     setsearchKeywords(state,data){
-      state.childActiveIndex = data
+      state.searchKeywords = data
       sessionStorage.setItem("searchKeywords",data)
     },
     setreadHistory1(state,data){
@@ -86,6 +87,10 @@ export default new Vuex.Store({
     setcurPage(state,data){
       state.curPage = data
       window.sessionStorage.setItem("curPage",data)
+    },
+    setbrowserType(state,data){
+      state.browserType = data
+      window.sessionStorage.setItem("browserType",data)
     }
   },
   actions: {

@@ -2,19 +2,22 @@
     <div class="search_box1" v-show="alert_box == true">
         <img class="close_btn" @click="alert_box = false" src="../../assets/31.png" alt="">
         <div class="input_wrap">
-            <input id="myText" class="input1" v-model="message" type="text" placeholder="请输入汉字" >
+            <input id="myText" class="input1" v-model="message" type="text" placeholder="请输入汉字" @click="iosfocus">
             <img class="search_btn" src="../../assets/3.png" @click="gonews" alt="">
         </div>
     </div>
 </template>
 <script>
-import {mapMutations } from "vuex"
+import {mapState,mapMutations } from "vuex"
 export default {
     data(){
         return{
             alert_box:false,
             message:""
         }
+    },
+    computed:{
+        ...mapState(["browserType"])
     },
     methods:{
         ...mapMutations(["setActiveIndex","setsearchKeywords"]),
@@ -23,26 +26,39 @@ export default {
            this.$router.push({
                path:"/search_news_list",
                query:{
-                   fromsearch:"1"
+                   fromsearch:"1",
+                   keywords:this.message
                }
            })
            this.setActiveIndex("3-1")
            this.setsearchKeywords(this.message)
+       },
+       iosfocus(){
+           if(this.browserType == "IOS"){
+               setTimeout(()=>{
+                    document.getElementById("myText").focus()
+                },500)
+           }
        }
     },
     watch:{
         alert_box(newVal){
-            if(newVal == true){
+            if(newVal == true&&this.browserType !=="IOS"){
                 //打开弹窗后让输入框 自动聚焦
                 setTimeout(()=>{
                     document.getElementById("myText").focus()
                 },500)
+            }else{
+                document.addEventListener("click",this.iosfocus)
             }
         }
     }
 }
 </script>
 <style lang="stylus" scoped>
+input
+    -webkit-user-select: auto !important;
+    -moz-user-select: auto !important;
 .search_box1
     width 100%
     height 100%

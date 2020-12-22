@@ -66,6 +66,7 @@ export default {
             float left
             padding 12px 16px
             min-width 272px
+            cursor pointer
             // height 80px
             background #FFFFFF
             border: 1px solid rgba(26, 100, 159, 0.5);
@@ -74,8 +75,8 @@ export default {
             @media screen and (max-width:768px)
                 margin 0 0 1.5rem 0
                 width 74.6%
-                padding 1.45rem 0
-                line-height 1.7rem
+                padding 1.45rem 1.6rem
+                line-height 1.9rem
                 background #223D6B
                 color #FFFFFF
                 font-size 1.6rem

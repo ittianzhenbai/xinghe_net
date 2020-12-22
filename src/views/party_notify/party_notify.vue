@@ -89,11 +89,13 @@ export default {
                 `page=${page}&pagesize=${pagesize}&catid=${sort}`
             ).then(res=>{
                 if(res.data.code == 1){
-                    console.log(res)
                     this.newslist = res.data.data.list
                     this.total = res.data.data.cur_page.total_count
                     if(this.total<10){
                         this.divide_layout = "pager"
+                    }else if(res.data.code == 210){
+                        this.total = 0
+                        this.newslist = []
                     }
                 }
             })
@@ -110,8 +112,11 @@ export default {
                         this.newslist.push(...res.data.data.list)
                     }
                     this.count = this.newslist.length
-                }else if(res.code == 210){
-                    console.log("暂无数据")
+                    this.total = res.data.data.cur_page.total_count
+                }else if(res.data.code == 210){
+                    this.count = 0
+                    this.total = 0
+                    this.newslist = []
                 }
             })
         },
@@ -156,13 +161,15 @@ export default {
                 return {
                     background:'#F8F8F8',
                     lineHeight:'60px',
-                    height:'60px'
+                    height:'60px',
+                    cursor:'pointer'
                 }
             } else {
                 return {
                     background:'#FFFFFF',
                     lineHeight:'60px',
-                    height:'60px'
+                    height:'60px',
+                    cursor:'pointer'
                 }
             }
         },
@@ -171,7 +178,7 @@ export default {
         },
         //移动端无限加载
         load() {
-            console.log("触发无限加载")
+            // console.log("触发无限加载")
             this.page ++ 
             this.getNewsList_mobile(this.page,this.pagesize,97)
         },

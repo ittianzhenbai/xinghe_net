@@ -108,10 +108,6 @@ export default {
                 `page=${page}&pagesize=${pagesize}&catid=${sort}`
             ).then(res=>{
                 if(res.data.code ==1){
-<<<<<<< Updated upstream
-                    console.log(res)
-=======
->>>>>>> Stashed changes
                     if(this.page == 1){
                         this.newslist = res.data.data.list
                     }else{
@@ -181,6 +177,7 @@ export default {
         &>li
             width 100%
             margin-bottom 1rem
+            cursor pointer
             @media screen and (max-width:768px)    
                 padding 0
                 margin-bottom 2.45rem

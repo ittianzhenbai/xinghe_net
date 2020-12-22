@@ -116,11 +116,10 @@ export default {
                 `page=${page}&pagesize=${pagesize}&catid=${sort}`
             ).then(res=>{
                 if(res.data.code ==1){
-                    console.log(res)
                     this.total = res.data.data.cur_page.total_count
                     this.newslist = res.data.data.list
                     if(res.data.data.list.length%2 == 1){
-                       this.news_list.push({create_at:"",title:""})
+                       this.newslist.push({create_at:"",desc:"",image:"",newsid:"",title:""})
                     }
                     var arr_length = res.data.data.list.length/2
                     this.news_list1 = this.newslist.slice(0,arr_length)
@@ -142,8 +141,9 @@ export default {
                         this.newslist.push(...res.data.data.list)
                     }
                     this.total = this.newslist.length
-                }else if(res.code == 210){
-                    console.log("暂无数据")
+                }else if(res.data.code == 210){
+                    this.tital = 0
+                    this.newslist = []
                 }
             })
         },
@@ -179,13 +179,15 @@ export default {
                 return {
                     background:'#F8F8F8',
                     lineHeight:'60px',
-                    height:'60px'
+                    height:'60px',
+                    cursor:'pointer'
                 }
             } else {
                 return {
                     background:'#FFFFFF',
                     lineHeight:'60px',
-                    height:'60px'
+                    height:'60px',
+                    cursor:'pointer'
                 }
             }
         },

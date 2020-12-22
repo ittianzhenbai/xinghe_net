@@ -197,6 +197,7 @@ export default {
             vertical-align top
             position relative
             bottom 6rem
+            cursor pointer
             @media screen and (max-width:1600px)
                 height 18rem
                 bottom 5.4rem

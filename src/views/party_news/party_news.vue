@@ -176,6 +176,7 @@ export default {
         &>li
             width 100%
             margin-bottom 1rem
+            cursor pointer
             @media screen and (max-width:768px)    
                 padding 0
                 margin-bottom 2.45rem
@@ -190,11 +191,7 @@ export default {
                     @media screen and (max-width:768px)
                         height 11.5rem
                     @media screen and (min-width:769px) and (max-width:1200px)
-<<<<<<< Updated upstream
-                        height 8rem
-=======
                         height 9rem
->>>>>>> Stashed changes
                     margin 0 auto
                 .date
                     display block

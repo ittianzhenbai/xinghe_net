@@ -12,7 +12,7 @@
                 <el-table-column
                     prop="create_at"
                     label="日期"
-                    width="80">
+                    width="150">
                 </el-table-column>
                 <el-table-column
                     prop="title"
@@ -32,7 +32,7 @@
                 <el-table-column
                     prop="create_at"
                     label="日期"
-                    width="80">
+                    width="150">
                 </el-table-column>
                 <el-table-column
                     prop="title"
@@ -152,12 +152,14 @@ export default {
                     background:'#F8F8F8',
                     lineHeight:'60px',
                     height:'60px',
+                    cursor:'pointer'
                 }
             } else {
                 return {
                     background:'#FFFFFF',
                     lineHeight:'60px',
-                    height:'60px'
+                    height:'60px',
+                    cursor:'pointer'
                 }
             }
         },

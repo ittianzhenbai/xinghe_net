@@ -93,8 +93,7 @@ export default {
                 padding 0 6.7% 0 4%
     .advantages
         padding 0 14.8%
-        margin-top 79px
-        margin 79px 0 auto
+        margin 8px 0 auto
         @media screen and (max-width:768px)
             padding 0 0
             margin 3.95rem 0 auto

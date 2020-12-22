@@ -90,15 +90,16 @@
                <div class="col-12 col-md-12 col-lg-6 news_pics">
                    <SwiperNews
                     :newspics="this.pics"
+                    @pics_godetail="this.godetail"
                    ></SwiperNews>
                </div>
                <div class="col-12 col-md-12 col-lg-6 news_list">
-                   <div class="news_top col-12 col-md-12 col-lg-12" @click="godetail(this.newslist[0])">
+                   <div class="news_top col-12 col-md-12 col-lg-12" @click="godetail('newstop')">
                        <p class="news_title">
-                           {{this.newslist[0].title}}
+                           {{this.newstop.title}}
                        </p>
                        <p class="news_content1">
-                          {{this.newslist[0].desc}}
+                          {{this.newstop.desc}}
                        </p>
                    </div>
                    <ul class="list1 col-12 col-md-12 col-lg-12">
@@ -130,7 +131,8 @@ export default {
             content_show:this.$store.state.childActiveIndex,
             rongyu:"",
             newslist:[],//新闻列表,
-            pics:[]
+            pics:[],
+            newstop:""
         }
     },
     computed:{
@@ -176,17 +178,6 @@ export default {
             this.setActiveIndex("2-1")
             this.setchildActiveIndex("1")
         },
-<<<<<<< Updated upstream
-        // onWaypoint({ el, going, direction, _entry }) {
-        //     // console.log("触发了",this.$refs.NumAnimate.length)
-        //     if(going == "in"){
-        //         for(let i = 0;i<this.$refs.NumAnimate.length;i++){
-        //             this.$refs.NumAnimate[i].start() 
-        //         }     
-        //     }
-        // },
-=======
->>>>>>> Stashed changes
         getNewsList(page,pagesize,sort){
             this.axios.post(
                 "api/news/news",
@@ -194,6 +185,7 @@ export default {
             ).then(res=>{
                 if(res.data.code ==1){
                     this.newslist = res.data.data.list
+                    this.newstop = this.newslist[0]
                     if(res.data.data.list.length>4){
                         this.pics = res.data.data.list.slice(0,5)
                     }else{
@@ -211,12 +203,21 @@ export default {
                 this.setActiveIndex("3-2")
                 this.setchildActiveIndex("2")
             }
-            this.$router.push({
-                path:"/news_detail",
-                query:{
-                    newsid:item.newsid
-                }
-            })
+            if(item == "newstop"){
+                this.$router.push({
+                    path:"/news_detail",
+                    query:{
+                        newsid:this.newstop.newsid
+                    }
+                })
+            }else{
+                this.$router.push({
+                    path:"/news_detail",
+                    query:{
+                        newsid:item.newsid
+                    }
+                })
+            }    
         },
         changecolor1(item){
             this.content_show = item
@@ -228,11 +229,20 @@ export default {
     watch:{
         childActiveIndex(newVal){
             if(newVal == "1"){
-                this.getNewsList(1,10,2)
+                console.log("6666")
+                this.$nextTick(()=>{
+                    this.getNewsList(1,10,2)
+                })
             }
             if(newVal == "2"){
-                this.getNewsList(1,10,3)
+                this.$nextTick(()=>{
+                    this.getNewsList(1,10,3)
+                })
             }
+            // let self = this
+            // setTimeout(()=>{
+            //     self.newstop = this.newslist[0]
+            // },500)
         }
     }
 }
@@ -247,14 +257,14 @@ export default {
         margin 0
         @media screen and (max-width:768px)
             margin-top 4rem
-        .swiper-container
-            width 100%
-            .swiper-wrapper
-                width 100%
-                .swiper-slide
-                    width 100%
-                    &>img
-                        width 100%                
+        // .swiper-container
+        //     width 100%
+        //     .swiper-wrapper
+        //         width 100%
+        //         .swiper-slide
+        //             width 100%
+        //             &>img
+        //                 width 100%                
     .yewu
         margin 0
     .content
@@ -406,6 +416,7 @@ export default {
                         margin 1.5rem 0 1.9rem
                         font-family MicrosoftYaHei
                         font-weight Regular
+                        cursor pointer
                         @media screen and (max-width:768px)
                             margin 0
                         .news_title
@@ -441,6 +452,7 @@ export default {
                             width 100%
                             margin 0
                             padding 0
+                            cursor pointer
                             span
                                 color #1A649F
                                 font-family SourceHanSansCN-Bold

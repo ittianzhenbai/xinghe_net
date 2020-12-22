@@ -16,11 +16,21 @@ var fn = function(){
     store.commit("setdeviceFlag","mid_pc")
      //小屏幕 平板
     document.documentElement.style.fontSize = '16px'
+    var u = navigator.userAgent;
+    var isiOS = !!u.match(/\(i[^;]+;( U;)? CPU.+Mac OS X/);
+    if(isiOS){
+      store.commit("setbrowserType","IOS")//判断浏览器类型是否为ios
+    }
   }
   if(w<=768){
       //超小屏幕，手机
     document.documentElement.style.fontSize = '10pt'
     store.commit("setdeviceFlag","mobile")
+    var u = navigator.userAgent;
+    var isiOS = !!u.match(/\(i[^;]+;( U;)? CPU.+Mac OS X/);
+    if(isiOS){
+        store.commit("setbrowserType","IOS")//判断浏览器类型是否为ios
+    }
   }
 }
 fn();

@@ -180,11 +180,16 @@ export default {
         height 20rem
     img
         width 100%
+        @media screen and (max-width:768px)
+            height 20rem
     .banner_title
         z-index 10
         position absolute
         top 44%
         left 12.6%
+        @media screen and (max-width:768px)
+            left 10.6%
+            top 31%
   .navigation_pc
       width 100%
       @media screen and (max-width:768px)

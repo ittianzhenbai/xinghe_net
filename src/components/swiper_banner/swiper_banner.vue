@@ -18,11 +18,7 @@ import Swiper from "swiper"
 export default {
     data(){
         return{
-            pics:[
-                // {image:require("../../assets/banner-1.jpg")},
-                // {image:require("../../assets/banner-2.jpg")},
-                // {image:require("../../assets/banner-3.jpg")},
-            ],
+            pics:[],
             banner:[]
         }
     },
@@ -36,6 +32,10 @@ export default {
                 loop:true,
                 autoplay:3000,
                 speed:300,
+                autoplayDisableOnInteraction:false,
+                // centeredSlides: true,
+                // observer: true,
+                // observeParents: true,
                 prevButton:'.swiper-button-prev',
                 nextButton:'.swiper-button-next',
             })
