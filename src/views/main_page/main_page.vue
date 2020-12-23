@@ -106,12 +106,12 @@
                        <li 
                             v-for="(item,index) in this.newslist" 
                             :key="index" 
-                            v-show="index>0" 
+                            v-show="index>5" 
                             class="row"
                             @click="godetail(item)"
                         >
                            <span>{{item.create_at}}</span>
-                           <p>{{item.desc}}</p>
+                           <p>{{item.title}}</p>
                        </li>
                    </ul>
                </div>
@@ -146,7 +146,8 @@ export default {
     },
     mounted(){
         this.getRongYu()
-        this.getNewsList(1,10,2)
+        this.getNewsList(2)
+        this.content_show = this.childActiveIndex
     },
     destroyed(){
         this.setcurPage("other")
@@ -178,18 +179,19 @@ export default {
             this.setActiveIndex("2-1")
             this.setchildActiveIndex("1")
         },
-        getNewsList(page,pagesize,sort){
+        getNewsList(sort){
             this.axios.post(
-                "api/news/news",
-                `page=${page}&pagesize=${pagesize}&catid=${sort}`
+                "api/news/indexnews",
+                `catid=${sort}`
             ).then(res=>{
                 if(res.data.code ==1){
-                    this.newslist = res.data.data.list
-                    this.newstop = this.newslist[0]
-                    if(res.data.data.list.length>4){
-                        this.pics = res.data.data.list.slice(0,5)
+                    this.newslist = res.data.data
+                    if(res.data.data.length>4){
+                        this.newstop = this.newslist[5]
+                        this.pics = res.data.data.slice(0,5)
                     }else{
-                        this.pics = res.data.data.list
+                        this.pics = res.data.data
+                        this.newstop = {}
                     }
                 }
             })
@@ -229,20 +231,15 @@ export default {
     watch:{
         childActiveIndex(newVal){
             if(newVal == "1"){
-                console.log("6666")
                 this.$nextTick(()=>{
-                    this.getNewsList(1,10,2)
+                    this.getNewsList("2")
                 })
             }
             if(newVal == "2"){
                 this.$nextTick(()=>{
-                    this.getNewsList(1,10,3)
+                    this.getNewsList("3")
                 })
             }
-            // let self = this
-            // setTimeout(()=>{
-            //     self.newstop = this.newslist[0]
-            // },500)
         }
     }
 }
@@ -413,7 +410,7 @@ export default {
                     .news_top
                         width 100%
                         padding 0 0 0 4%
-                        margin 1.5rem 0 1.9rem
+                        margin 1.5rem 0 1rem
                         font-family MicrosoftYaHei
                         font-weight Regular
                         cursor pointer
@@ -434,6 +431,7 @@ export default {
                                 line-height 1.5rem
                         .news_content1
                             text-align left
+                            width 80%
                             display -webkit-box
                             -webkit-box-orient vertical
                             -webkit-line-clamp 3  //需要显示时文本行数
@@ -467,7 +465,7 @@ export default {
                                 color #333333
                                 padding-right 0
                                 padding-left 1rem
-                                width 70% 
+                                width 68% 
                                 font-family MicrosoftYaHei
                                 font-weight Regular
                                 overflow hidden

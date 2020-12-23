@@ -1,5 +1,5 @@
 <template>
-    <div class="swiper-container">
+    <div class="swiper-container" id="swiper-container1">
         <div class="swiper-wrapper">
             <div 
                 class="swiper-slide" 
@@ -28,7 +28,7 @@ export default {
     },
     methods:{
         init(){
-            var swiper = new Swiper('.swiper-container', {
+            var swiper1 = new Swiper('#swiper-container1', {
                 loop:true,
                 autoplay:3000,
                 speed:300,

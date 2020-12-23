@@ -187,7 +187,6 @@ export default {
                     transform scaleY(1.5)
                     background #FFFFFF
                     transform-origin 0 0
-                    transition-duration 300
                     span
                         display none
                     .title
@@ -209,20 +208,24 @@ export default {
                             color #333333
                             font-weight bold    
                             display block
-                            line-height 1rem
-                            font-size 1rem
-                            padding-top 0.5rem
+                            line-height 0.8rem
+                            font-size 0.8rem
+                            padding-top 0.4rem
                             text-align left
+                            transform scaleX(1.5)
+                            transform-origin 0 0
                             //单行显示省略号
                             overflow hidden
                             text-overflow ellipsis
                             white-space nowrap
                             width 90%
                         .company_intro
-                            font-size 0.6rem
-                            line-height 0.75rem
+                            font-size 0.52rem
+                            line-height 0.58rem
                             text-align left
-                            padding-bottom -15px
+                            transform scaleX(1.5)
+                            transform-origin 0 0
+                            padding-bottom -20px
                             display -webkit-box
                             -webkit-box-orient vertical
                             -webkit-line-clamp 2

@@ -176,22 +176,23 @@ export default {
             overflow-x hidden
         &>li
             width 100%
-            margin-bottom 1rem
+            margin-bottom 11px
             cursor pointer
+            padding 0 6px
             @media screen and (max-width:768px)    
                 padding 0
                 margin-bottom 2.45rem
             .single_news
-                padding 9px 9px
+                padding 9px 9px 0
                 .img
                     width 100%
-                    height 230px
+                    height 13vw
                     background center center
                     background-size 100% 100%
                     @media screen and (max-width:1024px)
                         height 11.5rem
                     @media screen and (min-width:769px) and (max-width:1200px)
-                        height 9rem
+                        height 12vw
                     margin 0 auto
                .date
                     display block
@@ -259,6 +260,7 @@ export default {
                     transition all 1s
                 .date,.title,.neirong
                     color #FFFFFF
+                    padding 0 6px
     .pc
         @media screen and (max-width:768px)
             display none
