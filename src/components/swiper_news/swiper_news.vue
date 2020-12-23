@@ -1,5 +1,5 @@
 <template>
-     <div class="swiper-container" id="swiper-container">
+     <div class="swiper-container" id="swiper-container2" v-if="isinit == true">
         <div class="swiper-wrapper">
             <div 
                 class="swiper-slide" 
@@ -29,33 +29,51 @@ export default {
     },
     data(){
         return{
+            isinit:true
         }
     },
     mounted(){
-        this.init()
+        this.$nextTick(()=>{
+            let self = this
+            setTimeout(()=>{
+                self.init()
+            },500)
+        })
     },
     methods:{
         init(){
-            var swiper = new Swiper('#swiper-container', {
+            var swiper2 = new Swiper('#swiper-container2', {
                 loop:true,
-                autoplay:3000,
+                autoplay:3200,
                 speed:300,
+                observer: true,
+                observeParents: true,
+                autoplayDisableOnInteraction:false,
                 pagination : '.swiper-pagination',
+                paginationClickable :true,
+                // onTransitionStart: function(swiper){
+                //     console.log(swiper.realIndex)
+                // }
             })
         },
         godetail(item){
-           this.$emit("pics_godetail",item)
+            console.log(item)
+            this.$emit("pics_godetail",item)
         }
     },
     watch:{
         newspics:{
             handler(newval,oldVal){
-               this.$nextTick(()=>{
-                   let self = this
-                   setTimeout(()=>{
-                       self.init()
-                   },500)
-               })
+                if(oldVal.length !== 0){
+                   this.isinit = false
+                    this.$nextTick(()=>{
+                        let self = this
+                        this.isinit = true
+                        setTimeout(()=>{
+                            self.init()
+                        },500)
+                    })
+                }
             },
             deep:true
         }

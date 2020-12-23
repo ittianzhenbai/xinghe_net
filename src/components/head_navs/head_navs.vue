@@ -473,7 +473,7 @@ export default {
                     @media screen and (min-width:890px) and (max-width:908px)
                         padding 0 20px
                     @media screen and (min-width:909px) and (max-width:937px)
-                        padding 0 22px
+                        padding 0 21px
                     @media screen and (min-width:938px) and (max-width:968px)
                         padding 0 25px
                     @media screen and (min-width:969px) and (max-width:999px)
@@ -496,21 +496,27 @@ export default {
             .el-submenu__icon-arrow,.el-icon-arrow-down
                 position absolute
                 right 50px
-                top 38px
+                top 40px
                 @media screen and (max-width:1380px)
                     right 38px
                 @media screen and (min-width:768px) and (max-width:935px)
-                    top 30px
+                    top 35px
                     right 45px
                 @media screen and (min-width:936px) and (max-width:1000px)
-                    top 30px
-                    right 50px
-                @media screen and (min-width:1000px) and (max-width:1200px)
-                    top 33px
-                    right 36px
-                @media screen and (min-width:1200px) and (max-width:1600px)
                     top 35px
-                    right 46px
+                    right 50px
+                @media screen and (min-width:1001px) and (max-width:1122px)
+                    right 35px
+                    top 38px
+                @media screen and (min-width:1123px) and (max-width:1200px)
+                    top 38px
+                    right 43px
+                @media screen and (min-width:1201px) and (max-width:1379px)
+                    right 43px
+                    top 38px
+                @media screen and (min-width:1380px) and (max-width:1600px)
+                    top 38px
+                    right 50px
                 font-weight 500
                 color #FFFFFF
 /deep/.el-menu--horizontal>.el-submenu.is-active .el-submenu__title
@@ -548,6 +554,8 @@ export default {
             @media screen and (max-width:768px)
                 display none
                 margin-top 0.75rem
+            @media screen and (min-width:1921px)
+                max-width 285px
         .logo_mobile
             display inline-block
             height 3.5rem

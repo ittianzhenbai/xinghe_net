@@ -188,8 +188,26 @@ export default {
     .major_businesses_pc
         width 80%
         margin 0 auto
+        position relative
         @media screen and (max-width:768px)
             display none
+        &::before
+            //背部阴影效果
+            display block
+            height 100%
+            width 100%
+            position absolute
+            right 0
+            top -6rem
+            @media screen and (max-width:1600px)
+                top -5.4rem
+            @media screen and (max-width:1460px)
+                top -5rem
+            @media screen and (max-width:1200px)
+                top -4.5rem
+            content ("")
+            border-radius 10px
+            box-shadow 0px 5px 9px 1px rgba(164, 164, 164, 0.51)
         &>li
             height 20rem
             width 20%
@@ -198,16 +216,18 @@ export default {
             position relative
             bottom 6rem
             cursor pointer
-            @media screen and (max-width:1600px)
+            z-index 9
+            @media screen and (max-width:1800px)
                 height 18rem
+            @media screen and (max-width:1600px)
+                height 17rem
                 bottom 5.4rem
             @media screen and (max-width:1460px)
                 height 16rem
-                bottom 4.8rem
+                bottom 5rem
             @media screen and (max-width:1200px)
-                height 15rem
+                height 16.5rem
                 bottom 4.5rem
-            background-color:purple\0; /* IE8, IE9, IE10 */
             z-index 9
             background #FFFFFF
             @media screen and (max-width:768px)
@@ -221,7 +241,7 @@ export default {
             &:nth-child(4n+0)
                 .img1
                     width 81px
-                    margin-bottom 3px
+                    // margin-bottom 3px
             &:nth-child(4n+0)
                 .img1
                     width 73px

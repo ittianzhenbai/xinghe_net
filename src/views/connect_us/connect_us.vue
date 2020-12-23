@@ -191,6 +191,7 @@ export default {
                 font-family MicrosoftYaHei
                 line-height 2.5rem
                 vertical-align middle
+                word-break break-all
                 @media screen and (max-width:768px)
                   font-size 1.7rem
                   vertical-align middle

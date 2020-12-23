@@ -217,6 +217,7 @@ export default {
                     border-bottom 3px solid #1A649F
                     font-weight bold
                     color #1A649F
+                    transition color 0.5 ease-in
   .navigation_mobile
       @media screen and (min-width 769px)
           display none
