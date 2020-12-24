@@ -15,7 +15,7 @@ export default new Vuex.Store({
     readHistory5:window.sessionStorage.getItem("readHistory5") ==undefined||null?[]:JSON.parse(window.sessionStorage.getItem("readHistory5")),//记录文件通知阅读记录
     deviceFlag:window.sessionStorage.getItem("deviceFlag"),
     curPage:window.sessionStorage.getItem("curPage"),
-    browserType:window.sessionStorage.getItem("browserType") == undefined||null?"":window.sessionStorage.getItem("browserType")//浏览器类型判断，为了让ios输入框聚焦
+    browserType:window.sessionStorage.getItem("browserType") == undefined||null?"":window.sessionStorage.getItem("browserType"),//浏览器类型判断，为了让ios输入框聚焦
   },
   mutations: {
     setActiveIndex(state,data){
@@ -91,7 +91,7 @@ export default new Vuex.Store({
     setbrowserType(state,data){
       state.browserType = data
       window.sessionStorage.setItem("browserType",data)
-    }
+    },
   },
   actions: {
   },

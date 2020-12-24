@@ -116,7 +116,7 @@ export default {
                 }else if(res.data.code == 210){
                     this.count = 0
                     this.total = 0
-                    this.newslist = []
+                    // this.newslist = []
                 }
             })
         },
@@ -185,6 +185,7 @@ export default {
     },
     watch:{
         deviceFlag(newval){
+            this.newslist=[]
             if(newval == "mobile"){
                 this.getNewsList_mobile(1,this.pagesize,97)
             }else{

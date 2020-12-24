@@ -78,7 +78,7 @@ export default {
         if(this.deviceFlag == "mobile"){
             this.getNewsList_mobile(this.page,this.pagesize,96)
         }else{
-             this.getNewsList(this.page,this.pagesize,96)
+            this.getNewsList(this.page,this.pagesize,96)
         }
     },
     methods:{
@@ -114,7 +114,6 @@ export default {
                     }
                 }else if(res.data.code == 210){
                     console.log("暂无数据")
-                    this.newslist = []
                 }
             })
         },
@@ -182,6 +181,7 @@ export default {
     },
     watch:{
         deviceFlag(newval){
+            this.newslist=[]
             if(newval == "mobile"){
                 this.getNewsList_mobile(1,this.pagesize,96)
             }else{
@@ -212,7 +212,7 @@ export default {
         .table_mobile
             @media screen and (min-width:769px)
                 display none
-                height 500px  
+            height 500px  
     .row2
         margin 79px 0 0 0
         @media screen and (max-width:768px)

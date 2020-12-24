@@ -100,6 +100,10 @@ export default {
                     this.class2 = "col-12 col-sm-12 row coulum2"
                     this.class3 = "item4 col-12 col-sm-12"
                 })
+            }else{
+                this.class1="item1 col-12 col-sm-12 col-md-4",//第一行第一列的类名
+                this.class2="col-12 col-sm-12 col-md-4 row coulum2",//第一行第二列的类名
+                this.class3="item4 col-12 col-sm-12 col-md-4"
             }
         }
     }
@@ -158,6 +162,8 @@ export default {
                 height 24rem
             @media screen and (max-width:768px)
                 padding 0
+            @media screen and (min-width:769px) and (max-width:996px)
+                padding 0 30px
             .item2
                 margin 0 0 40px
                 position relative
@@ -182,7 +188,7 @@ export default {
                     font-weight Regular
                     display inline-block
                     text-align left
-                    @media screen and (min-width:1024px) and (max-width:1025px)
+                    @media screen and (min-width:769px) and (max-width:1340px)
                         top 30px//平板尺寸下
                     @media screen and (max-width:768px)
                         font-size 1.2rem
@@ -217,7 +223,7 @@ export default {
                     font-weight Regular
                     display inline-block
                     text-align left
-                    @media screen and (min-width:1024px) and (max-width:1025px)
+                    @media screen and (min-width:769px) and (max-width:1340px)
                         top 30px//平板尺寸下
                     @media screen and (max-width:768px)
                         font-size 1.2rem
