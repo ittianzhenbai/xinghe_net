@@ -304,7 +304,7 @@ export default {
                     font-size 24px
                     line-height 45px
                     margin-top 76px
-                    @media screen and (max-width:1460px)
+                    @media screen and (max-width:1600px)
                         margin-top 46px
                 .intro
                     font-size 0.8rem
@@ -312,7 +312,7 @@ export default {
                     color #FFFFFF
                     width 80%
                     margin 43px auto 37px
-                    @media screen and (max-width:1460px)
+                    @media screen and (max-width:1600px)
                         margin 30px auto 17px
                     display -webkit-box
                     -webkit-box-orient vertical

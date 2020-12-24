@@ -11,6 +11,9 @@ var fn = function(){
      //中等屏幕 桌面显示器 
     store.commit("setdeviceFlag","pc")
     document.documentElement.style.fontSize = '18px'
+    if(w<994){
+      store.commit("setdeviceFlag","mid_pc")
+    }
   }
   if(w<=992&&w>768){
     store.commit("setdeviceFlag","mid_pc")

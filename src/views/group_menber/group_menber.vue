@@ -155,7 +155,7 @@ export default {
                 background-image linear-gradient(to bottom, #2C9AF1 2%,#2583CF 10%,#2077BD 18%,#1C6CAC 28%,#19619A 38%,#165587 48%,#124771 58%,#104066 68%, #0F3A5C 78%, #0D314E 88%,#0A2942 100%)
                 &>li
                     height 2rem
-                    border-bottom 1px solid #91CFFF
+                    border-bottom 1px solid rgba(145,207,255,0.1)
                     display flex
                     height 80px
                     font-size 1.2rem
@@ -167,7 +167,7 @@ export default {
                         flex 1.5
                         display inline-block
                         min-width 3.4rem
-                        border-right 1px solid #91CFFF
+                        border-right 1px solid rgba(250,250,250,0.5)
                         color #FFFFFF
                     .right_hover,.left_hover
                         display none
@@ -183,7 +183,6 @@ export default {
                         text-overflow ellipsis
                         white-space nowrap
                 li:hover,.default
-                    // height 120px
                     transform scaleY(1.5)
                     background #FFFFFF
                     transform-origin 0 0
@@ -210,7 +209,7 @@ export default {
                             display block
                             line-height 0.8rem
                             font-size 0.8rem
-                            padding-top 0.4rem
+                            padding-top 0.8rem
                             text-align left
                             transform scaleX(1.5)
                             transform-origin 0 0
@@ -218,15 +217,16 @@ export default {
                             overflow hidden
                             text-overflow ellipsis
                             white-space nowrap
-                            width 90%
+                            width 60%
+                            margin-bottom 6px
                         .company_intro
-                            font-size 0.52rem
-                            line-height 0.58rem
+                            font-size 0.4rem
+                            line-height 0.8rem
                             text-align left
                             transform scaleX(1.5)
                             transform-origin 0 0
-                            padding-bottom -20px
                             display -webkit-box
+                            width 60%
                             -webkit-box-orient vertical
                             -webkit-line-clamp 2
                             overflow hidden
@@ -234,7 +234,7 @@ export default {
                                 overflow hidden
                                 text-overflow ellipsis
                                 white-space nowrap
-                                width 90%
+                                width 60%
     .row_mobile
         margin 0
         width 100%

@@ -2,7 +2,8 @@
     <div class="other_company">
         <div class="related_enterprises">相关企业成员</div>
         <ul class="menber_list">
-            <li class="single_conpany" 
+            <li 
+                :class ="item.title.length>10?'single_conpany1':'single_conpany'"
                 v-for="(item,index) in companys" 
                 :key="index"
                 @click="go_other_companys(item)"
@@ -30,7 +31,8 @@ export default {
     },
     methods:{
         go_other_companys(item){
-            window.open(item.url)
+            // window.open(item.url)
+            console.log(item.title.length)
         }
     }
 }
@@ -56,7 +58,7 @@ export default {
             font-size 1.5rem
             line-height 2rem
     .menber_list
-        width 100%
+        width calc(100%+16px)
         font-family MicrosoftYaHei
         color #333333
         font-size 1rem
@@ -64,10 +66,10 @@ export default {
         &>li
             display inline-block
             float left
-            padding 12px 16px
-            min-width 272px
+            padding 0 16px
+            width 272px
             cursor pointer
-            // height 80px
+            height 80px
             background #FFFFFF
             border: 1px solid rgba(26, 100, 159, 0.5);
             margin-right 16px
@@ -80,9 +82,13 @@ export default {
                 background #223D6B
                 color #FFFFFF
                 font-size 1.6rem
-            // &:nth-child(5n+0)
-            //     @media screen and (min-width:1300px)
-            //         margin-right 0
+        .single_conpany1
+            @media screen and (min-width:769px)
+                line-height 24px
+                padding 16px 16px
+        .single_conpany
+            @media screen and (min-width:769px)
+                line-height 80px
         li:hover
             background #1A649F
             color #FFFFFF

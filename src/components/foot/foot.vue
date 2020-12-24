@@ -129,10 +129,11 @@ export default {
             .title
                 color #fff
                 text-align left
-                margin-top 1.7rem
+                margin-top 28px
                 font-size 0.9rem
                 font-family MicrosoftYaHei
                 font-weight Regular
+                margin-bottom 6px
             ul
                 list-style none
                 padding 0 0
@@ -214,20 +215,23 @@ export default {
                         @media screen and (max-width:280px)
                            line-height 1.2rem
         .top_right
-            float right
             color #fff
             padding-top 60px
             @media screen and (max-width: 768px)
                 padding-top 20px
                 display none
             .demonstration
+                clear both
                 display block
+                text-align right
                 font-size 0.7rem
                 @media screen and (max-width:768px)
                     display none
             .img1
-                width 60px
-                height 60px
+                width 69px
+                height 69px
+                float right
+                margin-right 0.75rem
                 margin-bottom 15px
     .cutline
         clear both
@@ -238,7 +242,7 @@ export default {
             padding 1px
         border-bottom 1px dashed rgba(250,250,250,0.3)
     .bottom
-        padding-top 18px
+        padding-top 23px
         color #FFF!important
         font-size 0.7rem
         line-height 1.2rem

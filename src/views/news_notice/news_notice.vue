@@ -53,6 +53,7 @@
                 height="500px"
                 @row-click = "goNoticeDetail"
                 v-el-table-infinite-scroll="load"
+                :infinite-scroll-distance = "50"
                 :row-style="rowStyle"
                 :cell-style ="cellStyle"
                 style="width: 100%">
@@ -141,9 +142,6 @@ export default {
                         this.newslist.push(...res.data.data.list)
                     }
                     this.total = this.newslist.length
-                }else if(res.data.code == 210){
-                    this.tital = 0
-                    this.newslist = []
                 }
             })
         },
@@ -204,13 +202,14 @@ export default {
             })
         },
         load() {
-            console.log("触发无限加载")
+            // console.log("触发无限加载",this.page)
             this.page ++ 
             this.getNewsList_mobile(this.page,this.pagesize,4)
         },
     },
     watch:{
         deviceFlag(newval){
+            this.newslist = []
             if(newval == "mobile"){
                 this.getNewsList_mobile(1,this.pagesize,4)
             }else{
@@ -240,6 +239,7 @@ export default {
         width 100%
         margin 0
         padding 0
+        height 500px 
         @media screen and (min-width:769px)
             display none
     .row2

@@ -69,13 +69,17 @@ export default {
         }   
     },
     computed:{
-        ...mapState(["readHistory1"])
+        ...mapState(["readHistory1","deviceFlag"])
     },
     created(){
         // console.log(this.readhistory)
     },
     mounted(){
-        this.getRecruList(this.page,this.pagesize)
+        if(this.deviceFlag == "mobile"){
+            this.getRecruList_mobile(this.page,this.pagesize,96)
+        }else{
+            this.getRecruList(this.page,this.pagesize,96)
+        }
     },
     methods:{
         ...mapMutations(["setreadHistory1"]),
@@ -99,8 +103,6 @@ export default {
                 `page=${page}&pagesize=${pagesize}`
             ).then(res=>{
                 if(res.data.code ==1){
-                    console.log(res)
-                    // this.newslist = res.data.data.list
                     if(this.page == 1){
                         this.joblist = res.data.data.list
                     }else{
@@ -167,9 +169,20 @@ export default {
             this.getNewsList(val,this.pagesize)
         },
         load() {
+            // console.log("触发无限加载",this.page)
             this.page ++ 
             this.getRecruList_mobile(this.page,this.pagesize)
         },
+    },
+    watch:{
+        deviceFlag(newval){
+            this.newslist=[]
+            if(newval == "mobile"){
+                this.getRecruList_mobile(1,this.pagesize,96)
+            }else{
+                this.getRecruList(1,this.pagesize,96)
+            }
+        }
     }
 }
 </script>

@@ -180,6 +180,7 @@ export default {
     },
     watch:{
         deviceFlag(newval){
+            this.newslist=[]
             if(newval == "mobile"){
                 this.getNewsList_mobile(1,this.pagesize,95)
             }else{

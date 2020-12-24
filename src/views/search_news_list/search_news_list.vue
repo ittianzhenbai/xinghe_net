@@ -37,7 +37,7 @@
                 </div>
             </li>
             <li>
-                <span class="text1" v-if="loading" @click="reload">继续查看...</span>
+                <span class="text1" v-if="loading&& this.total!==0" @click="reload">继续查看...</span>
                 <span class="text1" v-if="noMore && this.total>0">没有更多了</span>
                 <span class="text1" v-if="this.total == 0">未查询到相关新闻信息！</span>
             </li>

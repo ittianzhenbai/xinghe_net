@@ -408,6 +408,7 @@ export default {
                 }
             })
         },
+        
         deviceFlag(newVal){
             if(newVal == "mid_pc"){
                 this.class1 = "nav_left col-7 col-sm-6 col-md-6"
@@ -462,7 +463,10 @@ export default {
                     font-size 1rem
                     height 2.92rem
                     line-height 1.8rem
-                    @media screen and (min-width:769px) and (max-width:819px)
+                    background-color transparent !important
+                    @media screen and (min-width:769px) and (max-width:775px)
+                        padding 0 18px
+                    @media screen and (min-width:776px) and (max-width:819px)
                         padding 0 15px
                     @media screen and (min-width:820px) and (max-width:849px)
                         padding 0 17px
@@ -499,7 +503,10 @@ export default {
                 top 40px
                 @media screen and (max-width:1380px)
                     right 38px
-                @media screen and (min-width:768px) and (max-width:935px)
+                @media screen and (min-width:769px) and (max-width:775px)
+                    top 28px
+                    right 38px
+                @media screen and (min-width:776px) and (max-width:935px)
                     top 35px
                     right 45px
                 @media screen and (min-width:936px) and (max-width:1000px)
