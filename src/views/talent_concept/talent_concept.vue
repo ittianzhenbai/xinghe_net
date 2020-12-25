@@ -4,28 +4,28 @@
             <span v-html="this.linian"></span>  
         </div>
         <ul class="row advantages wow fadeInUp">
-            <li class="col-6 col-sm-3 col-md-3 col-lg-3 wow bounce">
+            <li class="col-6 col-sm-6 col-md-3 col-lg-3 wow bounce">
                 <div class="xiyin ">
                     <img src="../../assets/26.png" alt="">
                 </div>
                 <span class="text1">吸引</span>
                 <span class="test2">发展吸引人</span>
             </li>
-            <li class="col-6 col-sm-3 col-md-3 col-lg-3 wow bounce">
+            <li class="col-6 col-sm-6 col-md-3 col-lg-3 wow bounce">
                 <div class="ningju">
                     <img src="../../assets/27.png" alt="">
                 </div>
                 <span class="text1">凝聚</span>
                 <span class="test2">事业凝聚人</span>
             </li>
-            <li class="col-6 col-sm-3 col-md-3 col-lg-3 wow bounce">
+            <li class="col-6 col-sm-6 col-md-3 col-lg-3 wow bounce">
                 <div class="peiyang">
                     <img src="../../assets/28.png" alt="">
                 </div>
                 <span class="text1">培养</span>
                 <span class="test2">工作培养人</span>
             </li>
-            <li class="col-6 col-sm-3 col-md-3 col-lg-3 wow bounce">
+            <li class="col-6 col-sm-6 col-md-3 col-lg-3 wow bounce">
                 <div class="kaohe">
                     <img src="../../assets/29.png" alt="">
                 </div>
@@ -81,10 +81,12 @@ export default {
         width 100%
         margin 0
         span
+            display inline-block
             text-align center
             width 70%
             margin 0 auto
             font-size 1.2rem
+            font-weight Regular
             color #333333
             font-family  Microsoft YaHei
             line-height 2rem
@@ -107,12 +109,14 @@ export default {
                 margin 0 auto
                 border-radius 50%
                 padding 0
-                @media screen and (max-width:767px)
+                @media screen and (max-width:768px)
                     width 33vw
                     height 33vw
                 img
                     width 40%
                     margin-top 32%
+                    @media all and (-ms-high-contrast: none), (-ms-high-contrast: active)
+                        height 40%
             .xiyin
                 background #5A98CA
             .ningju

@@ -89,7 +89,6 @@ export default {
                 `page=${page}&pagesize=${pagesize}&catid=${sort}`
             ).then(res=>{
                 if(res.data.code == 1){
-                    console.log(res)
                     this.newslist = res.data.data.list
                     this.total = res.data.data.cur_page.total_count
                     if(this.total<10){
@@ -214,7 +213,7 @@ export default {
                 display none
             height 500px  
     .row2
-        margin 79px 0 0 0
+        margin 3.1rem 0 0 0
         @media screen and (max-width:768px)
             display none
         .pagination

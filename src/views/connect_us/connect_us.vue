@@ -50,7 +50,7 @@
             <li >
               <div class="single_row">
                 <img class="icon1" src="../../assets/35.png" alt="">
-                <span class="text1">地<span class="kongge"></span>址：浙江省杭州市延安路315号</span>
+                <span class="text1">地<span class="kongge"></span>址：浙江省杭州市延安路312号</span>
               </div>
             </li>
             <li >

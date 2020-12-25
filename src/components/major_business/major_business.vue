@@ -10,7 +10,7 @@
                 <div class="active">
                     <span class="text3">{{this.major_business[1].title}}</span>
                     <p class="intro"
-                        v-html="this.LimitNumber(this.major_business[1].content,40)"
+                        v-html="this.LimitNumber(this.major_business[1].content,34)"
                     >
                     </p>
                     <div>...</div>
@@ -25,7 +25,7 @@
                 <div class="active">
                     <span class="text3">{{this.major_business[2].title}}</span>
                     <p class="intro"
-                        v-html="this.LimitNumber(this.major_business[2].content,40)"
+                        v-html="this.LimitNumber(this.major_business[2].content,35)"
                     >
                     </p>
                     <div>...</div>
@@ -40,7 +40,7 @@
                 <div class="active">
                     <span class="text3">{{this.major_business[0].title}}</span>
                     <p class="intro"
-                        v-html="this.LimitNumber(this.major_business[0].content,40)"
+                        v-html="this.LimitNumber(this.major_business[0].content,35)"
                     >
                     </p>
                     <div>...</div>
@@ -55,7 +55,7 @@
                 <div class="active">
                     <span class="text3">{{this.major_business[3].title}}</span>
                     <p class="intro"
-                        v-html="this.LimitNumber(this.major_business[3].content,40)"
+                        v-html="this.LimitNumber(this.major_business[3].content,35)"
                     >
                     </p>
                     <div>...</div>
@@ -70,7 +70,7 @@
                 <div class="active">
                     <span class="text3">{{this.major_business[4].title}}</span>
                     <p class="intro"
-                        v-html="this.LimitNumber(this.major_business[4].content,40)"
+                        v-html="this.LimitNumber(this.major_business[4].content,35)"
                     >
                     </p>
                     <div>...</div>
@@ -257,6 +257,7 @@ export default {
                 position absolute
                 bottom 0px
                 left 0
+                max-height 50%
             .img3
                 display none
             .text1
@@ -301,34 +302,30 @@ export default {
                     font-family MicrosoftYaHei
                     font-weight Regular
                     color #FFFFFF
-                    font-size 24px
-                    line-height 45px
-                    margin-top 76px
+                    font-size 1.2rem
+                    line-height 2.25rem
+                    margin-top 3.8rem
                     @media screen and (max-width:1600px)
-                        margin-top 46px
+                        margin-top 2.3rem
                 .intro
                     font-size 0.8rem
                     text-align left
                     color #FFFFFF
                     width 80%
-                    margin 43px auto 37px
+                    margin 2.15rem auto 1.85rem
                     @media screen and (max-width:1600px)
-                        margin 30px auto 17px
+                        margin 1.5rem auto 0.85rem
                     display -webkit-box
                     -webkit-box-orient vertical
                     -webkit-line-clamp 4  //需要显示时文本行数
                     overflow hidden
-                    @media screen and (max-width:1190px)
-                        -webkit-line-clamp 3  //需要显示时文本行数
-                        margin 22px auto 17px
-                    @media screen and (max-width:1160px)
-                        -webkit-line-clamp 4  //需要显示时文本行数
-                        margin 22px auto 17px
+                    @media screen and (max-width:847px)
+                        margin 1rem auto 0.5rem
                 div
                     border 1px solid rgba(250,250,250,0.8)
                     border-radius 5px
-                    width 110px
-                    height 40px
+                    width 5.5rem
+                    height 2rem
                     color #FFFFFF
                     font-weight 600
                     margin 0 auto

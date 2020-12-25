@@ -408,7 +408,6 @@ export default {
                 }
             })
         },
-        
         deviceFlag(newVal){
             if(newVal == "mid_pc"){
                 this.class1 = "nav_left col-7 col-sm-6 col-md-6"
@@ -418,6 +417,12 @@ export default {
                 this.class1 = "nav_left col-7 col-sm-6 col-md-6 col-lg-3",//控制nav_left的样式
                 this.class2 = "col-5 col-sm-6 col-md-6 col-lg-2 nav_right mid_screen1",//控制中等屏幕下的右边导航按钮
                 this.class3 = "col-md-12 col-lg-7 nav_mid"//控制中部导航样式
+                if(newVal = "mobile"){
+                    this.$refs.nav.style.opacity = "1",
+                    this.$nextTick(()=>{
+                        this.color = "#223D6B"
+                    })
+                }
             }
         }
     }
@@ -428,9 +433,11 @@ export default {
     min-width 4rem
     text-align center
     color #ABABAB
-    @media screen and (min-width:768px) and (max-width:992px)
+    @media screen and (min-width:768px) and (max-width:890px)
+        min-width 5rem
+    @media screen and (min-width:891px) and (max-width:999px)
         min-width 7rem
-    @media screen and (min-width:996px) and (max-width:1024px)
+    @media screen and (min-width:1000px) and (max-width:1024px)
         min-width 5rem
     @media screen and (min-width:1025px)
         min-width 6rem
@@ -457,6 +464,8 @@ export default {
                 font-weight 550 !important
                 color #FFFFFF !important
                 border-top 2px solid #FFFFFF
+                @media all and (-ms-high-contrast: none), (-ms-high-contrast: active)
+                    font-weight 700 !important
             .el-submenu
                 font-size 1rem
                 .el-submenu__title
@@ -464,27 +473,33 @@ export default {
                     height 2.92rem
                     line-height 1.8rem
                     background-color transparent !important
-                    @media screen and (min-width:769px) and (max-width:775px)
-                        padding 0 18px
-                    @media screen and (min-width:776px) and (max-width:819px)
+                    @media screen and (min-width:769px) and (max-width:785px)
+                        padding 0 9px
+                    @media screen and (min-width:786px) and (max-width:849px)
+                        padding 0 11px
+                    @media screen and (min-width:850px) and (max-width:856px)
+                        padding 0 9px
+                    @media screen and (min-width:857px) and (max-width:875px)
+                        padding 0 11px
+                    @media screen and (min-width:876px) and (max-width:894px)
+                        padding 0 13px
+                    @media screen and (min-width:895px) and (max-width:915px)
                         padding 0 15px
-                    @media screen and (min-width:820px) and (max-width:849px)
+                    @media screen and (min-width:916px) and (max-width:937px)
                         padding 0 17px
-                    @media screen and (min-width:850px) and (max-width:868px)
-                        padding 0 16px
-                    @media screen and (min-width:869px) and (max-width:889px)
-                        padding 0 18px
-                    @media screen and (min-width:890px) and (max-width:908px)
-                        padding 0 20px
-                    @media screen and (min-width:909px) and (max-width:937px)
-                        padding 0 21px
                     @media screen and (min-width:938px) and (max-width:968px)
-                        padding 0 25px
-                    @media screen and (min-width:969px) and (max-width:999px)
-                        padding 0 28px
+                        padding 0 19px
+                    @media screen and (min-width:969px) and (max-width:986px)
+                        padding 0 22px
+                    @media screen and (min-width:987px) and (max-width:993px)
+                        padding 0 24px
+                    @media screen and (min-width:994px) and (max-width:999px)
+                        padding 0 27px
                     @media screen and (min-width:1000px) and (max-width:1119px)
                         padding 0 7px
-                    @media screen and (min-width:1120px) and (max-width:1380px)
+                    @media screen and (min-width:1120px) and (max-width:1209px)
+                        padding 0 14px
+                    @media screen and (min-width:1210px) and (max-width:1380px)
                         padding 0 15px
                     a 
                         text-decoration none
@@ -497,6 +512,8 @@ export default {
                     background-color transparent !important
                     font-weight 550 !important
                     border-top 2px solid #FFFFFF
+                    @media all and (-ms-high-contrast: none), (-ms-high-contrast: active)
+                        font-weight 700 !important
             .el-submenu__icon-arrow,.el-icon-arrow-down
                 position absolute
                 right 50px
@@ -504,15 +521,18 @@ export default {
                 @media screen and (max-width:1380px)
                     right 38px
                 @media screen and (min-width:769px) and (max-width:775px)
-                    top 28px
+                    top 35px
                     right 38px
-                @media screen and (min-width:776px) and (max-width:935px)
+                @media screen and (min-width:776px) and (max-width:917px)
+                    top 35px
+                    right 42px
+                @media screen and (min-width:918px) and (max-width:935px)
                     top 35px
                     right 45px
-                @media screen and (min-width:936px) and (max-width:1000px)
+                @media screen and (min-width:936px) and (max-width:999px)
                     top 35px
-                    right 50px
-                @media screen and (min-width:1001px) and (max-width:1122px)
+                    right 48px
+                @media screen and (min-width:1000px) and (max-width:1122px)
                     right 35px
                     top 38px
                 @media screen and (min-width:1123px) and (max-width:1200px)
@@ -585,18 +605,27 @@ export default {
         @media screen and (min-width:850px) and (max-width:999px)
             padding 0 100px
         .el-menu-item
-            font-size 1rem
             line-height 2rem
+            @media all and (-ms-high-contrast: none), (-ms-high-contrast: active) 
+              line-height 1.8rem
             height 2rem
             color #FFFFFF !important
             font-size 1rem !important
             @media screen and (min-width:768px) and (max-width:850px)
                 padding 0 15px
+                height 3.2rem
+                line-height 1.9rem
             @media screen and (min-width:850px) and (max-width:992px)
                 height 3.2rem
+                line-height 1.9rem
                 padding 0 18px
-            @media screen and (min-width:993px) and (max-width:1380px)
+            @media screen and (min-width:993px) and (max-width:999px)
+                height 3.2rem
+                line-height 1.9rem
+                padding 0 8px
+            @media screen and (min-width:1000px) and (max-width:1380px)
                 // height 4rem
+                line-height 1.9rem
                 padding 0 8px
     .nav_right
         padding 0 0
@@ -659,12 +688,12 @@ export default {
     .mid_screen1
             padding-left 200px
             padding-right 100px
-            @meida screen and (man-width:850px)
-                padding-left 0
             @media screen and (min-width:1000px)
                 display none
             @media screen and (max-width:768px)
                 display none
+            @media screen and (min-width:769px) and (max-width:850px)
+                padding-left 180px
     .mid_screen2
         @media screen and (min-width:769px) and (max-width:999px)
             display none
@@ -685,6 +714,6 @@ export default {
             top 8.28rem
             right 7rem
         @media screen and (min-width:998px) and (max-width:1200px)
-            top 4.3rem
+            top 4.25rem
             right 2.7%
 </style>
