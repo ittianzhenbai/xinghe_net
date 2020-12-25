@@ -53,7 +53,9 @@
             </OptionBoxMobile>
         </div>
         <div class="list_content">
-            <router-view></router-view>
+            <keep-alive>
+                <router-view></router-view>
+            </keep-alive>
         </div>
   </div>
 </template>
@@ -180,6 +182,10 @@ export default {
         height 20rem
     img
         width 100%
+<<<<<<< Updated upstream
+=======
+        max-height 20rem
+>>>>>>> Stashed changes
         @media screen and (max-width:768px)
             height 20rem
     .banner_title
