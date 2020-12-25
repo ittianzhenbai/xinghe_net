@@ -182,7 +182,7 @@ export default {
             this.$nextTick(()=>{
                 this.class1 = "nav_left col-7 col-sm-6 col-md-6"
                 this.class2 = "col-5 col-sm-6 col-md-6 nav_right mid_screen1"
-                this.class3 = "col-md-12 nav_mid"
+                this.class3 = " col-md-12 nav_mid"
             })
         }
     },
@@ -473,6 +473,7 @@ export default {
                     height 2.92rem
                     line-height 1.8rem
                     background-color transparent !important
+<<<<<<< Updated upstream
                     @media screen and (min-width:769px) and (max-width:785px)
                         padding 0 9px
                     @media screen and (min-width:786px) and (max-width:849px)
@@ -496,6 +497,35 @@ export default {
                     @media screen and (min-width:994px) and (max-width:999px)
                         padding 0 27px
                     @media screen and (min-width:1000px) and (max-width:1119px)
+=======
+                    @media screen and (min-width:769px) and (max-width:775px)
+                        padding 0 7px
+                    @media screen and (min-width:775px) and (max-width:795px)
+                        padding 0 9px
+                    @media screen and (min-width:795px) and (max-width:866px)
+                        padding 0 9px
+                    @media screen and (min-width:866px) and (max-width:865px)
+                        padding 0 9px
+                    @media screen and (min-width:865px) and (max-width:887px)
+                        padding 0 11px
+                    @media screen and (min-width:887px) and (max-width:911px)
+                        padding 0 13px
+                    @media screen and (min-width:911px) and (max-width:927px)
+                        padding 0 15px
+                    @media screen and (min-width:927px) and (max-width:938px)
+                        padding 0 17px
+                    @media screen and (min-width:938px) and (max-width:969px)
+                        padding 0 18px
+                    @media screen and (min-width:969px) and (max-width:977px)
+                        padding 0 20px
+                    @media screen and (min-width:977px) and (max-width:987px)
+                        padding 0 22px
+                    @media screen and (min-width:987px) and (max-width:1000px)
+                        padding 0 24px
+                    @media screen and (min-width:1000px) and (max-width:1010px)
+                        padding 0 27px
+                    @media screen and (min-width:1010px) and (max-width:1120px)
+>>>>>>> Stashed changes
                         padding 0 7px
                     @media screen and (min-width:1120px) and (max-width:1209px)
                         padding 0 14px
@@ -529,10 +559,17 @@ export default {
                 @media screen and (min-width:918px) and (max-width:935px)
                     top 35px
                     right 45px
+<<<<<<< Updated upstream
                 @media screen and (min-width:936px) and (max-width:999px)
                     top 35px
                     right 48px
                 @media screen and (min-width:1000px) and (max-width:1122px)
+=======
+                @media screen and (min-width:936px) and (max-width:1010px)
+                    top 35px
+                    right 52px
+                @media screen and (min-width:1010px) and (max-width:1122px)
+>>>>>>> Stashed changes
                     right 35px
                     top 38px
                 @media screen and (min-width:1123px) and (max-width:1200px)
@@ -602,7 +639,7 @@ export default {
             display none
         @media screen and (min-width:768px) and (max-width:850px)
             padding 0 70px
-        @media screen and (min-width:850px) and (max-width:999px)
+        @media screen and (min-width:850px) and (max-width:1010px)
             padding 0 100px
         .el-menu-item
             line-height 2rem
@@ -618,7 +655,11 @@ export default {
             @media screen and (min-width:850px) and (max-width:992px)
                 height 3.2rem
                 line-height 1.9rem
+<<<<<<< Updated upstream
                 padding 0 18px
+=======
+                padding 0 17px
+>>>>>>> Stashed changes
             @media screen and (min-width:993px) and (max-width:999px)
                 height 3.2rem
                 line-height 1.9rem
@@ -688,14 +729,27 @@ export default {
     .mid_screen1
             padding-left 200px
             padding-right 100px
+<<<<<<< Updated upstream
             @media screen and (min-width:1000px)
                 display none
             @media screen and (max-width:768px)
                 display none
             @media screen and (min-width:769px) and (max-width:850px)
                 padding-left 180px
+=======
+            @media screen and (min-width:1010px)
+                display none
+            @media screen and (max-width:768px)
+                display none
+            @media screen and (min-width:769px) and (max-width:799px)
+                padding-left 180px
+                padding-right 90px
+            @media screen and (min-width:799px) and (max-width:850px)
+                padding-left 180px
+                padding-right 100px
+>>>>>>> Stashed changes
     .mid_screen2
-        @media screen and (min-width:769px) and (max-width:999px)
+        @media screen and (min-width:769px) and (max-width:1010px)
             display none
     .mobile_nav //手机端侧边导航
         padding 0 0 

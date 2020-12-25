@@ -180,6 +180,7 @@ export default {
             height 20rem
         .img
             width 100%
+            max-height 20rem
             @media screen and (max-width:768px)
                 height 20rem
         .banner_title
