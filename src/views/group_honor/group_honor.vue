@@ -255,8 +255,11 @@ export default {
                 left 29px
                 font-size 1rem
                 color #666666
+                text-align left
                 font-family MicrosoftYaHei
                 font-weight Regular
+                @media screen and (min-width:769px) and (max-width:1340px)
+                        top 30px//平板尺寸下
                 @media screen and (max-width:768px)
                     font-size 1.2rem
             .paihang

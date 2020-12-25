@@ -253,7 +253,8 @@ export default {
                         font-size 1.4rem
                         line-height 2rem 
                     @media all and (-ms-high-contrast: none), (-ms-high-contrast: active) 
-                        max-height 50px
+                        text-overflow ellipsis
+                        white-space nowrap
             .text1
                 width 100%
                 font-size 1.5rem

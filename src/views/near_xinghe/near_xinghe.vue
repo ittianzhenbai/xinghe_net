@@ -208,10 +208,14 @@ export default {
                 cursor pointer
                 color #000000
                 text-align center
-                @media screen and (min-width:1025px) and (max-width:1680px)
+                @media screen and (min-width:1381px) and (max-width:1680px)
                     width 10rem
-                @media screen and (min-width:769px) and (max-width:1024px)
+                @media screen and (min-width:1025px) and (max-width:1380px)
+                    width 9rem
+                @media screen and (min-width:960px) and (max-width:1080px)
                     width 8rem
+                @media screen and (min-width:768px) and (max-width:959px)
+                    width 6.5rem
                 &.active
                     border-bottom 3px solid #1A649F
                     font-weight bold

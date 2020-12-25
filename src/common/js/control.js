@@ -9,16 +9,18 @@ var fn = function(){
   }
   if(w<=1200&&w>=992){
      //中等屏幕 桌面显示器 
-    store.commit("setdeviceFlag","pc")
+    var f = window.innerWidth
     document.documentElement.style.fontSize = '18px'
-    if(w<994){
+    if(w<994||(f==w&&f<1000)){
       store.commit("setdeviceFlag","mid_pc")
+    }else{
+      store.commit("setdeviceFlag","pc")
     }
   }
   if(w<=992&&w>768){
     store.commit("setdeviceFlag","mid_pc")
      //小屏幕 平板
-    document.documentElement.style.fontSize = '16px'
+    document.documentElement.style.fontSize = '18px'
     var u = navigator.userAgent;
     var isiOS = !!u.match(/\(i[^;]+;( U;)? CPU.+Mac OS X/);
     if(isiOS){
@@ -27,7 +29,13 @@ var fn = function(){
   }
   if(w<=768){
       //超小屏幕，手机
-    document.documentElement.style.fontSize = '10pt'
+    var f1 = window.innerWidth
+    if(f1>768){
+      document.documentElement.style.fontSize = '18px'
+    }else{
+      document.documentElement.style.fontSize = '10pt'
+    }
+    
     store.commit("setdeviceFlag","mobile")
     var u = navigator.userAgent;
     var isiOS = !!u.match(/\(i[^;]+;( U;)? CPU.+Mac OS X/);

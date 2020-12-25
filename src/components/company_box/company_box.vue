@@ -31,8 +31,7 @@ export default {
     },
     methods:{
         go_other_companys(item){
-            // window.open(item.url)
-            console.log(item.title.length)
+            window.open(item.url)
         }
     }
 }

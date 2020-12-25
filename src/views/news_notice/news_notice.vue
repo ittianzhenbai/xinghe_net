@@ -245,7 +245,7 @@ export default {
     .row2
         padding 0
         width 100%
-        margin-top 79px
+        margin-top 3.1rem
         .pagination
             margin 0 auto
             @media screen and (max-width:768px)
