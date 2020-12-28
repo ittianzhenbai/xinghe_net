@@ -173,9 +173,12 @@ export default {
         @media screen and (min-width:769px) and (max-width:992px)
             margin-top 6.5rem
             height 20rem
+        @media screen and (min-width:992px) and (max-width:1010px)
+            margin-top 7rem
+            height 20rem
         .img
             width 100%
-            max-height 20rem
+            height 20rem
             @media screen and (max-width:768px)
                 height 20rem
         .banner_title

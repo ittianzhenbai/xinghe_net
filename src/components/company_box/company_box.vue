@@ -39,7 +39,7 @@ export default {
 <style lang="stylus" scoped>
 .other_company
     width 100%
-    padding 49px 12.7% 20px 12.5%
+    padding 43px 12.7% 30px 12.5%
     margin 50px 0 0
     min-height 235px
     background #F5F5F5
@@ -52,7 +52,7 @@ export default {
         color #333333
         font-size 1rem
         font-weight Regular
-        margin-bottom 20px
+        margin-bottom 14px
         @media screen and (max-width:768px)
             font-size 1.5rem
             line-height 2rem
@@ -72,7 +72,7 @@ export default {
             background #FFFFFF
             border: 1px solid rgba(26, 100, 159, 0.5);
             margin-right 16px
-            margin-bottom 15px
+            margin-bottom 20px
             @media screen and (max-width:768px)
                 margin 0 0 1.5rem 0
                 width 74.6%

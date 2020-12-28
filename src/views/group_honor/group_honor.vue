@@ -74,7 +74,6 @@ export default {
     },
     mounted(){
         this.getGroupHonor()
-        console.log(this.deviceFlag)
         if(this.deviceFlag == "mobile"){
             this.class1 = "item1 col-12 col-sm-12"
             this.class2 = "col-12 col-sm-12 row coulum2"
@@ -145,6 +144,9 @@ export default {
                 color #666666
                 font-family MicrosoftYaHei
                 font-weight Regular
+                text-align left
+                @media screen and (min-width:769px) and (max-width:1340px)
+                    top 30px//平板尺寸下
                 @media screen and (max-width:768px)
                     font-size 1.2rem
             .paihang

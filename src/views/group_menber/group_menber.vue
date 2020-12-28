@@ -3,31 +3,34 @@
         <div class="row row1">
             <div class="col-12 col-sm-6 col-md-6 col-lg-6 group_pic">
                 <transition name="slide-fade">
-                    <img v-lazy="this.cur_image" alt="">
+                    <img v-lazy="this.cur_image" ref="imgs" alt="">
                 </transition>
             </div>
             <div class="col-12 col-sm-6 col-md-6 col-lg-6 menber_list">
-                <ul @mouseleave="godefault">
-                    <li
-                     v-for="(item,index) in this.groupmenber" 
-                     :key="index"
-                     @click="gomenber_net(item)"
-                     @mouseenter="changepics(item,index)"
-                     ref="menbergroup"
-                     >
-                        <span v-show ="index<9">0{{index+1}}</span>
-                        <span v-show ="index>=9">{{index+1}}</span>
-                        <p class="title">{{item.title}}</p>
-                        <div class="left_hover">
-                            <img :src="item.logo" alt="">
-                            <!-- <i class="el-icon-s-promotion"/> -->
-                        </div>
-                        <div class="right_hover">
-                            <p class="title1">{{item.title}}</p>
-                            <p class="company_intro">{{item.content}}</p>
-                        </div>
-                    </li>
-                </ul>
+                <div class="list1"> 
+                     <ul 
+                        @mouseleave="godefault"
+                    >
+                        <li
+                        v-for="(item,index) in this.groupmenber" 
+                        :key="index"
+                        @click="gomenber_net(item)"
+                        @mouseenter="changepics(item,index)"
+                        ref="menbergroup"
+                        >
+                            <span v-show ="index<9">0{{index+1}}</span>
+                            <span v-show ="index>=9">{{index+1}}</span>
+                            <p class="title">{{item.title}}</p>
+                            <div class="left_hover">
+                                <img :src="item.logo" alt="">
+                            </div>
+                            <div class="right_hover">
+                                <p class="title1">{{item.title}}</p>
+                                <p class="company_intro">{{item.content}}</p>
+                            </div>
+                        </li>
+                    </ul>
+                </div>  
             </div>
         </div>
         <ul class="row row_mobile">
@@ -72,8 +75,10 @@ export default {
     },
     methods:{
         changepics(item,index){
+            //鼠标移入后做对应的图片切换
            this.$nextTick(()=>{
                this.cur_image = item.image
+               this.$refs.imgs.setAttribute("class", "imgs")
                 var self = this
                 setTimeout(()=>{
                    self.$refs.menbergroup[0].removeAttribute("class", "default")
@@ -90,6 +95,12 @@ export default {
                     this.cur_image = item.image
                         var self = this
                         self.$refs.menbergroup[index].style.transformOrigin="100% 100%"
+                })
+           }else if(index == 0){
+                this.$nextTick(()=>{
+                    this.cur_image = item.image
+                        var self = this
+                        self.$refs.menbergroup[0].style.transformOrigin="0% 0%"
                 })
            }
         },
@@ -134,107 +145,118 @@ export default {
             display none
         .group_pic
             width 100%
-            height 20rem
+            height 32rem
             padding 0
             img
                 width 75%
                 height 100%
                 margin-left 25%
+            .imgs
+                -webkit-transition opacity 1s ease-in-out
+                -moz-transition opacity 1s ease-in-out
+                -o-transition opacity 1s ease-in-out
+                transition opacity 1s ease-in-out
         .menber_list
-            height 20rem
             padding 0 0
             margin 0
-            overflow scroll
-            overflow-x hidden
-            ul
-                padding 0 0
-                margin 0
+            .list1
                 width 75%
-                position relative
-                border 1px solid #e5e5e5
-                background-image linear-gradient(to bottom, #2C9AF1 2%,#2583CF 10%,#2077BD 18%,#1C6CAC 28%,#19619A 38%,#165587 48%,#124771 58%,#104066 68%, #0F3A5C 78%, #0D314E 88%,#0A2942 100%)
-                &>li
-                    height 2rem
-                    border-bottom 1px solid rgba(145,207,255,0.1)
-                    display flex
-                    height 80px
-                    font-size 1.2rem
-                    line-height 80px
-                    cursor pointer
-                    &:last-child
-                        border-bottom none
-                    span
-                        flex 1.5
-                        display inline-block
-                        min-width 3.4rem
-                        border-right 1px solid rgba(250,250,250,0.5)
-                        color #FFFFFF
-                    .right_hover,.left_hover
-                        display none
-                    .title
-                        flex 8
-                        margin-bottom 0
-                        text-align left
-                        padding-left 2rem
-                        font-family MicrosoftYaHei
-                        color #FFFFFF
-                        //单行显示省略号
-                        overflow hidden
-                        text-overflow ellipsis
-                        white-space nowrap
-                li:hover,.default
-                    transform scaleY(1.5)
-                    background #FFFFFF
-                    transform-origin 0 0
-                    span
-                        display none
-                    .title
-                        display none
-                    .left_hover
-                        flex 1.5
-                        display block
-                        border-right 1px solid #91CFFF
-                        min-width 3.4rem
-                        img
-                            width 80%
-                            margin 0 auto
-                    .right_hover
-                        display block
-                        flex 8
-                        padding-left 2rem
-                        font-family Microsoft YaHei 
-                        .title1
-                            color #333333
-                            font-weight bold    
-                            display block
-                            line-height 0.8rem
-                            font-size 0.8rem
-                            padding-top 0.8rem
+                overflow scroll
+                overflow-x hidden
+                height 32rem
+                ul
+                    padding 0 0
+                    margin 0
+                    width 100%
+                    position relative
+                    border 1px solid #e5e5e5
+                    background-image linear-gradient(to bottom, #2C9AF1 2%,#2583CF 10%,#2077BD 18%,#1C6CAC 28%,#19619A 38%,#165587 48%,#124771 58%,#104066 68%, #0F3A5C 78%, #0D314E 88%,#0A2942 100%)
+                    &>li
+                        height 2rem
+                        border-bottom 1px solid rgba(145,207,255,0.1)
+                        display flex
+                        height 80px
+                        font-size 1.2rem
+                        line-height 80px
+                        cursor pointer
+                        box-sizing border-box
+                        transition all .5s
+                        -webkit-transition all .5s /* Safari */
+                        &:last-child
+                            border-bottom none
+                        span
+                            flex 1.5
+                            display inline-block
+                            min-width 3.4rem
+                            border-right 1px solid rgba(250,250,250,0.5)
+                            color #FFFFFF
+                        .right_hover,.left_hover
+                            display none
+                        .title
+                            flex 8
+                            margin-bottom 0
                             text-align left
-                            transform scaleX(1.5)
-                            transform-origin 0 0
+                            padding-left 2rem
+                            font-family MicrosoftYaHei
+                            color #FFFFFF
                             //单行显示省略号
                             overflow hidden
                             text-overflow ellipsis
                             white-space nowrap
-                            width 60%
-                            margin-bottom 6px
-                        .company_intro
-                            font-size 0.4rem
-                            line-height 0.8rem
-                            text-align left
-                            transform scaleX(1.5)
-                            transform-origin 0 0
-                            display -webkit-box
-                            width 60%
-                            -webkit-box-orient vertical
-                            -webkit-line-clamp 2
-                            overflow hidden
-                            @media all and (-ms-high-contrast: none), (-ms-high-contrast: active) 
+                    li:hover,.default
+                        transform scaleY(1.5)
+                        background #FFFFFF
+                        transform-origin 0 0
+                        span
+                            display none
+                        .title
+                            display none
+                        .left_hover
+                            flex 1.5
+                            display block
+                            border-right 1px solid #91CFFF
+                            min-width 3.4rem
+                            img
+                                width 80%
+                                margin 0 auto
+                                max-height 60% 
+                        .right_hover
+                            display block
+                            flex 8
+                            padding-left 2rem
+                            font-family Microsoft YaHei 
+                            .title1
+                                color #333333
+                                font-weight bold    
+                                display block
+                                line-height 0.8rem
+                                font-size 0.8rem
+                                padding-top 0.8rem
+                                text-align left
+                                transform scaleX(1.5)
+                                transform-origin 0 0
+                                //单行显示省略号
                                 overflow hidden
                                 text-overflow ellipsis
                                 white-space nowrap
                                 width 60%
+                                margin-bottom 6px
+                            .company_intro
+                                font-size 0.4rem
+                                line-height 0.8rem
+                                text-align left
+                                transform scaleX(1.5)
+                                transform-origin 0 0
+                                display -webkit-box
+                                width 60%
+                                -webkit-box-orient vertical
+                                -webkit-line-clamp 2
+                                overflow hidden
+                                @media all and (-ms-high-contrast: none), (-ms-high-contrast: active) 
+                                    overflow hidden
+                                    text-overflow ellipsis
+                                    white-space nowrap
+                                    width 60%
     .row_mobile
         margin 0
         width 100%

@@ -9,16 +9,9 @@ var fn = function(){
      document.documentElement.style.fontSize = '20px'
   }
   if(w<=1200&&w>=992){
-<<<<<<< Updated upstream
-     //中等屏幕 桌面显示器 
-    var f = window.innerWidth
-    document.documentElement.style.fontSize = '18px'
-    if(w<994||(f==w&&f<1000)){
-=======
      //中等屏幕 桌面显示器
-    document.documentElement.style.fontSize = '18px'
+    document.documentElement.style.fontSize = '20px'
     if(w<1005||(f==w&&f<=1010)){
->>>>>>> Stashed changes
       store.commit("setdeviceFlag","mid_pc")
     }else{
       store.commit("setdeviceFlag","pc")
@@ -36,8 +29,7 @@ var fn = function(){
   }
   if(w<=768){
       //超小屏幕，手机
-    var f1 = window.innerWidth
-    if(f1>768){
+    if(f>768){
       document.documentElement.style.fontSize = '18px'
     }else{
       document.documentElement.style.fontSize = '10pt'

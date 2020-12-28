@@ -225,7 +225,7 @@ export default {
     background-color transparent
 .contain
     margin 100px auto
-    width 80%
+    width 75%
     @media screen and (max-width:768px)
         width 100%
         margin 2rem auto

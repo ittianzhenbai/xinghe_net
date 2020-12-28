@@ -200,7 +200,7 @@ export default {
         margin 2rem 0
     .row1
         margin 0 auto
-        width 80%
+        width 75%
         @media screen and (max-width:768px)
             width 100%
         .table_pc
