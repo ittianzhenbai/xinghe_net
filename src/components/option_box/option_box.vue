@@ -53,5 +53,5 @@ export default {
         line-height 0.7rem
         font-family Microsoft YaHei
         font-weight Regular
-        padding-bottom 2.7rem
+        padding-bottom 42px
 </style>

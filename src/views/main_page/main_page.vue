@@ -14,7 +14,7 @@
                 </div>
             </div>
             <div class="row rongyu">
-                <ul class="rongyu1 col-2 col-sm-2 col-md-2 col-lg-2"
+                <ul class="rongyu1 rongyu_pc1 col-2 col-sm-2 col-md-2 col-lg-2"
                     v-show="this.deviceFlag !=='mobile'"
                 >   
                     <li v-for="(item,index) in this.rongyu" :key="index" class="item"  v-show = "index == 0">
@@ -28,7 +28,7 @@
                         <p>{{item.title}}</p>
                     </li>
                 </ul>
-                <ul class="rongyu1 col-10 col-sm-10 col-md-10 col-lg-10 row"
+                <ul class="rongyu1 rongyu_pc2 col-9 col-sm-9 col-md-9 col-lg-9 row"
                     v-show="this.deviceFlag !=='mobile'"
                 >   
                     <li v-for="(item,index) in this.rongyu" :key="index" class="col-3 col-sm-3 col-md-3 col-lg-3 item"  v-show = "index > 0">
@@ -272,7 +272,7 @@ export default {
         background-size contain
         background-repeat no-repeat
         position relative
-        bottom 6rem
+        bottom 7rem
         @media screen and (max-width:768px)
             width 92%
             bottom 7.5rem
@@ -280,7 +280,7 @@ export default {
             margin 0
             .company_intro
                 margin 0 auto!important
-                padding 40px 0
+                padding 80px 0 40px
                 width 100%
                 @media screen and (max-width:768px)
                     padding 3.85rem 0 2.45rem
@@ -311,7 +311,7 @@ export default {
             .rongyu1
                 width 100%
                 margin 0 auto
-                padding 0 auto
+                padding 0
                 @media screen and (max-width:768px)
                     margin 0
                 .item
@@ -324,6 +324,9 @@ export default {
                         color #1A649F
                         font-weight 550
                         font-family HYb9gf
+                        @media screen and (max-width:920px)
+                            font-size 3rem
+                            text-align left
                         @media screen and (max-width:768px)
                             margin-top 18.5pt
                             font-size 35pt
@@ -335,6 +338,11 @@ export default {
                         margin 0 auto
                         @media screen and (max-width:1520px)
                             width 95%
+            .rongyu_pc1
+                margin-right 0
+            .rongyu_pc2
+                padding 0
+                margin-left 0
         .detail
             margin 0 auto
             border-radius 5px
@@ -349,6 +357,8 @@ export default {
             position relative
             bottom 4rem
             font-weight Regular
+            padding-left 5px
+            margin-right 20px
         .detail:hover
             color #FFFFFF
             background #1A649F
@@ -368,6 +378,7 @@ export default {
                 font-family SourceHanSansCN-Bold
                 color #333333
                 margin 0 auto
+                margin-bottom 30px
             .options
                 // margin-bottom 1rem
                 padding 0 0
@@ -411,7 +422,7 @@ export default {
                     .news_top
                         width 100%
                         padding 0 0 0 4%
-                        margin 1.5rem 0 1rem
+                        margin 1.2rem 0 1rem
                         font-family MicrosoftYaHei
                         font-weight Regular
                         cursor pointer
@@ -422,7 +433,7 @@ export default {
                             color #1A649F
                             text-align left
                             width 80%
-                            margin-bottom 0
+                            margin-bottom 10px
                             // 单行显示省略号
                             overflow hidden
                             text-overflow ellipsis

@@ -198,7 +198,7 @@ export default {
             width 100%
             position absolute
             right 0
-            top -6rem
+            top -7rem
             @media screen and (max-width:1600px)
                 top -5.4rem
             @media screen and (max-width:1460px)
@@ -214,7 +214,7 @@ export default {
             display inline-block
             vertical-align top
             position relative
-            bottom 6rem
+            bottom 7rem
             cursor pointer
             z-index 9
             @media screen and (max-width:1800px)

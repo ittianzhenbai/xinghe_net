@@ -66,6 +66,7 @@ export default {
         @media screen and (max-width:768px)
             margin 0 1.5rem
         .left
+            padding-left 0
             @media screen and (max-width:768px)
                 padding 0
             img 
@@ -84,12 +85,14 @@ export default {
                 color #333333
                 font-size 2rem
                 text-align left
+                line-height 2rem
                 @media screen and (max-width:768px)
                     height 2.5rem
                     margin-top 1.5rem
             .title_en
                 color #999999
                 font-size 1rem
+                margin-top 10px
                 @media screen and (max-width:768px)
                     height 1.4rem
                     line-height 1.5rem

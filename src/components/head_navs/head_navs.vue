@@ -2,6 +2,7 @@
     <div class="nav row"
         ref = "nav"
         @mouseenter="changecolor"
+        @mouseleave="changecolor1"
     >
         <div 
             :class="this.class1"
@@ -19,11 +20,11 @@
         </div>
         <div :class="this.class3" ref="midmenu">
             <el-menu
+                ref="menus"
                 :default-active="activeIndex1"
                 mode="horizontal"
                 class="el_menu"
                 @select="handleSelect"
-                :open ="handleOpen"
                 :background-color="this.color"
                 text-color="#fff"
                 active-text-color="#FFFFFF">
@@ -97,7 +98,7 @@
             :unique-opened = true
             active-text-color="#FFFFFF">
             <el-menu-item index="1">首页</el-menu-item>
-                <el-submenu index="2">
+                <el-submenu index="2" @mouseenter="changecolor">
                     <template slot="title">走进兴合</template>
                     <el-menu-item index="2-1">集团概况</el-menu-item>
                     <el-menu-item index="2-2">组织架构</el-menu-item>
@@ -157,6 +158,9 @@ export default {
         class1:"nav_left col-7 col-sm-6 col-md-6 col-lg-3",//控制nav_left的样式
         class2:"col-5 col-sm-6 col-md-6 col-lg-2 nav_right mid_screen1",//控制中等屏幕下的右边导航按钮
         class3:"col-md-12 col-lg-7 nav_mid",//控制中部导航样式
+        openstatus:"",//记录当前menu打开的状态
+        status:0,//状态为1表示submenu 正在悬浮
+        isenter:false//false 代表 鼠标已经不在nav上了
       };
     },
     components:{
@@ -168,7 +172,12 @@ export default {
     },
     created(){
     },
+    updated(){
+        //每次组件更新都需要重新获取一下dom
+        this.openstatus = this.$refs.menus.openedMenus
+    },
     mounted(){
+        this.openstatus = this.$refs.menus.openedMenus
         window.addEventListener('scroll', this.scrollToTop)
         this.$nextTick(()=>{
             if(this.curPage == "index"&&(this.deviceFlag == "pc"||this.deviceFlag=='mid_pc')){
@@ -187,11 +196,12 @@ export default {
         }
     },
     destroyed(){
-        // window.removeEventListener('scroll', this.scrollToTop);
+        this.isenter = false
     },
     methods:{
         ...mapMutations(["setActiveIndex","setchildActiveIndex"]),
         handleSelect(key, keyPath) {
+            this.isenter = true
             if(keyPath[0]=="1"){
                 // console.log("我是首页")
                 this.$router.push({path:"/main_page"})
@@ -328,7 +338,6 @@ export default {
             }
         },
         gonextfirst(item){
-            console.log("跳到下级")
             if(item == "2-1"){
                 // console.log("集团概况")
                 this.$router.push({path:"/group_intro"})
@@ -358,6 +367,7 @@ export default {
            }
         },
         changecolor(){
+            this.isenter = true
             if((this.deviceFlag == "pc"||this.deviceFlag=='mid_pc')&&this.curPage == "index"){
                 this.$refs.nav.style.opacity = "1",
                 this.$nextTick(()=>{
@@ -365,11 +375,19 @@ export default {
                 })
             }  
         },
-        handleOpen(key, keyPath){
-            console.log(key)
-        },
-        opensubmenu(index,indexPath){
-            console.log(index,indexPath)
+        changecolor1(){
+            if((this.deviceFlag == "pc"||this.deviceFlag=='mid_pc')&&this.curPage == "index"){
+                let self = this
+                setTimeout(()=>{
+                    if(self.status !==1){
+                        self.$refs.nav.style.opacity = "0.6",
+                        self.$nextTick(()=>{
+                            self.color = '#223D6B'
+                        })
+                    }
+                    self.isenter = false
+                },100)
+            }  
         },
         goindex(){
             this.$router.push({
@@ -378,21 +396,13 @@ export default {
         },
         scrollToTop() {
             var scrollTop = window.pageYOffset || document.documentElement.scrollTop || document.body.scrollTop;
-            if(scrollTop>0 &&(this.deviceFlag == "pc"||this.deviceFlag=='mid_pc') &&this.curPage == "index"){
-                this.$refs.nav.style.opacity = "0.6",
-                this.$nextTick(()=>{
-                    this.color = "transparent"
-                })
-                this.$refs.search.alert_box = false
-            }else{
-                //其他页面也要处理
+            if(scrollTop>0 &&(this.deviceFlag == "pc"||this.deviceFlag=='mid_pc')){
                 this.$refs.search.alert_box = false
             }
         }
     },
     watch:{
         activeIndex(newName, oldName){ 
-            // console.log(newName)
             this.activeIndex1 = newName
             if(this.deviceFlag == "mobile"&& this.right_navshow == true){
                 this.right_navshow = false          
@@ -407,6 +417,15 @@ export default {
                     })
                 }
             })
+        },
+        openstatus:{
+            handler(newVal){
+                this.status = newVal.length
+                if(newVal.length == 0 && this.isenter == false){
+                    this.changecolor1()
+                }
+            },
+            deep:true
         },
         deviceFlag(newVal){
             if(newVal == "mid_pc"){
@@ -430,17 +449,18 @@ export default {
 </script>
 <style lang="stylus">
 .el-menu--collapse.el-menu .el-submenu,.el-menu--popup
-    min-width 4rem
+    min-width 6rem
     text-align center
     color #ABABAB
+    bottom 5px
     @media screen and (min-width:768px) and (max-width:890px)
         min-width 5rem
     @media screen and (min-width:891px) and (max-width:999px)
         min-width 7rem
     @media screen and (min-width:1000px) and (max-width:1024px)
         min-width 5rem
-    @media screen and (min-width:1025px)
-        min-width 6rem
+    @media screen and (min-width:1340px)
+        min-width 7.5rem
 .el-menu-vertical-demo:not(.el-menu--collapse) 
     width 10rem
 </style>
@@ -448,89 +468,100 @@ export default {
 .el-menu-item:hover //修改所有的导航子菜单的样式包括sub_menu的，下面单独覆盖sub_menu样式
     outline 0 !important 
     color #FFFFFF !important
-    background transpent !important
+    background-color transpent !important
 .el-menu-item.is-active 
     color #FFFFFF !important
 .el-menu-item 
+    font-family MicrosoftYaHei !important
+    // background-color transparent !important
     @media screen and (min-width:769px)
         color #ABABAB !important
         font-size 0.8rem !important
 /deep/.el-menu--horizontal
             border-bottom none
             margin-top 1rem
+            margin-bottom 0.2rem
             .el-menu-item:hover
                 outline 0 !important
                 background-color transparent !important
-                font-weight 550 !important
+                font-weight Bold !important
+                font-family MicrosoftYaHei
+                -webkit-font-smoothing antialiased !important
                 color #FFFFFF !important
-                border-top 2px solid #FFFFFF
+                // border-top 2px solid #FFFFFF
                 @media all and (-ms-high-contrast: none), (-ms-high-contrast: active)
                     font-weight 700 !important
             .el-submenu
                 font-size 1rem
+                font-family MicrosoftYaHei
                 .el-submenu__title
                     font-size 1rem
-                    height 2.92rem
-                    line-height 1.8rem
+                    height 4rem
+                    line-height 2.8rem
+                    padding-top 2px !important
                     background-color transparent !important
-<<<<<<< Updated upstream
-                    @media screen and (min-width:769px) and (max-width:785px)
-                        padding 0 9px
-                    @media screen and (min-width:786px) and (max-width:849px)
-                        padding 0 11px
-                    @media screen and (min-width:850px) and (max-width:856px)
-                        padding 0 9px
-                    @media screen and (min-width:857px) and (max-width:875px)
-                        padding 0 11px
-                    @media screen and (min-width:876px) and (max-width:894px)
-                        padding 0 13px
-                    @media screen and (min-width:895px) and (max-width:915px)
-                        padding 0 15px
-                    @media screen and (min-width:916px) and (max-width:937px)
-                        padding 0 17px
-                    @media screen and (min-width:938px) and (max-width:968px)
-                        padding 0 19px
-                    @media screen and (min-width:969px) and (max-width:986px)
-                        padding 0 22px
-                    @media screen and (min-width:987px) and (max-width:993px)
-                        padding 0 24px
-                    @media screen and (min-width:994px) and (max-width:999px)
-                        padding 0 27px
-                    @media screen and (min-width:1000px) and (max-width:1119px)
-=======
                     @media screen and (min-width:769px) and (max-width:775px)
                         padding 0 7px
-                    @media screen and (min-width:775px) and (max-width:795px)
+                        line-height 2.7rem
+                    @media screen and (min-width:775px) and (max-width:865px)
                         padding 0 9px
-                    @media screen and (min-width:795px) and (max-width:866px)
-                        padding 0 9px
-                    @media screen and (min-width:866px) and (max-width:865px)
-                        padding 0 9px
+                        line-height 2.7rem
                     @media screen and (min-width:865px) and (max-width:887px)
                         padding 0 11px
+                        line-height 2.7rem
                     @media screen and (min-width:887px) and (max-width:911px)
                         padding 0 13px
+                        line-height 2.7rem
                     @media screen and (min-width:911px) and (max-width:927px)
                         padding 0 15px
+                        line-height 2.7rem
                     @media screen and (min-width:927px) and (max-width:938px)
                         padding 0 17px
+                        line-height 2.7rem
                     @media screen and (min-width:938px) and (max-width:969px)
                         padding 0 18px
+                        line-height 2.7rem
                     @media screen and (min-width:969px) and (max-width:977px)
                         padding 0 20px
+                        line-height 2.7rem
                     @media screen and (min-width:977px) and (max-width:987px)
                         padding 0 22px
-                    @media screen and (min-width:987px) and (max-width:1000px)
+                        line-height 2.7rem
+                    @media screen and (min-width:987px) and (max-width:1010px)
                         padding 0 24px
-                    @media screen and (min-width:1000px) and (max-width:1010px)
-                        padding 0 27px
-                    @media screen and (min-width:1010px) and (max-width:1120px)
->>>>>>> Stashed changes
+                        line-height 2.7rem
+                    @media screen and (min-width:1010px) and (max-width:1040px)
+                        padding 0 2px
+                        line-height 2.5rem
+                    @media screen and (min-width:1040px) and (max-width:1074px)
+                        padding 0 5px
+                        line-height 2.5rem
+                    @media screen and (min-width:1074px) and (max-width:1160px)
                         padding 0 7px
-                    @media screen and (min-width:1120px) and (max-width:1209px)
-                        padding 0 14px
+                        line-height 2.5rem
+                    @media screen and (min-width:1160px) and (max-width:1209px)
+                        padding 0 12px
+                        line-height 2.5rem
                     @media screen and (min-width:1210px) and (max-width:1380px)
                         padding 0 15px
+                        line-height 2.5rem
+                    @media screen and (min-width:1380px) and (max-width:1414px)
+                        padding 0 16px
+                        line-height 2.6rem
+                    @media screen and (min-width:1414px) and (max-width:1515px)
+                        padding 0 18px
+                        line-height 2.6rem
+                    @media screen and (min-width:1515px) and (max-width:1548px)
+                        padding 0 22px
+                        line-height 2.6rem
+                    @media screen and (min-width:1548px) and (max-width:1548px)
+                        padding 0 24px
+                        line-height 2.6rem
+                    @media screen and (min-width:1548px) and (max-width:1620px)
+                        padding 0 26px
+                        line-height 2.7rem
+                    @media screen and (min-width:1620px)
+                        padding 0 30px
                     a 
                         text-decoration none
                         color #FFFFFF
@@ -539,50 +570,51 @@ export default {
                         text-decoration none
                 .el-submenu__title:hover
                     outline 0 !important
-                    background-color transparent !important
-                    font-weight 550 !important
+                    // background-color transparent !important
+                    font-family MicrosoftYaHei
+                    font-weight Bold !important
                     border-top 2px solid #FFFFFF
+                    padding-top 0 !important
+                    // font-smoothing antialiased !important
+                    font-smoothing subpixel-antialiased
                     @media all and (-ms-high-contrast: none), (-ms-high-contrast: active)
                         font-weight 700 !important
-            .el-submenu__icon-arrow,.el-icon-arrow-down
+            .el-submenu__icon-arrow
                 position absolute
-                right 50px
-                top 40px
+                right 60px
+                top 56px
                 @media screen and (max-width:1380px)
                     right 38px
                 @media screen and (min-width:769px) and (max-width:775px)
-                    top 35px
                     right 38px
                 @media screen and (min-width:776px) and (max-width:917px)
-                    top 35px
                     right 42px
-                @media screen and (min-width:918px) and (max-width:935px)
-                    top 35px
+                @media screen and (min-width:918px) and (max-width:968px)
                     right 45px
-<<<<<<< Updated upstream
-                @media screen and (min-width:936px) and (max-width:999px)
-                    top 35px
+                @media screen and (min-width:969px) and (max-width:991px)
                     right 48px
-                @media screen and (min-width:1000px) and (max-width:1122px)
-=======
-                @media screen and (min-width:936px) and (max-width:1010px)
-                    top 35px
+                @media screen and (min-width:992px) and (max-width:1010px)
                     right 52px
                 @media screen and (min-width:1010px) and (max-width:1122px)
->>>>>>> Stashed changes
                     right 35px
-                    top 38px
                 @media screen and (min-width:1123px) and (max-width:1200px)
-                    top 38px
                     right 43px
-                @media screen and (min-width:1201px) and (max-width:1379px)
-                    right 43px
-                    top 38px
-                @media screen and (min-width:1380px) and (max-width:1600px)
-                    top 38px
+                @media screen and (min-width:1201px) and (max-width:1280px)
+                    right 46px
+                @media screen and (min-width:1281px) and (max-width:1379px)
+                    right 48px
+                @media screen and (min-width:1379px) and (max-width:1513px)
                     right 50px
-                font-weight 500
-                color #FFFFFF
+                @media screen and (min-width:1513px) and (max-width:1600px)
+                    right 55px
+                &:before
+                    content ("")
+                    display block
+                    width 12px
+                    height 7px
+                    background url("../../assets/icon_down.png")
+                    background-size cover
+                
 /deep/.el-menu--horizontal>.el-submenu.is-active .el-submenu__title
             border-bottom transparent !important
             border-bottom-color transparent !important
@@ -605,14 +637,14 @@ export default {
         opacity 1
     .nav_left 
         color #fff
-        line-height 3rem
+        line-height 3.02rem
         padding 0
         @media screen and (max-width:768px)
             line-height 2rem
         .logo
             width 60%
             cursor pointer
-            margin-top 0.75rem
+            margin-top 1.5rem
             @media screen and (min-width:850px) and (max-width:992px)
                 width 50%
             @media screen and (max-width:768px)
@@ -642,32 +674,29 @@ export default {
         @media screen and (min-width:850px) and (max-width:1010px)
             padding 0 100px
         .el-menu-item
-            line-height 2rem
+            line-height 3.2rem
             @media all and (-ms-high-contrast: none), (-ms-high-contrast: active) 
-              line-height 1.8rem
+              line-height 3.2rem
             height 2rem
             color #FFFFFF !important
             font-size 1rem !important
+            background-color transparent !important
             @media screen and (min-width:768px) and (max-width:850px)
                 padding 0 15px
                 height 3.2rem
-                line-height 1.9rem
+                line-height 3.2rem
             @media screen and (min-width:850px) and (max-width:992px)
                 height 3.2rem
-                line-height 1.9rem
-<<<<<<< Updated upstream
-                padding 0 18px
-=======
+                line-height 3.2rem
                 padding 0 17px
->>>>>>> Stashed changes
             @media screen and (min-width:993px) and (max-width:999px)
                 height 3.2rem
-                line-height 1.9rem
+                line-height 3.2rem
                 padding 0 8px
             @media screen and (min-width:1000px) and (max-width:1380px)
-                // height 4rem
-                line-height 1.9rem
-                padding 0 8px
+                height 3.2rem
+                line-height 3rem
+                padding 0 6px
     .nav_right
         padding 0 0
         @media screen and (min-width:992px)
@@ -691,7 +720,7 @@ export default {
                     cursor pointer
                     width 3.5rem
                     height 2rem
-                    margin-top 1.5rem
+                    margin-top 2.3rem
                     background url("../../assets/2@2x.png")
                     background-size 100%
                     @media screen and (max-width:768px)
@@ -706,7 +735,7 @@ export default {
                     cursor pointer
                     width 1rem
                     height 2rem
-                    margin-top 1.5rem
+                    margin-top 2.3rem
                     background url("../../assets/3@2x.png")
                     background-size 100%
                     @media screen and (max-width:768px)
@@ -729,14 +758,6 @@ export default {
     .mid_screen1
             padding-left 200px
             padding-right 100px
-<<<<<<< Updated upstream
-            @media screen and (min-width:1000px)
-                display none
-            @media screen and (max-width:768px)
-                display none
-            @media screen and (min-width:769px) and (max-width:850px)
-                padding-left 180px
-=======
             @media screen and (min-width:1010px)
                 display none
             @media screen and (max-width:768px)
@@ -747,7 +768,6 @@ export default {
             @media screen and (min-width:799px) and (max-width:850px)
                 padding-left 180px
                 padding-right 100px
->>>>>>> Stashed changes
     .mid_screen2
         @media screen and (min-width:769px) and (max-width:1010px)
             display none

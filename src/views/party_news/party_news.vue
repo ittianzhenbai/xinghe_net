@@ -160,7 +160,7 @@ export default {
 </script>
 <style lang="stylus" scoped>
 .news_group
-    width 78%
+    width 76%
     padding 100px 0
     margin 0 auto
     @media screen and (max-width:768px)
@@ -213,7 +213,7 @@ export default {
                     color #333333
                     line-height 1.5rem
                     white-space nowrap
-                    width 90%
+                    width 100%
                     margin-bottom 5px
                     font-size 1.1rem
                     text-align left          
@@ -234,7 +234,7 @@ export default {
                     font-family Microsoft YaHei
                     font-weight Regular
                     line-height 1.2rem
-                    margin-bottom 5px
+                    margin-bottom 25px
                     @media screen and (max-width:768px)
                         font-size 1.4rem
                         line-height 2rem
