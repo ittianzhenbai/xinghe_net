@@ -1,6 +1,6 @@
 <template>
   <div class="container-fluid news_center">
-      <div class="row banner">
+      <div class="row banner" @click="closeOption">
         <img class="img" v-lazy="this.banner.image" alt="">
         <BannerTitle
             class="banner_title"
@@ -33,6 +33,7 @@
             >
             <div class="child_nav">
                 <el-menu
+                    :default-openeds="openeds"
                     class="el-menu-collapse-list"
                     @select="handleSelect"
                     text-color="#FFFFFF"
@@ -52,7 +53,7 @@
             </div>
             </OptionBoxMobile>
         </div>
-        <div class="list_content">
+        <div class="list_content" @click="closeOption">
             <keep-alive>
                 <router-view></router-view>
             </keep-alive>
@@ -75,7 +76,8 @@ export default {
                 {cur_index:"1",cur_name:"集团新闻"},
                 {cur_index:"2",cur_name:"成员企业新闻"},
                 {cur_index:"3",cur_name:"通知公告"},
-            ]
+            ],
+            openeds:[""]//控制子菜单闭合
         }
     },
     components:{
@@ -98,8 +100,11 @@ export default {
         this.getNewsCategroy()
         this.getBanner("xwzx")
     },
+    destroyed(){
+        this.setcolseMobileIndex("0")
+    },
     methods:{
-        ...mapMutations(["setActiveIndex","setchildActiveIndex"]),
+        ...mapMutations(["setActiveIndex","setchildActiveIndex","setcolseMobileIndex"]),
         getNewsCategroy(){
             this.axios.get(
                 "api/news/categroy"
@@ -111,6 +116,11 @@ export default {
         },
         handleSelect(key, keyPath) {
             this.jump_router(key)
+        },
+        closeOption(){
+            event.stopPropagation()
+            this.openeds = [""]
+            this.setcolseMobileIndex("1")
         },
         jump_router(item){
             this.content_show = item

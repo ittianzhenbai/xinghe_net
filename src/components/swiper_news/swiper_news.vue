@@ -85,6 +85,8 @@ export default {
             background-color #FFFFFF!important
             opacity 1 !important
             transform scale(0.8)
+            @media screen and (max-width:768px)
+                margin 0 3px !important
 /deep/ .swiper-pagination-bullet-active
             transform scale(1.3)
 .swiper-container
@@ -122,8 +124,8 @@ export default {
         .title1
             position absolute
             bottom 0
-            height 2rem
-            line-height 2rem
+            height 2.98rem
+            line-height 2.98rem
             left 0
             background rgba(000,000,000,0.6)
             width 100%
@@ -132,7 +134,8 @@ export default {
             color #FFFFFF
             @media screen and (max-width:768px)
                 font-size 1.2rem
-                line-height 2rem
+                line-height 4rem
+                height 4rem
             span 
                 display inline-block
                 width 60%
@@ -143,5 +146,7 @@ export default {
         width 100%
         text-align right
         padding-right 15px
-        bottom 0.35rem
+        bottom 0.78rem
+        @media screen and (max-width:768px)
+            bottom 1.2rem
 </style>

@@ -2,7 +2,7 @@
     <div class="search_box" v-show="alert_box == true">
         <img class="close_btn" @click="alert_box = false" src="../../assets/31.png" alt="">
         <div class="input_wrap">
-            <input class="input" v-model="message" type="text" placeholder="请输入汉字" >
+            <input class="input" v-model="message" type="text" placeholder="请输入搜索条件" >
             <img class="search_btn" src="../../assets/30.png" @click="gonews" alt="">
         </div>
     </div>

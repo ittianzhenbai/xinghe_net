@@ -2,7 +2,6 @@
     <div class="container-fluid neimao">
         <div class="row row1">
             <div class="col-12 col-sm-12 col-md-12 col-lg-6 left">
-                <!-- <img src="../../assets/011.png" alt=""> -->
                 <img v-lazy="this.info.image" alt="">
             </div>
             <div class="col-12 col-sm-12 col-md-12 col-lg-6 right">
@@ -71,9 +70,8 @@ export default {
                 padding 0
             img 
                 width 100%
-                height 100%
-                @media screen and (max-width:768px)
-                    height 24.6rem
+                @media screen and (min-width:768px)
+                    height 100%
         .right
             width 100%
             @media screen and (max-width:768px)

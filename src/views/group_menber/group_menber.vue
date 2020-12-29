@@ -145,12 +145,21 @@ export default {
             display none
         .group_pic
             width 100%
-            height 32rem
+            height 24rem
             padding 0
             img
                 width 75%
                 height 100%
                 margin-left 25%
+                @media screen and (max-width:1600px)
+                    width 80%
+                    margin-left 20%
+                @media screen and (max-width:1500px)
+                    width 85%
+                    margin-left 15%
+                @media screen and (max-width:1400px)
+                    width 90%
+                    margin-left 10%
             .imgs
                 -webkit-transition opacity 1s ease-in-out
                 -moz-transition opacity 1s ease-in-out
@@ -163,7 +172,7 @@ export default {
                 width 75%
                 overflow scroll
                 overflow-x hidden
-                height 32rem
+                height 24rem
                 ul
                     padding 0 0
                     margin 0
@@ -176,7 +185,7 @@ export default {
                         border-bottom 1px solid rgba(145,207,255,0.1)
                         display flex
                         height 80px
-                        font-size 1.2rem
+                        font-size 1rem
                         line-height 80px
                         cursor pointer
                         box-sizing border-box
@@ -230,7 +239,7 @@ export default {
                                 font-weight bold    
                                 display block
                                 line-height 0.8rem
-                                font-size 0.8rem
+                                font-size 0.5rem
                                 padding-top 0.8rem
                                 text-align left
                                 transform scaleX(1.5)
@@ -242,8 +251,8 @@ export default {
                                 width 60%
                                 margin-bottom 6px
                             .company_intro
-                                font-size 0.4rem
-                                line-height 0.8rem
+                                font-size 0.2rem
+                                line-height 0.7rem
                                 text-align left
                                 transform scaleX(1.5)
                                 transform-origin 0 0

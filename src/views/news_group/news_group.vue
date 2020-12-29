@@ -136,7 +136,6 @@ export default {
             this.getNewsList_mobile(this.page,this.pagesize,2)
         },
         godetail(item){
-            console.log(item)
             this.$router.push({
                 path:"/news_detail",
                 query:{

@@ -45,7 +45,7 @@ export default {
         @media screen and (max-width:768px)
             margin 4rem auto 2.4rem
         .pic
-            width 70%
+            width 60%
             margin 0 auto
                     
 </style>

@@ -93,17 +93,16 @@ export default {
 /deep/.el-collapse-item__header
         background-color #223D6B
         color #ffff
-        padding 0 15px
+        padding 0 
         border-bottom none
         font-size 1.5rem
         margin-top 1.4rem
-        margin-bottom 1.2rem
 /deep/.el-collapse-item__header.is-active 
-        border-bottom 1px solid rgba(250,250,250,0.6)
+        // border-bottom 1px solid rgba(250,250,250,0.6)
 /deep/.el-collapse-item__wrap
         background-color #223D6B
         color #ffff
-        padding 0 15px
+        padding 0
         border none
         font-size 1.2rem
         line-height 1.6rem
@@ -121,6 +120,8 @@ export default {
     .foot_content
         margin 0
         padding 0 7% 0
+        @media screen and (max-width:768px)
+            padding 0 4%
         .top_left
             padding 0
             float left
@@ -134,6 +135,8 @@ export default {
                 font-family MicrosoftYaHei
                 font-weight Regular
                 margin-bottom 6px
+                @media screen and (max-width:768px)
+                    padding 0
             ul
                 list-style none
                 padding 0 0
@@ -195,10 +198,12 @@ export default {
                             height 80px
                     .text1
                         display inline-block
-                        width 60%
+                        width 71%
                         vertical-align top
-                        @media screen and (max-width:280px)
-                            width 53%
+                        @media screen and (max-width:320px)
+                            width 60%
+                        @media screen and (min-width:320px) and (max-width:540px)
+                            width 68%
                         @media screen and (min-width:540px) and (max-width:768px)
                             width 70%
                     .kongge
@@ -240,6 +245,7 @@ export default {
         width 85%
         @media screen and (max-width:768px)
             padding 1px
+            width 92%
         border-bottom 1px dashed rgba(250,250,250,0.3)
     .bottom
         padding-top 23px

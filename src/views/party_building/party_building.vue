@@ -1,6 +1,6 @@
 <template>
     <div class="near_xinghe">
-        <div class="row banner">
+        <div class="row banner" @click="closeOption">
             <img class="img" v-lazy="this.banner.image" alt="">
             <BannerTitle
                 class="banner_title"
@@ -35,6 +35,7 @@
                 <el-menu
                     class="el-menu-collapse-list"
                     @select="handleSelect"
+                    :default-openeds="openeds"
                     text-color="#FFFFFF"
                     background-color="#FFFFFF"
                     active-text-color="#333">
@@ -52,7 +53,7 @@
             </div>
             </OptionBoxMobile>
         </div>
-        <div class="list_content">
+        <div class="list_content" @click="closeOption">
             <keep-alive>
                 <router-view></router-view>
             </keep-alive>
@@ -75,7 +76,8 @@ export default {
                 {cur_index:"2",cur_name:"党章党规"},
                 {cur_index:"3",cur_name:"学习园地"},
                 {cur_index:"4",cur_name:"文件通知"},
-            ]
+            ],
+            openeds:[""]//控制子菜单闭合
         }
     },
     computed:{
@@ -97,10 +99,18 @@ export default {
     mounted(){
         this.getBanner("djyd")
     },
+    destroyed(){
+        this.setcolseMobileIndex("0")
+    },
     methods:{
-        ...mapMutations(["setActiveIndex","setchildActiveIndex"]),
+        ...mapMutations(["setActiveIndex","setchildActiveIndex","setcolseMobileIndex"]),
         handleSelect(key, keyPath) {
             this.jump_router(key)
+        },
+        closeOption(){
+            event.stopPropagation()
+            this.openeds = [""]
+            this.setcolseMobileIndex("1")
         },
         jump_router(item){
             this.content_show = item

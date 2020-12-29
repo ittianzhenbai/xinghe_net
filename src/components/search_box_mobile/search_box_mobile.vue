@@ -2,7 +2,7 @@
     <div class="search_box1" v-show="alert_box == true">
         <img class="close_btn" @click="alert_box = false" src="../../assets/31.png" alt="">
         <div class="input_wrap">
-            <input id="myText" class="input1" v-model="message" type="text" placeholder="请输入汉字" @click="iosfocus">
+            <input id="myText" class="input1" v-model="message" type="text" placeholder="请输入搜索条件" @click="iosfocus">
             <img class="search_btn" src="../../assets/3.png" @click="gonews" alt="">
         </div>
     </div>
@@ -87,7 +87,7 @@ input
         padding-left 0.5rem
         position relative
         top 75pt
-        left 15pt
+        left 4%
         height 50pt
         .input1
             border-radius 25px
