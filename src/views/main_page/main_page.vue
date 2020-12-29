@@ -96,10 +96,10 @@
                <div class="col-12 col-md-12 col-lg-6 news_list">
                    <div class="news_top col-12 col-md-12 col-lg-12" @click="godetail('newstop')">
                        <p class="news_title">
-                           {{this.newstop.title}}
+                           {{this.newstop ==undefined? "":this.newstop.title}}
                        </p>
                        <p class="news_content1">
-                          {{this.newstop.desc}}
+                          {{this.newstop ==undefined? "":this.newstop.desc}}
                        </p>
                    </div>
                    <ul class="list1 col-12 col-md-12 col-lg-12">
@@ -132,11 +132,18 @@ export default {
             rongyu:"",
             newslist:[],//新闻列表,
             pics:[],
-            newstop:""
+            // newstop:""
         }
     },
     computed:{
-         ...mapState(["childActiveIndex","deviceFlag"])
+         ...mapState(["childActiveIndex","deviceFlag"]),
+         newstop:function(){
+             if(this.newslist.length >4){
+                return this.newslist[5];
+             }else{
+                 return [];
+             }
+         }
     },
     beforeRouteEnter(to, from, next) {
         next(vm => {
@@ -187,11 +194,9 @@ export default {
                 if(res.data.code ==1){
                     this.newslist = res.data.data
                     if(res.data.data.length>4){
-                        this.newstop = this.newslist[5]
                         this.pics = res.data.data.slice(0,5)
                     }else{
                         this.pics = res.data.data
-                        this.newstop = {}
                     }
                 }
             })
@@ -338,6 +343,8 @@ export default {
                         margin 0 auto
                         @media screen and (max-width:1520px)
                             width 95%
+                        @media screen and (max-width:1520px)
+                            width 95%
             .rongyu_pc1
                 margin-right 0
             .rongyu_pc2
@@ -359,6 +366,11 @@ export default {
             font-weight Regular
             padding-left 5px
             margin-right 20px
+            @media screen and (max-width:768px)
+                color #FFFFFF
+                background #1A649F
+                border 1px solid #1A649F
+                margin-right 0
         .detail:hover
             color #FFFFFF
             background #1A649F
@@ -366,11 +378,11 @@ export default {
             border 1px solid #1A649F
         .news_center
             background #F4F4F4
-            padding 4rem 0 0
+            padding 3.5rem 0 0
             width 100%
             margin 0
             @media screen and (max-width:768px)
-                margin-bottom 5rem
+                margin-bottom 0rem
                 padding 2.85rem 0
             .title
                 font-size 2rem
@@ -418,21 +430,23 @@ export default {
                     width 100%
                     @media screen and (max-width:768px)
                         margin-top 17pt
-                        height 30rem
+                        height 37rem
                     .news_top
-                        width 100%
+                        width 84%
                         padding 0 0 0 4%
                         margin 1.2rem 0 1rem
                         font-family MicrosoftYaHei
                         font-weight Regular
                         cursor pointer
                         @media screen and (max-width:768px)
+                            width 100%
                             margin 0
+                            padding-right 4%
                         .news_title
                             font-size 1.1rem
                             color #1A649F
                             text-align left
-                            width 80%
+                            width 100%
                             margin-bottom 10px
                             // 单行显示省略号
                             overflow hidden
@@ -443,16 +457,19 @@ export default {
                                 line-height 1.5rem
                         .news_content1
                             text-align left
-                            width 80%
+                            width 100%
                             display -webkit-box
                             -webkit-box-orient vertical
-                            -webkit-line-clamp 3  //需要显示时文本行数
+                            -webkit-line-clamp 2  //需要显示时文本行数
                             overflow hidden
                             color #666666
                             font-size 0.7rem
                             @media screen and (max-width:768px)
                                 font-size 1.2rem
                                 line-height 2rem
+                            @media all and (-ms-high-contrast: none), (-ms-high-contrast: active) 
+                                text-overflow ellipsis
+                                white-space nowrap
                     .list1
                         padding 0 0 0 4%
                         text-align left
@@ -467,7 +484,7 @@ export default {
                                 color #1A649F
                                 font-family SourceHanSansCN-Bold
                                 font-weight Regular
-                                line-height 2rem
+                                line-height 1.85rem
                                 display inline-block
                                 padding 0
                                 @media screen and (max-width:768px)
@@ -477,13 +494,13 @@ export default {
                                 color #333333
                                 padding-right 0
                                 padding-left 1rem
-                                width 68% 
+                                width 71% 
                                 font-family MicrosoftYaHei
                                 font-weight Regular
                                 overflow hidden
                                 text-overflow ellipsis
                                 white-space nowrap
-                                line-height 2rem
+                                line-height 1.85rem
                                 margin-bottom 0
                                 @media screen and (max-width:768px)
                                     font-size 1.5rem

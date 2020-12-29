@@ -455,8 +455,10 @@ export default {
     bottom 5px
     @media screen and (min-width:768px) and (max-width:890px)
         min-width 5rem
-    @media screen and (min-width:891px) and (max-width:999px)
-        min-width 7rem
+    @media screen and (min-width:891px) and (max-width:930px)
+        min-width 6rem
+    @media screen and (min-width:931px) and (max-width:999px)
+        min-width 6.5rem
     @media screen and (min-width:1000px) and (max-width:1024px)
         min-width 5rem
     @media screen and (min-width:1340px)
@@ -631,7 +633,7 @@ export default {
     padding-top 2px
     margin 0
     @media screen and (max-width:768px)
-        border-bottom 1px solid rgba(250,250,250,0.5)
+        border-bottom 1px solid rgba(250,250,250,0.2)
         height 5rem
         background #223D6B
         opacity 1
@@ -711,7 +713,7 @@ export default {
                 color #fff
                 line-height 2rem
                 @media screen and (max-width:768px)
-                    border-left 1px solid rgba(250,250,250,0.6)
+                    border-left 1px solid rgba(250,250,250,0.2)
                     line-height 5rem
                     height 4.8rem
                     text-align center
@@ -779,7 +781,7 @@ export default {
             list-style none
             padding 0 0
             border-right none
-            border-top 1px solid rgba(250,250,250,0.5)
+            border-top 1px solid rgba(250,250,250,0.2)
     .search_box
         position fixed
         right 2.7%

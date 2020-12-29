@@ -16,6 +16,7 @@ export default new Vuex.Store({
     deviceFlag:window.sessionStorage.getItem("deviceFlag"),
     curPage:window.sessionStorage.getItem("curPage"),
     browserType:window.sessionStorage.getItem("browserType") == undefined||null?"":window.sessionStorage.getItem("browserType"),//浏览器类型判断，为了让ios输入框聚焦
+    colseMobileIndex:0
   },
   mutations: {
     setActiveIndex(state,data){
@@ -92,6 +93,13 @@ export default new Vuex.Store({
       state.browserType = data
       window.sessionStorage.setItem("browserType",data)
     },
+    setcolseMobileIndex(state,data){
+      if(data !=="0"){
+        state.colseMobileIndex ++
+      }else{
+        state.colseMobileIndex = 0
+      }
+    }
   },
   actions: {
   },

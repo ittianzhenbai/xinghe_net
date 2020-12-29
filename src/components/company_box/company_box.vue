@@ -3,13 +3,15 @@
         <div class="related_enterprises">相关企业成员</div>
         <ul class="menber_list">
             <li 
-                :class ="item.title.length>10?'single_conpany1':'single_conpany'"
                 v-for="(item,index) in companys" 
                 :key="index"
                 @click="go_other_companys(item)"
             >
-                {{item.title}}
-                <i class="el-icon-arrow-right"></i>        
+                <span class="text">
+                    {{item.title}}
+                    <i class="el-icon-arrow-right"></i> 
+                </span>
+                       
             </li>
         </ul>
     </div>
@@ -62,6 +64,8 @@ export default {
         color #333333
         font-size 1rem
         font-weight Regular
+        @media screen and (max-width:768px)
+            width 100%
         &>li
             display inline-block
             float left
@@ -73,21 +77,20 @@ export default {
             border: 1px solid rgba(26, 100, 159, 0.5);
             margin-right 16px
             margin-bottom 20px
+            line-height 75px
             @media screen and (max-width:768px)
                 margin 0 0 1.5rem 0
-                width 74.6%
-                padding 1.45rem 1.6rem
-                line-height 1.9rem
+                width 100%
+                padding 0 1.6rem
                 background #223D6B
                 color #FFFFFF
                 font-size 1.6rem
-        .single_conpany1
-            @media screen and (min-width:769px)
-                line-height 24px
-                padding 16px 16px
-        .single_conpany
-            @media screen and (min-width:769px)
-                line-height 80px
+            .text
+                display inline-block
+                vertical-align middle
+                line-height 1.8rem
+                @media screen and (min-width:769px)
+                    line-height 1.2rem
         li:hover
             background #1A649F
             color #FFFFFF

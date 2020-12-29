@@ -1,12 +1,12 @@
 <template>
   <div class="container-fluid main" >
       <div class="container-fluid header">
-        <HeadNavs />
+        <HeadNavs ref="headnavs" />
       </div>
-      <div class="row content">
+      <div class="row content" @click="closeMobileMenu">
         <router-view></router-view>
       </div>
-      <div class="row foot">
+      <div class="row foot" @click="closeMobileMenu">
         <Foot/>
       </div>
       <ScrollTop></ScrollTop>
@@ -17,6 +17,7 @@ import ScrollTop from '@/components/scroll_to_top/scroll_to_top.vue'
 import HeadNavs from '@/components/head_navs/head_navs.vue'
 import Foot from '@/components/foot/foot.vue'
 import  '../../common/js/control.js'
+import { mapState} from "vuex";
 export default {
   name: 'Index',
   data(){
@@ -29,10 +30,27 @@ export default {
     HeadNavs,
     Foot
   },
+  computed:{
+    ...mapState(["colseMobileIndex"])
+  },
   created(){
-    this.screenwidth = document.documentElement.clientWidth || document.body.clientWidth
   },
   mounted(){
+  },
+  methods:{
+    closeMobileMenu(){
+       event.stopPropagation()
+       this.$refs.headnavs.right_navshow = false
+       this.$refs.headnavs.click_count = 0
+    }
+  },
+  watch:{
+    colseMobileIndex(newVal){
+      if(newVal>0){
+        this.$refs.headnavs.right_navshow = false
+        this.$refs.headnavs.click_count = 0
+      }
+    }
   }
 }
 </script>

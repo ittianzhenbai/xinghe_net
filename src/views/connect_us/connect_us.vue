@@ -221,16 +221,17 @@ export default {
                 line-height 3.5rem
       .row1_right
         padding 0
-        width 50%
-        max-width 960px
-        @media screen and (max-width:1000px)
-          width 40%
         @media screen and (max-width:768px)
           width 92.5%
           margin-left 4%
           margin-top 3.45rem
+        @media screen and (min-width:768px) and (max-width:1200px)
+          width 82.5%
+          margin-left 10.7%
+          margin-top 3.45rem
+        @media screen and (min-width:1200px)
+          max-width 960px
+          width 50%
         .map
           width 100%
-          @media screen and (min-width:768px)
-            height 100%
 </style>

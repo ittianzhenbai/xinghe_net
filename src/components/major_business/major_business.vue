@@ -3,14 +3,14 @@
          <ul class="major_businesses_pc">
             <li @click="godetail('nm')">
                 <img  class="img1" src="../../assets/16.png" alt="">
-                <span class="text1">{{this.major_business[1].title}}</span>
-                <span class="text2">{{this.major_business[1].title_en}}</span>
+                <span class="text1">{{this.nm.title}}</span>
+                <span class="text2">{{this.nm.title_en}}</span>
                 <img  class="img2" src="../../assets/01.png" alt="">
                 <img  class="img3" src="../../assets/06.png" alt="">
                 <div class="active">
-                    <span class="text3">{{this.major_business[1].title}}</span>
+                    <span class="text3">{{this.nm.title}}</span>
                     <p class="intro"
-                        v-html="this.LimitNumber(this.major_business[1].content,34)"
+                        v-html="this.LimitNumber(this.nm.content,34)"
                     >
                     </p>
                     <div>...</div>
@@ -18,14 +18,14 @@
             </li>
             <li @click="godetail('wm')">
                 <img  class="img1" src="../../assets/23.png" alt="">
-                <span class="text1">{{this.major_business[2].title}}</span>
-                <span class="text2">{{this.major_business[2].title_en}}</span>
+                <span class="text1">{{this.wm.title}}</span>
+                <span class="text2">{{this.wm.title_en}}</span>
                 <img  class="img2" src="../../assets/02.png" alt="">
                 <img  class="img3" src="../../assets/010.png" alt="">
                 <div class="active">
-                    <span class="text3">{{this.major_business[2].title}}</span>
+                    <span class="text3">{{this.wm.title}}</span>
                     <p class="intro"
-                        v-html="this.LimitNumber(this.major_business[2].content,35)"
+                        v-html="this.LimitNumber(this.wm.content,35)"
                     >
                     </p>
                     <div>...</div>
@@ -33,14 +33,14 @@
             </li>
             <li @click="godetail('fdc')">
                 <img  class="img1" src="../../assets/15.png" alt="">
-                <span class="text1">{{this.major_business[0].title}}</span>
-                <span class="text2">{{this.major_business[0].title_en}}</span>
+                <span class="text1">{{this.fdc.title}}</span>
+                <span class="text2">{{this.fdc.title_en}}</span>
                 <img  class="img2" src="../../assets/03.png" alt="">
                 <img  class="img3" src="../../assets/07.png" alt="">
                 <div class="active">
-                    <span class="text3">{{this.major_business[0].title}}</span>
+                    <span class="text3">{{this.fdc.title}}</span>
                     <p class="intro"
-                        v-html="this.LimitNumber(this.major_business[0].content,35)"
+                        v-html="this.LimitNumber(this.fdc.content,35)"
                     >
                     </p>
                     <div>...</div>
@@ -48,14 +48,14 @@
             </li>
             <li @click="godetail('jrtz')">
                 <img  class="img1" src="../../assets/14.png" alt="">
-                <span class="text1">{{this.major_business[3].title}}</span>
-                <span class="text2">{{this.major_business[3].title_en}}</span>
+                <span class="text1">{{this.jr.title}}</span>
+                <span class="text2">{{this.jr.title_en}}</span>
                 <img  class="img2" src="../../assets/04.png" alt="">
                 <img  class="img3" src="../../assets/08.png" alt="">
                 <div class="active">
-                    <span class="text3">{{this.major_business[3].title}}</span>
+                    <span class="text3">{{this.jr.title}}</span>
                     <p class="intro"
-                        v-html="this.LimitNumber(this.major_business[3].content,35)"
+                        v-html="this.LimitNumber(this.jr.content,35)"
                     >
                     </p>
                     <div>...</div>
@@ -63,14 +63,14 @@
             </li>
             <li @click="godetail('nyfw')">
                 <img  class="img1" src="../../assets/13.png" alt="">
-                <span class="text1">{{this.major_business[4].title}}</span>
-                <span class="text2">{{this.major_business[4].title_en}}</span>
+                <span class="text1">{{this.ny.title}}</span>
+                <span class="text2">{{this.ny.title_en}}</span>
                 <img  class="img2" src="../../assets/05.png" alt="">
                 <img  class="img3" src="../../assets/09.png" alt="">
                 <div class="active">
-                    <span class="text3">{{this.major_business[4].title}}</span>
+                    <span class="text3">{{this.ny.title}}</span>
                     <p class="intro"
-                        v-html="this.LimitNumber(this.major_business[4].content,35)"
+                        v-html="this.LimitNumber(this.ny.content,35)"
                     >
                     </p>
                     <div>...</div>
@@ -80,32 +80,32 @@
         <ul class="major_businesses_mobile">
              <li @click="godetail('nm')">
                 <img  class="img1" src="../../assets/16.png" alt="">
-                <span class="text1">{{this.major_business[1].title}}</span>
-                <span class="text2">{{this.major_business[1].title_en}}</span>
+                <span class="text1">{{this.nm.title}}</span>
+                <span class="text2">{{this.nm.title_en}}</span>
                 <img  class="img4" src="../../assets/41.png" alt="">
             </li>
             <li @click="godetail('wm')">
                 <img  class="img1" src="../../assets/23.png" alt="">
-                <span class="text1">{{this.major_business[2].title}}</span>
-                <span class="text2">{{this.major_business[2].title_en}}</span>
+                <span class="text1">{{this.wm.title}}</span>
+                <span class="text2">{{this.wm.title_en}}</span>
                 <img  class="img4" src="../../assets/42.png" alt="">
             </li>
             <li @click="godetail('fdc')">
                 <img  class="img1" src="../../assets/15.png" alt="">
-                <span class="text1">{{this.major_business[0].title}}</span>
-                <span class="text2">{{this.major_business[0].title_en}}</span>
+                <span class="text1">{{this.fdc.title}}</span>
+                <span class="text2">{{this.fdc.title_en}}</span>
                 <img  class="img4" src="../../assets/43.png" alt="">
             </li>
              <li @click="godetail('jrtz')">
                 <img  class="img1" src="../../assets/14.png" alt="">
-                <span class="text1">{{this.major_business[3].title}}</span>
-                <span class="text2">{{this.major_business[3].title_en}}</span>
+                <span class="text1">{{this.jr.title}}</span>
+                <span class="text2">{{this.jr.title_en}}</span>
                 <img  class="img4" src="../../assets/44.png" alt="">
             </li>
             <li @click="godetail('nyfw')">
                 <img  class="img1" src="../../assets/13.png" alt="">
-                <span class="text1">{{this.major_business[4].title}}</span>
-                <span class="text2">{{this.major_business[4].title_en}}</span>
+                <span class="text1">{{this.ny.title}}</span>
+                <span class="text2">{{this.ny.title_en}}</span>
                 <img  class="img4" src="../../assets/45.png" alt="">
             </li>
         </ul>
@@ -117,6 +117,23 @@ export default {
     data(){
         return{
             major_business:[],
+        }
+    },
+    computed:{
+        nm:function(){
+            return this.major_business[1]
+        },
+        wm:function(){
+            return this.major_business[2]
+        },
+        fdc:function(){
+            return this.major_business[0]
+        },
+        jr:function(){
+            return this.major_business[3]
+        },
+        ny:function(){
+            return this.major_business[4]
         }
     },
     mounted(){
@@ -132,7 +149,6 @@ export default {
             return str.substr(0,num) + '...' ;
         },
         godetail(item){
-            console.log(item)
             if(item == "nm"){
                 this.$router.push({
                     path:"/business_neimao"

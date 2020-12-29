@@ -32,7 +32,7 @@
                 <el-table-column
                     prop="create_at"
                     label="日期"
-                    width="150">
+                    width="145">
                 </el-table-column>
                 <el-table-column
                     prop="title"
@@ -126,11 +126,21 @@ export default {
         },
         cellStyle({row,column,columnIndex}){
             if(columnIndex === 0){
-                return{
-                    color:'#999999',
-                    fontSize: '20px',
-                    fontFamily: 'Source Han Sans CN',
-                    fontWeight:'Regular'
+                if(this.deviceFlag == "mobile"){
+                    return{
+                        color:'#999999',
+                        fontSize: '20px',
+                        fontFamily: 'Source Han Sans CN',
+                        fontWeight:'Regular',
+                        paddingLeft:"10px",
+                    }
+                }else{
+                     return{
+                        color:'#999999',
+                        fontSize: '20px',
+                        fontFamily: 'Source Han Sans CN',
+                        fontWeight:'Regular'
+                    }
                 }
             }
             if(columnIndex === 1){

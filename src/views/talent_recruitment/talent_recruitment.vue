@@ -1,6 +1,6 @@
 <template>
     <div class="talent_recruitment">
-        <div class="row banner">
+        <div class="row banner" @click="closeOption">
             <img class="img" v-lazy="this.banner.image" alt="">
             <BannerTitle
                 class="banner_title"
@@ -35,6 +35,7 @@
                 <el-menu
                     class="el-menu-collapse-list"
                     @select="handleSelect"
+                    :default-openeds="openeds"
                     text-color="#FFFFFF"
                     background-color="#FFFFFF"
                     active-text-color="#333">
@@ -52,7 +53,7 @@
             </div>
             </OptionBoxMobile>
         </div>
-        <div class="list_content">
+        <div class="list_content" @click="closeOption">
             <router-view></router-view>
         </div>
     </div>
@@ -71,7 +72,8 @@ export default {
             options:[
                 {cur_index:"1",cur_name:"人才理念"},
                 {cur_index:"2",cur_name:"人才招聘"}
-            ]
+            ],
+            openeds:[""]//控制子菜单闭合
         }
     },
     computed:{
@@ -93,10 +95,18 @@ export default {
     mounted(){
         this.getBanner("rczp")
     },
+    destroyed(){
+        this.setcolseMobileIndex("0")
+    },
     methods:{
-        ...mapMutations(["setActiveIndex","setchildActiveIndex"]),
+        ...mapMutations(["setActiveIndex","setchildActiveIndex","setcolseMobileIndex"]),
         handleSelect(key, keyPath) {
             this.jump_router(key)
+        },
+        closeOption(){
+            event.stopPropagation()
+            this.openeds = [""]
+            this.setcolseMobileIndex("1")
         },
         jump_router(item){
             this.content_show = item
