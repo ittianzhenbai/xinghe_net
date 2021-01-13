@@ -239,7 +239,7 @@ export default {
                                 font-weight bold    
                                 display block
                                 line-height 0.8rem
-                                font-size 0.5rem
+                                font-size 0.8rem
                                 padding-top 0.8rem
                                 text-align left
                                 transform scaleX(1.5)
@@ -252,7 +252,7 @@ export default {
                                 margin-bottom 6px
                             .company_intro
                                 font-size 0.2rem
-                                line-height 0.7rem
+                                line-height 0.9rem
                                 text-align left
                                 transform scaleX(1.5)
                                 transform-origin 0 0

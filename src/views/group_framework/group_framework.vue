@@ -45,7 +45,14 @@ export default {
         @media screen and (max-width:768px)
             margin 4rem auto 2.4rem
         .pic
-            width 60%
             margin 0 auto
-                    
+        .pic>>>img
+            width 100%
+            max-width 1180px
+            // image-rendering crisp-edges !important
+            image-rendering -moz-crisp-edges /* Firefox */
+            image-rendering -o-crisp-edges /* Opera */
+            image-rendering -webkit-optimize-contrast /* Webkit (non-standard naming) */
+            image-rendering crisp-edges 
+            -ms-interpolation-mode nearest-neighbor /* IE (non-standard property) */             
 </style>

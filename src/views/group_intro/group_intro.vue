@@ -139,6 +139,9 @@ export default {
                     color #1A649F
                     font-weight 550
                     font-family HYb9gf
+                    @media screen and (max-width:1340px)
+                        font-size 2.8rem
+                        text-align left
                     @media screen and (max-width:920px)
                         font-size 3rem
                         text-align left

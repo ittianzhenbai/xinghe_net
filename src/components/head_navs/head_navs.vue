@@ -499,7 +499,7 @@ export default {
                 .el-submenu__title
                     font-size 1rem
                     height 4rem
-                    line-height 2.8rem
+                    line-height 2.80rem
                     padding-top 2px !important
                     background-color transparent !important
                     @media screen and (min-width:769px) and (max-width:775px)
@@ -583,7 +583,7 @@ export default {
                         font-weight 700 !important
             .el-submenu__icon-arrow
                 position absolute
-                right 60px
+                right 62px
                 top 56px
                 @media screen and (max-width:1380px)
                     right 38px

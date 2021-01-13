@@ -6,23 +6,23 @@
                 <ul>
                     <li>
                         <img src="../../assets/4.png" alt="">
-                        地<span class="kongge"></span>址:浙江省杭州市延安路312号
+                        地<span class="kongge"></span>址 ：浙江省杭州市延安路312号
                     </li>
                     <li>
                         <img src="../../assets/6.png" alt="">
-                        传<span class="kongge"></span>真:0571-8701 4212
+                        传<span class="kongge"></span>真 ：0571-8701 4212
                     </li>
                     <li>
                         <img src="../../assets/8.png" alt="">
-                        技术维护:浙江省兴合集团有限责任公司信息技术部
+                        技术维护 ：浙江省兴合集团有限责任公司信息技术部
                     </li>
                     <li>
                         <img src="../../assets/5.png" alt="">
-                        服务热线:0571-8703 2510
+                        服务热线 ：0571-8703 2510
                     </li>
                     <li>
                         <img src="../../assets/7.png" alt="">
-                        电子邮箱:xinghegroup@zjcoop.com
+                        电子邮箱 ：xinghegroup@zjcoop.com
                     </li>
                 </ul>
             </div>
@@ -32,27 +32,27 @@
                         <ul>
                             <li>
                                 <img src="../../assets/4.png" alt="">
-                                地<span class="kongge"></span>址:
+                                地<span class="kongge"></span>址 ：
                                 <span class="text1">浙江省杭州市延安路312号</span>
                             </li>
                             <li>
                                 <img src="../../assets/6.png" alt="">
-                                传<span class="kongge"></span>真:
+                                传<span class="kongge"></span>真 ：
                                 <span class="text1">0571-8701 4212</span>
                             </li>
                             <li>
                                 <img src="../../assets/8.png" alt="">
-                                技术维护:
+                                技术维护 ：
                                 <span class="text1">浙江省兴合集团有限责任公司信息技术部</span>
                             </li>
                             <li>
                                 <img src="../../assets/5.png" alt="">
-                                服务热线:
+                                服务热线 ：
                                 <span class="text1">0571-8703 2510</span>
                             </li>
                             <li>
                                 <img src="../../assets/7.png" alt="">
-                                电子邮箱:
+                                电子邮箱 ：
                                 <span class="text1">xinghegroup@zjcoop.com</span>
                             </li>
                             <li>
