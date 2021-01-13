@@ -74,7 +74,7 @@ export default {
                     height 100%
         .right
             width 100%
-            @media screen and (max-width:768px)
+            @media screen and (max-width:992px)
                 padding 0
             font-family MicrosoftYaHei
             text-align left
@@ -84,7 +84,7 @@ export default {
                 font-size 2rem
                 text-align left
                 line-height 2rem
-                @media screen and (max-width:768px)
+                @media screen and (max-width:992px)
                     height 2.5rem
                     margin-top 1.5rem
             .title_en
@@ -99,7 +99,7 @@ export default {
                 width 30px
                 height 3px
                 background #999999
-                margin 22px 0 47px
+                margin 22px 0 34px
                 @media screen and (max-width:768px)
                     margin 1rem 0 2.45rem
             .neirong
@@ -107,6 +107,7 @@ export default {
                 font-size 0.9rem
                 font-family MicrosoftYaHei
                 font-weight Regular
+                line-height 2rem
                 @media screen and (max-width:768px)
                     font-size 1.7rem
                     margin-bottom 0
