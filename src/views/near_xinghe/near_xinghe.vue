@@ -1,7 +1,7 @@
 <template>
     <div class="near_xinghe">
         <div class="row banner" @click="closeOption">
-            <img class="img" v-lazy="this.banner.image" alt="">
+            <img class="img" :src="this.banner.image" lazy="loaded" alt="">
             <BannerTitle
                 class="banner_title"
                 :title_zn="this.banner.title"
@@ -175,6 +175,9 @@ export default {
 }
 </script>
 <style lang="stylus" scoped>
+.img[lazy=loaded] {
+    background url("../../assets/loaded.png")
+ }
 .near_xinghe
     width 100%
     .banner
@@ -182,6 +185,7 @@ export default {
         padding 0
         margin 0
         position relative
+        height 20rem
         @media screen and (max-width:768px)
             margin-top 5rem
             height 20rem

@@ -3,9 +3,9 @@
         <span class="title_zn wow fadeInUp">
             {{this.title_zn}}
         </span>
-        <span class="title_en wow fadeInUp">
+        <!-- <span class="title_en wow fadeInUp">
             {{this.title_en}}
-        </span>
+        </span> -->
     </div>
 </template>
 <script>
@@ -45,12 +45,10 @@ export default {
 </script>
 <style lang="stylus" scoped>
 .banner
-    width 185px
-    height 22px
     font-size 28px
     font-family Source Han Sans CN
-    line-height 45px
     .title_zn
+        padding-top 1rem
         font-size 3rem
         color #FFFFFF
         text-align left

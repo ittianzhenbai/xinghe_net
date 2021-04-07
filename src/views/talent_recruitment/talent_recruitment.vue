@@ -1,7 +1,7 @@
 <template>
     <div class="talent_recruitment">
         <div class="row banner" @click="closeOption">
-            <img class="img" v-lazy="this.banner.image" alt="">
+            <img class="img" :src="this.banner.image" lazy="loaded" alt="">
             <BannerTitle
                 class="banner_title"
                 :title_zn="this.banner.title"
@@ -157,6 +157,9 @@ export default {
 }
 </script>
 <style lang="stylus" scoped>
+.img[lazy=loaded] {
+    background url("../../assets/loaded.png")
+ }
 .talent_recruitment
     width 100%
     .banner

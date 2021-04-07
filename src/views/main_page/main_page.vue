@@ -120,7 +120,7 @@
     </div>
 </template>
 <script>
-import '../../common/js/control.js'
+// import '../../common/js/control.js'
 import SwiperBanner from "@/components/swiper_banner/swiper_banner.vue"
 import SwiperNews from "@/components/swiper_news/swiper_news.vue"
 import MajorBusiness from "@/components/major_business/major_business.vue"
@@ -131,8 +131,7 @@ export default {
             content_show:this.$store.state.childActiveIndex,
             rongyu:"",
             newslist:[],//新闻列表,
-            pics:[],
-            // newstop:""
+            pics:[]
         }
     },
     computed:{
@@ -296,7 +295,7 @@ export default {
                     font-family SourceHanSansCN-Bold
                     font-weight Bold
                 &>p
-                    width 40%
+                    width 50%
                     padding 0
                     font-size 0.8rem
                     color #666666
@@ -305,6 +304,10 @@ export default {
                     font-weight Regular
                     margin 0 auto
                     margin-top 9px
+                    @media screen and (max-width:1660px)
+                        width 60%
+                    @media screen and (max-width:1200px)
+                        width 68%
                     @media screen and (max-width:1024px)
                         width 100%
                         margin-top 18.5pt
@@ -444,7 +447,7 @@ export default {
                             padding-right 4%
                         .news_title
                             font-size 1.1rem
-                            color #1A649F
+                            color #333
                             text-align left
                             width 100%
                             margin-bottom 10px
@@ -455,6 +458,8 @@ export default {
                             @media screen and (max-width:768px)
                                 font-size 1.5rem
                                 line-height 1.5rem
+                        .news_title:hover
+                            color #1A649F
                         .news_content1
                             text-align left
                             width 100%
@@ -462,7 +467,7 @@ export default {
                             -webkit-box-orient vertical
                             -webkit-line-clamp 2  //需要显示时文本行数
                             overflow hidden
-                            color #666666
+                            color #666666 
                             font-size 0.7rem
                             @media screen and (max-width:768px)
                                 font-size 1.2rem
@@ -481,7 +486,7 @@ export default {
                             padding 0
                             cursor pointer
                             span
-                                color #1A649F
+                                color #333333
                                 font-family SourceHanSansCN-Bold
                                 font-weight Regular
                                 line-height 1.85rem
@@ -506,4 +511,10 @@ export default {
                                     font-size 1.5rem
                                     line-height 3.5rem
                                     padding-left 2rem
+                        &>li:hover
+                            span
+                                color #1A649F
+                            &>p
+                                color #1A649F
+                            
 </style>

@@ -1,7 +1,7 @@
 <template>
     <div class="near_xinghe">
         <div class="row banner" @click="closeOption">
-            <img class="img" v-lazy="this.banner.image" alt="">
+            <img class="img" :src="this.banner.image" lazy="loaded" alt="">
             <BannerTitle
                 class="banner_title"
                 :title_zn="this.banner.title"
@@ -73,9 +73,10 @@ export default {
             banner:"",
             options:[
                 {cur_index:"1",cur_name:"党建动态"},
-                {cur_index:"2",cur_name:"党章党规"},
-                {cur_index:"3",cur_name:"学习园地"},
-                {cur_index:"4",cur_name:"文件通知"},
+                {cur_index:"2",cur_name:"清廉兴合"},
+                {cur_index:"3",cur_name:"党章党规"},
+                {cur_index:"4",cur_name:"学习园地"},
+                {cur_index:"5",cur_name:"文件通知"},
             ],
             openeds:[""]//控制子菜单闭合
         }
@@ -121,16 +122,20 @@ export default {
                     this.setActiveIndex("5-1")
                     break;
                 case "2":
-                    this.$router.push({path:"/party_danggui"})
+                    this.$router.push({path:"/party_qlxinghe"})
                     this.setActiveIndex("5-2")
                     break;
                 case "3":
-                    this.$router.push({path:"/party_yuandi"})
+                    this.$router.push({path:"/party_danggui"})
                     this.setActiveIndex("5-3")
                     break;
                 case "4":
-                    this.$router.push({path:"/party_notify"})
+                    this.$router.push({path:"/party_yuandi"})
                     this.setActiveIndex("5-4")
+                    break;
+                case "5":
+                    this.$router.push({path:"/party_notify"})
+                    this.setActiveIndex("5-5")
                     break;
             }
         },
@@ -170,6 +175,9 @@ export default {
 }
 </script>
 <style lang="stylus" scoped>
+.img[lazy=loaded] {
+    background url("../../assets/loaded.png")
+ }
 .near_xinghe
     width 100%
     .banner
@@ -217,10 +225,14 @@ export default {
                 cursor pointer
                 color #000000
                 text-align center
-                @media screen and (min-width:993px) and (max-width:1680px)
+                @media screen and (min-width:1381px) and (max-width:1680px)
                     width 10rem
-                @media screen and (min-width:769px) and (max-width:992px)
+                @media screen and (min-width:1025px) and (max-width:1380px)
+                    width 9rem
+                @media screen and (min-width:960px) and (max-width:1080px)
                     width 8rem
+                @media screen and (min-width:768px) and (max-width:959px)
+                    width 6.5rem
                 &.active
                     border-bottom 3px solid #1A649F
                     font-weight bold

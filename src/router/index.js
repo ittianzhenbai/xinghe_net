@@ -128,6 +128,11 @@ const routes = [
             component: () => import(/* webpackChunkName: "party_news" */ '../views/party_news/party_news.vue')
           },
           {
+            path: '/party_qlxinghe',
+            name: 'party_qlxinghe',
+            component: () => import(/* webpackChunkName: "party_qlxinghe" */ '../views/party_qlxinghe/party_qlxinghe.vue')
+          },
+          {
             path: '/party_danggui',
             name: 'party_danggui',
             component: () => import(/* webpackChunkName: "party_danggui" */ '../views/party_danggui/party_danggui.vue')

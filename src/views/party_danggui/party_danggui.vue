@@ -55,7 +55,6 @@
 </template>
 <script>
 import { mapState,mapMutations } from "vuex";
-import elTableInfiniteScroll from 'el-table-infinite-scroll';
 export default {
     data(){
          return{

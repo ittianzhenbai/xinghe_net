@@ -1,12 +1,4 @@
 module.exports = {
-    // chainWebpack: config => {
-    //   config
-    //     .plugin('html')
-    //     .tap(args => {
-    //       args[0].title= '浙江省兴合集团有限责任公司'
-    //       return args
-    //     })
-    // },
     publicPath: "./",
     devServer: {
       overlay: {
@@ -20,7 +12,7 @@ module.exports = {
           ws: true,
           target:
             process.env.NODE_ENV === "production"
-              ? "http//xh.114nz.com/"
+              ? "http://api.zjxinghe.com/"
               : "http://xh.114nz.com/",
           changeOrigin: true,
           secure: false,

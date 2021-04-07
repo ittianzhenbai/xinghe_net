@@ -4,25 +4,25 @@
             <div class="top_left col-12 col-md-8">
                 <div class="title">联系我们</div>
                 <ul>
+                    <!-- <li>
+                        <img src="../../assets/8.png" alt="">
+                        技术维护 ：浙江省兴合集团有限责任公司信息技术部
+                    </li> -->
                     <li>
-                        <img src="../../assets/4.png" alt="">
-                        地<span class="kongge"></span>址 ：浙江省杭州市延安路312号
+                        <img src="../../assets/5.png" alt="">
+                        联系电话 ：0571-8703 2510
+                    </li>
+                    <li>
+                        <img src="../../assets/7.png" alt="">
+                        电子邮箱 ：xinghegroup@zjcoop.com
                     </li>
                     <li>
                         <img src="../../assets/6.png" alt="">
                         传<span class="kongge"></span>真 ：0571-8701 4212
                     </li>
-                    <li>
-                        <img src="../../assets/8.png" alt="">
-                        技术维护 ：浙江省兴合集团有限责任公司信息技术部
-                    </li>
-                    <li>
-                        <img src="../../assets/5.png" alt="">
-                        服务热线 ：0571-8703 2510
-                    </li>
-                    <li>
-                        <img src="../../assets/7.png" alt="">
-                        电子邮箱 ：xinghegroup@zjcoop.com
+                     <li>
+                        <img src="../../assets/4.png" alt="">
+                        地<span class="kongge"></span>址 ：浙江省杭州市延安路312号
                     </li>
                 </ul>
             </div>
@@ -31,29 +31,29 @@
                     <el-collapse-item title="联系我们" name="1" class="el_title">
                         <ul>
                             <li>
-                                <img src="../../assets/4.png" alt="">
-                                地<span class="kongge"></span>址 ：
-                                <span class="text1">浙江省杭州市延安路312号</span>
+                                <img src="../../assets/5.png" alt="">
+                                联系电话 ：
+                                <span class="text1">0571-8703 2510</span>
                             </li>
                             <li>
                                 <img src="../../assets/6.png" alt="">
                                 传<span class="kongge"></span>真 ：
                                 <span class="text1">0571-8701 4212</span>
                             </li>
-                            <li>
+                            <!-- <li>
                                 <img src="../../assets/8.png" alt="">
                                 技术维护 ：
                                 <span class="text1">浙江省兴合集团有限责任公司信息技术部</span>
-                            </li>
-                            <li>
-                                <img src="../../assets/5.png" alt="">
-                                服务热线 ：
-                                <span class="text1">0571-8703 2510</span>
-                            </li>
+                            </li> -->
                             <li>
                                 <img src="../../assets/7.png" alt="">
                                 电子邮箱 ：
                                 <span class="text1">xinghegroup@zjcoop.com</span>
+                            </li>
+                             <li>
+                                <img src="../../assets/4.png" alt="">
+                                地<span class="kongge"></span>址 ：
+                                <span class="text1">浙江省杭州市延安路312号</span>
                             </li>
                             <li>
                                 <span class="demonstration1">兴合集团公众号</span>
@@ -70,6 +70,7 @@
         </div>
         <div class="cutline"></div>
         <div class="bottom">
+            <div>浙江省兴合集团有限责任公司信息技术部维护</div>
             <div>浙江省兴合集团有限责任公司 版权所有</div>
             <div>浙ICP备11027278号-1</div>
         </div>
@@ -144,11 +145,9 @@ export default {
                     float left
                     width 33.3%
                     font-size 0.7rem
-                    @media screen and (max-width:1700px)
-                        width 50%
+                    width 50%
                     @media screen and (max-width:1270px)
                         width 100%
-                    // padding-right 30px
                     @media screen and (max-width: 768px)
                         padding-right 0
                     text-align left
@@ -198,14 +197,9 @@ export default {
                             height 80px
                     .text1
                         display inline-block
-                        width 71%
+                        width calc(92vw - 10rem)
                         vertical-align top
-                        @media screen and (max-width:320px)
-                            width 60%
-                        @media screen and (min-width:320px) and (max-width:540px)
-                            width 68%
-                        @media screen and (min-width:540px) and (max-width:768px)
-                            width 70%
+                        word-wrap break-word
                     .kongge
                         padding-right 2.4rem
                     .demonstration1

@@ -40,6 +40,13 @@ export default {
                 }
             })
         }
+    },
+    watch:{
+        $route(newVal){
+            if(newVal.query.newsid !== undefined){
+                this.getNewsDetail(newVal.query.newsid)
+            }
+        }
     }
 }
 </script>
@@ -97,7 +104,8 @@ export default {
         text-align left
         line-height 1.5rem !important
     .content>>>img
-        width 85% !important
+        max-width 85% !important
+        height auto !important
         margin 0 auto !important
 
 </style>

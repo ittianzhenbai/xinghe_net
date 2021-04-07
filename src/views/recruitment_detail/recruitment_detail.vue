@@ -46,6 +46,14 @@ export default {
                 }
             })
         }
+    },
+    watch:{
+        $route(newVal){
+            console.log(newVal.query.jobid)
+            if(newVal.query.newsid !== undefined){
+                this.getNewsDetail(newVal.query.newsid)
+            }
+        }
     }
 }
 </script>

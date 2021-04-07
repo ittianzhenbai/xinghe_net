@@ -1,7 +1,7 @@
 <template>
   <div class="connect_us container-fluid">
     <div class="row banner">
-        <img class="img" v-lazy="this.banner.image" alt="">
+        <img class="img" :src="this.banner.image" lazy="loaded" alt="">
         <BannerTitle
             class="banner_title"
             :title_zn="this.banner.title"
@@ -24,11 +24,11 @@
       <div class="row row1">
         <div class="row1_left">
           <ul>
-            <li class="title">
+            <!-- <li class="title">
               <div class="single_row">
                 浙江兴合集团有限公司
               </div>
-            </li>
+            </li> -->
             <li >
               <div class="single_row">
                 <img class="icon1" src="../../assets/33.png" alt="">
@@ -62,7 +62,13 @@
           </ul>
         </div>
         <div class="row1_right">
-          <img class="map" src="../../assets/group_map.png" alt="">
+          <!-- <img class="map" src="../../assets/group_map.png" alt=""> -->
+           <baidu-map class="map"  :center="{lng: 120.171513, lat: 30.264215}" :zoom="30">
+              <bm-navigation anchor="BMAP_ANCHOR_TOP_RIGHT"></bm-navigation>
+              <bm-marker :position="{lng: 120.171513, lat:30.264215}" :dragging="true" animation="BMAP_ANIMATION_BOUNCE">
+                <bm-label content="浙江省兴合集团有限责任公司" :labelStyle="{color: '#1a649f', fontSize : '5px',border:'none'}" :offset="{width: -40, height: 30}"/>
+            </bm-marker>
+          </baidu-map>
         </div>
       </div>
     </div>
@@ -102,6 +108,9 @@ export default {
 }
 </script>
 <style lang="stylus" scoped>
+.img[lazy=loaded] {
+    background url("../../assets/loaded.png")
+ }
 .connect_us
   // width 100%
   padding 0
@@ -190,16 +199,6 @@ export default {
                 padding-right 2rem
                 @media screen and (max-width:768px)
                   padding-right 3.5rem
-              .text1
-                font-weight Regular
-                font-family MicrosoftYaHei
-                line-height 2.5rem
-                vertical-align middle
-                word-break break-all
-                @media screen and (max-width:768px)
-                  font-size 1.7rem
-                  vertical-align middle
-                  line-height 3.5rem
               .icon1
                 width 25px
                 margin-right 10px
@@ -210,6 +209,22 @@ export default {
                 @media screen and (max-width:768px)
                   width 24vw
                   height 24vw
+              .text1
+                font-weight Regular
+                font-family MicrosoftYaHei
+                line-height 2.5rem
+                vertical-align middle
+                word-break break-all
+                @media screen and (max-width:768px)
+                  font-size 1.7rem
+                  vertical-align middle
+                  line-height 3.5rem
+              // .text2
+              //   @media screen and (max-width:768px)
+              //     display inline-block
+              //     width calc(96vw - 13.6rem)
+              //     word-wrap break-word
+              //     vertical-align top
             &:nth-child(6n+0)
               margin-top 54px
           .title
@@ -234,4 +249,7 @@ export default {
           width 50%
         .map
           width 100%
+          height 100%
+          @media screen and (max-width:1200px)
+            height 20rem
 </style>
