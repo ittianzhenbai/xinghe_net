@@ -20,7 +20,7 @@ export default {
             news_content:""//新闻内容
         }
     },
-    mounted(){  
+    mounted(){
         this.getNewsDetail(this.$route.query.newsid)
     },
     filters: {
@@ -43,6 +43,13 @@ export default {
                     this.news_content = res.data.data
                 }
             })
+        }
+    },
+    watch:{
+        $route(newVal){
+            if(newVal.query.newsid !== undefined){
+                this.getNewsDetail(newVal.query.newsid)
+            }
         }
     }
 }
@@ -101,7 +108,8 @@ export default {
         text-align left
         line-height 1.5rem !important
     .content>>>img
-        width 85% !important
+        max-width 85% !important
+        hieght auto !important
         margin 1rem 0
         @media screen and (max-width:768px)
             width 95% !important

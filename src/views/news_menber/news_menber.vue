@@ -11,9 +11,9 @@
             >
                 <div class="single_news">
                     <span class="row img" v-lazy:background-image="item.image"></span>
-                    <span class="date">{{item.create_at}}</span>
                     <p class="title">{{item.title}}</p>
-                    <p class="neirong">{{item.desc}}</p>
+                    <p class="neirong">{{item.desc | qukongge}}</p>
+                    <span class="date">{{item.create_at}}</span>
                 </div>
             </li>
         </ul>
@@ -31,9 +31,9 @@
             >
                 <div class="single_news">
                     <span class="row img" v-lazy:background-image="item.image"></span>
-                    <span class="date">{{item.create_at}}</span>
                     <p class="title">{{item.title}}</p>
-                    <p class="neirong">{{item.desc}}</p>
+                    <p class="neirong">{{item.desc | qukongge}}</p>
+                    <span class="date">{{item.create_at}}</span>
                 </div>
             </li>
             <li>
@@ -136,7 +136,6 @@ export default {
             this.getNewsList_mobile(this.page,this.pagesize,3)
         },
         godetail(item){
-            console.log(item)
             this.$router.push({
                 path:"/news_detail",
                 query:{
@@ -160,121 +159,5 @@ export default {
 }
 </script>
 <style lang="stylus" scoped>
-.news_group
-    width 76%
-    padding 100px 0
-    margin 0 auto
-    @media screen and (max-width:768px)
-        width 95%
-        padding 15pt 0
-    .news_list
-        margin 0
-        overflow auto
-        @media screen and (max-width:768px)
-            height 500px
-            overflow scroll
-            overflow-x hidden
-        &>li
-            width 100%
-            margin-bottom 11px
-            cursor pointer
-            padding 0 6px
-            @media screen and (max-width:768px)    
-                padding 0
-                margin-bottom 2.45rem
-            .single_news
-                padding 9px 9px 0
-                .img
-                    width 100%
-                    height 13vw
-                    background center center
-                    background-size 100% 100%
-                    @media screen and (max-width:1024px)
-                        height 11.5rem
-                    @media screen and (min-width:769px) and (max-width:1200px)
-                        height 12vw
-                    margin 0 auto
-                .date
-                    display block
-                    text-align left
-                    color #CACACA
-                    font-size 1.2rem
-                    margin-top 18px
-                    margin-bottom 3px
-                    font-family SourceHanSansCN
-                    font-weight Regular
-                    line-height 1.5rem
-                    @media screen and (max-width:768px)
-                        font-size 1.5rem
-                        margin-top 1.4rem
-                        margin-bottom 1.05rem
-                .title
-                    font-family Microsoft YaHei
-                    font-weight Regular
-                    color #333333
-                    line-height 1.5rem
-                    white-space nowrap
-                    width 100%
-                    margin-bottom 5px
-                    font-size 1.1rem
-                    text-align left          
-                    text-overflow:ellipsis
-                    overflow hidden 
-                    @media screen and (max-width:768px)
-                        margin-bottom 0.95rem
-                        font-size 1.7rem
-                        line-height 1.7rem
-                .neirong
-                    text-align left
-                    display -webkit-box
-                    font-size 0.7rem
-                    color #666666
-                    -webkit-box-orient vertical
-                    -webkit-line-clamp 2 //需要显示时文本行数
-                    overflow hidden
-                    font-family Microsoft YaHei
-                    font-weight Regular
-                    line-height 1.2rem
-                    margin-bottom 25px
-                    @media screen and (max-width:768px)
-                        font-size 1.4rem
-                        line-height 2rem 
-                    @media all and (-ms-high-contrast: none), (-ms-high-contrast: active) 
-                        text-overflow ellipsis
-                        white-space nowrap
-            .text1
-                width 100%
-                font-size 1.5rem
-                text-align center
-    @media screen and (min-width:769px)
-        li:hover
-            background-color #1A649F
-            padding 0
-            .single_news
-                width 100%
-                .img
-                    background center center
-                    background-size 120% 120%
-                    -webkit-transition all 1s
-                    -moz-transition all 1s
-                    -o-transition all 1s
-                    transition all 1s
-                .date,.title,.neirong
-                    color #FFFFFF
-                    padding 0 6px
-    .pc
-        @media screen and (max-width:768px)
-            display none
-    .mobile
-        @media screen and (min-width:769px)
-            display none
-    .row2
-        width 100%
-        padding 0
-        margin-top 3.1rem
-        @media screen and (max-width:768px)
-            display none
-        .pagination
-            margin 0 auto
-
+@import "../../common/css/groupnewlist.styl"
 </style>

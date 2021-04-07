@@ -1,0 +1,125 @@
+.news_group
+    width 76%
+    padding 100px 0
+    margin 0 auto
+    @media screen and (max-width:768px)
+        width 95%
+        padding 15pt 0
+    .news_list
+        margin 0
+        overflow auto
+        @media screen and (max-width:768px)
+            height 500px
+            overflow scroll
+            overflow-x hidden
+        &>li
+            width 100%
+            margin-bottom 11px
+            cursor pointer
+            padding 0 6px
+            @media screen and (max-width:768px)    
+                padding 0
+                margin-bottom 2.45rem
+            .single_news
+                padding 9px 9px 0
+                .img
+                    width 100%
+                    height 13vw
+                    background-position center center
+                    background-color #e5e5e5
+                    background-size contain
+                    background-repeat no-repeat
+                    @media screen and (max-width:1024px)
+                        height 11.5rem
+                    @media screen and (min-width:769px) and (max-width:1200px)
+                        height 12vw
+                    margin 0 auto
+                .title
+                    font-family Microsoft YaHei
+                    font-weight Regular
+                    color #333333
+                    line-height 1.5rem
+                    width 100%
+                    margin-top 15px
+                    margin-bottom 10px
+                    font-size 1.1rem
+                    text-align left          
+                    display -webkit-box        
+                    -webkit-box-orient vertical
+                    -webkit-line-clamp 2 //需要显示时文本行数
+                    overflow hidden
+                    @media screen and (min-width:769px)
+                        height 3rem
+                    @media screen and (max-width:768px)
+                        margin 19px 0
+                        font-size 1.7rem
+                        line-height 1.9rem
+                .neirong
+                    text-align left
+                    display -webkit-box
+                    font-size 0.7rem
+                    color #666666
+                    -webkit-box-orient vertical
+                    -webkit-line-clamp 2 //需要显示时文本行数
+                    overflow hidden
+                    font-family Microsoft YaHei
+                    font-weight Regular
+                    line-height 1.2rem
+                    margin-bottom 0
+                    @media screen and (min-width:769px)
+                        height 2.4rem
+                    @media screen and (max-width:768px)
+                        font-size 1.4rem
+                        line-height 2rem 
+                    @media all and (-ms-high-contrast: none), (-ms-high-contrast: active) 
+                        text-overflow ellipsis
+                        white-space nowrap
+                .date
+                    display block
+                    text-align left
+                    color #CACACA
+                    font-size 0.8rem
+                    margin-top 4px
+                    margin-bottom 15px
+                    font-family SourceHanSansCN
+                    font-weight Regular
+                    line-height 1.5rem
+                    @media screen and (max-width:768px)
+                        font-size 1.5rem
+                        margin-top 1.05rem
+                        margin-bottom 1.4rem
+            .text1
+                width 100%
+                font-size 1.5rem
+                text-align center
+    @media screen and (min-width:769px)
+        li:hover
+            background-color #1A649F
+            padding 0
+            .single_news
+                width 100%
+                .img
+                    background-position center center
+                    background-size 120% auto
+                    background-repeat no-repeat
+                    -webkit-transition all 1s
+                    -moz-transition all 1s
+                    -o-transition all 1s
+                    transition all 1s
+                .date,.title,.neirong
+                    color #FFFFFF
+                    padding 0 6px
+    .pc
+        @media screen and (max-width:768px)
+            display none
+    .mobile
+        @media screen and (min-width:769px)
+            display none
+    .row2
+        width 100%
+        padding 0
+        margin-top 3.1rem
+        @media screen and (max-width:768px)
+            display none
+        .pagination
+            margin 0 auto

@@ -11,9 +11,9 @@
             >
                 <div class="single_news">
                     <span class="row img" v-lazy:background-image="item.image"></span>
-                    <span class="date">{{item.create_at}}</span>
                     <p class="title">{{item.title}}</p>
                     <p class="neirong">{{item.desc}}</p>
+                    <span class="date">{{item.create_at}}</span>
                 </div>
             </li>
         </ul>
@@ -31,9 +31,9 @@
             >
                 <div class="single_news">
                     <span class="row img" v-lazy:background-image="item.image"></span>
-                    <span class="date">{{item.create_at}}</span>
                     <p class="title">{{item.title}}</p>
                     <p class="neirong">{{item.desc}}</p>
+                    <span class="date">{{item.create_at}}</span>
                 </div>
             </li>
             <li>
@@ -167,7 +167,15 @@ export default {
                     this.getNewsList(newVal,1,this.pagesize)
                 }
             })
-           
+        },
+        deviceFlag(newval){
+            if(newval == "mobile"){
+                this.page = 1
+                this.getNewsList_mobile(this.searchKeywords,1,this.pagesize)
+            }else {
+                this.page = 1
+                this.getNewsList(this.searchKeywords,1,this.pagesize)
+            }
         }
     }
 }
@@ -200,43 +208,35 @@ export default {
                 .img
                     width 100%
                     height 13vw
-                    background center center
-                    background-size 100% 100%
+                    background-position center center
+                    background-color #e5e5e5
+                    background-size contain
+                    background-repeat no-repeat
                     @media screen and (max-width:1024px)
                         height 11.5rem
                     @media screen and (min-width:769px) and (max-width:1200px)
                         height 12vw
                     margin 0 auto
-               .date
-                    display block
-                    text-align left
-                    color #CACACA
-                    font-size 1.2rem
-                    margin-top 18px
-                    margin-bottom 3px
-                    font-family SourceHanSansCN
-                    font-weight Regular
-                    line-height 1.5rem
-                    @media screen and (max-width:768px)
-                        font-size 1.5rem
-                        margin-top 1.4rem
-                        margin-bottom 1.05rem
                 .title
                     font-family Microsoft YaHei
                     font-weight Regular
                     color #333333
                     line-height 1.5rem
-                    white-space nowrap
                     width 100%
-                    margin-bottom 5px
+                    margin-top 15px
+                    margin-bottom 10px
                     font-size 1.1rem
                     text-align left          
-                    text-overflow:ellipsis
-                    overflow hidden 
+                    display -webkit-box        
+                    -webkit-box-orient vertical
+                    -webkit-line-clamp 2 //需要显示时文本行数
+                    overflow hidden
+                    @media screen and (min-width:769px)
+                        height 3rem
                     @media screen and (max-width:768px)
-                        margin-bottom 0.95rem
+                        margin 19px 0
                         font-size 1.7rem
-                        line-height 1.7rem
+                        line-height 1.9rem
                 .neirong
                     text-align left
                     display -webkit-box
@@ -248,13 +248,27 @@ export default {
                     font-family Microsoft YaHei
                     font-weight Regular
                     line-height 1.2rem
-                    margin-bottom 25px
+                    margin-bottom 0
                     @media screen and (max-width:768px)
                         font-size 1.4rem
                         line-height 2rem 
                     @media all and (-ms-high-contrast: none), (-ms-high-contrast: active) 
                         text-overflow ellipsis
                         white-space nowrap
+                .date
+                    display block
+                    text-align left
+                    color #CACACA
+                    font-size 0.8rem
+                    margin-top 4px
+                    margin-bottom 15px
+                    font-family SourceHanSansCN
+                    font-weight Regular
+                    line-height 1.5rem
+                    @media screen and (max-width:768px)
+                        font-size 1.5rem
+                        margin-top 1.05rem
+                        margin-bottom 1.4rem
             .text1
                 width 100%
                 font-size 1.5rem
@@ -266,8 +280,9 @@ export default {
             .single_news
                 width 100%
                 .img
-                    background center center
-                    background-size 120% 120%
+                    background-position center center
+                    background-size 120% auto
+                    background-repeat no-repeat
                     -webkit-transition all 1s
                     -moz-transition all 1s
                     -o-transition all 1s

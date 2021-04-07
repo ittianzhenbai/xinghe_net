@@ -73,9 +73,9 @@ export default {
     },
     mounted(){
         if(this.deviceFlag == "mobile"){
-            this.getNewsList_mobile(this.page,this.pagesize,91)
+            this.getNewsList_mobile(this.page,this.pagesize,101)
         }else{
-             this.getNewsList(this.page,this.pagesize,91)
+             this.getNewsList(this.page,this.pagesize,101)
         }
     },
     computed:{
@@ -128,14 +128,13 @@ export default {
         load () {
             this.loading = true
             this.page ++
-            this.getNewsList_mobile(this.page,this.pagesize,91)
+            this.getNewsList_mobile(this.page,this.pagesize,101)
         },
         reload(){
             //点击继续查看 可以查看下一页数据
             this.page ++
             console.log(this.page,this.count)
-            
-            this.getNewsList_mobile(this.page,this.pagesize,91)
+            this.getNewsList_mobile(this.page,this.pagesize,101)
         },
         godetail(item){
             this.$router.push({
@@ -146,15 +145,15 @@ export default {
             })
         },
         handleCurrentChange(val){
-            this.getNewsList(val,this.pagesize,91)
+            this.getNewsList(val,this.pagesize,101)
         }
     },
     watch:{
         deviceFlag(newval){
             if(newval == "mobile"){
-                this.getNewsList_mobile(1,this.pagesize,91)
+                this.getNewsList_mobile(1,this.pagesize,101)
             }else{
-                this.getNewsList(1,this.pagesize,91)
+                this.getNewsList(1,this.pagesize,101)
             }
         }
     }

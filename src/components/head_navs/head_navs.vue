@@ -62,9 +62,10 @@
                         <router-link to="/party_news?from=title">党建园地</router-link>
                     </template>
                     <el-menu-item index="5-1">党建动态</el-menu-item>
-                    <el-menu-item index="5-2">党章党规</el-menu-item>
-                    <el-menu-item index="5-3">学习园地</el-menu-item>
-                    <el-menu-item index="5-4">文件通知</el-menu-item>
+                    <el-menu-item index="5-2">清廉兴合</el-menu-item>
+                    <el-menu-item index="5-3">党章党规</el-menu-item>
+                    <el-menu-item index="5-4">学习园地</el-menu-item>
+                    <el-menu-item index="5-5">文件通知</el-menu-item>
                 </el-submenu>
                 <el-submenu index="6">
                     <template slot="title">
@@ -123,9 +124,10 @@
                 <el-submenu index="5">
                     <template slot="title">党建园地</template>
                     <el-menu-item index="5-1">党建动态</el-menu-item>
-                    <el-menu-item index="5-2">党章党规</el-menu-item>
-                    <el-menu-item index="5-3">学习园地</el-menu-item>
-                    <el-menu-item index="5-4">文件通知</el-menu-item>
+                    <el-menu-item index="5-2">清廉兴合</el-menu-item>
+                    <el-menu-item index="5-3">党章党规</el-menu-item>
+                    <el-menu-item index="5-4">学习园地</el-menu-item>
+                    <el-menu-item index="5-5">文件通知</el-menu-item>
                 </el-submenu>
                 <el-submenu index="6">
                     <template slot="title">人才招聘</template>
@@ -299,18 +301,24 @@ export default {
                     this.setchildActiveIndex("1")
                 }
                 if(key == "5-2"){
-                    // console.log("党章党规")
-                    this.$router.push({path:"/party_danggui"})
+                    // console.log("清廉兴合")
+                    this.$router.push({path:"/party_qlxinghe"})
                     this.setActiveIndex('5-2')
                     this.setchildActiveIndex("2")
                 }
                 if(key == "5-3"){
-                    // console.log("学习园地")
-                    this.$router.push({path:"/party_yuandi"})
+                    // console.log("党章党规")
+                    this.$router.push({path:"/party_danggui"})
                     this.setActiveIndex('5-3')
                     this.setchildActiveIndex("3")
                 }
                 if(key == "5-4"){
+                    // console.log("学习园地")
+                    this.$router.push({path:"/party_yuandi"})
+                    this.setActiveIndex('5-4')
+                    this.setchildActiveIndex("4")
+                }
+                if(key == "5-5"){
                     // console.log("文件通知")
                     this.$router.push({path:"/party_notify"})
                     this.setActiveIndex('5-4')
