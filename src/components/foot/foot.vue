@@ -72,7 +72,7 @@
         <div class="bottom">
             <div>浙江省兴合集团有限责任公司信息技术部维护</div>
             <div>浙江省兴合集团有限责任公司 版权所有</div>
-            <div>浙ICP备11027278号-1</div>
+            <a class="outlinks" target="_blank" href="https://beian.miit.gov.cn">浙ICP备11027278号-1</a>
         </div>
     </div>
 </template>
@@ -252,4 +252,15 @@ export default {
             padding-top 2.5rem
             line-height 1.6rem
             padding-bottom 2.35rem
+        .outlinks
+            text-decoration none
+            &:line
+                color #FFFFFF
+            &:visited
+                color #FFFFFF
+            &:hover
+                color #FFFFFF
+            &:active
+                color #FFFFFF
+            
 </style>
