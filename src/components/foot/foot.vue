@@ -254,7 +254,7 @@ export default {
             padding-bottom 2.35rem
         .outlinks
             text-decoration none
-            color #FFFFFF !important
+            color #FFF !important
             &:line
                 color #FFFFFF
             &:visited
@@ -263,5 +263,4 @@ export default {
                 color #FFFFFF !important
             &:active
                 color #FFFFFF
-            
 </style>
